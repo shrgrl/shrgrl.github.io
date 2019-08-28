@@ -1,0 +1,32 @@
+---
+layout: default
+---
+
+<header class="hero hero-fluid hero-project txt-color-sasha-white">
+  <div class="container nfloat-down">
+    <h1>{{ page.title }}</h1>
+    <p class="txt-size-lead">{{ page.sub-title }}</p>
+  </div>
+</header>
+
+<div class="container page-component project-item-content nfloat-up">
+  {{ content }}
+ 
+  <a href="/{{ page.collection }}" class="btn btn-sasha-greyest" id="txt" style="margin-top: 15px;"></a>
+</div>
+  <script>
+  var x = "{{ page.collection | capitalize }}"
+  switch(x){
+    case "Parallel" :
+    document.getElementById("txt").innerHTML = "&larr;Paralel Programlama Uygulamalarına geri dön"
+    break
+    case "Web" :
+    document.getElementById("txt").innerHTML = "&larr;Web Uygulamalarına geri dön"
+    break
+    case "Graphics":
+    document.getElementById("txt").innerHTML = "&larr;Grafiksel ve GUI Uygulamalarına geri dön"
+	break
+    case "Rfid":
+    document.getElementById("txt").innerHTML = "&larr;RFID Uygulamalarına geri dön"
+  }
+  </script>

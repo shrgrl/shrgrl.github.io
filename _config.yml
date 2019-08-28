@@ -1,0 +1,26 @@
+title: Seher Gürel
+
+tagline: Bilgisayar Mühendisi
+
+sass:
+  sass_dir: assets/css
+  style: expanded
+
+collections:
+  mobile:
+    output: false
+    permalink: /:collection/:path
+  web :
+    output: true
+    permalink: /:collection/:path
+  parallel:
+    output: true
+    permalink: /:collection/:path
+  graphics :
+    output: true
+    permalink: /:collection/:path
+  game:
+    output: false
+    permalink: /:collection/:path
+
+include: ["_pages"]
