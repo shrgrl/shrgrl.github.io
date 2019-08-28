@@ -10,17 +10,20 @@ collections:
   mobile:
     output: false
     permalink: /:collection/:path
-  web :
+  web:
     output: true
     permalink: /:collection/:path
   parallel:
     output: true
     permalink: /:collection/:path
-  graphics :
+  graphics:
     output: true
     permalink: /:collection/:path
   game:
     output: false
     permalink: /:collection/:path
-
+  rfid:
+    output: true
+    permalink: /:collection/:path
+  
 include: ["_pages"]
