@@ -25,5 +25,8 @@ collections:
   rfid:
     output: true
     permalink: /:collection/:path
+  blogger:
+    output: true
+    permalink: /:collection/:path
   
 include: ["_pages"]
