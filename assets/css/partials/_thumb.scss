@@ -38,11 +38,12 @@
   }
   
    > figure > p {
+    font-style: italic;
     color: #fff;
     left: 50%;
     position: absolute;
     top: 60%;
-    transform: translate(-50%, -70%);
+    transform: translate(-50%, -50%);
     // transition: transform .5s ease;
   }
 
