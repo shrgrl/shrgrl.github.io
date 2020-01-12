@@ -28,7 +28,7 @@
     -webkit-backface-visibility: hidden; // Disable flickering when scaling up
   }
 
-  > figure > figcaption #seher {
+  > figure > figcaption {
     color: #fff;
     left: 50%;
     position: absolute;
@@ -37,12 +37,12 @@
     // transition: transform .5s ease;
   }
   
-   > figure > figcaption #gurel {
+   > figure > p {
     color: #ff0000;
     left: 40%;
     position: absolute;
     top: 40%;
-    transform: translate(-50%, -50%);
+    transform: translate(-40%, -40%);
     // transition: transform .5s ease;
   }
 
