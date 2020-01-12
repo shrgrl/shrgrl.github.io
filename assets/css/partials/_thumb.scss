@@ -36,6 +36,15 @@
     transform: translate(-50%, -50%);
     // transition: transform .5s ease;
   }
+  
+   > figure > figcaption #seher {
+    color: #fff;
+    left: 40%;
+    position: absolute;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    // transition: transform .5s ease;
+  }
 
   &:hover > figure > img {
     opacity: .15;
