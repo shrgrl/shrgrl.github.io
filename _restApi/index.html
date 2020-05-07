@@ -6,14 +6,15 @@ layout: blog-item
 ---
 
 <p>Merhaba arkadaşlar. Bugünkü yazımda sizlere Rest API, Node.js gibi kavramlardan bahsederek beraber basit bir Rest API örneği geliştirip, 
-  bu örneğimizi HEROKU platformuna nasıl yükleyeceğimizi göreceğiz.</p>
+bu örneğimizi HEROKU platformuna nasıl yükleyeceğimizi göreceğiz.</p>
 <p>Uygulama yazmaya başlamadan önce uygulamayı çalıştırabilmek için gerekli ortamlara sahip olmamız gerekli. Bunun için ilk olarak eğer 
-  bilgisayarımızda yoksa Node.js indirmemiz gerek. Node.js, genelde JavaScript ile yazılan komutların sunucu tarafında çalışmasını 
-  sağlayan, ağ bağlantılı uygulamalar için geliştirilmiş bir çalıştırma ortamıdır. Bilgisayarımızda node.js’i edinmek için 
-  <a href="https://nodejs.org/en/" target="_blank">kendi sitesinden</a> kolayca indirebiliriz.</p>
+bilgisayarımızda yoksa Node.js indirmemiz gerek. Node.js, genelde JavaScript ile yazılan komutların sunucu tarafında çalışmasını 
+sağlayan, ağ bağlantılı uygulamalar için geliştirilmiş bir çalıştırma ortamıdır. Bilgisayarımızda node.js’i edinmek için 
+<a href="https://nodejs.org/en/" target="_blank">kendi sitesinden</a> kolayca indirebiliriz.</p>
 
 <img src="{{ base }}/assets/images/restApi/node.jpg" style="display: block; margin: auto;"><br>
 
+<h3>Hello World Uygulaması</h3>
 {% highlight language %}
 //Gerekli harici express modülü için
 var express=require('express');
@@ -43,7 +44,61 @@ için gereklidir. Uygulamayı kendi kök dizininde command promt açarak çalı�
 
 <img src="{{ base }}/assets/images/restApi/helloworld.jpg" style="display: block; margin: auto;"><br>
 
-<p>Bu şekilde basit ve temel bir NodeJS, Express uygulamasını nasıl çalıştırabileceğimizi görmüş olduk.</p>
+<p>Bu şekilde basit ve temel bir NodeJS, Express uygulamasını nasıl çalıştırabileceğimizi görmüş olduk. Buradan sonra sizlere bir JSON 
+dosyasından çekilen verileri tarayıcıda nasıl göstereceğimizden bahsedeceğim ve ileride geliştireceğimiz farklı uygulamalarda bu verileri 
+kullanabileceğiz.</p>
+
+<h3>NodeJS, Express, JSON ile Basit RestAPI Uygulama</h3>
+<p>Şimdi birlikte adım adım gidelim. İlk olarak bir klasör içine “.json” uzantılı bir dosya oluşturalım ve içine istediğimiz verileri 
+JSON formatına uygun olarak yazalım. Benim örnek JSON verilerim şu şekilde:</p>
+{% highlight language %}
+[
+	{    
+    "ad": "seher",   
+    "soyad": "gürel" 
+    }
+]
+{% endhighlight %}
+
+<p>Şimdi sıra NodeJS kodlarımızı yazmaya geldi. Klasör içerisine “.js” uzantılı ikinci bir dosya oluşturalım içine aşağıdaki kodları 
+yazalım.</p>
+{% highlight language %}
+//express modülünü tanımlayıp başlatıyoruz
+var express = require("express");
+var app = express();
+
+var data = require("./app.json"); //app.json dosyamızdan verileri istiyoruz
+
+//http sayfamıza json dosyamızdaki verileri yanıt olarak gönderiyoruz
+app.get("/", function(req, res) { 
+  res.json(data);
+});
+
+app.listen(5000, function() {
+	console.log("Server running on port 5000...");
+});
+{% endhighlight %}
+
+<p>Uygulamayı çalıştırmak için yukarıda da bahsettiğim gibi uygulamanın bulunduğu dizinde command prompt açalım ve sırasıyla aşağıdaki 
+komutları çalıştıralım.</p>
+{% highlight language %}
+$ npm init
+$ npm install express -s
+$ node app.js
+{% endhighlight %}
+
+<p>Tarayıca çalıştırdığımızda aldığımız sonuç şu şekilde olacaktır.</p>
+<img src="{{ base }}/assets/images/restApi/api.jpg" style="display: block; margin: auto;"><br>
+
+<p>Buraya kadar “REST API, yazılım geliştiricilerin HTTP protokolünü kullanarak GET ve POST gibi isteklerde bulunup, bu isteklere çeşitli 
+formatlarda yanıt aldığı bir sistemdir.” tanımlamasını pratik yaparak kavramaya çalıştık. Bundan sonraki adımda kendi geliştirdiğimiz 
+RestAPI’mizi sadece local bilgisayarda değil farklı ortamlarda da kullanabilmek için neler yapabileceğimizi konuşacağız. API’mizi farklı 
+bilgisayarlarda da kullanabilmek için bir domaine ihtiyacımız var. Ücretli sitelerden domain satın alabilir ya da ücretsiz bazı 
+platformlardan yararlanabiliriz. Ben kendi API’m için sınırlı sayıda ücretsiz domain hakkı sunan HEROKU platformundan faydalandım. Şimdi 
+nasıl adımlar izlememiz gerektiğine bakalım.</p>
+
+<h2><b>HEROKU</b></h2>
+
 
 <div id="disqus_thread"></div>
 <script>
