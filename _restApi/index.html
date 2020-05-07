@@ -5,16 +5,15 @@ collection: restApi
 layout: blog-item
 ---
 
-<p>Merhaba arkadaşlar. Bugünkü yazımda sizlere Rest API, Node.js gibi kavramlardan bahsederek beraber basit bir Rest API örneği geliştirip, 
+<p>Merhaba arkadaşlar. Bugünkü yazımda sizlere RestAPI, Node.js gibi kavramlardan bahsederek beraber basit bir RestAPI örneği geliştirip, 
 bu örneğimizi HEROKU platformuna nasıl yükleyeceğimizi göreceğiz.</p>
 <p>Uygulama yazmaya başlamadan önce uygulamayı çalıştırabilmek için gerekli ortamlara sahip olmamız gerekli. Bunun için ilk olarak eğer 
 bilgisayarımızda yoksa Node.js indirmemiz gerek. Node.js, genelde JavaScript ile yazılan komutların sunucu tarafında çalışmasını 
-sağlayan, ağ bağlantılı uygulamalar için geliştirilmiş bir çalıştırma ortamıdır. Bilgisayarımızda node.js’i edinmek için 
+sağlayan, ağ bağlantılı uygulamalar için geliştirilmiş bir çalıştırma ortamıdır. Bilgisayarımızda Node.js’i edinmek için 
 <a href="https://nodejs.org/en/" target="_blank">kendi sitesinden</a> kolayca indirebiliriz.</p>
-
 <img src="{{ base }}/assets/images/restApi/node.jpg" style="display: block; margin: auto;"><br>
 
-<p><b>Hello World Uygulaması</b></p>
+<h4><b>Hello World Uygulaması</b></h4>
 {% highlight language %}
 //Gerekli harici express modülü için
 var express=require('express');
@@ -29,38 +28,38 @@ app.listen(8080,function(){ //uygulamamız localhost:8080 portunda çalışacakt
 });
 {% endhighlight %}
 
-<p>NodeJS ile web uygulama geliştirmek için Express modülünü kullanıyoruz. Bu modül uygulamamızda kullanacağımız “get” gibi metotlar 
-için gereklidir. Uygulamayı kendi kök dizininde command promt açarak çalıştıracağız.</p>
-<p>İlk olarak package.json dosyasını oluşturmak için aşağıdaki komutu çalıştıralım.</p>
+<p>Node.js ile web uygulama geliştirmek için <b>express</b> modülünü kullanıyoruz. Bu modül uygulamamızda kullanacağımız <b>get</b> gibi metotlar 
+için gereklidir. Uygulamayı kendi kök dizininde CMD açarak çalıştıracağız.</p>
+<p>İlk olarak <b>package.json</b> dosyasını oluşturmak için aşağıdaki komutu çalıştıralım.</p>
 {% highlight language %}$ npm init{% endhighlight %}
 
-<p>Daha sonra kodda kullandığımız harici modülleri yani express modülümüzü indirelim.</p>
+<p>Daha sonra kodda kullandığımız harici modülleri yani <b>express</b> modülümüzü indirelim.</p>
 {% highlight language %}$ npm install express -s{% endhighlight %}
 
 <p>Harici indirme işlemlerini tamamladıktan sonra uygulamamızı çalıştırabiliriz.</p>
 {% highlight language %}$ node helloworld.js{% endhighlight %}
 
-<p>Tarayıcımızda localhost:8080 portunu çalıştırarak sonucu görebiliriz.</p>
+<p>Tarayıcımızda <b>localhost:8080</b> portunu çalıştırarak sonucu görebiliriz.</p>
 
 <img src="{{ base }}/assets/images/restApi/helloworld.jpg" style="display: block; margin: auto;"><br>
 
-<p>Bu şekilde basit ve temel bir NodeJS, Express uygulamasını nasıl çalıştırabileceğimizi görmüş olduk. Buradan sonra sizlere bir JSON 
+<p>Bu şekilde basit ve temel bir <b>Node.js, Express</b> uygulamasını nasıl çalıştırabileceğimizi görmüş olduk. Buradan sonra sizlere bir JSON 
 dosyasından çekilen verileri tarayıcıda nasıl göstereceğimizden bahsedeceğim ve ileride geliştireceğimiz farklı uygulamalarda bu verileri 
 kullanabileceğiz.</p>
 
-<p><b>NodeJS, Express, JSON ile Basit RestAPI Uygulama</b></p>
+<h4><b>NodeJS, Express, JSON ile Basit RestAPI Uygulama</b></h4>
 <p>Şimdi birlikte adım adım gidelim. İlk olarak bir klasör içine “.json” uzantılı bir dosya oluşturalım ve içine istediğimiz verileri 
 JSON formatına uygun olarak yazalım. Benim örnek JSON verilerim şu şekilde:</p>
 {% highlight language %}
 [
-	{    
+    {    
     "ad": "seher",   
     "soyad": "gürel" 
     }
 ]
 {% endhighlight %}
 
-<p>Şimdi sıra NodeJS kodlarımızı yazmaya geldi. Klasör içerisine “.js” uzantılı ikinci bir dosya oluşturalım içine aşağıdaki kodları 
+<p>Şimdi sıra Node.js kodlarımızı yazmaya geldi. Klasör içerisine <b>.js</b> uzantılı ikinci bir dosya oluşturalım içine aşağıdaki kodları 
 yazalım.</p>
 {% highlight language %}
 //express modülünü tanımlayıp başlatıyoruz
@@ -79,31 +78,30 @@ app.listen(5000, function() {
 });
 {% endhighlight %}
 
-<p>Uygulamayı çalıştırmak için yukarıda da bahsettiğim gibi uygulamanın bulunduğu dizinde command prompt açalım ve sırasıyla aşağıdaki 
-komutları çalıştıralım.</p>
+<p>Uygulamayı çalıştırmak için yukarıda da bahsettiğim gibi uygulamanın bulunduğu dizinde CMDt açalım ve sırasıyla aşağıdaki komutları çalıştıralım.</p>
 {% highlight language %}
 $ npm init
 $ npm install express -s
 $ node app.js
 {% endhighlight %}
 
-<p>Tarayıca çalıştırdığımızda aldığımız sonuç şu şekilde olacaktır.</p>
+<p>Tarayıcıda çalıştırdığımızda aldığımız sonuç şu şekilde olacaktır.</p>
 <img src="{{ base }}/assets/images/restApi/api.jpg" style="display: block; margin: auto;"><br>
 
-<p>Buraya kadar “REST API, yazılım geliştiricilerin HTTP protokolünü kullanarak GET ve POST gibi isteklerde bulunup, bu isteklere çeşitli 
-formatlarda yanıt aldığı bir sistemdir.” tanımlamasını pratik yaparak kavramaya çalıştık. Bundan sonraki adımda kendi geliştirdiğimiz 
+<p>Buraya kadar <b>“REST API, yazılım geliştiricilerin HTTP protokolünü kullanarak GET ve POST gibi isteklerde bulunup, bu isteklere çeşitli 
+formatlarda yanıt aldığı bir sistemdir.”</b> tanımlamasını pratik yaparak kavramaya çalıştık. Bundan sonraki adımda kendi geliştirdiğimiz 
 RestAPI’mizi sadece local bilgisayarda değil farklı ortamlarda da kullanabilmek için neler yapabileceğimizi konuşacağız. API’mizi farklı 
 bilgisayarlarda da kullanabilmek için bir domaine ihtiyacımız var. Ücretli sitelerden domain satın alabilir ya da ücretsiz bazı 
 platformlardan yararlanabiliriz. Ben kendi API’m için sınırlı sayıda ücretsiz domain hakkı sunan HEROKU platformundan faydalandım. Şimdi 
 nasıl adımlar izlememiz gerektiğine bakalım.</p>
 
-<p><b>HEROKU</b></p>
-<p>Heroku, her dili desteklemiyor. Node.js, Ruby, Java, PHP, Python, Go, Scala, Clojure gibi dillerde yazılmış uygulamalarınızı Heroku’ya 
+<h4><b>HEROKU</b></h4>
+<p>Heroku, her dili desteklemiyor. <b>Node.js, Ruby, Java, PHP, Python, Go, Scala, Clojure</b> gibi dillerde yazılmış uygulamalarınızı Heroku’ya 
 yükleyip ücretsiz domain kullanabilirsiniz. Kendi uygulamamızı yüklemek için ilk önce hesap oluşturmamız gerekli. Heroku’nun kendi 
 sitesine girerek hesap oluşturabilirsiniz.</p>
 <img src="{{ base }}/assets/images/restApi/herokucreate.jpg" style="display: block; margin: auto;"><br>
 
-<p>Daha sonra uygulamaları kontrol edebilmek için Heroku CLI kurulumumuzu yapmamız gerek.</p>
+<p>Daha sonra uygulamaları kontrol edebilmek için <b>Heroku CLI</b> kurulumumuzu yapmamız gerek.</p>
 <img src="{{ base }}/assets/images/restApi/herokucli.jpg" style="display: block; margin: auto;"><br>
 
 <p>Kullandığınız işletim sistemine uygun bağlantıdan indirme işlemini yapabilirsiniz. Ben Windows kullandığım için şekildeki bağlantıyı 
@@ -112,12 +110,12 @@ teyit etmek için command prompt açarak versiyon kontrolü yapalım.</p>
 <img src="{{ base }}/assets/images/restApi/herokuversion.jpg" style="display: block; margin: auto;"><br>
 
 <p>Buradan sonra yapmamız gereken birkaç şey var. Heroku ile uygulamayı çalıştırabilmemiz için bu dizin içerisinde bazı eklemeler ve 
-değişiklikler yapacağız. İlk önce “Procfile” isimli uzantısız bir dosya oluşturalım ve içerisine aşağıdaki satırı ekleyelim.</p>
+değişiklikler yapacağız. İlk önce <b>procfile</b> isimli uzantısız bir dosya oluşturalım ve içerisine aşağıdaki satırı ekleyelim.</p>
 {% highlight language %}
 web: node app.js
 {% endhighlight %}
 
-<p>Heroku’da çeşitli işlem türlerini bildirmek için Procfile dosyası gereklidir. Daha detaylı bilgi için <a href="https://devcenter.heroku.com/articles/procfile" target="_blank">bu linkten</a> faydalanabilirsiniz.</p>
+<p>Heroku’da çeşitli işlem türlerini bildirmek için <b>procfile</b> dosyası gereklidir. Daha detaylı bilgi için <a href="https://devcenter.heroku.com/articles/procfile" target="_blank">bu linkten</a> faydalanabilirsiniz.</p>
 <p>Daha sonra kodumuzun içerisinde aşağıdaki değişiklikleri yapıyoruz.</p>
 {% highlight language %}
 //Harici modüller
@@ -142,8 +140,8 @@ app.listen(PORT, function() {
 });
 {% endhighlight %}
 
-<p>Cors modülünü kullanmadığımız takdirde uygulamamız başka platform ya da uygulamalarda çalışmayacaktır. Bu modül ile uygulmamızı herokuda 
-ya da geliştirdiğimiz farklı uygulamalarda kullanabiliriz. Port değişkenindeki değişikliğin sebebi ise, Heroku gibi ortamlarda Portun 
+<p><b>cors</b> modülünü kullanmadığımız takdirde uygulamamız başka platform ya da uygulamalarda çalışmayacaktır. Bu modül ile uygulmamızı herokuda 
+ya da geliştirdiğimiz farklı uygulamalarda kullanabiliriz. Port değişkenindeki değişikliğin sebebi ise, Heroku gibi ortamlarda portun 
 düzgün çalışması için bu şekilde belirtilmesi daha uygundur. Kodumuzdaki değişiklikleri kaydettikten sonra local olarak çalıştırıp kontrol 
 edelim.</p>
 {% highlight language %}
@@ -155,10 +153,10 @@ $ node app.js
 <img src="{{ base }}/assets/images/restApi/api.jpg" style="display: block; margin: auto;"><br>
 
 <p>Gördüğümüz gibi uygulamamız local bilgisayarımızda yaptığımız değişiklikler sonucu da sorunsuz bir şekilde çalıştı. Buraya kadar 
-sorun yoksa esas kısma geçebiliriz. Uygulamayı Github üzerinden yükleyeceğimiz için önce Github’a yeni bir repository ekleyelim.</p>
+sorun yoksa esas kısma geçebiliriz. Uygulamayı Github üzerinden yükleyeceğimiz için önce Github’da yeni bir proje oluşturalım.</p>
 <img src="{{ base }}/assets/images/restApi/githubrepo.jpg" style="display: block; margin: auto;"><br>
 
-<p>Daha sonra Github Bash kullanarak uygulamamızı repositorye aşağıdaki komutlar ile ekleyelim.</p>
+<p>Daha sonra <b>Github Bash</b> kullanarak uygulamayı Github projemize aşağıdaki komutlar ile ekleyelim.</p>
 <img src="{{ base }}/assets/images/restApi/gitbash.jpg" style="display: block; margin: auto;"><br>
 {% highlight language %}
 git init
@@ -168,26 +166,26 @@ git remote add origin https://github.com/shrgrl/example-rest-api.git
 git push -u origin master
 {% endhighlight %}
 
-<p>Bütün komutlar bittikten sonra uygulamamız github hesabımıza yüklenmiş demektir.</p>
+<p>Bütün komutlar bittikten sonra uygulamamız Github projemize yüklenmiş demektir.</p>
 <img src="{{ base }}/assets/images/restApi/githubrepo2.jpg" style="display: block; margin: auto;"><br>
 
-<p>Daha sonra Github repositorymizi bilgisayarımıza clone edeceğiz ve Herokuya yükleyeceğiz. Daha detaylı bilgi için Heroku’nun kendi 
+<p>Daha sonra Github projemizi bilgisayarımıza clone edeceğiz ve Heroku'ya yükleyeceğiz. Daha detaylı bilgi için Heroku’nun kendi 
 sitesindeki Node.js projelerinin yüklenmesi ile ilgili yazıya <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs" target="_blank">buradan</a> bakabilirsiniz.</p>
 
-<p>İlk önce CMD açıyoruz ve heroku ile çalışmak için aşağıdaki komutu yazıyoruz ve tarayıcıda açılan ekrandan giriş yapıyoruz.</p>
+<p>İlk önce CMD açıyoruz ve Heroku ile çalışmak için aşağıdaki komutu yazıyoruz ve tarayıcıda açılan ekrandan giriş yapıyoruz.</p>
 {% highlight language %}
 heroku login
 {% endhighlight %}
 <img src="{{ base }}/assets/images/restApi/herokulogin.jpg" style="display: block; margin: auto;"><br>
 <img src="{{ base }}/assets/images/restApi/herokulogin2.jpg" style="display: block; margin: auto;"><br>
 
-<p>Başarılı bir şekilde girişi tamamladıktan sonra Github repositorymizi bilgisayarımıza cloneluyoruz.</p>
+<p>Başarılı bir şekilde girişi tamamladıktan sonra Github projemizi bilgisayarımıza clone ediyoruz.</p>
 {% highlight language %}
 $ git clone https://github.com/shrgrl/restapi-for-blog.git
 $ cd restapi-for-blog
 {% endhighlight %}
 
-<p>Şimdi bir heroku projesi oluşturalım ve tüm dosyalarımızı bu projeye ekleyelim. İsterseniz benim gibi kendiniz isimlendirebilirsiniz 
+<p>Şimdi bir Heroku projesi oluşturalım ve tüm dosyalarımızı bu projeye ekleyelim. İsterseniz benim gibi kendiniz isimlendirebilirsiniz 
 ya da herhangi bir isim yazmayarak Heroku’nun rastgele isim vermesini sağlayabilirsiniz.</p>
 {% highlight language %}
 $ heroku create restapi-for-blog
@@ -195,7 +193,7 @@ $ heroku create restapi-for-blog
 <img src="{{ base }}/assets/images/restApi/herokucreate2.jpg" style="display: block; margin: auto;"><br>
 
 <p>Yeni projeyi başarılı bir şekilde oluşturduğumuzdan emin olalım çünkü Heroku isimlendirme konusunda biraz seçici olabiliyor😊 Son işlem 
-olarak da uygulamayı oluşturduğumuz heroku projesine yükleyeceğiz.</p>
+olarak da uygulamayı oluşturduğumuz Heroku projesine yükleyeceğiz.</p>
 {% highlight language %}
 $ git push heroku master
 {% endhighlight %}
@@ -212,14 +210,14 @@ $ heroku open
 <p>Komutunun ardından tarayıcıda otomatik bir sekme açılacaktır.</p>
 <img src="{{ base }}/assets/images/restApi/herokuapp.jpg" style="display: block; margin: auto;"><br>
 
-<p>Ya da heroku hesabınızda oluşturduğunuz projenin sağ üst köşesindeki Open app sekmesine tıklayarak çalıştırabilirsiniz.</p>
+<p>Ya da Heroku hesabınızda oluşturduğunuz projenin sağ üst köşesindeki <b>Open app</b> sekmesine tıklayarak çalıştırabilirsiniz.</p>
 <img src="{{ base }}/assets/images/restApi/herokuopen.jpg" style="display: block; margin: auto;"><br>
 
-<p>Artık ücretsiz bir restApi domaine sahipsiniz.</p>
+<p>Artık ücretsiz bir RestAPI domaine sahipsiniz.</p>
 <img src="{{ base }}/assets/images/restApi/domain.jpg" style="display: block; margin: auto;"><br>
 
 <p>Dilediğiniz projelerde bu API’yi kullanabilirsiniz. Verileri ücretsiz API’ye dönüştürmek için bu yazım umarım sizler için de faydalı 
-olur. Yeni yayında görüşmek üzere, iyi çalışmalar…</p>
+olur. Bir sonraki yayında görüşmek üzere...<img src="https://img.icons8.com/search"></p>
 
 <div id="disqus_thread"></div>
 <script>
