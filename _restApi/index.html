@@ -103,7 +103,123 @@ yükleyip ücretsiz domain kullanabilirsiniz. Kendi uygulamamızı yüklemek iç
 sitesine girerek hesap oluşturabilirsiniz.</p>
 <img src="{{ base }}/assets/images/restApi/herokucreate.jpg" style="display: block; margin: auto;"><br>
 
+<p>Daha sonra uygulamaları kontrol edebilmek için Heroku CLI kurulumumuzu yapmamız gerek.</p>
+<img src="{{ base }}/assets/images/restApi/herokucli.jpg" style="display: block; margin: auto;"><br>
 
+<p>Kullandığınız işletim sistemine uygun bağlantıdan indirme işlemini yapabilirsiniz. Ben Windows kullandığım için şekildeki bağlantıyı 
+indirdim. İndirilen dosyadan basit ve hızlıca HerokuCLI kurulumumuzu tamamlıyoruz. Sorunsuz bir şekilde kurulumu tamamladığımızı 
+teyit etmek için command prompt açarak versiyon kontrolü yapalım.</p>
+<img src="{{ base }}/assets/images/restApi/herokuversion.jpg" style="display: block; margin: auto;"><br>
+
+<p>Buradan sonra yapmamız gereken birkaç şey var. Heroku ile uygulamayı çalıştırabilmemiz için bu dizin içerisinde bazı eklemeler ve 
+değişiklikler yapacağız. İlk önce “Procfile” isimli uzantısız bir dosya oluşturalım ve içerisine aşağıdaki satırı ekleyelim.</p>
+{% highlight language %}
+web: node app.js
+{% endhighlight %}
+
+<p>Heroku’da çeşitli işlem türlerini bildirmek için Procfile dosyası gereklidir. Daha detaylı bilgi için <a href="https://devcenter.heroku.com/articles/procfile" target="_blank">bu linkten</a> faydalanabilirsiniz.</p>
+<p>Daha sonra kodumuzun içerisinde aşağıdaki değişiklikleri yapıyoruz.</p>
+{% highlight language %}
+//Harici modüller
+const express = require("express");
+const app = express();
+//bu uygulamayı başka uygulamalarda da çalıştırabilmek için cors modülünü kullanıyoruz
+const cors = require('cors');
+app.use(cors());
+app.options('*', cors());
+
+//Önceden yapılandırılmış bir bağlantı noktası yoksa PORT 5000'i kullan
+const PORT = process.env.PORT || 5000
+
+var data = require("./app.json");
+
+app.get("/", function(req, res) {
+  res.json(data);
+});
+
+app.listen(PORT, function() {
+  console.log("Server running on port 5000...");
+});
+{% endhighlight %}
+
+<p>Cors modülünü kullanmadığımız takdirde uygulamamız başka platform ya da uygulamalarda çalışmayacaktır. Bu modül ile uygulmamızı herokuda 
+ya da geliştirdiğimiz farklı uygulamalarda kullanabiliriz. Port değişkenindeki değişikliğin sebebi ise, Heroku gibi ortamlarda Portun 
+düzgün çalışması için bu şekilde belirtilmesi daha uygundur. Kodumuzdaki değişiklikleri kaydettikten sonra local olarak çalıştırıp kontrol 
+edelim.</p>
+{% highlight language %}
+$ npm init
+$ npm install express -s
+$ npm install cors -s
+$ node app.js
+{% endhighlight %}
+<img src="{{ base }}/assets/images/restApi/api.jpg" style="display: block; margin: auto;"><br>
+
+<p>Gördüğümüz gibi uygulamamız local bilgisayarımızda yaptığımız değişiklikler sonucu da sorunsuz bir şekilde çalıştı. Buraya kadar 
+sorun yoksa esas kısma geçebiliriz. Uygulamayı Github üzerinden yükleyeceğimiz için önce Github’a yeni bir repository ekleyelim.</p>
+<img src="{{ base }}/assets/images/restApi/githubrepo.jpg" style="display: block; margin: auto;"><br>
+
+<p>Daha sonra Github Bash kullanarak uygulamamızı repositorye aşağıdaki komutlar ile ekleyelim.</p>
+<img src="{{ base }}/assets/images/restApi/gitbash.jpg" style="display: block; margin: auto;"><br>
+{% highlight language %}
+git init
+git add .
+git commit -m "first commit"
+git remote add origin https://github.com/shrgrl/example-rest-api.git
+git push -u origin master
+{% endhighlight %}
+
+<p>Bütün komutlar bittikten sonra uygulamamız github hesabımıza yüklenmiş demektir.</p>
+<img src="{{ base }}/assets/images/restApi/githubrepo2.jpg" style="display: block; margin: auto;"><br>
+
+<p>Daha sonra Github repositorymizi bilgisayarımıza clone edeceğiz ve Herokuya yükleyeceğiz. Daha detaylı bilgi için Heroku’nun kendi 
+sitesindeki Node.js projelerinin yüklenmesi ile ilgili yazıya <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs" target="_blank">buradan</a> bakabilirsiniz.</p>
+
+<p>İlk önce CMD açıyoruz ve heroku ile çalışmak için aşağıdaki komutu yazıyoruz ve tarayıcıda açılan ekrandan giriş yapıyoruz.</p>
+{% highlight language %}
+heroku login
+{% endhighlight %}
+<img src="{{ base }}/assets/images/restApi/herokulogin.jpg" style="display: block; margin: auto;"><br>
+<img src="{{ base }}/assets/images/restApi/herokulogin2.jpg" style="display: block; margin: auto;"><br>
+
+<p>Başarılı bir şekilde girişi tamamladıktan sonra Github repositorymizi bilgisayarımıza cloneluyoruz.</p>
+{% highlight language %}
+$ git clone https://github.com/shrgrl/restapi-for-blog.git
+$ cd restapi-for-blog
+{% endhighlight %}
+
+<p>Şimdi bir heroku projesi oluşturalım ve tüm dosyalarımızı bu projeye ekleyelim. İsterseniz benim gibi kendiniz isimlendirebilirsiniz 
+ya da herhangi bir isim yazmayarak Heroku’nun rastgele isim vermesini sağlayabilirsiniz.</p>
+{% highlight language %}
+$ heroku create restapi-for-blog
+{% endhighlight %}
+<img src="{{ base }}/assets/images/restApi/herokucreate2.jpg" style="display: block; margin: auto;"><br>
+
+<p>Yeni projeyi başarılı bir şekilde oluşturduğumuzdan emin olalım çünkü Heroku isimlendirme konusunda biraz seçici olabiliyor😊 Son işlem 
+olarak da uygulamayı oluşturduğumuz heroku projesine yükleyeceğiz.</p>
+{% highlight language %}
+$ git push heroku master
+{% endhighlight %}
+
+<p>Hatasız sonuç elde ettiğimizden emin olalım. Eğer herşey yolunda gitmişse bu komutun çalışması bittikten sonra çıktının son kısmında 
+aşağıdakine benzer bir sonuç olmalıdır.</p>
+<img src="{{ base }}/assets/images/restApi/done.jpg" style="display: block; margin: auto;"><br>
+
+<p>Uygulamamız başarılı şekilde yüklendi ve şimdi çalıştırabiliriz.</p>
+{% highlight language %}
+$ heroku open
+{% endhighlight %}
+
+<p>Komutunun ardından tarayıcıda otomatik bir sekme açılacaktır.</p>
+<img src="{{ base }}/assets/images/restApi/herokuapp.jpg" style="display: block; margin: auto;"><br>
+
+<p>Ya da heroku hesabınızda oluşturduğunuz projenin sağ üst köşesindeki Open app sekmesine tıklayarak çalıştırabilirsiniz.</p>
+<img src="{{ base }}/assets/images/restApi/herokuopen.jpg" style="display: block; margin: auto;"><br>
+
+<p>Artık ücretsiz bir restApi domaine sahipsiniz.</p>
+<img src="{{ base }}/assets/images/restApi/domain.jpg" style="display: block; margin: auto;"><br>
+
+<p>Dilediğiniz projelerde bu API’yi kullanabilirsiniz. Verileri ücretsiz API’ye dönüştürmek için bu yazım umarım sizler için de faydalı 
+olur. Yeni yayında görüşmek üzere, iyi çalışmalar…</p>
 
 <div id="disqus_thread"></div>
 <script>
