@@ -28,6 +28,19 @@ app.listen(8080,function(){ //uygulamamız localhost:8080 portunda çalışacakt
 });
 {% endhighlight %}
 
+<p>NodeJS ile web uygulama geliştirmek için Express modülünü kullanıyoruz. Bu modül uygulamamızda kullanacağımız “get” gibi metotlar 
+için gereklidir. Uygulamayı kendi kök dizininde command promt açarak çalıştıracağız.</p>
+<p>İlk olarak package.json dosyasını oluşturmak için aşağıdaki komutu çalıştıralım.</p>
+{% highlight language %}$ npm init{% endhighlight %}
+
+Daha sonra kodda kullandığımız harici modülleri yani express modülümüzü indirelim.
+{% highlight language %}$ npm install express -s{% endhighlight %}
+
+Harici indirme işlemlerini tamamladıktan sonra uygulamamızı çalıştırabiliriz.
+{% highlight language %}$ node helloworld.js{% endhighlight %}
+
+<img src="{{ base }}/assets/images/restApi/helloworld.jpg" style="display: block; margin: auto;"><br>
+
 
 <div id="disqus_thread"></div>
 <script>
