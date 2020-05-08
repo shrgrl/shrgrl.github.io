@@ -114,7 +114,7 @@ teyit etmek için command prompt açarak versiyon kontrolü yapalım.</p>
 <p>Buradan sonra yapmamız gereken birkaç şey var. Heroku ile uygulamayı çalıştırabilmemiz için bu dizin içerisinde bazı eklemeler ve 
 değişiklikler yapacağız. İlk önce <b>procfile</b> isimli uzantısız bir dosya oluşturalım ve içerisine aşağıdaki satırı ekleyelim.</p>
 {% highlight language %}
-web: node app.js
+$ web: node app.js
 {% endhighlight %}
 
 <p>Heroku’da çeşitli işlem türlerini bildirmek için <b>procfile</b> dosyası gereklidir. Daha detaylı bilgi için <a href="https://devcenter.heroku.com/articles/procfile" target="_blank">bu linkten</a> faydalanabilirsiniz.</p>
@@ -161,11 +161,11 @@ sorun yoksa esas kısma geçebiliriz. Uygulamayı Github üzerinden yükleyeceğ
 <p>Daha sonra <b>Github Bash</b> kullanarak uygulamayı Github projemize aşağıdaki komutlar ile ekleyelim.</p>
 <img src="{{ base }}/assets/images/restApi/gitbash.jpg" style="display: block; margin: auto;"><br>
 {% highlight language %}
-git init
-git add .
-git commit -m "first commit"
-git remote add origin https://github.com/shrgrl/example-rest-api.git
-git push -u origin master
+$ git init
+$ git add .
+$ git commit -m "first commit"
+$ git remote add origin https://github.com/shrgrl/example-rest-api.git
+$ git push -u origin master
 {% endhighlight %}
 
 <p>Bütün komutlar bittikten sonra uygulamamız Github projemize yüklenmiş demektir.</p>
@@ -176,7 +176,7 @@ sitesindeki Node.js projelerinin yüklenmesi ile ilgili yazıya <a href="https:/
 
 <p>İlk önce CMD açıyoruz ve Heroku ile çalışmak için aşağıdaki komutu yazıyoruz ve tarayıcıda açılan ekrandan giriş yapıyoruz.</p>
 {% highlight language %}
-heroku login
+$ heroku login
 {% endhighlight %}
 <img src="{{ base }}/assets/images/restApi/herokulogin.jpg" style="display: block; margin: auto;"><br>
 <img src="{{ base }}/assets/images/restApi/herokulogin2.jpg" style="display: block; margin: auto;"><br>
