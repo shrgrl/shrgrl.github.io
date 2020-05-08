@@ -37,7 +37,9 @@ için gereklidir. Uygulamayı kendi kök dizininde CMD açarak çalıştıracağ
 {% highlight language %}$ npm install express -s{% endhighlight %}
 
 <p>Harici indirme işlemlerini tamamladıktan sonra uygulamamızı çalıştırabiliriz.</p>
-{% highlight language %}$ node helloworld.js{% endhighlight %}
+{% highlight language %}
+$ node helloworld.js
+{% endhighlight %}
 
 <p>Tarayıcımızda <b>localhost:8080</b> portunu çalıştırarak sonucu görebiliriz.</p>
 
@@ -50,7 +52,7 @@ kullanabileceğiz.</p>
 <h4><b>NodeJS, Express, JSON ile Basit RestAPI Uygulama</b></h4>
 <p>Şimdi birlikte adım adım gidelim. İlk olarak bir klasör içine “.json” uzantılı bir dosya oluşturalım ve içine istediğimiz verileri 
 JSON formatına uygun olarak yazalım. Benim örnek JSON verilerim şu şekilde:</p>
-{% highlight language %}
+{% highlight json %}
 [
     {    
     "ad": "seher",   
@@ -61,7 +63,7 @@ JSON formatına uygun olarak yazalım. Benim örnek JSON verilerim şu şekilde:
 
 <p>Şimdi sıra Node.js kodlarımızı yazmaya geldi. Klasör içerisine <b>.js</b> uzantılı ikinci bir dosya oluşturalım içine aşağıdaki kodları 
 yazalım.</p>
-{% highlight language %}
+{% highlight javascript %}
 //express modülünü tanımlayıp başlatıyoruz
 var express = require("express");
 var app = express();
@@ -117,7 +119,7 @@ web: node app.js
 
 <p>Heroku’da çeşitli işlem türlerini bildirmek için <b>procfile</b> dosyası gereklidir. Daha detaylı bilgi için <a href="https://devcenter.heroku.com/articles/procfile" target="_blank">bu linkten</a> faydalanabilirsiniz.</p>
 <p>Daha sonra kodumuzun içerisinde aşağıdaki değişiklikleri yapıyoruz.</p>
-{% highlight language %}
+{% highlight javascript %}
 //Harici modüller
 const express = require("express");
 const app = express();
