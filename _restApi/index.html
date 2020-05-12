@@ -11,13 +11,10 @@ bu örneğimizi HEROKU platformuna nasıl yükleyeceğimizi göreceğiz.</p>
 bilgisayarımızda yoksa Node.js indirmemiz gerek. Node.js, genelde JavaScript ile yazılan komutların sunucu tarafında çalışmasını 
 sağlayan, ağ bağlantılı uygulamalar için geliştirilmiş bir çalıştırma ortamıdır. Bilgisayarımızda Node.js’i edinmek için 
 <a href="https://nodejs.org/en/" target="_blank">kendi sitesinden</a> kolayca indirebiliriz.</p>
-
 <a href="{{ base }}/assets/images/restApi/node.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
 	<img class="img-blg" src="{{ base }}/assets/images/restApi/node.jpg" alt="node">
 </a>
-
-
-
+<br>
 
 <h4><b>Hello World Uygulaması</b></h4>
 <p>İndirme işlemini tamamladıktan sonra basit bir örnekle Node.js kullanımına bakalım. Bir klasör içine <b>.js</b> uzantılı dosya oluşturalım
@@ -51,7 +48,10 @@ $ node helloworld.js
 
 <p>Tarayıcımızda <b>localhost:8080</b> portunu çalıştırarak sonucu görebiliriz.</p>
 
-<img class="img-blg" src="{{ base }}/assets/images/restApi/helloworld.jpg" alt="helloworld"><br>
+<a href="{{ base }}/assets/images/restApi/helloworld.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/helloworld.jpg" alt="helloworld"><br>
+</a>
+<br>
 
 <p>Bu şekilde basit ve temel bir <b>Node.js, Express</b> uygulamasını nasıl çalıştırabileceğimizi görmüş olduk. Buradan sonra sizlere bir JSON 
 dosyasından çekilen verileri tarayıcıda nasıl göstereceğimizden bahsedeceğim ve ileride geliştireceğimiz farklı uygulamalarda bu verileri 
@@ -96,7 +96,10 @@ $ node app.js
 {% endhighlight %}
 
 <p>Tarayıcıda çalıştırdığımızda aldığımız sonuç şu şekilde olacaktır.</p>
-<img class="img-blg" src="{{ base }}/assets/images/restApi/api.jpg" alt="api"><br>
+<a href="{{ base }}/assets/images/restApi/api.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/api.jpg" alt="api">
+</a>
+<br>
 
 <p>Buraya kadar <b>“REST API, yazılım geliştiricilerin HTTP protokolünü kullanarak GET ve POST gibi isteklerde bulunup, bu isteklere çeşitli 
 formatlarda yanıt aldığı bir sistemdir.”</b> tanımlamasını pratik yaparak kavramaya çalıştık. Bundan sonraki adımda kendi geliştirdiğimiz 
@@ -109,16 +112,24 @@ nasıl adımlar izlememiz gerektiğine bakalım.</p>
 <p>Heroku, her dili desteklemiyor. <b>Node.js, Ruby, Java, PHP, Python, Go, Scala, Clojure</b> gibi dillerde yazılmış uygulamalarınızı Heroku’ya 
 yükleyip ücretsiz domain kullanabilirsiniz. Kendi uygulamamızı yüklemek için ilk önce hesap oluşturmamız gerekli. Heroku’nun kendi 
 sitesine girerek hesap oluşturabilirsiniz.</p>
-<img class="img-blg" src="{{ base }}/assets/images/restApi/herokucreate.jpg" alt="herokucreate"><br>
+<a href="{{ base }}/assets/images/restApi/herokucreate.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/herokucreate.jpg" alt="herokucreate">
+</a>
+<br>
 
 <p>Daha sonra uygulamaları kontrol edebilmek için <b>Heroku CLI</b> kurulumumuzu yapmamız gerek.</p>
-<img class="img-blg" src="{{ base }}/assets/images/restApi/herokucli.jpg" alt="herokucli"><br>
+<a href="{{ base }}/assets/images/restApi/herokucli.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/herokucli.jpg" alt="herokucli">
+</a>
+<br>
 
 <p>Kullandığınız işletim sistemine uygun bağlantıdan indirme işlemini yapabilirsiniz. Ben Windows kullandığım için şekildeki bağlantıyı 
 indirdim. İndirilen dosyadan basit ve hızlıca HerokuCLI kurulumumuzu tamamlıyoruz. Sorunsuz bir şekilde kurulumu tamamladığımızı 
 teyit etmek için command prompt açarak versiyon kontrolü yapalım.</p>
-<img class="img-blg" src="{{ base }}/assets/images/restApi/herokuversion.jpg" alt="herokuversion"><br>
-
+<a href="{{ base }}/assets/images/restApi/herokuversion.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/herokuversion.jpg" alt="herokuversion">
+</a>
+<br>
 
 <p>Buradan sonra yapmamız gereken birkaç şey var. Heroku ile uygulamayı çalıştırabilmemiz için bu dizin içerisinde bazı eklemeler ve 
 değişiklikler yapacağız. İlk önce <b>procfile</b> isimli uzantısız bir dosya oluşturalım ve içerisine aşağıdaki satırı ekleyelim.</p>
@@ -161,15 +172,23 @@ $ npm install express -s
 $ npm install cors -s
 $ node app.js
 {% endhighlight %}
-<img class="img-blg" src="{{ base }}/assets/images/restApi/api.jpg" alt="api"><br>
-
+<a href="{{ base }}/assets/images/restApi/api.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/api.jpg" alt="api">
+</a>
+<br>
 
 <p>Gördüğümüz gibi uygulamamız local bilgisayarımızda yaptığımız değişiklikler sonucu da sorunsuz bir şekilde çalıştı. Buraya kadar 
 sorun yoksa esas kısma geçebiliriz. Uygulamayı Github üzerinden yükleyeceğimiz için önce Github’da yeni bir proje oluşturalım.</p>
-<img class="img-blg" src="{{ base }}/assets/images/restApi/githubrepo.jpg" alt="githubrepo"><br>
+<a href="{{ base }}/assets/images/restApi/githubrepo.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/githubrepo.jpg" alt="githubrepo">
+</a>
+<br>
 
 <p>Daha sonra <b>Github Bash</b> kullanarak uygulamayı Github projemize aşağıdaki komutlar ile ekleyelim.</p>
-<img class="img-blg" src="{{ base }}/assets/images/restApi/gitbash.jpg" alt="gitbash"><br>
+<a href="{{ base }}/assets/images/restApi/gitbash.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/gitbash.jpg" alt="gitbash">
+</a>
+<br>
 
 {% highlight language %}
 $ git init
@@ -180,7 +199,10 @@ $ git push -u origin master
 {% endhighlight %}
 
 <p>Bütün komutlar bittikten sonra uygulamamız Github projemize yüklenmiş demektir.</p>
-<img class="img-blg" src="{{ base }}/assets/images/restApi/githubrepo2.jpg" alt="githubrepo2"><br>
+<a href="{{ base }}/assets/images/restApi/githubrepo2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/githubrepo2.jpg" alt="githubrepo2">
+</a>
+<br>
 
 <p>Daha sonra Github projemizi bilgisayarımıza clone edeceğiz ve Heroku'ya yükleyeceğiz. Daha detaylı bilgi için Heroku’nun kendi 
 sitesindeki Node.js projelerinin yüklenmesi ile ilgili yazıya <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs" target="_blank">buradan</a> bakabilirsiniz.</p>
@@ -189,9 +211,14 @@ sitesindeki Node.js projelerinin yüklenmesi ile ilgili yazıya <a href="https:/
 {% highlight language %}
 $ heroku login
 {% endhighlight %}
-<img class="img-blg" src="{{ base }}/assets/images/restApi/herokulogin.jpg" alt="herokulogin"><br>
-<img class="img-blg" src="{{ base }}/assets/images/restApi/herokulogin2.jpg" alt="herokulogin2"><br>
-
+<a href="{{ base }}/assets/images/restApi/herokulogin.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/herokulogin.jpg" alt="herokulogin">
+</a>
+<br>
+<a href="{{ base }}/assets/images/restApi/herokulogin2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/herokulogin2.jpg" alt="herokulogin2">
+</a>
+<br>
 
 <p>Başarılı bir şekilde girişi tamamladıktan sonra Github projemizi bilgisayarımıza clone ediyoruz.</p>
 {% highlight language %}
@@ -204,7 +231,10 @@ ya da herhangi bir isim yazmayarak Heroku’nun rastgele isim vermesini sağlaya
 {% highlight language %}
 $ heroku create restapi-for-blog
 {% endhighlight %}
-<img class="img-blg" src="{{ base }}/assets/images/restApi/herokucreate2.jpg" alt="herokucreate2"><br>
+<a href="{{ base }}/assets/images/restApi/herokucreate2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/herokucreate2.jpg" alt="herokucreate2">
+</a>
+<br>
 
 <p>Yeni projeyi başarılı bir şekilde oluşturduğumuzdan emin olalım çünkü Heroku isimlendirme konusunda biraz seçici olabiliyor😊 Son işlem 
 olarak da uygulamayı oluşturduğumuz Heroku projesine yükleyeceğiz.</p>
@@ -214,7 +244,10 @@ $ git push heroku master
 
 <p>Hatasız sonuç elde ettiğimizden emin olalım. Eğer herşey yolunda gitmişse bu komutun çalışması bittikten sonra çıktının son kısmında 
 aşağıdakine benzer bir sonuç olmalıdır.</p>
-<img class="img-blg" src="{{ base }}/assets/images/restApi/done.jpg" alt="done"><br>
+<a href="{{ base }}/assets/images/restApi/done.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/done.jpg" alt="done">
+</a>
+<br>
 
 <p>Uygulamamız başarılı şekilde yüklendi ve şimdi çalıştırabiliriz.</p>
 {% highlight language %}
@@ -222,13 +255,22 @@ $ heroku open
 {% endhighlight %}
 
 <p>Komutunun ardından tarayıcıda otomatik bir sekme açılacaktır.</p>
-<img class="img-blg" src="{{ base }}/assets/images/restApi/herokuapp.jpg" alt="herokuapp"><br>
+<a href="{{ base }}/assets/images/restApi/herokuapp.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/herokuapp.jpg" alt="herokuapp">
+</a>
+<br>
 
 <p>Ya da Heroku hesabınızda oluşturduğunuz projenin sağ üst köşesindeki <b>Open app</b> sekmesine tıklayarak çalıştırabilirsiniz.</p>
-<img class="img-blg" src="{{ base }}/assets/images/restApi/herokuopen.jpg" alt="herokuopen"><br>
+<a href="{{ base }}/assets/images/restApi/herokuopen.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/herokuopen.jpg" alt="herokuopen">
+</a>
+<br>
 
 <p>Artık ücretsiz bir RestAPI domaine sahipsiniz.</p>
-<img class="img-blg" src="{{ base }}/assets/images/restApi/domain.jpg" alt="domain"><br>
+<a href="{{ base }}/assets/images/restApi/domain.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/domain.jpg" alt="domain">
+</a>
+<br>
 
 <p>Dilediğiniz projelerde bu API’yi kullanabilirsiniz. Verileri ücretsiz API’ye dönüştürmek için bu yazım umarım sizler için de faydalı 
 olur. Bir sonraki yayında görüşmek üzere...&#128151;</p>
