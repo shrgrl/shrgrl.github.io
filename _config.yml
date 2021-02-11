@@ -31,5 +31,8 @@ collections:
   restApi:
     output: true
     permalink: /:collection/:path
+  fiori1:
+    output: true
+    permalink: /:collection/:path
   
 include: ["_pages"]
