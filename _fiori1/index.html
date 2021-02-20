@@ -31,8 +31,8 @@ layout: blog-item
   <a href="{{ base }}/assets/images/fiori/jdk.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/fiori/jdk.jpg" alt="JDK 1.8"></a>
 </p>
-<p>İndirdiğimiz dosyayı çalıştırınca bilgisayarımızda Local Disk C:/Program Files içerisinde bir Java klasörü oluşması ve içerisinde jdk ve jre olarak iki klasör klasör 
-  bulunması gerekli.
+<p>İndirdiğimiz dosyayı çalıştırınca bilgisayarımızda "Local Disk C:/Program Files" içerisinde bir Java klasörü oluşması ve içerisinde jdk ve jre olarak iki klasör 
+  bulunması gereklidir.
   <a href="{{ base }}/assets/images/fiori/jdk_klasor.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
   <img class="img-blg" src="{{ base }}/assets/images/fiori/jdk_klasor.jpg" alt="JDK Klasör"></a>
 </p>
@@ -45,16 +45,17 @@ layout: blog-item
 <a href="{{ base }}/assets/images/fiori/go_bat.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
   <img class="img-blg" src="{{ base }}/assets/images/fiori/go_bat.jpg" alt="go.bat Dosyası"></a>
 </p>
-<p>Buradaki dosyayı indirdikten sonra zip klasöründen çıkarmadan önce Yerel Disk C:/’de yeni bir klasör oluşturun ve bunu <b>SAPWebIDE</b> olarak adlandırın. İndirdiğiniz dosyayı 
+<p>Buradaki dosyayı indirdikten sonra zip klasöründen çıkarmadan önce "Yerel Disk C:/"'de yeni bir klasör oluşturun ve bunu <b>SAPLocalWebIDE</b> olarak adlandırın. İndirdiğiniz dosyayı 
   bu klasör içerisinde çıkartın.
 <a href="{{ base }}/assets/images/fiori/go_bat_klasor.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
   <img class="img-blg" src="{{ base }}/assets/images/fiori/go_bat_klasor.jpg" alt="go.bat Dosya Klasörü"></a>
 </p>
-<p>Çıkarttığımız klasördeki orion dosyasını çalıştıralım. Sunucu başarıyla başlatıldıysa aşağıdaki ekranı göreceksiniz.
+<p>Çıkarttığımız klasördeki orion dosyasını çalıştıralım. Sunucu başarıyla başlatıldıysa aşağıdaki ekranı göreceksiniz. Ayrıca Local Web Ide kullandığımız zaman içerisinde go.bat 
+  dosyasının her zaman çalışır halde olması gerektiğini unutmayalım.
  <a href="{{ base }}/assets/images/fiori/go_bat_cmd.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
   <img class="img-blg" src="{{ base }}/assets/images/fiori/go_bat_cmd.jpg" alt="go.bat CMD Ekranı"></a>
 </p>
-<p>Bu adımı da sorunsuz şekilde atlattıktan sonra localhost'a girmemiz gerekli. Şimdi <a href="http://localhost:8080/webide/index.html" target="_blank">localhost</a> linkini 
+<p>Bu adımı da sorunsuz şekilde atlattıktan sonra Localhost'a girmemiz gerekli. Şimdi <a href="http://localhost:8080/webide/index.html" target="_blank">localhost</a> linkini 
   çalıştıralım ve Local Web Ide arayüzümüze bağlanalım. Burada kendi adımıza yeni bir hesap oluşturarak giriş yapabiliriz.
  <a href="{{ base }}/assets/images/fiori/localhost.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
   <img class="img-blg" src="{{ base }}/assets/images/fiori/localhost.jpg" alt="Local Host"></a>
@@ -74,7 +75,7 @@ layout: blog-item
   <img class="img-blg" src="{{ base }}/assets/images/fiori/welcome.jpg" alt="Welcome"></a>
  </p>
 <p>Bir sonraki sekme Development sekmesidir. Oluşturulmuş bütün projeler bu sekmede bulunur. Ayrıca proje oluşturma vs. Welcome sekmesinden ziyade burada yapılır. Local Web Ide
-geliştirme ortamında en çok ve hatta sadece kullanılan sekme burasıdır.
+geliştirme ortamında kullanılan sekme burasıdır.
 <a href="{{ base }}/assets/images/fiori/development.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
   <img class="img-blg" src="{{ base }}/assets/images/fiori/development.jpg" alt="Development"></a>
 </p>
@@ -113,18 +114,20 @@ isimlendirebilirsiniz.
   <a href="{{ base }}/assets/images/fiori/view_code.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
   <img class="img-blg" src="{{ base }}/assets/images/fiori/view_code.jpg" alt="View Code"></a>
 Yukarıdaki resimde görüldüğü gibi bütün kodlar taglar içerisine yazılır ve View'da buton içerisine koyduğumuz press ifadesi ifadeler belirttiğimiz eventleri controller dosyası
-  içerisinde tetiklememizi sağlar. Her View yapısının bir Controller'ı bulunur. 
+  içerisinde tetiklememizi sağlar. Controller içerisinde javascript kodları ile kontrollerimizi yaparız.
   <a href="{{ base }}/assets/images/fiori/controller.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
     <img class="img-blg" src="{{ base }}/assets/images/fiori/controller.jpg" alt="Controller"></a>
+  <br>
   <a href="{{ base }}/assets/images/fiori/run.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
     <img class="img-blg" src="{{ base }}/assets/images/fiori/run.jpg" alt="Run"></a>
-Bu örnekte olduğu gibi press içerisinde verdiğimiz <b>onPress</b> fonksiyonunu burada tetikledik ve Run butonuna basarak çalıştırıp ekrana bir mesaj yazdırdık. Ayrıca uygulamada kullanmak istediğimiz Sap'nin 
-  bizlere geniş seçenekler sunduğu kütüphaneleri <b>sap.ui.define</b> altında tanımlayabiliriz.
+Bu örnekte olduğu gibi press içerisinde verdiğimiz <b>onPress</b> fonksiyonunu burada tetikledik ve Run butonuna basarak çalıştırıp ekrana bir mesaj yazdırdık. Ayrıca uygulamalarımızda 
+  kullanmak istediğimiz SAP'nin bizlere geniş seçenekler sunduğu kütüphaneleri <b>sap.ui.define</b> altında tanımlayabiliriz.
 </p>
-<p>Burada Local Web Ide'nin kurulum ve kullanımından bahsettik. Okyanus içerisindeki küçücük bir balığı gösterdim sadece. Kullanabileceğimiz sayısız özelliklerden içeren uygulamalar
-geliştirebilirsiniz. Bunun için SAP'nin bizlere sunduğu dökümandan faydalanabilirsiniz. Aradığınız herşey bu dökümanda mevcuttur. Ayrıca hangi versiyonda çalışacaksanız dökümanın
-versiyonunu kendinize göre değiştirerek araştırmalarınızı sürdürebilirsiniz. Bu yazımda Fiori'ye küçük bir giriş yaptık. Bir sonraki yazımda ODATA Web Servislerinden bahsedip
-temel bir örnek ile pekiştireceğiz. Umarım faydalı olmuştur. Okuduğunuz için teşekkürler...</p>
+<p>Bu yazımda Fiori'ye küçük bir giriş yaptık. Local Web Ide'nin kurulum ve kullanımından bahsettiğimiz bu yazıda okyanus içerisindeki küçücük bir balığı gösterdim sadece. 
+  Siz de kullanabileceğimiz sayısız özellikler içeren uygulamalar geliştirebildiğimiz SAP'nin bizlere sunduğu <a href="https://sapui5.hana.ondemand.com/#/controls">dökümandan</a>
+  faydalanabilirsiniz. Aradığınız herşey bu dökümanda mevcuttur. Ayrıca hangi versiyonda çalışacaksanız dökümanın versiyonunu kendinize göre değiştirerek araştırmalarınızı 
+  sürdürebilirsiniz. Bir sonraki yazımda <b>ODATA Web Servis<b>lerinden bahsedip temel bir örnek ile pekiştireceğiz. Umarım faydalı olmuştur.</p>
+  <p>Okuduğunuz için teşekkürler...</p>
 
 <div id="disqus_thread"></div>
 <script>
