@@ -80,15 +80,33 @@ isimlendirebilirsiniz.
 <img class="img-blg" src="{{ base }}/assets/images/fiori/helloworld.jpg" alt="Hello World">
 </p>
 <p>
-<b>HelloWorld:</b> Proje Adı<br>
-<b>Webapp    :</b> Uygulamanın çalıştırılması için gerekli tüm dosyaları barındıran ana klasör.<br>
-<b>Controller:</b> View içindeki alanların kontrolleri yapılır.<br>
-<b>i18n      :</b> İsimlendirme parametrelerinin bulunduğu yer. Başlıklar, textler vs yazdığımızda manuel olarak ekrana yazmak yerine burada tanımlayıp kısa tanımlamasını 
-  kullanıyoruz. Ayrıca dil bakımı için de kullanılır. Detay bilgi ve örneğe <a href="https://sapyard.com/sapui5-resource-model-for-freshers/ ">buradan</a> ulaşabilirsiniz.
+<b>HelloWorld  :</b> Proje Adı<br>
+<b>Webapp      :</b> Uygulamanın çalıştırılması için gerekli tüm dosyaları barındıran ana klasör.<br>
+<b>Controller  :</b> View içindeki alanların kontrolleri yapılır.<br>
+<b>i18n        :</b> İsimlendirme parametrelerinin bulunduğu yer. Başlıklar, textler vs yazdığımızda manuel olarak ekrana yazmak yerine burada tanımlayıp kısa tanımlamasını 
+  kullanıyoruz. Ayrıca dil bakımı için de kullanılır. Detay bilgi ve örneğe <a href="https://sapyard.com/sapui5-resource-model-for-freshers/ ">buradan</a> ulaşabilirsiniz.<br>
+<b>Model       :</b> Yeni bir model oluşturup kullanmak istediğimizde burada tanımlanıyor. Çok ihtiyaç duyulmuyor.<br>
+<b>View        :</b> Ekran tasarımının yapıldığı klasör. Xml kodları buraya yazılıyor.<br>
+<b>Component.js:</b> Başlangıç durumunda uygulamanın çalışılır hale gelmesi için kullanılır.<br>
+<b>Index.html  :</b> Uygulamanın basıldığı ve çalıştırıldığı kısım.<br>
 </p>
-
-
-<p>Yapım aşamasında...</p>
+<p>Proje geliştirmeye View ile sayfa tasarımı yaparak başlayabiliriz. View'daki satırların anlamından kısaca bahsedelim:
+<img class="img-blg" src="{{ base }}/assets/images/fiori/view.jpg" alt="View">
+<b>controllerName:</b> View’ı yöneten controller’ın adı. Her view’ı tek bir controller yönetebilir. <br>
+<b>Xmlns         :</b> Kütüphaneler.<br>
+  Sayfamızın tamamı Page tagları arasında bulunmakta olup sayfaya eklemek istediğimiz bütün tagları content içerisine yazabiliriz.
+  <img class="img-blg" src="{{ base }}/assets/images/fiori/view_code.jpg" alt="View Code">
+Yukarıdaki resimde görüldüğü gibi bütün kodlar taglar içerisine yazılır ve View'da buton içerisine koyduğumuz press ifadesi ifadeler belirttiğimiz eventleri controller dosyası
+  içerisinde tetiklememizi sağlar. Her View yapısının bir Controller'ı bulunur. 
+  <img class="img-blg" src="{{ base }}/assets/images/fiori/controller.jpg" alt="Controller">
+  <img class="img-blg" src="{{ base }}/assets/images/fiori/run.jpg" alt="Run">
+Bu örnekte olduğu gibi press içerisinde verdiğimiz <b>onPress</b> fonksiyonunu burada tetikledik ve Run butonuna basarak çalıştırıp ekrana bir mesaj yazdırdık. Ayrıca uygulamada kullanmak istediğimiz Sap'nin 
+  bizlere geniş seçenekler sunduğu kütüphaneleri <b>sap.ui.define</b> altında tanımlayabiliriz.
+</p>
+<p>Burada Local Web Ide'nin kurulum ve kullanımından bahsettik. Okyanus içerisindeki küçücük bir balığı gösterdim sadece. Kullanabileceğimiz sayısız özelliklerden içeren uygulamalar
+geliştirebilirsiniz. Bunun için SAP'nin bizlere sunduğu dökümandan faydalanabilirsiniz. Aradığınız herşey bu dökümanda mevcuttur. Ayrıca hangi versiyonda çalışacaksanız dökümanın
+versiyonunu kendinize göre değiştirerek araştırmalarınızı sürdürebilirsiniz. Bu yazımda Fiori'ye küçük bir giriş yaptık. Bir sonraki yazımda ODATA Web Servislerinden bahsedip
+temel bir örnek ile pekiştireceğiz. Umarım faydalı olmuştur. Okuduğunuz için teşekkürler...</p>
 
 <div id="disqus_thread"></div>
 <script>
