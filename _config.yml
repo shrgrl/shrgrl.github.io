@@ -34,5 +34,8 @@ collections:
   fiori1:
     output: true
     permalink: /:collection/:path
+  fiori2:
+    output: true
+    permalink: /:collection/:path
   
 include: ["_pages"]
