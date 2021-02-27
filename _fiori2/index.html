@@ -14,13 +14,32 @@ layout: blog-item
   yapılır. ODATA servisler ile kullanabildiğimiz HTTP request tipleri: </p>
 <a href="{{ base }}/assets/images/odata/request_type.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/request_type.jpg" alt="HTTP Request Tipleri"></a>
-
+<b>
 <h4><b>DESTINATIONS</b></h4>
 <p>Local Web Ide’de çalışırken eğer bir servise bağlı çalışacaksak, hangi system ile çalışıyorsak o sisteme ait destination dosyasını bulundurmamız gereklidir. İşte benim 
   kullandığım örnek destination dosyası: </p>
 <a href="{{ base }}/assets/images/odata/destination1.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/destination1.jpg" alt="Destination Dosyası"></a>
 
+<p>Bu dosyadaki bilgileri hangi sistemde çalışıyorsak o sistemin bilgileri ile doldurmamız gereklidir. Peki bu bilgileri nasıl öğreniyoruz? GUI’de WEBGUI t-code’unu yazdığımız 
+  zaman karşımıza böyle bir pop-up çıkıyor:</p>
+<a href="{{ base }}/assets/images/odata/webgui.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/webgui.jpg" alt="Destination Dosyası"></a>
+<b>
+<p>URL kısmında ben kendi local sistemimizin sunucusunu yazdım ve bu pop-up’da görüldüğü gibi portu 8000 yazdım. Farklı bir sistemde çalışacağımız zaman URL kısmına yazacağımız 
+  sunucu adresi kırmızı kutucuk içine aldığım yerde yazıyor olacak. Öğrenmenin bildiğim en kısa yolu bu 😊</p>
+  <p>Description ve WebIdeSystem bilgilerini girdikten sonra Client bilgisini de GUI ekranımızın sağ alt köşesindeki bilgiden öğrenebiliriz:</p>
+  <a href="{{ base }}/assets/images/odata/client.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/client.jpg" alt="Destination Dosyası"></a>
+  <b>
+    <p>Geri kalan kısımlar da standart alanlardır. Local Web Ide’de bu şekilde manual oluşturulduğu gibi SAP Cockpit’de destination tanımladığımız kısımdan da tanımlayıp 
+      export ederek o dosyayı kullanabiliriz.</p>
+      <a href="{{ base }}/assets/images/odata/destination.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/destination.jpg" alt="Destination Dosyası"></a>
+      <a href="{{ base }}/assets/images/odata/new_destination.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/new_destination.jpg" alt="Destination Dosyası"></a>
+    
+    
 <div id="disqus_thread"></div>
 <script>
 /**
