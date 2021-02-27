@@ -213,50 +213,117 @@ Tasarımı yaptık ve verilerin doğru şekilde ekrana geldiğini tekrar görmü
 </p>
 
 {% highlight language %}
-<Table id="table" width="auto" items="{ path: '/ListSet', sorter: { path: 'Ad', descending: false } }"
-				noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true"
-				updateFinished="onUpdateFinished">
-				<headerToolbar>
-					<Toolbar>
-						<ToolbarSpacer/>
-						<Button type="Accept" icon="sap-icon://add" text="Ekle" press="onKisiEkle"/>
-					</Toolbar>
-				</headerToolbar>
-				<columns>
-					<Column>
-						<Text text="{i18n>id}"/>
-					</Column>
-					<Column>
-						<Text text="{i18n>ad}"/>
-					</Column>
-					<Column>
+<Table id="table" width="auto" items="{ path: '/ListSet', sorter: { path: 'Ad', descending: false } }" noDataText="{worklistView>/tableNoDataText}" 
+       busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished">
+	<headerToolbar>
+		<Toolbar>
+			<ToolbarSpacer/>
+			<Button type="Accept" icon="sap-icon://add" text="Ekle" press="onKisiEkle"/>
+		</Toolbar>
+	</headerToolbar>
+	<columns>
+		<Column>
+			<Text text="{i18n>id}"/>
+		</Column>
+	        <Column>
+			<Text text="{i18n>ad}"/>
+		</Column>
+		<Column>
 						<Text text="{i18n>soyad}"/>
-					</Column>
-					<Column>
-						<Text text="{i18n>tarih}"/>
-					</Column>
-					<Column>
-						<Text text=""/>
-					</Column>
-				</columns>
-				<items>
-					<ColumnListItem>
-						<cells>
-							<Text text="{Id}" id="id"/>
-							<Text text="{Ad}"/>
-							<Text text="{Soyad}"/>
-							<Text text="{path: 'Tarih', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium', UTC : true }}"/>
-							<HBox>
-								<Button type="Reject" icon="sap-icon://delete" press="onKisiSil"/>
-								<Button icon="sap-icon://synchronize" press="onKisiGuncelle"/>
-							</HBox>
-						</cells>
-					</ColumnListItem>
-				</items>
-			</Table>
+		</Column>
+		<Column>
+			<Text text="{i18n>tarih}"/>
+		</Column>
+		<Column>
+			<Text text=""/>
+		</Column>
+	</columns>
+	<items>
+		<ColumnListItem>
+			<cells>
+				<Text text="{Id}" id="id"/>
+				<Text text="{Ad}"/>
+				<Text text="{Soyad}"/>
+				<Text text="{path: 'Tarih', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium', UTC : true }}"/>
+				<HBox>
+					<Button type="Reject" icon="sap-icon://delete" press="onKisiSil"/>
+					<Button icon="sap-icon://synchronize" press="onKisiGuncelle"/>
+				</HBox>
+			</cells>
+		</ColumnListItem>
+	</items>
+</Table>
 {% endhighlight %}
 
-<p></p>
+<p>*<i>Tarih itemini böyle formatlı şekilde yazmamızın sebebi eğer direct alırsak okunabilir olmayan formatta ekrana gelmesi. Bu nedenle tarih ile ilgili alanları daha 
+	okunabilir olması açısından formatlı biçimde yazıyoruz.</i>
+</p>
+<p>Daha sonra ekle butonuna basınca açılan dialog ekranımızın tasarımını webapp klasörü altında, fragment klasörü oluşturup bunun içine yazıyoruz.</p>
+<a href="{{ base }}/assets/images/odata/proje17.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/proje17.jpg" alt=""></a><br>
+
+<p><b>Crud.fragment.xml:</b></p>,
+{% highlight language %}
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" afterClose="dialogAfterclose">
+	<Dialog title="Aktivite Detayları" id="dialogEmployeeInstead">
+		<content>
+			<f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3" labelSpanS="12" adjustLabelSpan="false"
+				emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleConteinerFullSize="false">
+				<f:content>
+					<Label text="{i18n>id}"/>
+					<Input id="inputKisiId"/>
+					<Label text="{i18n>ad}"/>
+					<Input id="inputKisiAd"/>
+					<Label text="{i18n>soyad}"/>
+					<Input id="inputKisiSoyad"></Input>
+					<Label text="{i18n>tarih}"/>
+					<DatePicker id="dpKayitTarih"/>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<buttons>
+			<Button text="{i18n>kaydet}" press="onKayitFrag" type="Transparent"/>
+			<Button text="{i18n>geri}" press="onGeriFrag" type="Transparent"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>
+{% endhighlight %}
+
+<p>Ve controller içinde butona basınca fragment dosyasını açması için gerekli komutları Worklist.controller.js içine yazalım:</p>
+{% highlight language %}
+onKisiEkle: function() {
+			this._getKayitDialog().open();
+		},
+
+		onGeriFrag: function() {
+			this._getKayitDialog().close();
+		},
+
+		_getKayitDialog: function() {
+			if (!this._oKayitDialog) {
+				this._oKayitDialog = sap.ui.xmlfragment("abapegitim.zsg_crud_deneme.fragment.crud", this);
+				this.getView().addDependent(this._oKayitDialog);
+				jQuery.sap.syncStyleClass("sapUiSizeCompact", this.getView(), this._oKayitDialog);
+			}
+			return this._oKayitDialog;
+		}
+{% endhighlight %}
+
+<p>Uygulamadan çıkmadan dialog ekranını her açışımızda eski dataları görmemek ve dialog pop-up’ını yenilemek için:</p>
+{% highlight language %}
+dialogAfterclose: function(oEvent) {
+        sap.ui.getCore().byId("inputKisiId").setValue("");
+        sap.ui.getCore().byId("inputKisiAd").setValue("");
+	sap.ui.getCore().byId("inputKisiSoyad").setValue("");
+	sap.ui.getCore().byId("dpKayitTarih").setDateValue(new Date());
+}
+{% endhighlight %}
+
+<p>Verileri ekleme işlemini ayrı bir pop-up ile yapmak daha estetik durdu.</p>
+<a href="{{ base }}/assets/images/odata/proje18.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/proje18.jpg" alt=""></a><br>
+
+<p>Şimdi gerçek verilerle dinamik bir yapı kurmaya başlayabiliriz. GET_ENTITYSET methodumuzun içini bu şekilde dolduralım:</p>
 
 
 
