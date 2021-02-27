@@ -19,96 +19,185 @@ layout: blog-item
 <p>Local Web Ide’de çalışırken eğer bir servise bağlı çalışacaksak, hangi system ile çalışıyorsak o sisteme ait destination dosyasını bulundurmamız gereklidir. İşte benim 
   kullandığım örnek destination dosyası: </p>
 <a href="{{ base }}/assets/images/odata/destination1.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/odata/destination1.jpg" alt="Destination Dosyası"></a><br>
+<img class="img-blg" src="{{ base }}/assets/images/odata/destination1.jpg" alt=""></a><br>
 
 <p>Bu dosyadaki bilgileri hangi sistemde çalışıyorsak o sistemin bilgileri ile doldurmamız gereklidir. Peki bu bilgileri nasıl öğreniyoruz? GUI’de WEBGUI t-code’unu yazdığımız 
   zaman karşımıza böyle bir pop-up çıkıyor:</p>
 <a href="{{ base }}/assets/images/odata/webgui.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/odata/webgui.jpg" alt="Destination Dosyası"></a>
+<img class="img-blg" src="{{ base }}/assets/images/odata/webgui.jpg" alt=""></a>
 <br>
 <p>URL kısmında ben kendi local sistemimizin sunucusunu yazdım ve bu pop-up’da görüldüğü gibi portu 8000 yazdım. Farklı bir sistemde çalışacağımız zaman URL kısmına yazacağımız 
   sunucu adresi kırmızı kutucuk içine aldığım yerde yazıyor olacak. Öğrenmenin bildiğim en kısa yolu bu 😊</p>
   <p>Description ve WebIdeSystem bilgilerini girdikten sonra Client bilgisini de GUI ekranımızın sağ alt köşesindeki bilgiden öğrenebiliriz:</p>
   <a href="{{ base }}/assets/images/odata/client.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/odata/client.jpg" alt="Destination Dosyası"></a>
+<img class="img-blg" src="{{ base }}/assets/images/odata/client.jpg" alt=""></a>
   <br>
     <p>Geri kalan kısımlar da standart alanlardır. Local Web Ide’de bu şekilde manual oluşturulduğu gibi SAP Cockpit’de destination tanımladığımız kısımdan da tanımlayıp 
       export ederek o dosyayı kullanabiliriz.</p>
       <a href="{{ base }}/assets/images/odata/destination2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/destination.jpg" alt="Destination Dosyası"></a>
       <a href="{{ base }}/assets/images/odata/new_destination2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/odata/new_destination.jpg" alt="Destination Dosyası"></a>
+<img class="img-blg" src="{{ base }}/assets/images/odata/new_destination.jpg" alt=""></a>
     <br>
       <p>Yukarıdaki dosya içine yazdığımız bilgileri ilgili alanlara doldurarak destination tanımlayabiliriz. Destination dosyamızı hazırladıktan sonra daha önce Local Web Ide 
         kullanmak bir klasör oluşturmuştuk. Okumayanlar Local Web Ide Kullanımı ile ilgili yazıma buradan ulaşabilir. Bu klasör içindeki 
         <br>C:\SAPLocalWebIDE\eclipse\config_master\service.destinations\destinations</br> dosya yoluna bunu bu dosyayı yapıştırmalıyız. Artık tanımladığımız destination projelerde 
         kullanabiliriz. Bunun ardından servis ve proje oluşturma adımına geçeceğiz, gerekli detayları proje oluşturma ve geliştirme esnasında vereceğim.</p>
         <a href="{{ base }}/assets/images/odata/destination3.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/odata/destination3.jpg" alt="Destination Dosyası"></a><br>
+<img class="img-blg" src="{{ base }}/assets/images/odata/destination3.jpg" alt=""></a><br>
     
     <h4><b>ODATA SERVICE OLUŞTURMA</b></h4>
 
     <p>SEGW t-code’umuza giderek servisimizi oluşturalım ve istenilen bilgileri girip tamamlayalım.</p>
           <a href="{{ base }}/assets/images/odata/service1.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/odata/service1.jpg" alt="Destination Dosyası"></a><br>
+<img class="img-blg" src="{{ base }}/assets/images/odata/service1.jpg" alt=""></a><br>
     <p>Yapmamız gereken ilk iş bir Entity Type oluşturmak:</p>
      <a href="{{ base }}/assets/images/odata/service2.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/odata/service2.jpg" alt="Destination Dosyası"></a><br>
+<img class="img-blg" src="{{ base }}/assets/images/odata/service2.jpg" alt=""></a><br>
     <p>Karşımıza aşağıdaki gibi ekran çıkacak. Buradan gerekli isimlendirmeyi yaparak devam edelim. Burada oluşturduğumuz Entity Type yapısını ABAP’daki structure yapısı gibi 
       düşünebiliriz. Yukarıda da belirttiğimiz gibi Servisler <b>entity, property ve metot</b>lar’dan oluşur.</p>
          <a href="{{ base }}/assets/images/odata/service3.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
-         <img class="img-blg" src="{{ base }}/assets/images/odata/service3.jpg" alt="Destination Dosyası"></a><br>
+         <img class="img-blg" src="{{ base }}/assets/images/odata/service3.jpg" alt=""></a><br>
     <p>Properties’e çift tıkladıktan sonra açılan ekranda bu projede ihtiyaç duyacağımız properties tanımladım. Tanımladığım property’ler yukarıda Prooerties klasörünün altında 
       görünüyor.</p>
 <a href="{{ base }}/assets/images/odata/service4.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/odata/service4.jpg" alt="Destination Dosyası"></a><br>
+<img class="img-blg" src="{{ base }}/assets/images/odata/service4.jpg" alt=""></a><br>
 <p>Bu tanımlamaları yaparken her property’nin type’ını uygun şekilde belirtiyoruz. Fakat tarih ile ilgili kısımda farklı bir ayrıntı var. Default tanımlı hali bizim kullanımımıza
   uygun olmadığı için editörden kendimize uygun şekilde ayarlamamızı yapmalıyız.</p>
 <a href="{{ base }}/assets/images/odata/service5.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/odata/service5.jpg" alt="Destination Dosyası"></a><br>
+<img class="img-blg" src="{{ base }}/assets/images/odata/service5.jpg" alt=""></a><br>
 
 <p>Bunu da tamamladıktan sonra buradaki özellikleri Fiori tarafında kullanabilmek için ListSet’e çift tıklayarak gelen ekranda Addressible seçeneğini işaretlemeliyiz.</p>
   <a href="{{ base }}/assets/images/odata/service6.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/odata/service6.jpg" alt="Destination Dosyası"></a><br>  
+<img class="img-blg" src="{{ base }}/assets/images/odata/service6.jpg" alt=""></a><br>  
 
 <p>Şimdi servisimizi Generate edelim. Bunun için ekranın sol üst köşesindeki kırmızılı icona tıklıyoruz. Tıkladıktan sonra açılan request alanına istediğimiz requesti yazalım 
   ya da yeni request alabilirsiniz.</p>
 <a href="{{ base }}/assets/images/odata/service7.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/odata/service7.jpg" alt="Destination Dosyası"></a><br>  
+<img class="img-blg" src="{{ base }}/assets/images/odata/service7.jpg" alt=""></a><br>  
 
 <p>Tamam dedikten sonra gelen pop-up’da bizim servisimiz için oluşacak bütün class bilgileri gösterilecek.</p>
 <a href="{{ base }}/assets/images/odata/service8.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/odata/service8.jpg" alt="Destination Dosyası"></a><br> 
+<img class="img-blg" src="{{ base }}/assets/images/odata/service8.jpg" alt=""></a><br> 
 
 <p>Bunlara da tamam diyelim. Sıradaki pop-up’larda yine package ve request bilgisi istenecek. Bunlara da kendi package ve request bilgilerimizi girerek ilerleyelim.
 Bütün işlemler sonrasında hatasız şekilde generate etmiş olmalıyız:
 </p>
 <a href="{{ base }}/assets/images/odata/service9.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/odata/service9.jpg" alt="Destination Dosyası"></a><br> 
+<img class="img-blg" src="{{ base }}/assets/images/odata/service9.jpg" alt=""></a><br> 
 
 <p>Buraya kadar geldik ama hala servisimizi kullanabilir durumda değiliz. Son olarak /n/iwfnd/maint_service t-code’umua gidelim. Burada sistemdeki standart ve Z’li eklenmiş servisler görünüyor. 
 <i>Fakat burada bir ayrıntı belirtmeliyim. Biz öğrenme aşamamızd local sistemler ile çalıştığımız için bütün işlemleri tek bir GUI ekranı üzerinden yaptık. Fakat farklı bir sistemde bu işlemleri yapmamız gerektiği zaman yani ERP ve GW sistemleri ayrı olduğu durumlarda servis oluşturma işlemi ERP’de bu Hizmet ekleme işlemi GW’de yapılır.</i></p>
 <a href="{{ base }}/assets/images/odata/service10.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/odata/service10.jpg" alt="Destination Dosyası"></a><br> 
+<img class="img-blg" src="{{ base }}/assets/images/odata/service10.jpg" alt=""></a><br> 
 
 <p>Şimdi servisi oluşturduğumuz system için system takma adı giriyoruz ve karşımıza oluşturulmuş servisler çıkacak:</p>
 <a href="{{ base }}/assets/images/odata/service11.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/odata/service11.jpg" alt="Destination Dosyası"></a><br>
+<img class="img-blg" src="{{ base }}/assets/images/odata/service11.jpg" alt=""></a><br>
 
 <p>Kendi servisimizi bulduktan sonra üzerine tıklayalım ve çıkan pop-up’da bir değişiklik yapmadan tamam diyelim.</p>
 <a href="{{ base }}/assets/images/odata/service12.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/odata/service12.jpg" alt="Destination Dosyası"></a><br>
+<img class="img-blg" src="{{ base }}/assets/images/odata/service12.jpg" alt=""></a><br>
 
-<p>Karşımıza peşpeşe request pop-up’ları gelecek. Atlamadan hepsini onaylayalım. En son başarılı mesajı almamız gerek. Tamam dedikten sonra servisimizi eklenmiş şekilde göreceğiz.</p>
+<p>Karşımıza peşpeşe request pop-up’ları gelecek. Atlamadan hepsini onaylayalım. En son başarılı mesajı almamız gerek. Tamam dedikten sonra servisimizi eklenmiş şekilde 
+  göreceğiz.</p>
+
    <a href="{{ base }}/assets/images/odata/service13.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/odata/service13.jpg" alt="Destination Dosyası"></a><br> 
+<img class="img-blg" src="{{ base }}/assets/images/odata/service13.jpg" alt=""></a><br> 
     
 <p>Servisimizi oluşturduğumuza göre artık Fiori projemizi oluşturalım ve içini yavaş yavaş dolduralım.</p>   
 
 <h4><b>ODATA SERVICE İLE SAPUI5 UYGULAMASI OLUŞTURMA</b></h4>
 
+<p>Yine bir önceki yazıda bahsettiğim gibi Orion dosyamızı çalıştıralım. Ve local VPN bağlantımızı yapalım.
+Local <a href="http://localhost:8080/webide/index.html" target="_blank">Web Ide</a> linkimizi açalım ve hesabımıza giriş yapalım. Yeni proje oluşturalım.
+</p>
+   <a href="{{ base }}/assets/images/odata/proje1.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/proje1.jpg" alt=""></a><br>
 
-    
+<p>Bu sefer servis kullanacağımız için Fiori Worklist Aplication seçeceğiz.</p>
+   <a href="{{ base }}/assets/images/odata/proje2.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/proje2.jpg" alt=""></a><br>
+
+<p>İlerleyelim ve vermek istediğimiz isimlendirmeleri yapalım.</p>
+   <a href="{{ base }}/assets/images/odata/proje3.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/proje3.jpg" alt=""></a><br>
+
+<p>Şimdi oluşturduğumuz destination dosyasını burada seçiyoruz ve kullanıcı bilgilerimizi giriyoruz.</p>
+   <a href="{{ base }}/assets/images/odata/proje4.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/proje4.jpg" alt=""></a><br>
+
+<p>Tamam dedikten sonra eklediğimiz servisimizi seçelim.</p>
+   <a href="{{ base }}/assets/images/odata/proje5.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/proje5.jpg" alt=""></a><br>
+
+<p>Bir sonraki ekranda yapacağımız seçimler:</p>
+   <a href="{{ base }}/assets/images/odata/proje6.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/proje6.jpg" alt=""></a><br>
+
+<p>Burada App Type alanında 2 farklı seçenek var. Eğer SAP Fiori Launchpad Component seçeneğini seçersek, bu uygulamamızı Launcpad uygulaması olarak kullanacağımız anlamına 
+  geliyor. Standalone App seçersek de bu uygulamamızı bir link ile direct browserdan çalıştırılabilir bir uygulama olarak kullanabileceğimiz anlamına geliyor. Biz de şimdilik 
+  Standalone seçelim.</p>
+
+   <a href="{{ base }}/assets/images/odata/proje7.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/proje7.jpg" alt=""></a><br>
+
+<p>Aşağıdaki ifadelerin şimdilik çok bir anlamı yok. Zaten uygulamayı geliştirme esnasında tasarım değişecek. Fakat bu ifadelerin ne anlama geldiğini görmek istiyorsanız da bu ekran üzerinde sağda kutucuk içeriisindeki resimde açıklıyor, oradan bakabilirsiniz.
+İlerleyelim ve uygulamamızı ilk çalıştırdığımızda bizi nasıl bir ekranın karşıladığını görelim:
+</p>
+   <a href="{{ base }}/assets/images/odata/proje8.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/proje8.jpg" alt=""></a><br>
+
+<p>Burada kullanıcı bilgimizi girelim. Fakat burada girdiğimiz kullanıcı local sistemde değil de farklı sistemlerde yani ERP ve GW sistemlerin ayrı olduğu durumlarda GW kullanıcı
+  bilgilerimizi girmemiz gerekli. Fiori dediğimiz zaman aklımıza GW gelmeli. Uygun kullanıcıyı da girdik ve uygulamamızın henüz veri alışverişi yapmadığımız hali bu şekilde:</p>
+     <a href="{{ base }}/assets/images/odata/proje9.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/proje9.jpg" alt=""></a><br>  
+
+<p>Herkesin sorunsuz bir şekilde buraya kadar geldiğine inanıyorum 😊 Şimdi işin esas kısımlarına geldik. Bizim istediğimiz şey veriler ile işlem yapmak. Ve bu verileri 
+  tutacağımız bir tablomuz olmalı. Bunun kontrolünü yapabilmek için se11’de Entity Type’ımızdaki alanları içeren bir tablo oluşturalım.</p>
+     <a href="{{ base }}/assets/images/odata/proje10.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/proje10.jpg" alt=""></a><br>  
+
+<p>Şimdi bu tablo üzerinden veri alışverişi ile ekrana data gönderip gönderemediğimizi kontrol edelim. İlk gitmemiz gerekn yer yine SEGW’de oluşturduğumuz servisin metotları. 
+  Backend kodlamalarımızı bu metotlar içinde yazacağız.</p>
+     <a href="{{ base }}/assets/images/odata/proje11.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/proje11.jpg" alt=""></a><br> 
+
+<p>DPC_EXT sekmesine girince Inherited Methodslar içinde kullanabileceğimiz methodlar görünüyor. Biz de hangi methodları kullanacaksak sağ tıklayıp Redifine diyoruz ve Redifine klasörünün altına alarak içerisine kodlarımızı yazabiliyoruz. 
+Benim daha önce oluşturduğum projede kullanmak üzere Redifine ettiğim metotlar ve açıklamaları:
+</p>
+     <a href="{{ base }}/assets/images/odata/proje12.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/proje12.jpg" alt=""></a><br> 
+
+<li>
+  <i><b>GET_ENTITY: </b>Başlık ve kalem bilgileri mantığı ile düşündüğümüz zaman tek değer döndüren başlık, header gibi dataları GET etmek için kullanılır.</i>
+  <i><b>GET_ENTITYSET: </b>Kalem bilgileri gibi çoklu data verisi GET etmek istediğimiz zaman kullanılır.</i>
+  <i><b>CREATE_ENTITY: </b>Yeni bir data CREATE etmek istediğimiz zaman kullanılır. Böylece tabloya very kaydedebiliriz.</i>
+  <i><b>DELETE_ENTITY: </b>Tablodan verileri DELETE etmek için kullanılır.</i>
+  <i><b>UPDATE_ENTITY: </b>Varolan dataları UPDATE etmek için kullanılır.</i>
+</li>
+
+<p>Kullanacağımız methodları açıkladık. Şimdi öncelik sıramıza göre hangi method kullanacaksak Redifine edelim ve veriler ile oynayalım. Buraya veri alışverişi ile ekrana data 
+  gönderip gönderemediğimizi kontrol etmek için gelmiştik. Ekrana veriyi GET methodu ile gönderebiliriz. Bunun için ilk önce GET_Entitityset metodumuzu redefine edelim. Ve 
+  içerisinde SE11’de oluşturduğumuz tabloya veri append edelim.</p>
+     <a href="{{ base }}/assets/images/odata/proje13.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/proje13.jpg" alt=""></a><br> 
+
+<p>Burada structureımıza verdiğimiz type ET_ENTITYSET, çıktı parametremiz, veri aktardığımız kısımdır. Type’ı bizim oluşturduğumuz entityset tipinde. Yukarıda Signature altında 
+  da hangi parametrenin hangi type’a sahip olduğunu görebiliyoruz:</p>
+     <a href="{{ base }}/assets/images/odata/proje14.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/proje14.jpg" alt=""></a><br> 
+
+<p>Şimdi buraya yazdığımız datalar Fiori uygulamamızın ekranına gelmiş mi kontrol edelim: </p>
+     <a href="{{ base }}/assets/images/odata/proje15.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/proje15.jpg" alt=""></a><br> 
+
+<p>Ekranda gerekli kontrollerin ardından verilerin geldiğini gördük. Şimdi ekranımızı daha da güzelleştirelim ve verileri daha net görelim. Önce nasıl bir tasarım istediğimize karar verelim ve ekrandaki gereksiz alanları view dosyasının içinden silelim. 
+Tasarımı yaptık ve verilerin doğru şekilde ekrana geldiğini tekrar görmüş olduk.
+</p>
+     <a href="{{ base }}/assets/images/odata/proje16.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/proje16.jpg" alt=""></a><br> 
+
 <div id="disqus_thread"></div>
 <script>
 /**
