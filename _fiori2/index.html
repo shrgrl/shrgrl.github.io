@@ -14,30 +14,86 @@ layout: blog-item
   yapılır. ODATA servisler ile kullanabildiğimiz HTTP request tipleri: </p>
 <a href="{{ base }}/assets/images/odata/request_type.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/request_type.jpg" alt="HTTP Request Tipleri"></a>
-<b>
+<br>
 <h4><b>DESTINATIONS</b></h4>
 <p>Local Web Ide’de çalışırken eğer bir servise bağlı çalışacaksak, hangi system ile çalışıyorsak o sisteme ait destination dosyasını bulundurmamız gereklidir. İşte benim 
   kullandığım örnek destination dosyası: </p>
 <a href="{{ base }}/assets/images/odata/destination1.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/odata/destination1.jpg" alt="Destination Dosyası"></a>
+<img class="img-blg" src="{{ base }}/assets/images/odata/destination1.jpg" alt="Destination Dosyası"></a><br>
 
 <p>Bu dosyadaki bilgileri hangi sistemde çalışıyorsak o sistemin bilgileri ile doldurmamız gereklidir. Peki bu bilgileri nasıl öğreniyoruz? GUI’de WEBGUI t-code’unu yazdığımız 
   zaman karşımıza böyle bir pop-up çıkıyor:</p>
 <a href="{{ base }}/assets/images/odata/webgui.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/webgui.jpg" alt="Destination Dosyası"></a>
-<b>
+<br>
 <p>URL kısmında ben kendi local sistemimizin sunucusunu yazdım ve bu pop-up’da görüldüğü gibi portu 8000 yazdım. Farklı bir sistemde çalışacağımız zaman URL kısmına yazacağımız 
   sunucu adresi kırmızı kutucuk içine aldığım yerde yazıyor olacak. Öğrenmenin bildiğim en kısa yolu bu 😊</p>
   <p>Description ve WebIdeSystem bilgilerini girdikten sonra Client bilgisini de GUI ekranımızın sağ alt köşesindeki bilgiden öğrenebiliriz:</p>
   <a href="{{ base }}/assets/images/odata/client.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/client.jpg" alt="Destination Dosyası"></a>
-  <b>
+  <br>
     <p>Geri kalan kısımlar da standart alanlardır. Local Web Ide’de bu şekilde manual oluşturulduğu gibi SAP Cockpit’de destination tanımladığımız kısımdan da tanımlayıp 
       export ederek o dosyayı kullanabiliriz.</p>
       <a href="{{ base }}/assets/images/odata/destination.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/destination.jpg" alt="Destination Dosyası"></a>
       <a href="{{ base }}/assets/images/odata/new_destination.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/new_destination.jpg" alt="Destination Dosyası"></a>
+    <br>
+      <p>Yukarıdaki dosya içine yazdığımız bilgileri ilgili alanlara doldurarak destination tanımlayabiliriz. Destination dosyamızı hazırladıktan sonra daha önce Local Web Ide 
+        kullanmak bir klasör oluşturmuştuk. Okumayanlar Local Web Ide Kullanımı ile ilgili yazıma buradan ulaşabilir. Bu klasör içindeki 
+        <br>C:\SAPLocalWebIDE\eclipse\config_master\service.destinations\destinations</br> dosya yoluna bunu bu dosyayı yapıştırmalıyız. Artık tanımladığımız destination projelerde 
+        kullanabiliriz. Bunun ardından servis ve proje oluşturma adımına geçeceğiz, gerekli detayları proje oluşturma ve geliştirme esnasında vereceğim.</p>
+        <a href="{{ base }}/assets/images/odata/destination3.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/destination3.jpg" alt="Destination Dosyası"></a><br>
+    
+    <h4><b>ODATA SERVICE OLUŞTURMA</b></h4>
+
+    <p>SEGW t-code’umuza giderek servisimizi oluşturalım ve istenilen bilgileri girip tamamlayalım.</p>
+          <a href="{{ base }}/assets/images/odata/service1.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/service1.jpg" alt="Destination Dosyası"></a><br>
+    <p>Yapmamız gereken ilk iş bir Entity Type oluşturmak:</p>
+     <a href="{{ base }}/assets/images/odata/service2.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/service2.jpg" alt="Destination Dosyası"></a><br>
+    <p>Karşımıza aşağıdaki gibi ekran çıkacak. Buradan gerekli isimlendirmeyi yaparak devam edelim. Burada oluşturduğumuz Entity Type yapısını ABAP’daki structure yapısı gibi 
+      düşünebiliriz. Yukarıda da belirttiğimiz gibi Servisler <b>entity, property ve metot</b>lar’dan oluşur.</p>
+         <a href="{{ base }}/assets/images/odata/service3.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+         <img class="img-blg" src="{{ base }}/assets/images/odata/service3.jpg" alt="Destination Dosyası"></a><br>
+    <p>Properties’e çift tıkladıktan sonra açılan ekranda bu projede ihtiyaç duyacağımız properties tanımladım. Tanımladığım property’ler yukarıda Prooerties klasörünün altında 
+      görünüyor.</p>
+<a href="{{ base }}/assets/images/odata/service4.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/service4.jpg" alt="Destination Dosyası"></a><br>
+<p>Bu tanımlamaları yaparken her property’nin type’ını uygun şekilde belirtiyoruz. Fakat tarih ile ilgili kısımda farklı bir ayrıntı var. Default tanımlı hali bizim kullanımımıza
+  uygun olmadığı için editörden kendimize uygun şekilde ayarlamamızı yapmalıyız.</p>
+<a href="{{ base }}/assets/images/odata/service5.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/service5.jpg" alt="Destination Dosyası"></a><br>
+
+<p>Bunu da tamamladıktan sonra buradaki özellikleri Fiori tarafında kullanabilmek için ListSet’e çift tıklayarak gelen ekranda Addressible seçeneğini işaretlemeliyiz.</p>
+  <a href="{{ base }}/assets/images/odata/service6.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/service6.jpg" alt="Destination Dosyası"></a><br>  
+
+<p>Şimdi servisimizi Generate edelim. Bunun için ekranın sol üst köşesindeki kırmızılı icona tıklıyoruz. Tıkladıktan sonra açılan request alanına istediğimiz requesti yazalım 
+  ya da yeni request alabilirsiniz.</p>
+<a href="{{ base }}/assets/images/odata/service7.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/service7.jpg" alt="Destination Dosyası"></a><br>  
+
+<p>Tamam dedikten sonra gelen pop-up’da bizim servisimiz için oluşacak bütün class bilgileri gösterilecek.</p>
+<a href="{{ base }}/assets/images/odata/service8.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/service8.jpg" alt="Destination Dosyası"></a><br> 
+
+<p>Bunlara da tamam diyelim. Sıradaki pop-up’larda yine package ve request bilgisi istenecek. Bunlara da kendi package ve request bilgilerimizi girerek ilerleyelim.
+Bütün işlemler sonrasında hatasız şekilde generate etmiş olmalıyız:
+</p>
+<a href="{{ base }}/assets/images/odata/service9.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/service9.jpg" alt="Destination Dosyası"></a><br> 
+
+<p>Buraya kadar geldik ama hala servisimizi kullanabilir durumda değiliz. Son olarak /n/iwfnd/maint_service t-code’umua gidelim. Burada sistemdeki standart ve Z’li eklenmiş servisler görünüyor. 
+<i>Fakat burada bir ayrıntı belirtmeliyim. Biz öğrenme aşamamızd local sistemler ile çalıştığımız için bütün işlemleri tek bir GUI ekranı üzerinden yaptık. Fakat farklı bir sistemde bu işlemleri yapmamız gerektiği zaman yani ERP ve GW sistemleri ayrı olduğu durumlarda servis oluşturma işlemi ERP’de bu Hizmet ekleme işlemi GW’de yapılır.</i></p>
+<a href="{{ base }}/assets/images/odata/service10.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/service10.jpg" alt="Destination Dosyası"></a><br> 
+
+
+    
+    
     
     
 <div id="disqus_thread"></div>
