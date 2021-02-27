@@ -178,12 +178,14 @@ Benim daha önce oluşturduğum projede kullanmak üzere Redifine ettiğim metot
 <a href="{{ base }}/assets/images/odata/proje12.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/proje12.jpg" alt=""></a><br> 
 
-*<b>GET_ENTITY: </b>Başlık ve kalem bilgileri mantığı ile düşündüğümüz zaman tek değer döndüren başlık, header gibi dataları GET etmek için kullanılır.
-*<b>GET_ENTITYSET: </b>Kalem bilgileri gibi çoklu data verisi GET etmek istediğimiz zaman kullanılır.
-*<b>CREATE_ENTITY: </b>Yeni bir data CREATE etmek istediğimiz zaman kullanılır. Böylece tabloya very kaydedebiliriz.
-*<b>DELETE_ENTITY: </b>Tablodan verileri DELETE etmek için kullanılır.
-*<b>UPDATE_ENTITY: </b>Varolan dataları UPDATE etmek için kullanılır.
-
+<ul>
+  <li><b>GET_ENTITY: </b>Başlık ve kalem bilgileri mantığı ile düşündüğümüz zaman tek değer döndüren başlık, header gibi dataları GET etmek için kullanılır.</li>
+  <li><b>GET_ENTITYSET: </b>Kalem bilgileri gibi çoklu data verisi GET etmek istediğimiz zaman kullanılır.</li>
+  <li><b>CREATE_ENTITY: </b>Yeni bir data CREATE etmek istediğimiz zaman kullanılır. Böylece tabloya very kaydedebiliriz.</li>
+  <li><b>DELETE_ENTITY: </b>Tablodan verileri DELETE etmek için kullanılır.</li>
+  <li><b>UPDATE_ENTITY: </b>Varolan dataları UPDATE etmek için kullanılır.</li>
+</ul>
+  
 <p>Kullanacağımız methodları açıkladık. Şimdi öncelik sıramıza göre hangi method kullanacaksak Redifine edelim ve veriler ile oynayalım. Buraya veri alışverişi ile ekrana data 
   gönderip gönderemediğimizi kontrol etmek için gelmiştik. Ekrana veriyi GET methodu ile gönderebiliriz. Bunun için ilk önce GET_Entitityset metodumuzu redefine edelim. Ve 
   içerisinde SE11’de oluşturduğumuz tabloya veri append edelim.</p>
