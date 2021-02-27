@@ -207,8 +207,56 @@ Tasarımı yaptık ve verilerin doğru şekilde ekrana geldiğini tekrar görmü
 <a href="{{ base }}/assets/images/odata/proje16.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/proje16.jpg" alt=""></a><br>
 
-<p></p>
+<p>Crud işlemler yapacağımız bir uygulama yapmaya karar vermiştik. Öyleyse benim verileri girebileceğim input alanlar olmalı, bu alanları tanımlayan labeller ile birlikte. 
+  Bu alanlara veri girdiğimiz zaman eklediğimiz veya çıkarmak/güncellemek istediğimiz alanların tutulduğu bir tablo olmalı. Butonlar ile bu tabloya veri ekleyip, silip, 
+  güncelleme yapabilmeliyiz. 
+</p>
 
+{% highlight language %}
+<Table id="table" width="auto" items="{ path: '/ListSet', sorter: { path: 'Ad', descending: false } }"
+				noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true"
+				updateFinished="onUpdateFinished">
+				<headerToolbar>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button type="Accept" icon="sap-icon://add" text="Ekle" press="onKisiEkle"/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column>
+						<Text text="{i18n>id}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>ad}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>soyad}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>tarih}"/>
+					</Column>
+					<Column>
+						<Text text=""/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{Id}" id="id"/>
+							<Text text="{Ad}"/>
+							<Text text="{Soyad}"/>
+							<Text text="{path: 'Tarih', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium', UTC : true }}"/>
+							<HBox>
+								<Button type="Reject" icon="sap-icon://delete" press="onKisiSil"/>
+								<Button icon="sap-icon://synchronize" press="onKisiGuncelle"/>
+							</HBox>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+{% endhighlight %}
+
+<p></p>
 
 
 
