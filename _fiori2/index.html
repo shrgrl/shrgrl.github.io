@@ -259,7 +259,7 @@ Tasarımı yaptık ve verilerin doğru şekilde ekrana geldiğini tekrar görmü
 <img class="img-blg" src="{{ base }}/assets/images/odata/proje17.jpg" alt=""></a><br>
 
 <p><b>Crud.fragment.xml:</b></p>
-{% highlight language %}
+{% highlight javascript %}
 <core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" afterClose="dialogAfterclose">
 	<Dialog title="Aktivite Detayları" id="dialogEmployeeInstead">
 		<content>
@@ -338,7 +338,7 @@ dialogAfterclose: function(oEvent) {
 
 <p>Şimdi bu tabloya veri eklemek için CREATE_ENTITY methodumuzun içini dolduralım:</p>
 <p><b>LISTSET_CREATE_ENTITY</b></p>
-{% highlight language %}
+{% highlight javascript %}
     DATA: ls_data TYPE zcl_zsg_crud_deneme_mpc=>ts_list,
           ls_list TYPE zsgt_crud_deneme.
     io_data_provider->read_entry_data( IMPORTING es_data = ls_data ).
@@ -388,7 +388,7 @@ onKayitFrag: function() {
  güncelleme işlemleri için gerekli kontrolleri yapalım:
 </p>
 <p><b>LISTSET_DELETE_ENTITY</b></p>
-{% highlight language %}
+{% highlight javascript %}
   METHOD listset_delete_entity.
     DATA : ls_key_tab TYPE /iwbep/s_mgw_name_value_pair,
            lv_list TYPE zsgt_crud_deneme-id.
@@ -401,7 +401,7 @@ onKayitFrag: function() {
 {% endhighlight %}
 
 <p><b>LISTSET_UPDATE_ENTITY</b></p>
-{% highlight language %}
+{% highlight javascript %}
   METHOD listset_update_entity.
     DATA: ls_request_input_data TYPE zcl_zsg_crud_deneme_mpc=>ts_list,
           ls_key_tab            TYPE /iwbep/s_mgw_name_value_pair,
