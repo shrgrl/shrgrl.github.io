@@ -5,35 +5,32 @@ collection: fiori2
 layout: blog-item
 ---
 
-<p>Herkese merhaba. Önceki yazımda sizlerle beraber Fiori’ye küçük bir giriş yapmıştık ve servis kullanmadan küçük örnekler göstermiştik. Bugün ise işi bir adım ileri götürerek 
+<p>Herkese merhaba. Önceki yazımda sizlerle beraber Fiori’ye küçük bir giriş yapmıştık ve herhangi bir web servise bağlamadan küçük örnekler göstermiştik. Bugün ise işi bir adım ileri götürerek 
   kendi ODATA servisimizi oluşturup CRUD(Create, Read, Update, Delete) işelemler yapabileceğimiz temel bir örnek ile konumuzu pekiştireceğiz.</p>
 
 <h4><b>ODATA SERVICES</b></h4>
 <p>SAP’nin farklı istemciler ile veri alışverişi sağladığı bir servis yapısıdır. Bu veri alışverişini GUI tarafında yazdığımız ABAP kodları ile işlemler yaparak sağlıyoruz. 
-  Servisler temel olarak varlıklar(entity), bu varlıkların özellikleri(property) ve bu varlıklara bağlı metotlar’dan oluşur. ODATA servisleri için GUI’de SEGW t-code ile işlemler 
-  yapılır. ODATA servisler ile kullanabildiğimiz HTTP request tipleri: 
+  Servisler temel olarak varlıklar<i>(entity)</i>, bu varlıkların özellikleri<i>(property)</i> ve bu varlıklara bağlı <i>metot</i>lar’dan oluşur. ODATA servisleri için GUI’de 
+  <b><i>SEGW</i></b> t-code ile işlemler yapılır. ODATA servisler ile kullanabildiğimiz HTTP request tipleri: 
 </p>
 <a href="{{ base }}/assets/images/odata/request_type.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/request_type.jpg" alt="HTTP Request Tipleri"></a><br>
 
 <h4><b>DESTINATIONS</b></h4>
-<p>Local Web Ide’de çalışırken eğer bir servise bağlı çalışacaksak, hangi system ile çalışıyorsak o sisteme ait destination dosyasını bulundurmamız gereklidir. İşte benim 
+<p>Local Web Ide’de çalışırken eğer bir servise bağlı çalışacaksak, hangi sistem ile çalışıyorsak o sisteme ait destination dosyasını bulundurmamız gereklidir. İşte benim 
   kullandığım örnek destination dosyası:
 </p>
 <a href="{{ base }}/assets/images/odata/destination1.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/destination1.jpg" alt=""></a><br>
 
-<p>Bu dosyadaki bilgileri hangi sistemde çalışıyorsak o sistemin bilgileri ile doldurmamız gereklidir. Peki bu bilgileri nasıl öğreniyoruz? GUI’de WEBGUI t-code’unu yazdığımız 
+<p>Bu dosyadaki bilgileri hangi sistemde çalışıyorsak o sistemin bilgileri ile doldurmamız gereklidir. Peki bu bilgileri nasıl öğreniyoruz? GUI’de <b><i>WEBGUI</i></b> t-code’unu yazdığımız 
   zaman karşımıza böyle bir pop-up çıkıyor:
 </p>
 <a href="{{ base }}/assets/images/odata/webgui.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/webgui.jpg" alt=""></a><br>
 
 <p>URL kısmında ben kendi local sistemimizin sunucusunu yazdım ve bu pop-up’da görüldüğü gibi portu 8000 yazdım. Farklı bir sistemde çalışacağımız zaman URL kısmına yazacağımız 
-  sunucu adresi kırmızı kutucuk içine aldığım yerde yazıyor olacak. Öğrenmenin bildiğim en kısa yolu bu 😊
-</p>
-
-<p>Description ve WebIdeSystem bilgilerini girdikten sonra Client bilgisini de GUI ekranımızın sağ alt köşesindeki bilgiden öğrenebiliriz:
+  sunucu adresi kırmızı kutucuk içine aldığım yerde yazıyor olacak. Bunu öğrenmenin bildiğim en kısa yolu bu 😊 Description ve WebIdeSystem bilgilerini girdikten sonra Client bilgisini de GUI ekranımızın sağ alt köşesindeki bilgiden öğrenebiliriz:
 </p>
 <a href="{{ base }}/assets/images/odata/client.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/client.jpg" alt=""></a><br>
@@ -42,19 +39,18 @@ layout: blog-item
   ederek o dosyayı kullanabiliriz.
 </p>
 <a href="{{ base }}/assets/images/odata/destination2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/odata/destination.jpg" alt="Destination Dosyası"></a><br>
-<a href="{{ base }}/assets/images/odata/new_destination2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/destination2.jpg" alt=""></a><br>
+<a href="{{ base }}/assets/images/odata/new_destination.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/new_destination.jpg" alt=""></a><br>
       
 <p>Yukarıdaki dosya içine yazdığımız bilgileri ilgili alanlara doldurarak destination tanımlayabiliriz. Destination dosyamızı hazırladıktan sonra daha önce Local Web Ide 
-  kullanmak bir klasör oluşturmuştuk. Okumayanlar Local Web Ide Kullanımı ile ilgili yazıma buradan ulaşabilir. Bu klasör içindeki <br>C:\SAPLocalWebIDE\eclipse\config_master\service.destinations\destinations</br> dosya yoluna bunu bu dosyayı yapıştırmalıyız. Artık tanımladığımız destination projelerde 
-  kullanabiliriz. Bunun ardından servis ve proje oluşturma adımına geçeceğiz, gerekli detayları proje oluşturma ve geliştirme esnasında vereceğim.
+  kullanmak bir klasör oluşturmuştuk. Bu klasör içindeki <b><i>C:\SAPLocalWebIDE\eclipse\config_master\service.destinations\destinations</i></b> dosya yoluna bunu bu dosyayı yapıştırmalıyız. Artık tanımladığımız destination projelerde 
+  kullanabiliriz. Okumayanlar Local Web Ide Kullanımı ile ilgili yazıma <a href="https://sehergurel.com/fiori1/" target="_blank">buradan</a> ulaşabilir.Bunun ardından servis ve proje oluşturma adımına geçeceğiz, gerekli detayları proje oluşturma ve geliştirme esnasında vereceğim.
 </p>
 <a href="{{ base }}/assets/images/odata/destination3.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/destination3.jpg" alt=""></a><br>
     
 <h4><b>ODATA SERVICE OLUŞTURMA</b></h4>
-
 <p>SEGW t-code’umuza giderek servisimizi oluşturalım ve istenilen bilgileri girip tamamlayalım.</p>
 <a href="{{ base }}/assets/images/odata/service1.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/service1.jpg" alt=""></a><br>
@@ -64,16 +60,16 @@ layout: blog-item
 <img class="img-blg" src="{{ base }}/assets/images/odata/service2.jpg" alt=""></a><br>
   
 <p>Karşımıza aşağıdaki gibi ekran çıkacak. Buradan gerekli isimlendirmeyi yaparak devam edelim. Burada oluşturduğumuz Entity Type yapısını ABAP’daki structure yapısı gibi 
-   düşünebiliriz. Yukarıda da belirttiğimiz gibi Servisler <b>entity, property ve metot</b>lar’dan oluşur.</p>    
+   düşünebiliriz. Yukarıda da belirttiğimiz gibi servisler <b>entity, property ve metot</b>lar’dan oluşur.</p>    
 <a href="{{ base }}/assets/images/odata/service3.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/service3.jpg" alt=""></a><br>
     
-<p>Properties’e çift tıkladıktan sonra açılan ekranda bu projede ihtiyaç duyacağımız properties tanımladım. Tanımladığım property’ler yukarıda Prooerties klasörünün altında 
+<p>Properties’e çift tıkladıktan sonra açılan ekranda bu projede ihtiyaç duyacağımız property'leri tanımladım. Tanımladığım property’ler yukarıda Properties klasörünün altında 
   görünüyor.</p>
 <a href="{{ base }}/assets/images/odata/service4.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/service4.jpg" alt=""></a><br>
 
-<p>Bu tanımlamaları yaparken her property’nin type’ını uygun şekilde belirtiyoruz. Fakat tarih ile ilgili kısımda farklı bir ayrıntı var. Default tanımlı hali bizim kullanımımıza
+<p>Bu tanımlamaları yaparken her property’nin tipini uygun şekilde belirtiyoruz. Fakat tarih ile ilgili kısımda farklı bir ayrıntı var. Default tanımlı hali bizim kullanımımıza
   uygun olmadığı için editörden kendimize uygun şekilde ayarlamamızı yapmalıyız.</p>
 <a href="{{ base }}/assets/images/odata/service5.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/service5.jpg" alt=""></a><br>
@@ -98,11 +94,11 @@ Bütün işlemler sonrasında hatasız şekilde generate etmiş olmalıyız:
 <img class="img-blg" src="{{ base }}/assets/images/odata/service9.jpg" alt=""></a><br> 
 
 <p>Buraya kadar geldik ama hala servisimizi kullanabilir durumda değiliz. Son olarak /n/iwfnd/maint_service t-code’umua gidelim. Burada sistemdeki standart ve Z’li eklenmiş servisler görünüyor. 
-<i>Fakat burada bir ayrıntı belirtmeliyim. Biz öğrenme aşamamızd local sistemler ile çalıştığımız için bütün işlemleri tek bir GUI ekranı üzerinden yaptık. Fakat farklı bir sistemde bu işlemleri yapmamız gerektiği zaman yani ERP ve GW sistemleri ayrı olduğu durumlarda servis oluşturma işlemi ERP’de bu Hizmet ekleme işlemi GW’de yapılır.</i></p>
+<i>Fakat burada bir ayrıntı belirtmeliyim. Biz öğrenme aşamamızda local sistemler ile çalıştığımız için bütün işlemleri tek bir GUI ekranı üzerinden yaptık. Fakat farklı bir sistemde bu işlemleri yapmamız gerektiği zaman yani ERP ve GW sistemleri ayrı olduğu durumlarda servis oluşturma işlemi ERP’de bu Hizmet ekleme işlemi GW’de yapılır.</i></p>
 <a href="{{ base }}/assets/images/odata/service10.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/service10.jpg" alt=""></a><br> 
 
-<p>Şimdi servisi oluşturduğumuz system için system takma adı giriyoruz ve karşımıza oluşturulmuş servisler çıkacak:</p>
+<p>Şimdi servisi oluşturduğumuz sisteme göre sistem takma adı giriyoruz ve karşımıza oluşturulmuş servisler çıkacak:</p>
 <a href="{{ base }}/assets/images/odata/service11.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/service11.jpg" alt=""></a><br>
 
@@ -125,7 +121,7 @@ Local <a href="http://localhost:8080/webide/index.html" target="_blank">Web Ide<
 <a href="{{ base }}/assets/images/odata/proje1.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/proje1.jpg" alt=""></a><br>
 
-<p>Bu sefer servis kullanacağımız için Fiori Worklist Aplication seçeceğiz.</p>
+<p>Bu sefer servis kullanacağımız için Fiori Worklist Application seçeceğiz.</p>
 <a href="{{ base }}/assets/images/odata/proje2.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/proje2.jpg" alt=""></a><br>
 
@@ -163,16 +159,16 @@ Local <a href="http://localhost:8080/webide/index.html" target="_blank">Web Ide<
 <img class="img-blg" src="{{ base }}/assets/images/odata/proje9.jpg" alt=""></a><br>  
 
 <p>Herkesin sorunsuz bir şekilde buraya kadar geldiğine inanıyorum 😊 Şimdi işin esas kısımlarına geldik. Bizim istediğimiz şey veriler ile işlem yapmak. Ve bu verileri 
-  tutacağımız bir tablomuz olmalı. Bunun kontrolünü yapabilmek için se11’de Entity Type’ımızdaki alanları içeren bir tablo oluşturalım.</p>
+  tutacağımız bir tablomuz olmalı. Bunun kontrolünü yapabilmek için SE11’de Entity Type’ımızdaki alanları içeren bir tablo oluşturalım.</p>
 <a href="{{ base }}/assets/images/odata/proje10.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/proje10.jpg" alt=""></a><br>  
 
-<p>Şimdi bu tablo üzerinden veri alışverişi ile ekrana data gönderip gönderemediğimizi kontrol edelim. İlk gitmemiz gerekn yer yine SEGW’de oluşturduğumuz servisin metotları. 
+<p>Şimdi bu tablo üzerinden veri alışverişi ile ekrana data gönderip gönderemediğimizi kontrol edelim. İlk gitmemiz gereken yer yine SEGW’de oluşturduğumuz servisin metotları. 
   Backend kodlamalarımızı bu metotlar içinde yazacağız.</p>
 <a href="{{ base }}/assets/images/odata/proje11.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/proje11.jpg" alt=""></a><br> 
 
-<p>DPC_EXT sekmesine girince Inherited Methodslar içinde kullanabileceğimiz methodlar görünüyor. Biz de hangi methodları kullanacaksak sağ tıklayıp Redifine diyoruz ve Redifine klasörünün altına alarak içerisine kodlarımızı yazabiliyoruz. 
+<p><i>..._DPC_EXT</i> sekmesine girince Inherited Methodslar içinde kullanabileceğimiz methodlar görünüyor. Biz de hangi methodları kullanacaksak sağ tıklayıp Redifine diyoruz ve Redifinitions klasörünün altına alarak içerisine kodlarımızı yazabiliyoruz. 
 Benim daha önce oluşturduğum projede kullanmak üzere Redifine ettiğim metotlar ve açıklamaları:
 </p>
 <a href="{{ base }}/assets/images/odata/proje12.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
@@ -229,7 +225,7 @@ Tasarımı yaptık ve verilerin doğru şekilde ekrana geldiğini tekrar görmü
 			<Text text="{i18n>ad}"/>
 		</Column>
 		<Column>
-						<Text text="{i18n>soyad}"/>
+			<Text text="{i18n>soyad}"/>
 		</Column>
 		<Column>
 			<Text text="{i18n>tarih}"/>
@@ -255,14 +251,14 @@ Tasarımı yaptık ve verilerin doğru şekilde ekrana geldiğini tekrar görmü
 </Table>
 {% endhighlight %}
 
-<p>*<i>Tarih itemini böyle formatlı şekilde yazmamızın sebebi eğer direct alırsak okunabilir olmayan formatta ekrana gelmesi. Bu nedenle tarih ile ilgili alanları daha 
-	okunabilir olması açısından formatlı biçimde yazıyoruz.</i>
+<p><li><i>Tarih itemini böyle formatlı şekilde yazmamızın sebebi eğer direct alırsak okunabilir olmayan formatta ekrana gelmesi. Bu nedenle tarih ile ilgili alanları daha 
+	okunabilir olması açısından formatlı biçimde yazıyoruz.</i></li>
 </p>
 <p>Daha sonra ekle butonuna basınca açılan dialog ekranımızın tasarımını webapp klasörü altında, fragment klasörü oluşturup bunun içine yazıyoruz.</p>
 <a href="{{ base }}/assets/images/odata/proje17.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/proje17.jpg" alt=""></a><br>
 
-<p><b>Crud.fragment.xml:</b></p>,
+<p><b>Crud.fragment.xml:</b></p>
 {% highlight language %}
 <core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" afterClose="dialogAfterclose">
 	<Dialog title="Aktivite Detayları" id="dialogEmployeeInstead">
@@ -471,8 +467,8 @@ onKisiGuncelle: function(oEvent) {
 {% endhighlight %}
 
 <p>Bütün bu adımların ardından CRUD işlemler yapabildiğimiz temel bir uygulamayı tamamlamış olduk. Uygulamanın eksiklikleri ya da daha nasıl kullanışlı ve güzel hale getirilebilir 
-kısmı bizlere kalmış 😊 Umarım ilgilenenler için faydalı bir yazı olmuştur.<p><br>
-<p>Okududuğunuz için teşekkürler, bir sonraki yazıda görüşmek üzere.</p>
+kısmı bizlere kalmış😊. Görselleri ile detaylı bir şekilde anlatmaya çalıştığım bu yazı umarım ilgilenenler için faydalı bir yazı olmuştur.<p>
+<p>Okuduğunuz için teşekkür ederim, bir sonraki yazıda görüşmek üzere.</p>
 
 <div id="disqus_thread"></div>
 <script>
