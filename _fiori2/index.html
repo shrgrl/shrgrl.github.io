@@ -208,7 +208,7 @@ Tasarımı yaptık ve verilerin doğru şekilde ekrana geldiğini tekrar görmü
   güncelleme yapabilmeliyiz. 
 </p>
 
-{% highlight language %}
+{% highlight javascript %}
 <Table id="table" width="auto" items="{ path: '/ListSet', sorter: { path: 'Ad', descending: false } }" noDataText="{worklistView>/tableNoDataText}" 
        busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished">
 	<headerToolbar>
@@ -286,7 +286,7 @@ Tasarımı yaptık ve verilerin doğru şekilde ekrana geldiğini tekrar görmü
 {% endhighlight %}
 
 <p>Ve controller içinde butona basınca fragment dosyasını açması için gerekli komutları Worklist.controller.js içine yazalım:</p>
-{% highlight language %}
+{% highlight javascript %}
 onKisiEkle: function() {
 			this._getKayitDialog().open();
 		},
@@ -306,7 +306,7 @@ onKisiEkle: function() {
 {% endhighlight %}
 
 <p>Uygulamadan çıkmadan dialog ekranını her açışımızda eski dataları görmemek ve dialog pop-up’ını yenilemek için:</p>
-{% highlight language %}
+{% highlight javascript %}
 dialogAfterclose: function(oEvent) {
         sap.ui.getCore().byId("inputKisiId").setValue("");
         sap.ui.getCore().byId("inputKisiAd").setValue("");
@@ -322,7 +322,7 @@ dialogAfterclose: function(oEvent) {
 <p>Şimdi gerçek verilerle dinamik bir yapı kurmaya başlayabiliriz. İlk olarak verileri kaydedeceğimiz SE11’de oluşturduğumuz tablodaki verileri uygulama ekranımızdaki tabloda 
 	gösterilmesini sağlamak için GET_ENTITYSET methodumuzun içini bu şekilde dolduralım:</p>
 <p><b>LISTSET_GET_ENTITYSET</b></p>
-{% highlight language %}
+{% highlight javascript %}
   METHOD listset_get_entityset.
     DATA lt_list TYPE TABLE OF zsgt_crud_deneme.
     SELECT *
@@ -352,7 +352,7 @@ dialogAfterclose: function(oEvent) {
 <p>Backend kodlamasını yaptığımız işlemlerin Fiori tarafında kontrol edilmesi gerekli. Burada dialog ekranımızda verileri girdikten sonra tabloya eklenmesi için gerekli ifadeleri 
 yazıyoruz:</p>
 <p><b>Worklist.controller.js</b></p>
-{% highlight language %}
+{% highlight javascript %}
 onKayitFrag: function() {
 	var that = this;
 	var vId = sap.ui.getCore().byId("inputKisiId").getValue();
