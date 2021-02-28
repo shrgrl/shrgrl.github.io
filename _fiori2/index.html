@@ -323,13 +323,156 @@ dialogAfterclose: function(oEvent) {
 <a href="{{ base }}/assets/images/odata/proje18.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/proje18.jpg" alt=""></a><br>
 
-<p>Şimdi gerçek verilerle dinamik bir yapı kurmaya başlayabiliriz. GET_ENTITYSET methodumuzun içini bu şekilde dolduralım:</p>
+<p>Şimdi gerçek verilerle dinamik bir yapı kurmaya başlayabiliriz. İlk olarak verileri kaydedeceğimiz SE11’de oluşturduğumuz tablodaki verileri uygulama ekranımızdaki tabloda 
+	gösterilmesini sağlamak için GET_ENTITYSET methodumuzun içini bu şekilde dolduralım:</p>
+<p><b>LISTSET_GET_ENTITYSET</b></p>
+{% highlight language %}
+  METHOD listset_get_entityset.
+    DATA lt_list TYPE TABLE OF zsgt_crud_deneme.
+    SELECT *
+      FROM zsgt_crud_deneme
+      INTO TABLE lt_list.
+    et_entityset = VALUE #( FOR ls_list IN lt_list
+                          ( id    = ls_list-id
+                            ad    = ls_list-ad
+                            soyad = ls_list-soyad
+                            tarih = ls_list-tarih ) ).
+  ENDMETHOD.
+{% endhighlight %}
 
+<p>Şimdi bu tabloya veri eklemek için CREATE_ENTITY methodumuzun içini dolduralım:</p>
+<p><b>LISTSET_CREATE_ENTITY</b></p>
+{% highlight language %}
+    DATA: ls_data TYPE zcl_zsg_crud_deneme_mpc=>ts_list,
+          ls_list TYPE zsgt_crud_deneme.
+    io_data_provider->read_entry_data( IMPORTING es_data = ls_data ).
+    MOVE-CORRESPONDING ls_data TO ls_list.
+    MODIFY zsgt_crud_deneme FROM ls_list.
+    IF sy-subrc = 0.
+      er_entity = ls_data.
+    ENDIF.
+{% endhighlight %}
 
+<p>Backend kodlamasını yaptığımız işlemlerin Fiori tarafında kontrol edilmesi gerekli. Burada dialog ekranımızda verileri girdikten sonra tabloya eklenmesi için gerekli ifadeleri 
+yazıyoruz:</p>
+<p><b>Worklist.controller.js</b></p>
+{% highlight language %}
+onKayitFrag: function() {
+	var that = this;
+	var vId = sap.ui.getCore().byId("inputKisiId").getValue();
+	var vAd = sap.ui.getCore().byId("inputKisiAd").getValue();
+	var vSoyad = sap.ui.getCore().byId("inputKisiSoyad").getValue();
+	var vTarih = sap.ui.getCore().byId("dpKayitTarih").getDateValue();
+	var sData = {
+		Id: vId,
+		Ad: vAd,
+		Soyad: vSoyad,
+		Tarih: vTarih
+	};
+	sap.ui.core.BusyIndicator.show(); //Bir işlem devam ederken başka işlem başlatmamak için
+	this.getView().getModel().create("/ListSet", sData, {
+		success: function(oData) {
+			sap.ui.core.BusyIndicator.hide();
+			that._getKayitDialog().close();
+			that.onRefresh();
+			MessageToast.show("Başarılı");
+		},
+		error: function(oError) {
+			sap.ui.core.BusyIndicator.hide();
+			that._getKayitDialog().close();
+			MessageToast.show("Başarısız");
+		}
+	});
+}
+{% endhighlight %}
+<a href="{{ base }}/assets/images/odata/proje19.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/odata/proje19.jpg" alt=""></a><br>
 
+<p>Gördüğünüz gibi tabloya verilerimizi kaydettik. Kontrol ettiğinizde se11’de oluşturduğunuz tabloya da bu verilerin kaydolduğunu göreceksiniz. Aynı şekilde silme ve 
+ güncelleme işlemleri için gerekli kontrolleri yapalım:
+</p>
+<p><b>LISTSET_DELETE_ENTITY</b></p>
+{% highlight language %}
+  METHOD listset_delete_entity.
+    DATA : ls_key_tab TYPE /iwbep/s_mgw_name_value_pair,
+           lv_list TYPE zsgt_crud_deneme-id.
+    READ TABLE it_key_tab INTO ls_key_tab WITH KEY name = 'Id'.
+    lv_list = ls_key_tab-value.
+    IF lv_list IS NOT INITIAL.
+      DELETE FROM zsgt_crud_deneme WHERE id = lv_list.
+    ENDIF.
+  ENDMETHOD.
+{% endhighlight %}
 
+<p><b>LISTSET_UPDATE_ENTITY</b></p>
+{% highlight language %}
+  METHOD listset_update_entity.
+    DATA: ls_request_input_data TYPE zcl_zsg_crud_deneme_mpc=>ts_list,
+          ls_key_tab            TYPE /iwbep/s_mgw_name_value_pair,
+          lv_list               TYPE zsgt_crud_deneme-id,
+          ls_test               TYPE zsgt_crud_deneme.
 
+    READ TABLE it_key_tab WITH KEY name = 'Id' INTO ls_key_tab.
+    lv_list = ls_key_tab-value.
+    IF lv_list IS NOT INITIAL.
+      io_data_provider->read_entry_data( IMPORTING es_data = ls_request_input_data ).
+      UPDATE zsgt_crud_deneme SET id    = ls_request_input_data-id
+                                  ad    = ls_request_input_data-ad
+                                  soyad = ls_request_input_data-soyad
+                                  tarih = ls_request_input_data-tarih
+                              WHERE id = lv_list.
+      IF sy-subrc IS INITIAL.
+        er_entity = ls_request_input_data.
+      ENDIF.
+    ENDIF.
+  ENDMETHOD.
+{% endhighlight %}
 
+<p><b>Worklist.controller.js:</b></p>
+{% highlight language %}
+onInit: function() {
+	var sData = {
+		Id: "",
+		Ad: "",
+		Soyad: "",
+		Tarih: new Date() //new Date() bugünün tarihini veriyor. Bu alanı boş bırakınca hata verdiği için bugünün tarihini verdik.
+	};
+	var oModel = new JSONModel(sData);
+	this.getView().setModel(oModel, "list");
+},
+
+onKisiSil: function(oEvent) {
+	var that = this;
+	var vId = oEvent.getSource().getParent().getBindingContext().getProperty("Id");
+	var vAd = oEvent.getSource().getParent().getBindingContext().getProperty("Ad");
+	var vSoyad = oEvent.getSource().getParent().getBindingContext().getProperty("Soyad");
+	var vTarih = oEvent.getSource().getParent().getBindingContext().getProperty("Tarih");
+	var sData = this.getView().getModel("list").getData();
+	this.getView().getModel().remove("/ListSet('" + vId + "')", {
+		method: "DELETE",
+		success: function(data) {
+			MessageToast.show(vId + " numaralı aktivite silindi.");
+		},
+		error: function(e) {
+			MessageToast.show(vId + " numaralı aktivite silinemedi.");
+		}
+	});
+},
+
+onKisiGuncelle: function(oEvent) {
+	var sLineData = oEvent.getSource().getParent().getBindingContext().getProperty();
+	this._getKayitDialog().open();
+	sap.ui.getCore().byId("inputKisiId").setValue(sLineData.Id);
+        sap.ui.getCore().byId("inputKisiAd").setValue(sLineData.Ad);
+	sap.ui.getCore().byId("inputKisiSoyad").setValue(sLineData.Soyad);
+	sap.ui.getCore().byId("dpKayitTarih").setDateValue(sLineData.Tarih);
+	this.vMethod = "UPDATE";
+}
+{% endhighlight %}
+
+<p>Bütün bu adımların ardından CRUD işlemler yapabildiğimiz temel bir uygulamayı tamamlamış olduk. Uygulamanın eksiklikleri ya da daha nasıl kullanışlı ve güzel hale getirilebilir 
+kısmı bizlere kalmış 😊 Umarım ilgilenenler için faydalı bir yazı olmuştur.<p><br>
+<p>Okududuğunuz için teşekkürler, bir sonraki yazıda görüşmek üzere.</p>
 
 <div id="disqus_thread"></div>
 <script>
