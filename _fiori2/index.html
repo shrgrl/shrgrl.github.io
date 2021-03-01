@@ -358,7 +358,7 @@ onKayitFrag: function() {
 	var vId = sap.ui.getCore().byId("inputKisiId").getValue();
 	var vAd = sap.ui.getCore().byId("inputKisiAd").getValue();
 	var vSoyad = sap.ui.getCore().byId("inputKisiSoyad").getValue();
-	var vTarih = sap.ui.getCore().byId("dpKayitTarih").getDateValue();
+	var vTarih = this.resolveTimeDifference(sap.ui.getCore().byId("dpKayitTarih").getDateValue());
 	var sData = {
 		Id: vId,
 		Ad: vAd,
@@ -379,6 +379,20 @@ onKayitFrag: function() {
 			MessageToast.show("Başarısız");
 		}
 	});
+}
+{% endhighlight %}
+<p>Bu fonksiyon gün değişkeni yalın halde kullanınca arka tarafta bir gün eksik olarak tutulduğudan, doğru zamanı bulmak için kullanılır:</p>
+{% highlight javascript %}
+resolveTimeDifference: function(dateTime) {
+	if (dateTime !== undefined && dateTime !== null && dateTime !== "") {
+		var offSet = dateTime.getTimezoneOffset();
+		var offSetVal = dateTime.getTimezoneOffset() / 60;
+		var h = Math.floor(Math.abs(offSetVal));
+		var m = Math.floor((Math.abs(offSetVal) * 60) % 60);
+		dateTime = new Date(dateTime.setHours(h, m, 0, 0));
+		return dateTime;
+	}
+	return null;
 }
 {% endhighlight %}
 <a href="{{ base }}/assets/images/odata/proje19.jpg" data-togle="lightbox" data-max-height="1000"  data-max-width="1000">
