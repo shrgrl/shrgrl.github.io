@@ -473,7 +473,7 @@ onKisiGuncelle: function(oEvent) {
 	var sLineData = oEvent.getSource().getParent().getBindingContext().getProperty();
 	this._getKayitDialog().open();
 	sap.ui.getCore().byId("inputKisiId").setValue(sLineData.Id);
-        sap.ui.getCore().byId("inputKisiAd").setValue(sLineData.Ad);
+	sap.ui.getCore().byId("inputKisiAd").setValue(sLineData.Ad);
 	sap.ui.getCore().byId("inputKisiSoyad").setValue(sLineData.Soyad);
 	sap.ui.getCore().byId("dpKayitTarih").setDateValue(sLineData.Tarih);
 	this.vMethod = "UPDATE";
