@@ -37,5 +37,8 @@ collections:
   fiori2:
     output: true
     permalink: /:collection/:path
+  ghPages:
+    output: true
+    permalink: /:collection/:path
   
 include: ["_pages"]
