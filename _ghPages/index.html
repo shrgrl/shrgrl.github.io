@@ -21,6 +21,61 @@ username.github.io
 <p>Karşımıza çıkan <a href="https://github.com/RyanFitzgerald/devportfolio" target="_blank">bu</a> ilk örneği referans alarak web sitesini inceledik. Deneme yapmak için yeterli bir örnek. Siz de dilediğiniz örnek ya da kendi tasarımınız üzerinden gidebilirsiniz. Şimdi Github hesabımızdan bir repository oluşturacağız.</p>
 <a href="{{ base }}/assets/images/ghPages/img2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/ghPages/img2.jpg" alt=""><br/>
+
+<p>Daha önce dediğimiz gibi burada isimlendirme standardımıza çok dikkat etmeliyiz. Aşağıda gördüğünüz gibi “username.github.io” şeklinde isimlendirmemizi yapıyoruz ve repositorymizi oluşturuyoruz.</p>
+<a href="{{ base }}/assets/images/ghPages/img3.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/ghPages/img3.jpg" alt=""><br/>
+
+<p>Ve bu şekilde boş bir repository oluşturmuş olduk:</p>
+<a href="{{ base }}/assets/images/ghPages/img4.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/ghPages/img4.jpg" alt=""><br/>
+
+<p>Şimdi daha önceden incelediğimiz repositoryi kendi repositorymize push etmemiz için boş repository içine baktığımız zaman bize bazı seçenekler sunuyor. Şimdi incelediğimiz projeyi Git Bash ile clone edip kendi repositorymize push edeceğiz.</p>
+<a href="{{ base }}/assets/images/ghPages/img5.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/ghPages/img5.png" alt=""><br/>
+  
+<p>Burada push işlemine başlamadan önce baz aldığımız repositoryi clone etmemiz gerek:</p>
+{% highlight javascript %}
+git clone https://github.com/username/reponame.git
+{% endhighlight %}
+<a href="{{ base }}/assets/images/ghPages/img7.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/ghPages/img7.jpg" alt=""><br/>
+
+<p>Clone yaptıktan sonra bu dosyanın dizinine geçelim:</p>
+{% highlight javascript %}
+cd reponame
+{% endhighlight %}
+
+<p>Ve sırasıyla aşağıdaki işlemleri yapalım:</p>
+{% highlight javascript %}
+git init
+git remote set-url origin https://github.com/your-uname/your-uname.github.io.git
+git branch -M main
+git push -u origin main
+{% endhighlight %}
+  
+<p>En sonunda böyle hata almadan push etmiş olmamız gerekli.</p>
+<a href="{{ base }}/assets/images/ghPages/img8.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/ghPages/img8.jpg" alt=""><br/>
+  
+<p>Bu işlemin ardından repository içeriğimizi kontrol ettiğimizde sorunsuz bir şekilde kopyaladığımızı görüyoruz.</p>
+<a href="{{ base }}/assets/images/ghPages/Animation2.gif" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/ghPages/Animation2.gif" alt=""><br/>
+  
+<p>Şimdi bu projeyi <b>your-uname.github.io</b> URL’i ile çalıştırabilirsiniz.</p>
+<a href="{{ base }}/assets/images/ghPages/img9.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/ghPages/img9.jpg" alt=""><br/>
+  
+<p>İstediğiniz değişiklikleri kendi repositoryniz üzerinden yapabilirsiniz.</p>
+<a href="{{ base }}/assets/images/ghPages/img10.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/ghPages/img10.jpg" alt=""><br/>
+
+  
+<p></p>
+
+
+  
+
   
 
   
