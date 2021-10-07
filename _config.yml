@@ -40,5 +40,11 @@ collections:
   ghPages:
     output: true
     permalink: /:collection/:path
+  technology:
+    output: true
+    permalink: /:collection/:path
+  hobby:
+    output: true
+    permalink: /:collection/:path
   
 include: ["_pages"]
