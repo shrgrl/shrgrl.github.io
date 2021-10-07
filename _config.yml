@@ -46,5 +46,8 @@ collections:
   hobby:
     output: true
     permalink: /:collection/:path
+  netflix:
+    output: true
+    permalink: /:collection/:path
   
 include: ["_pages"]
