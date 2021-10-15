@@ -273,7 +273,7 @@ Bunu farklı yöntemler ile yapabiliyoruz.</p>
             'Subject: %s' % SUBJECT,
             '', TEXT])
     
-    server.sendmail(gmail_user, [TO], BODY.encode('utf-8')) #Mailde Türkçe karakterler kullanabilmek için encode yaptım
+    server.sendmail(gmail_user, [TO], BODY.encode('utf-8'))
     print ('Mail gönderildi!')
   {% endhighlight %}
 
