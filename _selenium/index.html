@@ -1,1 +1,126 @@
-<p>Yapım aşamasında</p>
+---
+title: Web Scraping
+sub-title: Selenium Modülü ile Python Kullanarak Web Scraping Nasıl Yapılır?
+collection: selenium 
+layout: blog-item
+---
+
+<p>Herkese merhaba. Bugün sizlerle son zamanlarda merak saldığım web-scraping ile ilgili araştırmalarımı ve çalışmalarımı paylaşacağım. Web-scraping dediğimiz olay programlarla 
+  farklı web sitelerinde olaylar tetikleyip yönetebildiğimiz bir çalışma alanı. Biraz irdelediğimde günlük yaşama entegre edilebilir birçok proje fikri geldi aklıma ve küçük çaplı 
+  denemeler yapmaya karar verdim. Böylece Selenium modülünü tanıma ve kullanma fırsatım oldu. Şimdi Selenium modülü ile ilgili küçük bilgiler, ipuçları göstereceğim ve ardından 
+  geliştirdiğim Stok Kontrolü İle Otomatik Alışveriş projemi anlatacağım.</p>
+
+<h4><b>Selenium Nedir?</b></h4>
+<p>Selenium farklı tarayıcılarda, farklı web sitelerini programlar aracılığıyla kontrol edebildiğimiz bir modüldür. Java, Python, CSharp, Ruby, JavaScript, Kotlin gibi dillerde 
+  yazılabilir. Yazdığımız program ile manuel olarak yaptığımız tüm işlemleri otomatik olarak halledebiliyoruz. Click eventler, form doldurma, mail gönderimi… Kısaca bir insanın 
+  bir web sitesi üzerinde yapabileceği tüm işlemleri yapabilen kullanışlı bir modüldür. Selenium kullanabilmek için hangi tarayıcı kullanıyorsak/kullanacaksak ona ait driver’ı 
+  bilgisayarımıza yüklememiz gerekiyor. İndirme işlemini <a href="https://chromedriver.chromium.org/downloads" target="_blank">buradan</a> yapabilirsiniz. Ben Chrome kullandığım için Chrome’un driver’ını 
+  indirdim. İndirirken kendi tarayıcınızın versiyonunuza uygun versiyonu seçmeniz gerekli. İndirdikten sonra .exe dosyasını C:/Windows gibi kolay erişilebilir bir klasör içine 
+  taşıyalım. Edindiğimiz driver ile artık yeni ve tertemiz bir sayfa açabiliriz…</p>
+
+<p>Şimdi adım adım ilerleyelim. Ben paket yönetimi ve diğer tüm avantajlı ayrıcalıklardan dolayı Python <i>Anaconda</i> kullanacağım ve geliştirmelerimi <i>Jupyter Notebook</i> 
+  kullanarak yapacağım. İlk olarak basit örnekler denemek için bir ortam oluşturalım ve adım adım ilerleyerek gerekli paketleri indirelim. Şimdi conda ile <b>testenv</b> adında bir
+  ortam oluşturalım. Bunun için <i>Anaconda Promt</i>’u açalım ve aşağıdaki komutu yazalım.</p>
+
+  {% highlight javascript %}
+    conda create -n myenv python=3.6
+  {% endhighlight %}
+<a href="{{ base }}/assets/images/selenium/img1.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/selenium/img1.png" alt=""></a><br/>
+
+<p>Şimdi oluşturduğumuz ortamı aktifleştirelim:</p>
+  {% highlight javascript %}
+    conda activate testenv
+  {% endhighlight %}
+<a href="{{ base }}/assets/images/selenium/img2.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/selenium/img2.png" alt=""></a><br/>
+
+<p>Buradan sonra oluşturduğumuz ortamları Jupyter notebook’a eklemek için bu adımları yapalım ve geliştirmelerimize başlayalım:</p>
+  {% highlight javascript %}
+    conda install -c anaconda ipykernel
+    python -m ipykernel kurulumu --user --name=testenv
+  {% endhighlight %}
+
+<p>İlk önce Selenium özelliklerini kullanabilmek için modülü indirmemiz gerekiyor. Modül ve kütüphaneleri Anaconda kullandığımız için conda install ile indiriyoruz:</p>
+  {% highlight javascript %}
+    conda install -c conda-forge selenium
+  {% endhighlight %}
+<a href="{{ base }}/assets/images/selenium/img3.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/selenium/img3.png" alt=""></a><br/>
+
+<p>Selenium dışında ihtiyaç duyduğumuz bütün kütüphane ve paketleri conda install ile indirebiliriz. İstediğimiz pakete uygun indirme komutlarını 
+  <a href="https://anaconda.org/anaconda/repo" target="_blank">Anaconda</a>’nın resmi sitesinden de bulabiliriz. Daha sonra programın en başında bu modülü tanımlamamız gerek. 
+  Driver içinde tanımladığımız path indirdiğimiz driver'ın path’idir.</p>
+  {% highlight javascript %}
+    from selenium import webdriver
+    driver = webdriver.Chrome('C:\Windows\chromedriver')
+  {% endhighlight %}
+
+<p>Çalıştırdığımızda boş bir Chrome sekmesi açılacak. Açılan sekme üzerinde istediğimiz siteye yönlendirme yapabiliriz:</p>
+  {% highlight javascript %}
+    driver.get('https://www.google.com/')
+  {% endhighlight %}
+
+<p>Açılan sekmeyi kapatmak için de close eventini kullanabiliriz:</p>
+  {% highlight javascript %}
+    driver.close()
+  {% endhighlight %}
+
+<p>Buraya kadar sadece driver'ı nasıl çalıştıracağımızı gördük. Fakat asıl mesele açılan pencerelerde işlem yapabilmekte. Bunun için sayfalardaki elementleri yakalamamız gerek.
+Bunu farklı yöntemler ile yapabiliyoruz.</p>
+
+<h4><b>Açılan Pencerede Elementleri Yakalama Yöntemleri</b></h4>
+<p>Sayfalar üzerinde çalışırken sayfa üzerindeki elementleri yakalamak için yöntemler vardır. Bu ifadeler sayfa tamamen yüklendiğinde çalışır. Elementleri yakalamak için kullanılan 
+  yöntemler;</p>
+<ul>
+  <li>ID</li>
+  <li>Class Name</li>
+  <li>CSS Selector</li>
+  <li>Name</li>
+  <li>Xpath</li>
+  <li>Linktext</li>
+  <li>Partial Linktext</li>
+  <li>Tag Name</li>
+  <li>DOM Locator</li>
+</ul>
+
+<p>Kullanım şekillerine bakmak için örneğimize devam edecek olursak Google sayfasını açınca arama yapacağımız alan <i>search-box</i> alanıdır ve bizim bu search-box alanını bulup text 
+  girmemiz gerekiyor. Bunun için sitenin ihtiyacımız olan elementine tıklayarak sayfa kaynağını görüntüleyip alanla ilgili bilgileri bulabiliriz. Search alanını bulduktan sonra 
+  dilediğim text’i girerek arama yapabilirim.</p>
+<a href="{{ base }}/assets/images/selenium/img4.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/selenium/img4.png" alt=""></a><br/>
+  {% highlight javascript %}
+    search_box = driver.find_element_by_name('q')
+  {% endhighlight %}
+
+<p>Burada search-box’ı belirtildiği <i>tag</i>’da <p>bname</p> benzersiz özelliği ile yakalayabiliyoruz. Bu elementi yakaladıktan sonra artık herhangi bir arama yapabiliyorum.</p>
+  {% highlight javascript %}
+    search_box.send_keys('Seher Gürel')
+    search_box.submit()
+  {% endhighlight %}
+<a href="{{ base }}/assets/images/selenium/img5.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/selenium/img5.png" alt=""></a><br/>
+
+<p>Herhangi bir aramada en ilgili olan ilk arama sonucuna baktığımızda <i><cite>…</cite></i> tagları arasında olduğunu görüyoruz. İlk sekmeye erişmek için bu yolu kullanabiliriz:</p>
+  {% highlight javascript %}
+    results = driver.find_element_by_tag_name("cite").click() 
+  {% endhighlight %}
+
+<p>Buraya kadar bir web sitesini arama ve click eventleri neye göre yaptığımızı bir nebze görmüş olduk. Şimdi kodumuzun tamamını çalıştıraralım ve işleyişe bakalım:</p>
+  {% highlight javascript %}
+    from selenium import webdriver
+  driver = webdriver.Chrome('C:\Windows\chromedriver')
+  driver.get('https://www.google.com/')
+  search_box = driver.find_element_by_name('q')
+  search_box.send_keys('Seher Gürel')
+  search_box.submit()
+  results = driver.find_element_by_tag_name("cite").click()
+  {% endhighlight %}
+<a href="{{ base }}/assets/images/selenium/gif1.gif" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/selenium/gif1.gif" alt=""></a><br/>
+
+<p>Aslında bir site ile ilgili işlemleri yaptığımız aramalar ve içindeki tıklamalarla hallettiğimizi göz önüne alınca doğru 
+  yönlendirmeler ile iş yükünün çoğunu yapmış oluyoruz. Bunların haricinde kendi projemde kullanmış olduğum mail gönderme işlemine bakalım.</p>
+
+
+
