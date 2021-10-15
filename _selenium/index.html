@@ -43,29 +43,29 @@ python -m ipykernel kurulumu --user --name = testenv
 {% endhighlight %}
 
 <p>İlk önce Selenium özelliklerini kullanabilmek için modülü indirmemiz gerekiyor. Modül ve kütüphaneleri Anaconda kullandığımız için conda install ile indiriyoruz:</p>
-  {% highlight python %}
-    conda install -c conda-forge selenium
-  {% endhighlight %}
+{% highlight python %}
+conda install -c conda-forge selenium
+{% endhighlight %}
 <a href="{{ base }}/assets/images/selenium/img3.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/selenium/img3.png" alt=""></a><br/>
 
 <p>Selenium dışında ihtiyaç duyduğumuz bütün kütüphane ve paketleri conda install ile indirebiliriz. İstediğimiz pakete uygun indirme komutlarını 
   <a href="https://anaconda.org/anaconda/repo" target="_blank">Anaconda</a>’nın resmi sitesinden de bulabiliriz. Daha sonra programın en başında bu modülü tanımlamamız gerek. 
   Driver içinde tanımladığımız path indirdiğimiz driver'ın path’idir.</p>
-  {% highlight python %}
-    from selenium import webdriver
-    driver = webdriver.Chrome('C:\Windows\chromedriver')
-  {% endhighlight %}
+{% highlight python %}
+from selenium import webdriver
+driver = webdriver.Chrome('C:\Windows\chromedriver')
+{% endhighlight %}
 
 <p>Çalıştırdığımızda boş bir Chrome sekmesi açılacak. Açılan sekme üzerinde istediğimiz siteye yönlendirme yapabiliriz:</p>
-  {% highlight python %}
-    driver.get('https://www.google.com/')
-  {% endhighlight %}
+{% highlight python %}
+driver.get('https://www.google.com/')
+{% endhighlight %}
 
 <p>Açılan sekmeyi kapatmak için de close eventini kullanabiliriz:</p>
-  {% highlight python %}
-    driver.close()
-  {% endhighlight %}
+{% highlight python %}
+driver.close()
+{% endhighlight %}
 
 <p>Buraya kadar sadece driver'ı nasıl çalıştıracağımızı gördük. Fakat asıl mesele açılan pencerelerde işlem yapabilmekte. Bunun için sayfalardaki elementleri yakalamamız gerek.
 Bunu farklı yöntemler ile yapabiliyoruz.</p>
@@ -90,69 +90,69 @@ Bunu farklı yöntemler ile yapabiliyoruz.</p>
   dilediğim text’i girerek arama yapabilirim.</p>
 <a href="{{ base }}/assets/images/selenium/img4.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/selenium/img4.png" alt=""></a><br/>
-  {% highlight python %}
-    search_box = driver.find_element_by_name('q')
-  {% endhighlight %}
+{% highlight python %}
+search_box = driver.find_element_by_name('q')
+{% endhighlight %}
 
 <p>Burada search-box’ı belirtildiği <i>tag</i>’da <i>name</i> benzersiz özelliği ile yakalayabiliyoruz. Bu elementi yakaladıktan sonra artık herhangi bir arama yapabiliyorum.</p>
-  {% highlight python %}
-    search_box.send_keys('Seher Gürel')
-    search_box.submit()
-  {% endhighlight %}
+{% highlight python %}
+search_box.send_keys('Seher Gürel')
+search_box.submit()
+{% endhighlight %}
 <a href="{{ base }}/assets/images/selenium/img5.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/selenium/img5.png" alt=""></a><br/>
 
 <p>Herhangi bir aramada en ilgili olan ilk arama sonucuna baktığımızda <i><cite>…</cite></i> tagları arasında olduğunu görüyoruz. İlk sekmeye erişmek için bu yolu kullanabiliriz:</p>
-  {% highlight python %}
-    results = driver.find_element_by_tag_name("cite").click() 
-  {% endhighlight %}
+{% highlight python %}
+results = driver.find_element_by_tag_name("cite").click() 
+{% endhighlight %}
 
 <p>Buraya kadar bir web sitesini arama ve click eventleri neye göre yaptığımızı bir nebze görmüş olduk. Şimdi kodumuzun tamamını çalıştıraralım ve işleyişe bakalım:</p>
-  {% highlight python %}
-    from selenium import webdriver
-    driver = webdriver.Chrome('C:\Windows\chromedriver')
-    driver.get('https://www.google.com/')
-    search_box = driver.find_element_by_name('q')
-    search_box.send_keys('Seher Gürel')
-    search_box.submit()
-    results = driver.find_element_by_tag_name("cite").click()
-  {% endhighlight %}
-<a href="{{ base }}/assets/images/selenium/gif1.gif?raw=true" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/selenium/gif1.gif?raw=true" alt=""></a><br/>
+{% highlight python %}
+from selenium import webdriver
+driver = webdriver.Chrome('C:\Windows\chromedriver')
+driver.get('https://www.google.com/')
+search_box = driver.find_element_by_name('q')
+search_box.send_keys('Seher Gürel')
+search_box.submit()
+results = driver.find_element_by_tag_name("cite").click()
+{% endhighlight %}
+<a href="{{ base }}/assets/images/selenium/gif1.gif" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/selenium/gif1.gif" alt=""></a><br/>
 
 <p>Aslında bir site ile ilgili işlemleri yaptığımız aramalar ve içindeki tıklamalarla hallettiğimizi göz önüne alınca doğru 
   yönlendirmeler ile iş yükünün çoğunu yapmış oluyoruz. Bunların haricinde kendi projemde kullanmış olduğum mail gönderme işlemine bakalım.</p>
 
 <p>Mail özelliklerini kullanabilmek için ilk olarak smtplib kütüphanesini import ediyoruz:</p>
-  {% highlight python %}
-    import smtplib
-  {% endhighlight %}
+{% highlight python %}
+import smtplib
+{% endhighlight %}
 
 <p>Daha sonra bir gönderici ve alıcı bildirmemiz gerek. Ben ikisine de kendi mailimi yazarak testlerimi yapıyorum:</p>
-  {% highlight python %}
-    gmail_user = "xxxxx@xxx.com"
-    gmail_pwd = "xxxxx"
-    TO = 'xxxxx@xxx.com'
-  {% endhighlight %}
+{% highlight python %}
+gmail_user = "xxxxx@xxx.com"
+gmail_pwd = "xxxxx"
+TO = 'xxxxx@xxx.com'
+{% endhighlight %}
 
 <p>Burdan sonra da mail konusunu ve içeriğini belirttiğimiz bloğu tamamlıyoruz:</p>
-  {% highlight python %}
-    SUBJECT = "Test Subject"
-    TEXT = “This is test message.”
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.ehlo()
-    server.starttls()
-    server.login(gmail_user, gmail_pwd)
-    BODY = '\r\n'.join(['To: %s' % TO,
-        'From: %s' % gmail_user,
-        'Subject: %s' % SUBJECT,
-        '', TEXT])
-  {% endhighlight %}
+{% highlight python %}
+SUBJECT = "Test Subject"
+TEXT = “This is test message.”
+server = smtplib.SMTP('smtp.gmail.com', 587)
+server.ehlo()
+server.starttls()
+server.login(gmail_user, gmail_pwd)
+BODY = '\r\n'.join(['To: %s' % TO,
+    'From: %s' % gmail_user,
+    'Subject: %s' % SUBJECT,
+    '', TEXT])
+{% endhighlight %}
 
 <p>Mail objelerinde Türkçe karakterler kullanabilmek için encode yapmamız gerekli:</p>
-  {% highlight python %}
-    server.sendmail(gmail_user, [TO], BODY.encode('utf-8')) 
-  {% endhighlight %}
+{% highlight python %}
+server.sendmail(gmail_user, [TO], BODY.encode('utf-8')) 
+{% endhighlight %}
 
 <p>Bu kod bloğunu çalıştırdığımızda resimdeki gibi mail sorunsuz şekilde gelecektir.</p>
 <a href="{{ base }}/assets/images/selenium/img6.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
@@ -164,31 +164,31 @@ Bunu farklı yöntemler ile yapabiliyoruz.</p>
   atmadan önce web driver’ı verdiğimiz zaman kadar bekletebiliriz. Verilen zamanın üstünde sayfa yüklenmezse ancak o zaman hata alırız. Implicit Wait metotu iki parametre alır. 
   İlk parametre zamanın tamsayı olarak değeri, ikinci parametre ise zamanın saniye, dakika, milisaniye cinsinden türüdür.</p>
 <i><b>Implicit Wait Syntax:</b></i>
-  {% highlight python %}
-    driver.manage().timeouts.implicitWait(10, TimeUnit.seconds) 
-  {% endhighlight %}
+{% highlight python %}
+driver.manage().timeouts.implicitWait(10, TimeUnit.seconds) 
+{% endhighlight %}
 
 <p>Explicit wait ise bizim erişmek istediğimiz öğeye uygulanır. Bu tarz zaman alacak sayfa yüklemelerinde genel olarak explicit wait kullanılır. Bulunmasını istediğimiz element 
   için Expected Conditions belirterek bu metodu kullanıyoruz:</p>
 <i><b>Explicit Wait Syntax:</b></i>
-  {% highlight python %}
-    wait.until(EC.visibility_of_element_located(By.XPATH, "//someXPATH"))
-  {% endhighlight %}
+{% highlight python %}
+wait.until(EC.visibility_of_element_located(By.XPATH, "//someXPATH"))
+{% endhighlight %}
 
 
 <h4><b>Pencereler Arasında Nasıl Geçiş Yaparım?</b></h4>
 <p>Bir web sitesinde çalışırken, işlemler yapacağımız yeni pencereler açmamız gerekebilir. Bunun için pencereler arasında geçiş yapmalıyız. Olay kontrollerini değiştirmemiz ve 
   gerekli işlemi yapmamız gerektiği halde işlem odağı ana pencerede kalıyor. Ana pencereden yönlendiğimiz bir sayfada işlem yapamıyorsak sonraki adımı yeni bir pencere açarak 
   devam edebilmemiz için pencereler arası geçiş yöntemini kullanırız:</p>
-  {% highlight python %}
-    #Go to new window
-    new_window = driver.window_handles[-1]
-    driver.switch_to_window(new_window)
+{% highlight python %}
+#Go to new window
+new_window = driver.window_handles[-1]
+driver.switch_to_window(new_window)
 
-    #To get back to the first window
-    old_window = driver.window_handles[0]
-    driver.switch_to_window(old_window)
-  {% endhighlight %}
+#To get back to the first window
+old_window = driver.window_handles[0]
+driver.switch_to_window(old_window)
+{% endhighlight %}
 
 <h4><b>Stok Kontrolü İle Otomatik Alışveriş Uygulaması</b></h4>
 
@@ -197,60 +197,60 @@ Bunu farklı yöntemler ile yapabiliyoruz.</p>
   görüntüleri inceleyelim.</p>
 
 <p>İlk olarak driver'ı başlatıyorum ve ilgili alışveriş sitesinin sayfasını açıyorum:</p>
-  {% highlight python %}
-    from selenium import webdriver
-    import smtplib
-    driver = webdriver.Chrome('C:\Windows\chromedriver')
-    driver.get('https://www.trendyol.com/butik/liste/1/kadin');
-  {% endhighlight %}
+{% highlight python %}
+from selenium import webdriver
+import smtplib
+driver = webdriver.Chrome('C:\Windows\chromedriver')
+driver.get('https://www.trendyol.com/butik/liste/1/kadin');
+{% endhighlight %}
 
 <p>Elementleri doğru bir şekilde yakalayabilmek için sayfayı maximum boyuta ayarlamamız uygun olacaktır.</p>
-  {% highlight python %}
-    driver.maximize_window()
-  {% endhighlight %}
+{% highlight python %}
+driver.maximize_window()
+{% endhighlight %}
 <a href="{{ base }}/assets/images/selenium/gif2.gif" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/selenium/gif2.gif" alt=""></a><br/>
 
 <p>Açılan sayfanın arama kutusunu yakalıyorum. Arama yapmadan önce kutucuğu temizlemekte fayda var.</p>
-  {% highlight python %}
-    search_bar = driver.find_element_by_class_name("search-box")
-    search_bar.clear()
-  {% endhighlight %}
+{% highlight python %}
+search_bar = driver.find_element_by_class_name("search-box")
+search_bar.clear()
+{% endhighlight %}
 
 <p>Benzersiz bir sonuç elde etmek için istediğim ürünün kodunu ve rengini yazarak arama yapıyorum.</p>
-  {% highlight python %}
-    search_bar.send_keys("04751303 Bej")
-    search_bar.send_keys(Keys.RETURN)
-  {% endhighlight %}
+{% highlight python %}
+search_bar.send_keys("04751303 Bej")
+search_bar.send_keys(Keys.RETURN)
+{% endhighlight %}
 
 <pÇıkan sonuçtaki ürünün yolunu yakalayıp tıklıyorum.></p>
-  {% highlight python %}
-    productResult = driver.find_element_by_class_name("prdct-desc-cntnr-name").click()
-  {% endhighlight %}
+{% highlight python %}
+productResult = driver.find_element_by_class_name("prdct-desc-cntnr-name").click()
+{% endhighlight %}
 
 <p>İstediğim bedene ait path’i bulup tıklıyorum.</p>
-  {% highlight python %}
-    value = wait.until(EC.visibility_of_element_located((By.XPATH, "//div[@class='variants']//div[text()='S']")))
-    value.click()
-  {% endhighlight %}
+{% highlight python %}
+value = wait.until(EC.visibility_of_element_located((By.XPATH, "//div[@class='variants']//div[text()='S']")))
+value.click()
+{% endhighlight %}
 
 <p>Sepete eklemek için butonu yakalıyorum. Farklı bir pencere açtığım için kontrolü Explicit Wait ile yapıyorum. Wait 
   özelliği kullanabilmek için gerekli kütüphaneleri eklemeyi unutmuyorum.</p>
-  {% highlight python %}
-    from selenium.webdriver.common.by import By
-    from selenium.webdriver.support.ui import WebDriverWait
-    from selenium.webdriver.support import expected_conditions as EC
-    button = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@id='product-detail-app']/div/div[3]/div[1]/div[2]/div[5]/button")))
-  {% endhighlight %}
+{% highlight python %}
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+button = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@id='product-detail-app']/div/div[3]/div[1]/div[2]/div[5]/button")))
+{% endhighlight %}
 
 <p>Sonrasında ürünün stokta olup olmadığını öğrenmem gerek. Eğer ürün stokta varsa “Sepete Ekle” butonu çıkıyor. Ürün stokta yoksa farklı bir 
   buton çıkıyor. Ben de buradan ilerleyerek buton ismine göre bir koşul belirledim.</p>
-  {% highlight python %}
-    if button.text == "Sepete Ekle":
-      print("Ürün stokta var!")
-    else:
-      print("Ürün stokta yok!")
-  {% endhighlight %}
+{% highlight python %}
+if button.text == "Sepete Ekle":
+  print("Ürün stokta var!")
+else:
+  print("Ürün stokta yok!")
+{% endhighlight %}
 <a href="{{ base }}/assets/images/selenium/gif3.gif" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/selenium/gif3.gif" alt=""></a><br/>
 
@@ -258,63 +258,63 @@ Bunu farklı yöntemler ile yapabiliyoruz.</p>
   Ürün stokta ise sırayla kullanıcıya mail gidecek, sipariş bilgileri girilecek ve satın alma işlemi tamamlanacak.</p>
 
 <p>Burada ürün stokta var ise satın alma işlemi kullanıcıya mail olarak bildiriliyor. Göndericiye de alıcıya da kendi mailimi girerek testlerimi yapıyorum.</p>
-  {% highlight python %}
-    gmail_user = "xxx@xxx.com"
-    gmail_pwd = "xxx"
-    TO = 'xxx@xxx.com'
-    SUBJECT = "Trendyol seçili ürün stoğu hakkında"
-    TEXT = "Trendyol'da seçmiş olduğunuz ürünün stoğu güncellenmiştir. Talebiniz doğrultusunda satın alınacaktır."
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.ehlo()
-    server.starttls()
-    server.login(gmail_user, gmail_pwd)
-    BODY = '\r\n'.join(['To: %s' % TO,
-            'From: %s' % gmail_user,
-            'Subject: %s' % SUBJECT,
-            '', TEXT])
+{% highlight python %}
+gmail_user = "xxx@xxx.com"
+gmail_pwd = "xxx"
+TO = 'xxx@xxx.com'
+SUBJECT = "Trendyol seçili ürün stoğu hakkında"
+TEXT = "Trendyol'da seçmiş olduğunuz ürünün stoğu güncellenmiştir. Talebiniz doğrultusunda satın alınacaktır."
+server = smtplib.SMTP('smtp.gmail.com', 587)
+server.ehlo()
+server.starttls()
+server.login(gmail_user, gmail_pwd)
+BODY = '\r\n'.join(['To: %s' % TO,
+        'From: %s' % gmail_user,
+        'Subject: %s' % SUBJECT,
+        '', TEXT])
     
-    server.sendmail(gmail_user, [TO], BODY.encode('utf-8'))
-    print ('Mail gönderildi!')
-  {% endhighlight %}
+server.sendmail(gmail_user, [TO], BODY.encode('utf-8'))
+print ('Mail gönderildi!')
+{% endhighlight %}
 
 <p>Sepete eklemek için butonun benzersiz name’ini belirten yolu kullandım.</p>
-  {% highlight python %}
-    addBasket = driver.find_element_by_class_name("add-to-basket-button-text").click()
-  {% endhighlight %}
+{% highlight python %}
+addBasket = driver.find_element_by_class_name("add-to-basket-button-text").click()
+{% endhighlight %}
 
 <p>Eklediğim ürünü görmek ve onaylamak için sepete gidiyorum. Buralarda da ilgili butonların path’lerini kullanarak ilerliyorum.</p>
-  {% highlight python %}
-    basket = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@id='account-navigation-container']/div/div[2]/a/p"))).click()
-    basketConfirm = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@id='pb-container']/aside/div/div[1]/a/span"))).click()
-  {% endhighlight %}
+{% highlight python %}
+basket = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@id='account-navigation-container']/div/div[2]/a/p"))).click()
+basketConfirm = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@id='pb-container']/aside/div/div[1]/a/span"))).click()
+{% endhighlight %}
 
 <p>Sepeti onayladığım anda sayfa bizi kullanıcı giriş ekranına yönlendirecek. Burada site kullanıcı giriş bilgilerini giriyorum.</p>
-  {% highlight python %}
-    mail_box = driver.find_element_by_id("login-email")
-    mail_box.clear()
-    mail_box.send_keys('xxx@xxx.com')
-    mail_box.submit()
-    pass_box = driver.find_element_by_id("login-password-input")
-    pass_box.clear()
-    pass_box.send_keys('xxx')
-    pass_box.submit()
-  {% endhighlight %}
+{% highlight python %}
+mail_box = driver.find_element_by_id("login-email")
+mail_box.clear()
+mail_box.send_keys('xxx@xxx.com')
+mail_box.submit()
+pass_box = driver.find_element_by_id("login-password-input")
+pass_box.clear()
+pass_box.send_keys('xxx')
+pass_box.submit()
+{% endhighlight %}
 <a href="{{ base }}/assets/images/selenium/img7.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/selenium/img7.png" alt=""></a><br/>
 
 <p>İstediğimiz adres bilgisinin path’ini işaretliyip kaydediyorum.</p>
-  {% highlight python %}
-    radioAddress = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@id='shippingAddress']/ul/li[5]/h3"))).click()
-    save = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@id='CheckoutAside']/section[5]/a"))).click()
-  {% endhighlight %}
+{% highlight python %}
+radioAddress = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@id='shippingAddress']/ul/li[5]/h3"))).click()
+save = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@id='CheckoutAside']/section[5]/a"))).click()
+{% endhighlight %}
 
 <p>Ödeme için daha önceden kayıtlı istediğim kartın bilgilerinin olduğu radio button’u ve sözleşme şartlarını kabul edeceğim 
   chechbox’ı işaretleyip siparişi tamamlıyorum. Böylece satın alma işlemini tamamlamış oluyorum.</p>
-  {% highlight python %}
-    radioCard = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@id='creditCardPage']/div[1]/div[3]/div[2]/div/label/div[2]"))).click()
-    checkbox = driver.find_element_by_xpath("//*[@id='CheckoutAside']/section[3]/div[1]/label").click()
-    pay = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@id='CheckoutAside']/section[6]/a"))).click()
-  {% endhighlight %}
+{% highlight python %}
+radioCard = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@id='creditCardPage']/div[1]/div[3]/div[2]/div/label/div[2]"))).click()
+checkbox = driver.find_element_by_xpath("//*[@id='CheckoutAside']/section[3]/div[1]/label").click()
+pay = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@id='CheckoutAside']/section[6]/a"))).click()
+{% endhighlight %}
 <a href="{{ base }}/assets/images/selenium/img8.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/selenium/img8.png" alt=""></a><br/>
 
