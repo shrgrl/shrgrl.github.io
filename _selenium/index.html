@@ -109,18 +109,97 @@ Bunu farklı yöntemler ile yapabiliyoruz.</p>
 <p>Buraya kadar bir web sitesini arama ve click eventleri neye göre yaptığımızı bir nebze görmüş olduk. Şimdi kodumuzun tamamını çalıştıraralım ve işleyişe bakalım:</p>
   {% highlight javascript %}
     from selenium import webdriver
-  driver = webdriver.Chrome('C:\Windows\chromedriver')
-  driver.get('https://www.google.com/')
-  search_box = driver.find_element_by_name('q')
-  search_box.send_keys('Seher Gürel')
-  search_box.submit()
-  results = driver.find_element_by_tag_name("cite").click()
+    driver = webdriver.Chrome('C:\Windows\chromedriver')
+    driver.get('https://www.google.com/')
+    search_box = driver.find_element_by_name('q')
+    search_box.send_keys('Seher Gürel')
+    search_box.submit()
+    results = driver.find_element_by_tag_name("cite").click()
   {% endhighlight %}
 <a href="{{ base }}/assets/images/selenium/gif1.gif" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/selenium/gif1.gif" alt=""></a><br/>
 
 <p>Aslında bir site ile ilgili işlemleri yaptığımız aramalar ve içindeki tıklamalarla hallettiğimizi göz önüne alınca doğru 
   yönlendirmeler ile iş yükünün çoğunu yapmış oluyoruz. Bunların haricinde kendi projemde kullanmış olduğum mail gönderme işlemine bakalım.</p>
+
+<p>Mail özelliklerini kullanabilmek için ilk olarak smtplib kütüphanesini import ediyoruz:</p>
+  {% highlight javascript %}
+    import smtplib
+  {% endhighlight %}
+
+<p>Daha sonra bir gönderici ve alıcı bildirmemiz gerek. Ben ikisine de kendi mailimi yazarak testlerimi yapıyorum:</p>
+  {% highlight javascript %}
+    gmail_user = "xxxxx@xxx.com"
+    gmail_pwd = "xxxxx"
+    TO = 'xxxxx@xxx.com'
+  {% endhighlight %}
+
+<p>Burdan sonra da mail konusunu ve içeriğini belirttiğimiz bloğu tamamlıyoruz:</p>
+  {% highlight javascript %}
+    SUBJECT = "Test Subject"
+    TEXT = “This is test message.”
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.ehlo()
+    server.starttls()
+    server.login(gmail_user, gmail_pwd)
+    BODY = '\r\n'.join(['To: %s' % TO,
+        'From: %s' % gmail_user,
+        'Subject: %s' % SUBJECT,
+        '', TEXT])
+  {% endhighlight %}
+
+<p>Mail objelerinde Türkçe karakterler kullanabilmek için encode yapmamız gerekli:</p>
+  {% highlight javascript %}
+    server.sendmail(gmail_user, [TO], BODY.encode('utf-8')) 
+  {% endhighlight %}
+
+<p>Bu kod bloğunu çalıştırdığımızda resimdeki gibi mail sorunsuz şekilde gelecektir.</p>
+<a href="{{ base }}/assets/images/selenium/img6.gif" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/selenium/img6.gif" alt=""></a><br/>
+
+<h4><b>SELENIUM'DA WAIT TÜRLERİ: <i>IMPLICIT – EXPLICIT WAIT</i></b></h4>
+
+<p>Bir sayfa yüklenirken bazen gecikmeler olabiliyor. Beklenen sürenin üstünde yükleme gerçekleşmezse web driver hata verebilir. Implicit wait ile bir elementi ararken hata 
+  atmadan önce web driver’ı verdiğimiz zaman kadar bekletebiliriz. Verilen zamanın üstünde sayfa yüklenmezse ancak o zaman hata alırız. Implicit Wait metotu iki parametre alır. 
+  İlk parametre zamanın tamsayı olarak değeri, ikinci parametre ise zamanın saniye, dakika, milisaniye cinsinden türüdür.</p>
+<i><b>Implicit Wait Syntax:</b></i>
+  {% highlight javascript %}
+    driver.manage().timeouts.implicitWait(10, TimeUnit.seconds) 
+  {% endhighlight %}
+
+<p>Explicit wait ise bizim erişmek istediğimiz öğeye uygulanır. Bu tarz zaman alacak sayfa yüklemelerinde genel olarak explicit wait kullanılır. Bulunmasını istediğimiz element 
+  için Expected Conditions belirterek bu metodu kullanıyoruz:</p>
+<i><b>Explicit Wait Syntax:</b></i>
+  {% highlight javascript %}
+    wait.until(EC.visibility_of_element_located(By.XPATH, "//someXPATH"))
+  {% endhighlight %}
+
+
+<h4><b>Pencereler Arasında Nasıl Geçiş Yaparım?</b></h4>
+<p>Bir web sitesinde çalışırken, işlemler yapacağımız yeni pencereler açmamız gerekebilir. Bunun için pencereler arasında geçiş yapmalıyız. Olay kontrollerini değiştirmemiz ve 
+  gerekli işlemi yapmamız gerektiği halde işlem odağı ana pencerede kalıyor. Ana pencereden yönlendiğimiz bir sayfada işlem yapamıyorsak sonraki adımı yeni bir pencere açarak 
+  devam edebilmemiz için pencereler arası geçiş yöntemini kullanırız:</p>
+  {% highlight javascript %}
+    #Go to new window
+    new_window = driver.window_handles[-1]
+    driver.switch_to_window(new_window)
+
+    #To get back to the first window
+    old_window = driver.window_handles[0]
+    driver.switch_to_window(old_window)
+  {% endhighlight %}
+
+<h4><b>Stok Kontrolü İle Otomatik Alışveriş Uygulaması</b></h4>
+
+<p>Buraya kadar edindiğimiz bilgiler ile yaptığım projeyi kısaca tanıtmak istiyorum. Projenin temel amacı; istenilen ürün stokta yoksa kontrol ediyor ve stoğun yenilendiği 
+  durumda tespit ederek manuel işlem yapmadan direkt satın alıyor. İşlemin tamamlanması halinde kullanıcı mail ile bilgilendiriliyor. Şimdi adım adım aşamalar ile uygulamaya ait 
+  görüntüleri inceleyelim.</p>
+
+
+
+
+
+
 
 
 
