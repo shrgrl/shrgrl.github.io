@@ -23,24 +23,24 @@ layout: blog-item
   kullanarak yapacağım. İlk olarak basit örnekler denemek için bir ortam oluşturalım ve adım adım ilerleyerek gerekli paketleri indirelim. Şimdi conda ile <b>testenv</b> adında bir
   ortam oluşturalım. Bunun için <i>Anaconda Promt</i>’u açalım ve aşağıdaki komutu yazalım.</p>
 
-  {% highlight python %}
-    conda create -n myenv python=3.6
-  {% endhighlight %}
+{% highlight python %}
+conda create -n myenv python=3.6
+{% endhighlight %}
 <a href="{{ base }}/assets/images/selenium/img1.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/selenium/img1.png" alt=""></a><br/>
 
 <p>Şimdi oluşturduğumuz ortamı aktifleştirelim:</p>
-  {% highlight python %}
-    conda activate testenv
-  {% endhighlight %}
+{% highlight python %}
+conda activate testenv
+{% endhighlight %}
 <a href="{{ base }}/assets/images/selenium/img2.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/selenium/img2.png" alt=""></a><br/>
 
 <p>Buradan sonra oluşturduğumuz ortamları Jupyter notebook’a eklemek için bu adımları yapalım ve geliştirmelerimize başlayalım:</p>
-  {% highlight python %}
-    conda install -c anaconda ipykernel
-    python -m ipykernel kurulumu --user --name = testenv
-  {% endhighlight %}
+{% highlight python %}
+conda install -c anaconda ipykernel
+python -m ipykernel kurulumu --user --name = testenv
+{% endhighlight %}
 
 <p>İlk önce Selenium özelliklerini kullanabilmek için modülü indirmemiz gerekiyor. Modül ve kütüphaneleri Anaconda kullandığımız için conda install ile indiriyoruz:</p>
   {% highlight python %}
