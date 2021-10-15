@@ -5,6 +5,7 @@ collection: selenium
 layout: blog-item
 ---
 <h4><b>YAPIM AŞAMASINDA...</b></h4>
+
 <p>Herkese merhaba. Bugün sizlerle son zamanlarda merak saldığım web-scraping ile ilgili araştırmalarımı ve çalışmalarımı paylaşacağım. Web-scraping dediğimiz olay programlarla 
   farklı web sitelerinde olaylar tetikleyip yönetebildiğimiz bir çalışma alanı. Biraz irdelediğimde günlük yaşama entegre edilebilir birçok proje fikri geldi aklıma ve küçük çaplı 
   denemeler yapmaya karar verdim. Böylece Selenium modülünü tanıma ve kullanma fırsatım oldu. Şimdi Selenium modülü ile ilgili küçük bilgiler, ipuçları göstereceğim ve ardından 
@@ -157,7 +158,7 @@ Bunu farklı yöntemler ile yapabiliyoruz.</p>
 <a href="{{ base }}/assets/images/selenium/img6.gif" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/selenium/img6.gif" alt=""></a><br/>
 
-<h4><b>SELENIUM'DA WAIT TÜRLERİ: <i>IMPLICIT – EXPLICIT WAIT</i></b></h4>
+<h4><b>Wait Türleri: <i>Implicit – Explicit Wait</i></b></h4>
 
 <p>Bir sayfa yüklenirken bazen gecikmeler olabiliyor. Beklenen sürenin üstünde yükleme gerçekleşmezse web driver hata verebilir. Implicit wait ile bir elementi ararken hata 
   atmadan önce web driver’ı verdiğimiz zaman kadar bekletebiliriz. Verilen zamanın üstünde sayfa yüklenmezse ancak o zaman hata alırız. Implicit Wait metotu iki parametre alır. 
@@ -318,3 +319,23 @@ Bunu farklı yöntemler ile yapabiliyoruz.</p>
 <img class="img-blg" src="{{ base }}/assets/images/selenium/img8.gif" alt=""></a><br/>
 
 <p>Uygulamadaki temel adımları tek tek gösterdim. Tamamına github hesabımdan erişebilirsiniz.</p>
+
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://sehergurel-com-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<script id="dsq-count-scr" src="//sehergurel-com-1.disqus.com/count.js" async></script>
