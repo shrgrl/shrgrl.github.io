@@ -1,6 +1,6 @@
 ---
 title: Web Scraping
-sub-title: Selenium Modülü ile Python Kullanarak Web Scraping Nasıl Yapılır?
+sub-title: Selenium Modülü ve Python ile Web Scraping - Stok Kontrolü ile Otomatik Alışveriş Uygulaması
 collection: selenium 
 layout: blog-item
 ---
@@ -93,7 +93,7 @@ Bunu farklı yöntemler ile yapabiliyoruz.</p>
     search_box = driver.find_element_by_name('q')
   {% endhighlight %}
 
-<p>Burada search-box’ı belirtildiği <i>tag</i>’da <p>bname</p> benzersiz özelliği ile yakalayabiliyoruz. Bu elementi yakaladıktan sonra artık herhangi bir arama yapabiliyorum.</p>
+<p>Burada search-box’ı belirtildiği <i>tag</i>’da <i>name</i> benzersiz özelliği ile yakalayabiliyoruz. Bu elementi yakaladıktan sonra artık herhangi bir arama yapabiliyorum.</p>
   {% highlight javascript %}
     search_box.send_keys('Seher Gürel')
     search_box.submit()
@@ -195,11 +195,126 @@ Bunu farklı yöntemler ile yapabiliyoruz.</p>
   durumda tespit ederek manuel işlem yapmadan direkt satın alıyor. İşlemin tamamlanması halinde kullanıcı mail ile bilgilendiriliyor. Şimdi adım adım aşamalar ile uygulamaya ait 
   görüntüleri inceleyelim.</p>
 
+<p>İlk olarak driver'ı başlatıyorum ve ilgili alışveriş sitesinin sayfasını açıyorum:</p>
+  {% highlight javascript %}
+    from selenium import webdriver
+    import smtplib
+    driver = webdriver.Chrome('C:\Windows\chromedriver')
+    driver.get('https://www.trendyol.com/butik/liste/1/kadin');
+  {% endhighlight %}
 
+<p>Elementleri doğru bir şekilde yakalayabilmek için sayfayı maximum boyuta ayarlamamız uygun olacaktır.</p>
+  {% highlight javascript %}
+    driver.maximize_window()
+  {% endhighlight %}
+<a href="{{ base }}/assets/images/selenium/gif2.gif" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/selenium/gif2.gif" alt=""></a><br/>
 
+<p>Açılan sayfanın arama kutusunu yakalıyorum. Arama yapmadan önce kutucuğu temizlemekte fayda var.</p>
+  {% highlight javascript %}
+    search_bar = driver.find_element_by_class_name("search-box")
+    search_bar.clear()
+  {% endhighlight %}
 
+<p>Benzersiz bir sonuç elde etmek için istediğim ürünün kodunu ve rengini yazarak arama yapıyorum.</p>
+  {% highlight javascript %}
+    search_bar.send_keys("04751303 Bej")
+    search_bar.send_keys(Keys.RETURN)
+  {% endhighlight %}
 
+<pÇıkan sonuçtaki ürünün yolunu yakalayıp tıklıyorum.></p>
+  {% highlight javascript %}
+    productResult = driver.find_element_by_class_name("prdct-desc-cntnr-name").click()
+  {% endhighlight %}
 
+<p>İstediğim bedene ait path’i bulup tıklıyorum.</p>
+  {% highlight javascript %}
+    value = wait.until(EC.visibility_of_element_located((By.XPATH, "//div[@class='variants']//div[text()='S']")))
+    value.click()
+  {% endhighlight %}
 
+<p>Sepete eklemek için butonu yakalıyorum. Farklı bir pencere açtığım için kontrolü Explicit Wait ile yapıyorum. Wait 
+  özelliği kullanabilmek için gerekli kütüphaneleri eklemeyi unutmuyorum.</p>
+  {% highlight javascript %}
+    from selenium.webdriver.common.by import By
+    from selenium.webdriver.support.ui import WebDriverWait
+    from selenium.webdriver.support import expected_conditions as EC
+    button = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@id='product-detail-app']/div/div[3]/div[1]/div[2]/div[5]/button")))
+  {% endhighlight %}
 
+<p>Sonrasında ürünün stokta olup olmadığını öğrenmem gerek. Eğer ürün stokta varsa “Sepete Ekle” butonu çıkıyor. Ürün stokta yoksa farklı bir 
+  buton çıkıyor. Ben de buradan ilerleyerek buton ismine göre bir koşul belirledim.</p>
+  {% highlight javascript %}
+    if button.text == "Sepete Ekle":
+      print("Ürün stokta var!")
+    else:
+      print("Ürün stokta yok!")
+  {% endhighlight %}
+<a href="{{ base }}/assets/images/selenium/gif3.gif" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/selenium/gif3.gif" alt=""></a><br/>
 
+<p>Buradan sonra ürün stokta yoksa stok yenilenip satın alma işlemi tamamlanana kadar program belli aralıklarla devam edecek. 
+  Ürün stokta ise sırayla kullanıcıya mail gidecek, sipariş bilgileri girilecek ve satın alma işlemi tamamlanacak.</p>
+
+<p>Burada ürün stokta var ise satın alma işlemi kullanıcıya mail olarak bildiriliyor. Göndericiye de alıcıya da kendi mailimi girerek testlerimi yapıyorum.</p>
+  {% highlight javascript %}
+    gmail_user = "xxx@xxx.com"
+    gmail_pwd = "xxx"
+    TO = 'xxx@xxx.com'
+    SUBJECT = "Trendyol seçili ürün stoğu hakkında"
+    TEXT = "Trendyol'da seçmiş olduğunuz ürünün stoğu güncellenmiştir. Talebiniz doğrultusunda satın alınacaktır."
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.ehlo()
+    server.starttls()
+    server.login(gmail_user, gmail_pwd)
+    BODY = '\r\n'.join(['To: %s' % TO,
+            'From: %s' % gmail_user,
+            'Subject: %s' % SUBJECT,
+            '', TEXT])
+    
+    server.sendmail(gmail_user, [TO], BODY.encode('utf-8')) #Mailde Türkçe karakterler kullanabilmek için encode yaptım
+    print ('Mail gönderildi!')
+  {% endhighlight %}
+
+<p>Sepete eklemek için butonun benzersiz name’ini belirten yolu kullandım.</p>
+  {% highlight javascript %}
+    addBasket = driver.find_element_by_class_name("add-to-basket-button-text").click()
+  {% endhighlight %}
+
+<p>Eklediğim ürünü görmek ve onaylamak için sepete gidiyorum. Buralarda da ilgili butonların path’lerini kullanarak ilerliyorum.</p>
+  {% highlight javascript %}
+    basket = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@id='account-navigation-container']/div/div[2]/a/p"))).click()
+    basketConfirm = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@id='pb-container']/aside/div/div[1]/a/span"))).click()
+  {% endhighlight %}
+
+<p>Sepeti onayladığım anda sayfa bizi kullanıcı giriş ekranına yönlendirecek. Burada site kullanıcı giriş bilgilerini giriyorum.</p>
+  {% highlight javascript %}
+    mail_box = driver.find_element_by_id("login-email")
+    mail_box.clear()
+    mail_box.send_keys('xxx@xxx.com')
+    mail_box.submit()
+    pass_box = driver.find_element_by_id("login-password-input")
+    pass_box.clear()
+    pass_box.send_keys('xxx')
+    pass_box.submit()
+  {% endhighlight %}
+<a href="{{ base }}/assets/images/selenium/img7.gif" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/selenium/img7.gif" alt=""></a><br/>
+
+<p>İstediğimiz adres bilgisinin path’ini işaretliyip kaydediyorum.</p>
+  {% highlight javascript %}
+    radioAddress = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@id='shippingAddress']/ul/li[5]/h3"))).click()
+    save = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@id='CheckoutAside']/section[5]/a"))).click()
+  {% endhighlight %}
+
+<p>Ödeme için daha önceden kayıtlı istediğim kartın bilgilerinin olduğu radio button’u ve sözleşme şartlarını kabul edeceğim 
+  chechbox’ı işaretleyip siparişi tamamlıyorum. Böylece satın alma işlemini tamamlamış oluyorum.</p>
+  {% highlight javascript %}
+    radioCard = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@id='creditCardPage']/div[1]/div[3]/div[2]/div/label/div[2]"))).click()
+    checkbox = driver.find_element_by_xpath("//*[@id='CheckoutAside']/section[3]/div[1]/label").click()
+    pay = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@id='CheckoutAside']/section[6]/a"))).click()
+  {% endhighlight %}
+<a href="{{ base }}/assets/images/selenium/img8.gif" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/selenium/img8.gif" alt=""></a><br/>
+
+<p>Uygulamadaki temel adımları tek tek gösterdim. Tamamına github hesabımdan erişebilirsiniz.</p>
