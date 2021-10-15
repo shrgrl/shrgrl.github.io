@@ -52,5 +52,8 @@ collections:
   nodered:
     output: true
     permalink: /:collection/:path
+  selenium:
+    output: true
+    permalink: /:collection/:path
   
 include: ["_pages"]
