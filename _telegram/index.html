@@ -1,0 +1,88 @@
+---
+title: Telegram Bot
+sub-title: Node-Red ile Telegram Bot Oluşturma
+collection: telegram 
+layout: blog-item
+---
+
+<p>Herkese merhaba. Hepimiz boş vaktimizi değerlendirmek için çeşitli aktiviteler yaparız. Ben de vaktimi Node-Red ile çalışmaya başladığımdan beri karşıma çıkan eğlenceli 
+  uygulamalarla değerlendiriyorum. Muhtemelen hepimiz neredeyse bütün uygulamalarda karşılaştığımız Bot sanal kişileri ile mesajlaşmışızdır. Peki bunların nasıl kontrol edildiğini 
+  hiç düşündünüz mü? Ben düşündüm ve kendi Bot’umu yapmaya karar verdim. Bunun için Node-Red’in chatbot modüllerini kullandım. Node-Red’i ilk çalıştırdığımızda Module Palette’te 
+  standart modüller bulunuyor. Spesific bir arama ile kullanmak istediği Telegram botunu palete eklemek istiyorum. Bunun için; </p>
+<a href="{{ base }}/assets/images/telegram/img1.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/telegram/img1.png" alt=""></a><br>
+
+<p>Palette sekmesinden telegram bot modülünü indirdim:</p>
+{% highlight javascript %}
+node-red-contrib-telegrambot
+{% endhighlight %}
+<a href="{{ base }}/assets/images/telegram/img2.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/telegram/img2.png" alt=""></a><br>
+
+<p>İndirme tamamlandıktan sonra Palette menüsünde Telegram modülünün eklenmiş olduğunu göreceğiz.</p>
+<a href="{{ base }}/assets/images/telegram/img3.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/telegram/img3.png" alt=""></a><br>
+
+<p>Telegram modülünü indirdikten sonra elimizdeki standart modüller ile kendi akışımızı oluşturmaya başlayabiliriz. İlk olarak Inject modülü ile başlıyoruz. Akış şemasında 
+  programa komutları iletmek için ilk olarak Inject kullanılır. Daha sonra işlemi yazdığımız Function modülünü en sonda da ilettiğimiz mesajı Telegram adresine gönderen Telegram
+  Sender modülünü kullanacağız.</p>
+<a href="{{ base }}/assets/images/telegram/img4.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/telegram/img4.png" alt=""></a><br>
+
+<p>Inject modülünün içeriğinde herhangi bir değişiklik yapmamıza gerek yok. Function’da ise edinmemiz gereken bazı bilgiler olacak. Aşağıda gösterdiğim şekilde Chat Id alıp kodumuzu 
+  ilgili yere yerleştirelim.</p>
+<a href="{{ base }}/assets/images/telegram/img5.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/telegram/img5.png" alt=""></a><br>
+{% highlight javascript %}
+msg.payload = {}
+msg.payload.chatId = xxxxxxxxx
+msg.payload.type = 'message'
+msg.payload.content = 'Merhaba, benim adım Seher!'
+return msg;
+{% endhighlight %}
+
+<p>Burada Chat Id bulmak için Telegramın kendi Bot’u olan UserInfoBot’dan User Id aldım:</p>
+<a href="{{ base }}/assets/images/telegram/img6.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/telegram/img6.png" alt=""></a><br>
+
+<p>Function’un içini doldurduktan sonra sıra Telegram Sender modülünde. Modülün içine girerek gerekli yerleri dolduracağız. Bir bot ismi girerek düzenle diyelim.</p>
+<a href="{{ base }}/assets/images/telegram/img7.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/telegram/img7.png" alt=""></a><br>
+
+<p>Düzenle dediğimizde karşımıza doldurmak zorunda olduğumuz Bot-Name ve Token alanları çıkacak.</p>
+<a href="{{ base }}/assets/images/telegram/img8.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/telegram/img8.png" alt=""></a><br>
+
+<p>Bu alanları doldurabilmek için yine Telegramın kendi Bot’u BotFather’dan Token amam lazım. Token alabilmek içinde bir Bot oluşturmam lazım. Uygulamam için bir test_bot 
+  oluşturuyorum ve oluşturduğum Bot’a ait Token’i alıyorum. Bunun için gerekli komutlar aşağıdaki gibidir:</p>
+<a href="{{ base }}/assets/images/telegram/img9.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/telegram/img9.png" alt=""></a><br>
+
+<p>Bütün gerekli alanları doldurduktan sonra uygulamamızı çalıştırabiliriz. Öncelikle yukarıda oluşturduğum test_bot’u buluyorum ve /start komutunu yazıyorum. Sonra Inject 
+  modülü ile uygulamayı başlatıyorum. Her buton eventimde fonksiyonda yazdığım mesaj test_bot’a iletilecek.</p>
+<a href="{{ base }}/assets/images/telegram/img10.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/telegram/img10.png" alt=""></a><br>
+<a href="{{ base }}/assets/images/telegram/img11.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/telegram/img11.png" alt=""></a><br>
+
+<p>Bu tabi ki kompleks bir bot oluşturmanın ilk adımıydı. Bundan sonraki adımları daha geniş fonksiyonlar ile geliştirebiliriz. Ben bu şekilde başladım, devamı sonra 😊 </p>
+
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://sehergurel-com-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<script id="dsq-count-scr" src="//sehergurel-com-1.disqus.com/count.js" async></script>
