@@ -9,8 +9,8 @@ layout: blog-item
   uygulamalarla değerlendiriyorum. Muhtemelen hepimiz neredeyse bütün uygulamalarda karşılaştığımız Bot sanal kişileri ile mesajlaşmışızdır. Peki bunların nasıl kontrol edildiğini 
   hiç düşündünüz mü? Ben düşündüm ve kendi Bot’umu yapmaya karar verdim. Bunun için Node-Red’in chatbot modüllerini kullandım. Node-Red’i ilk çalıştırdığımızda Module Palette’te 
   standart modüller bulunuyor. Spesific bir arama ile kullanmak istediği Telegram botunu palete eklemek istiyorum. Bunun için; </p>
-<a href="{{ base }}/assets/images/telegram/img1_palette.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/telegram/img1_.png" alt=""></a><br>
+<a href="{{ base }}/assets/images/telegram/img1__.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/telegram/img1__.png" alt=""></a><br>
 
 <p>Palette sekmesinden telegram bot modülünü indirdim:</p>
 {% highlight javascript %}
@@ -20,8 +20,8 @@ node-red-contrib-telegrambot
 <img class="img-blg" src="{{ base }}/assets/images/telegram/img2.png" alt=""></a><br>
 
 <p>İndirme tamamlandıktan sonra Palette menüsünde Telegram modülünün eklenmiş olduğunu göreceğiz.</p>
-<a href="{{ base }}/assets/images/telegram/img3_telegram.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/telegram/img3_telegram.png" alt=""></a><br>
+<a href="{{ base }}/assets/images/telegram/img3__.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/telegram/img3__.png" alt=""></a><br>
 
 <p>Telegram modülünü indirdikten sonra elimizdeki standart modüller ile kendi akışımızı oluşturmaya başlayabiliriz. İlk olarak Inject modülü ile başlıyoruz. Akış şemasında 
   programa komutları iletmek için ilk olarak Inject kullanılır. Daha sonra işlemi yazdığımız Function modülünü en sonda da ilettiğimiz mesajı Telegram adresine gönderen Telegram
@@ -60,12 +60,13 @@ return msg;
 
 <p>Bütün gerekli alanları doldurduktan sonra uygulamamızı çalıştırabiliriz. Öncelikle yukarıda oluşturduğum test_bot’u buluyorum ve /start komutunu yazıyorum. Sonra Inject 
   modülü ile uygulamayı başlatıyorum. Her buton eventimde fonksiyonda yazdığım mesaj test_bot’a iletilecek.</p>
-<a href="{{ base }}/assets/images/telegram/img10.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/telegram/img10.png" alt=""></a><br>
+<a href="{{ base }}/assets/images/telegram/img10__.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/telegram/img10__.png" alt=""></a><br>
+
+<p>Aşağıda gördüğünüz gibi bir sonuç elde ettim. Bu tabi ki kompleks bir bot oluşturmanın ilk adımıydı. Bundan sonraki adımları daha geniş fonksiyonlar ile geliştirebiliriz. 
+  Ben bu şekilde başladım, devamı sonra 😊 </p>
 <a href="{{ base }}/assets/images/telegram/img11.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/telegram/img11.png" alt=""></a><br>
-
-<p>Bu tabi ki kompleks bir bot oluşturmanın ilk adımıydı. Bundan sonraki adımları daha geniş fonksiyonlar ile geliştirebiliriz. Ben bu şekilde başladım, devamı sonra 😊 </p>
 
 <div id="disqus_thread"></div>
 <script>
