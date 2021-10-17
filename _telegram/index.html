@@ -24,12 +24,12 @@ node-red-contrib-telegrambot
 <img class="img-blg" src="{{ base }}/assets/images/telegram/img3__.png" alt=""></a><br>
 
 <p>Telegram modülünü indirdikten sonra elimizdeki standart modüller ile kendi akışımızı oluşturmaya başlayabiliriz. İlk olarak Inject modülü ile başlıyoruz. Akış şemasında 
-  programa komutları iletmek için ilk olarak Inject kullanılır. Daha sonra işlemi yazdığımız Function modülünü en sonda da ilettiğimiz mesajı Telegram adresine gönderen Telegram
-  Sender modülünü kullanacağız.</p>
+  programa komutları iletmek için ilk olarak <i>Inject</i> kullanılır. Daha sonra işlemi yazdığımız Function modülünü en sonda da ilettiğimiz mesajı Telegram adresine gönderen <i>Telegram
+  Sender</i> modülünü kullanacağız.</p>
 <a href="{{ base }}/assets/images/telegram/img4.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/telegram/img4.png" alt=""></a><br>
 
-<p>Inject modülünün içeriğinde herhangi bir değişiklik yapmamıza gerek yok. Function’da ise edinmemiz gereken bazı bilgiler olacak. Aşağıda gösterdiğim şekilde Chat Id alıp kodumuzu 
+<p>Inject modülünün içeriğinde herhangi bir değişiklik yapmamıza gerek yok. Function’da ise edinmemiz gereken bazı bilgiler olacak. Aşağıda gösterdiğim şekilde <i>Chat Id</i> alıp kodumuzu 
   ilgili yere yerleştirelim.</p>
 <a href="{{ base }}/assets/images/telegram/img5.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/telegram/img5.png" alt=""></a><br>
@@ -41,7 +41,7 @@ msg.payload.content = 'Merhaba, benim adım Seher!'
 return msg;
 {% endhighlight %}
 
-<p>Burada Chat Id bulmak için Telegramın kendi Bot’u olan UserInfoBot’dan User Id aldım:</p>
+<p>Burada <i>Chat Id</i> bulmak için Telegramın kendi Bot’u olan UserInfoBot’dan User Id aldım:</p>
 <a href="{{ base }}/assets/images/telegram/img6_.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/telegram/img6_.png" alt=""></a><br>
 
@@ -49,11 +49,11 @@ return msg;
 <a href="{{ base }}/assets/images/telegram/img7.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/telegram/img7.png" alt=""></a><br>
 
-<p>Düzenle dediğimizde karşımıza doldurmak zorunda olduğumuz Bot-Name ve Token alanları çıkacak.</p>
+<p>Düzenle dediğimizde karşımıza doldurmak zorunda olduğumuz <i>Bot-Name</i> ve <i>Token</i> alanları çıkacak.</p>
 <a href="{{ base }}/assets/images/telegram/img8.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/telegram/img8.png" alt=""></a><br>
 
-<p>Bu alanları doldurabilmek için yine Telegramın kendi Bot’u BotFather’dan Token amam lazım. Token alabilmek içinde bir Bot oluşturmam lazım. Uygulamam için bir test_bot 
+<p>Bu alanları doldurabilmek için yine Telegramın kendi Bot’u BotFather’dan Token amam lazım. Token alabilmek içinde bir Bot oluşturmam lazım. Uygulamam için bir <i>test_bot</i> 
   oluşturuyorum ve oluşturduğum Bot’a ait Token’i alıyorum. Bunun için gerekli komutlar aşağıdaki gibidir:</p>
 <a href="{{ base }}/assets/images/telegram/img9.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/telegram/img9.png" alt=""></a><br>
