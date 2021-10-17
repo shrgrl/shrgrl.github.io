@@ -55,5 +55,8 @@ collections:
   selenium:
     output: true
     permalink: /:collection/:path
+  telegram:
+    output: true
+    permalink: /:collection/:path
   
 include: ["_pages"]
