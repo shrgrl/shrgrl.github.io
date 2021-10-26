@@ -4,7 +4,6 @@ sub-title: Selenium Modülü ve Python ile Web Scraping - Stok Kontrolü ile Oto
 collection: selenium 
 layout: blog-item
 ---
-<h4><b>YAPIM AŞAMASINDA...</b></h4>
 
 <p>Herkese merhaba. Bugün sizlerle son zamanlarda merak saldığım web-scraping ile ilgili araştırmalarımı ve çalışmalarımı paylaşacağım. Web-scraping dediğimiz olay programlarla 
   farklı web sitelerinde olaylar tetikleyip yönetebildiğimiz bir çalışma alanı. Biraz irdelediğimde günlük yaşama entegre edilebilir birçok proje fikri geldi aklıma ve küçük çaplı 
@@ -318,7 +317,62 @@ pay = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@id='CheckoutA
 <a href="{{ base }}/assets/images/selenium/img8.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/selenium/img8.png" alt=""></a><br/>
 
-<p>Uygulamadaki temel adımları tek tek gösterdim. Tamamına github hesabımdan erişebilirsiniz.</p>
+<p>Uygulamadaki temel adımları tek tek gösterdim. Şimdi <i>Windows Task Scheduler</i> ile uygulamamızı belirli süre aralıklarla otomatik olarak nasıl çalıştıracağımıza bakalım.</p>
+
+<p>İlk olarak <i>Windows Task Scheduler</i>’ı açalım.</p>
+<a href="{{ base }}/assets/images/selenium/ts1.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/selenium/ts1.png" alt=""></a><br/>
+
+<p>Açtığımız ekranda <i>Görev Oluştur</i> seçeneğine tıklayacağız. <i>Görev adı</i> girerek sırayla aşağıdaki adımları gerçekleştireceğiz.</p>
+<a href="{{ base }}/assets/images/selenium/ts2.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/selenium/ts2.png" alt=""></a><br/>
+
+<p><i>Tetikleyiciler:</i></p>
+<a href="{{ base }}/assets/images/selenium/ts3.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/selenium/ts3.png" alt=""></a><br/>
+<a href="{{ base }}/assets/images/selenium/ts4.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/selenium/ts4.png" alt=""></a><br/>
+
+<p><i>Eylemler</i>’de doldurulması gereken bazı alanlar var. Onları bu şekilde doluduruyoruz:</p>
+
+<p><b>Program/komut</b> dosyasına python.exe dosyasının yolunu yazalım:</p>
+{% highlight language %}
+C:\Users\seher\AppData\Local\Programs\Python\Python37\python.exe
+{% endhighlight %}
+
+<p><b>Bağımsız değişkenler ekle(isteğe bağlı)</b> alanına projenin adını yazalım:</p>
+{% highlight language %}
+stock_check.py
+{% endhighlight %}
+
+<p><b>Başlangıç(isteğe bağlı)</b> alanına projemizin dosya yolunu yazalım:</p>
+{% highlight language %}
+C:\Users\seher\OneDrive\Belgeler\Python
+{% endhighlight %}
+
+<a href="{{ base }}/assets/images/selenium/ts5.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/selenium/ts5.png" alt=""></a><br/>
+<a href="{{ base }}/assets/images/selenium/ts6.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/selenium/ts6.png" alt=""></a><br/>
+
+<p>Tamam dedikten sonra açılan pop-up’da Microsoft hesabımızın şifresini yazalım:</p>
+<a href="{{ base }}/assets/images/selenium/ts7.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/selenium/ts7.png" alt=""></a><br/>
+
+<p>Bu işlemler bitince oluşturduğumuz Task Scheduler’i etkinleştirip çalıştıralım:</p>
+<a href="{{ base }}/assets/images/selenium/ts8.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/selenium/ts8.png" alt=""></a><br/>
+<a href="{{ base }}/assets/images/selenium/ts9.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/selenium/ts9.png" alt=""></a><br/>
+<a href="{{ base }}/assets/images/selenium/ts10.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/selenium/ts10.png" alt=""></a><br/>
+
+<p>Böylece bilgisayarımızı her açtığımızda belirli zaman aralıklarında uygulamamız çalışacak ve ürün stoğu güncellendiğinde otomatik olarak satın alma işlemini bizim yerimize 
+  yapacaktır. Task Schedule oluşturma yöntemlerinden birisi bu şekilde. Tabi ki çok daha farklı yöntemler ile zamanlayıcı oluşturarak uygulamamızı belirli zaman aralıklarında 
+  çalıştırabiliriz. </p>
+
+<p>Bugün sizlere <i>Python</i>, <i>Selenium Module</i> ve <i>Windows Task Schedule</i> kullanarak geliştirdiğim uygulamam hakkında bilgiler verdim. Umarım faydalı bir yazı olmuştur. Farklı zamanda, 
+  yeni bilgilerle görüşmek üzere.</p>
 
 <div id="disqus_thread"></div>
 <script>
