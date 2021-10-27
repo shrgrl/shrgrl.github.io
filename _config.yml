@@ -58,5 +58,8 @@ collections:
   telegram:
     output: true
     permalink: /:collection/:path
+  polyglot:
+    output: true
+    permalink: /:collection/:path
   
 include: ["_pages"]
