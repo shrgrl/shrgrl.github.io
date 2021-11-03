@@ -61,5 +61,8 @@ collections:
   polyglot:
     output: true
     permalink: /:collection/:path
+  english:
+    output: true
+    permalink: /:collection/:path
   
 include: ["_pages"]
