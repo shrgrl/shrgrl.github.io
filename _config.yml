@@ -64,5 +64,8 @@ collections:
   english:
     output: true
     permalink: /:collection/:path
+  poem:
+    output: true
+    permalink: /:collection/:path
   
 include: ["_pages"]
