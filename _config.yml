@@ -67,5 +67,8 @@ collections:
   poem:
     output: true
     permalink: /:collection/:path
+  kendinyap:
+    output: true
+    permalink: /:collection/:path
   
 include: ["_pages"]
