@@ -5,12 +5,37 @@ collection: kendinyap
 layout: blog-item
 ---
 
+<style>
+    .iframe-container {
+        background: #ccc;
+        position: relative;
+        height: 0;
+        padding-bottom: 75%;  /* 4/3 on mobile, padding = 3/4 */
+    }
+    .iframe-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0; 
+        width: 100%; 
+        height: 100%;
+    }
+
+    @media all and (min-width: 24em) {
+        .iframe-container {
+            padding-bottom: 56.25%;  /* 16/9 on desktop, padding = 9/16 */
+        }
+    }
+</style>
+<script src="https://360player.io/static/dist/scripts/embed.js" async></script>
+
 <p>Herkese merhaba. Bugün, burada sizlerle yaparken çok keyif aldığım bir aktivitemi paylaşmak istiyorum. Kıymetli bir arkadaşımın hediye ettiği hobi kutusu içeriğini inceledim.
   İçeriğinde; sabun bazı ve kalıbı, aromalı kahve, yasemin çayı, kitap, el kremi ve açıklayıcı kartlar bulunuyor. Özellikle sabun bazı eğlenceli aktiviteler yapmayı seven herkese
   eminim çok keyif verir. Ben de kutu içeriğini incelediğim ve uyguladığım anları kısa bir klip ile ölümsüzleştirdim. Keyifli izlemeler...😊
 </p>
 
-<iframe display="block" width="560" height="315" src="https://www.youtube.com/embed/b4qdoLRTbO8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="iframe-container">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/b4qdoLRTbO8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 <div id="disqus_thread"></div>
 <script>
