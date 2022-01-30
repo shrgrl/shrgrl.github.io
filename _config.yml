@@ -70,5 +70,8 @@ collections:
   kendinyap:
     output: true
     permalink: /:collection/:path
+  painting:
+    output: true
+    permalink: /:collection/:path
   
 include: ["_pages"]
