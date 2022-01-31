@@ -73,5 +73,12 @@ collections:
   painting:
     output: true
     permalink: /:collection/:path
+    
+    
+    
+# Ideal image slider
+iis_slider_array: []
+
+
   
 include: ["_pages"]
