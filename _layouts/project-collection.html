@@ -11,7 +11,30 @@ layout: default
 <div class="container page-component nfloat-up">
   <ul>
     {% assign cols = site.[page.collection] | sort: 'order' %} {% for c in cols reversed %} {% if c.order %}
-    <li><a href="{{ c.url | remove: '.html' }}">{{ c.title }}</a></li>
+   <-- <li><a href="{{ c.url | remove: '.html' }}">{{ c.title }}</a></li> !-->
+    
+    
+    
+    
+    <div class="row" align="center">
+  
+  <div class="col-md-4 col-custom mx-auto rounded-circle">
+    <a href="/technology" class="thumb-link">
+      <div class="thumb">
+        <figure>
+          <img src="{{ base }}/assets/images/blogimg/teknoloji.jpg" alt="teknoloji" style="min-height:100%;min-width: 100%;" class="img-fluid">
+          <figcaption class="txt-size-lead">Sinema Otomasyonu</figcaption>
+        </figure>
+      </div>
+    </a>
+  </div>
+  
+</div>
+    
+    
+    
+    
+    
     {% endif %} {% endfor %}
   </ul>
   
