@@ -9,14 +9,16 @@ layout: default
 </header>
 
 <div class="container page-component nfloat-up">
-  <ul>
+ <!--  <ul>
     {% assign cols = site.[page.collection] | sort: 'order' %} {% for c in cols reversed %} {% if c.order %}
-   <!-- <li><a href="{{ c.url | remove: '.html' }}">{{ c.title }}</a></li> -->
-    
-    
-    
-    
-    <div class="row" align="center">
+   <li><a href="{{ c.url | remove: '.html' }}">{{ c.title }}</a></li> 
+    {% endif %} {% endfor %}
+  </ul>-->
+  
+  
+  
+  
+      <div class="row" align="center">
   
   <div class="col-md-4 col-custom mx-auto rounded-circle">
     <a href="/technology" class="thumb-link">
@@ -30,13 +32,8 @@ layout: default
   </div>
   
 </div>
-    
-    
-    
-    
-    
-    {% endif %} {% endfor %}
-  </ul>
+  
+  
   
   <br>
   <a href="/projects" class="btn btn-sasha-greyest">&larr; Projelere geri dön</a>
