@@ -20,7 +20,7 @@ layout: default
   
   <div class="col-md-4 col-custom mx-auto">
     
-      <a href="{{ c.url | remove: '.html' }}">{{ c.title }}
+      <a href="{{ c.url | remove: '.html' }}">
       <div class="thumb rounded-circle">
         <figure class="tl-figure-circle rounded-circle">
           <img src="{{ base }}/assets/images/cinema/cinema.jpg" alt="teknoloji" style="min-height:100%;min-width: 100%;" class="img-fluid">
@@ -31,7 +31,7 @@ layout: default
   </div>
   
   <div class="col-md-4 col-custom mx-auto">
-    <a href="/technology" class="thumb-link">
+    <a href="{{ c.url | remove: '.html' }}">{{ c.title }}
       <div class="thumb rounded-circle">
         <figure class="tl-figure-circle rounded-circle">
           <img src="{{ base }}/assets/images/blogimg/teknoloji.jpg" alt="teknoloji" style="min-height:100%;min-width: 100%;" class="img-fluid">
