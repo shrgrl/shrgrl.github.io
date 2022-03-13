@@ -10,6 +10,9 @@ collections:
   mobile:
     output: false
     permalink: /:collection/:path
+  cinema:
+    output: true
+    permalink: /:collection/:path
   web:
     output: true
     permalink: /:collection/:path
