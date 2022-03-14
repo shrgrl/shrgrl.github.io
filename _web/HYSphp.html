@@ -6,12 +6,11 @@ order: 3
 
 <h5 class="txt-weight-bold">Açıklama</h5>
 <p>
-  Sinerji Bilişim Firmasında, stajyer öğrenci olarak görev aldığım süre içinde geliştirdiğim, hastaneler için, kullanıcı ve admin panelleri bulunan, oldukça geniş seçenekler sunan bir projedir.
+  Herkese merhaba. Burada, Sinerji Bilişim Firmasında, stajyer öğrenci olarak görev aldığım süre içinde geliştirdiğim, hastaneler için, kullanıcı ve admin panelleri bulunan, oldukça geniş seçenekler sunan 
+  projeyi göstereceğim. Kaynak kodlar için Github hesabımı takip edebilirsiniz:</p>
 </p>
 
-<p>
- <p><a href="https://github.com/shrgrl/PHPHospitalManagementSystem" target="_blank" class="btn btn-sasha-darkest"><i class="fab fa-github"></i>Detay için tıkla</a></p>
-</p>
+ <p><a href="https://github.com/shrgrl/PHPHospitalManagementSystem" target="_blank" class="btn btn-sasha-darkest"><i class="fab fa-github"></i>Fork me</a></p>
 
 <h5 class="txt-weight-bold">Kullanılan Teknolojiler</h5>
 <ul>
@@ -20,3 +19,148 @@ order: 3
   <li>JavaScript</li>
   <li>MySQL</li>
 </ul>
+
+<h5 class="txt-weight-bold">PhP ile MySQL Veritabanı Bağlantısı Yapma</h5>
+<p>Php kullanarak yazdığımız projelerde genellikle veritabanı yönetim işleri MySQL üzerinden gerçekleştirilir. PHP ile bir SQL veritabanına bağlanmanın iki yöntemi bulunuyor, 
+  MySQLi ve PDO. Öncelikle bir MySQL veri tabanı oluşturmamız gerekli. Daha önce başka bir projede veri tabanı oluşturma hakkında bilgi vermiştik. <a href="https://github.com/shrgrl/JavaHospitalManagementSystem#mysql-veri-taban%C4%B1" target="_blank">Buradan</a> ulaşabilirsiniz. Veri 
+  tabanını oluşturduktan sonra php kodlarını yazmaya başlayabiliriz.</p>
+
+<p>Veri tabanı bağlantısı değişken bir obje oluşturarak sağlanır:</p>
+{% highlight javascript %}
+$my_Object = new Object();
+{% endhighlight %}
+
+<p>Örnek bir php kodu üzerinde inceleme yapalım:</p>
+{% highlight javascript %}
+$conn = mysqli_connect("localhost", "my_user", "my_password", "my_database");
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+echo "Connected successfully";
+mysqli_close($conn);
+{% endhighlight %}
+
+<p>Bu script’de kullanılan ana yöntem mysqli_connect() metodudur. Mysqli_connect() metodu, MySQL sunucusuna yeni bir bağlantı açar. Sözdizimi: <b>"mysqli_connect (host, username, password, dbname, port, socket);</b> şeklindedir. Projenin ana sayfasına sekmeler ekleyerek diğer projeyle benzer şekilde doktor, hasta ve admin girişleri ile işlemler sağlamayı düşünüyorum. Admin, bütün işlemleri kontrol edebilir olacak. 
+  İlk etapta bir veri tabanı oluşturmam gerekecek. Bu veri tabanına ekleyeceğim elemanların taslağını oluşturdum. Admin, randevu, doktor bilgilerini içeren bir doktor tablosu, giriş yapabilmeleri için kullanıcı adı ve parola içeren farklı bir doktor tablosu, branşlarına göre ayırabilmek 
+  için bir doktor tablosu ve herhangi bir kullanıcının giriş yapması için ve bilgilerini tutmak için tablolar oluşturacağım.
+</p>
+<p>Hastane yönetim sistemi projemin ilk etabı veri tabanı oluşturmaktı. Projemin veri tabanı 7 adet tablodan oluşuyor:</p>
+<a href="{{ base }}/assets/images/phphospital/image1.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/image1.jpg" alt=""></a><br/>
+
+<p>Tabloların her birine birkaç içerik ekledim. Örnek olarak:</p>
+
+<ul>
+  <li>Doktor tablosu:
+    <a href="{{ base }}/assets/images/phphospital/image2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+    <img class="img-blg" src="{{ base }}/assets/images/phphospital/image2.jpg" alt=""></a><br/>
+  </li>
+  <li>Kullanıcılar tablosu:
+    <a href="{{ base }}/assets/images/phphospital/image3.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+    <img class="img-blg" src="{{ base }}/assets/images/phphospital/image3.jpg" alt=""></a><br/>
+  </li>
+</ul>
+
+<h5 class="txt-weight-bold">Projenin Çalıştırılması</h5>
+<p>Projeyi çalıştırmak için ilk önce bilgisayarımızda yüklü bulunan XAMPP programını açıp, Apache ve MySQL seçeneklerini <b>Start</b> etmemiz gerekiyor.</p>
+<a href="{{ base }}/assets/images/phphospital/img1.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/img1.jpg" alt=""></a><br/>
+
+<p>Ardından web tarayıcımıza <b>localhost</b> yazıyoruz ve önceden veritabanına eklemiş olduğumuz projemizi seçiyoruz.</p>
+<a href="{{ base }}/assets/images/phphospital/img2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/img2.jpg" alt=""></a><br/>
+
+<p>Son olarak <i>src</i> seçeneği, tıkladığımızda bizi ana sayfaya yönlendirecektir.</p>
+<a href="{{ base }}/assets/images/phphospital/img3.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/img3.jpg" alt=""></a><br/>
+
+<h5 class="txt-weight-bold">Site Tasarımı</h5>
+<p>Projenin ana sayfa tasarımında sekmeler ekledim ve ulaşmak istediğimiz sayfalara bağlantıları buradan sağlayacağız.</p>
+<a href="{{ base }}/assets/images/phphospital/image4.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/image4.jpg" alt=""></a><br/>
+
+<p>Şu an bulunduğumuz sayfa Ana Sayfa. İletişim’e tıklayıp iletişim bilgilerini görebiliriz. Hastalar sekmesinde hasta girişi, diğerlerinde de aynı şekilde doktor girişi ve 
+  admin girişi olarak giriş yapabiliriz. Ayrıca ana sayfada html kodda slider ile görüntü efekti kullanarak modern bir tasarım elde etmeye çalıştım ve onun için hazır <i>responsiveslides.js</i> 
+  kullandım:</p>
+<a href="{{ base }}/assets/images/phphospital/image5.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/image5.jpg" alt=""></a><br/>
+
+<p>Bu fonksiyon ile sliderin maksimum genişliğini ve hızını belirttik:</p>
+{% highlight javascript %}
+<script>
+    $(function () {
+        $("#slider1").responsiveSlides({
+        maxwidth: 1600,
+        speed: 600
+        )};
+    )};
+</script>
+{% endhighlight %}
+
+<p>Aşağıdaki kod parçası ise sliderin kaç tane resimden oluşup onların sıralaması belirtiyor:</p>
+{% highlight javascript %}
+<div class="image-slider">
+    <ul class="rslides" id="slider1">
+        <li><img src="images/slider-image1.jpg" alt=""></li>
+        <li><img src="images/slider-image2.jpg" alt=""></li>
+        <li><img src="images/slider-image1.jpg" alt=""></li>
+    </ul>
+</div>
+{% endhighlight %}
+
+<h5 class="txt-weight-bold">İletişim</h5>
+<p>Bir sitenin olmazsa olmazlarından biri de kişilerin muhataplarına direk ulaşabilme olanağıdır. Bütün sitelerde olmazsa olmaz <b>İletişim</b> sekmesine tıkladığımızda karşımıza çıkan sayfa şu şekilde;</p>
+<a href="{{ base }}/assets/images/phphospital/image6.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/image6.jpg" alt=""></a><br/>
+
+<h5 class="txt-weight-bold">Hastalar</h5>
+<p>Projenin <b>Hastalar</b> sayfasına giriş için tıkladığımızda karşımıza bir giriş sayfası çıkıyor.</p>
+<a href="{{ base }}/assets/images/phphospital/image7.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/image7.jpg" alt=""></a><br/>
+
+<p>İlk etapta daha önce veri tabanında belirlediğim hasta bilgileri ile giriş yapabiliyorum. Veri tabanına bilgi ekleyebilmenin yanı sıra hastaların bu sayfa yolu ile üyelik 
+  hesabı oluşturulabilir. Aşağıda bulunan “Hesap oluştur” kısmına basmak bunun için yeterli.</p>
+<a href="{{ base }}/assets/images/phphospital/image8.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/image8.jpg" alt=""></a><br/>
+
+<p>Tıkladığımızda karşımıza kayıt sayfası çıkacak. Bu sayfada istenilen bilgileri girip <b>Gönder</b> butonuna tıkladığımızda veri tabanına bir üye daha eklemiş oluyoruz ve 
+  eklediğimiz üyelik kullanıcı adı ve şifresi ile giriş yapabiliyoruz. Giriş yaptıktan sonra karşımıza çıkan sayfa aşağıdaki gibidir. Sağ üst köşedeki isme tıkladığımızda 
+  profil görüntüleme, şifre değiştirme ve çıkış yapma seçeneklerimiz olacak. Karşımıza çıkan ilk sayfa “Kontrol Paneli” sayfası. Diğer sekmelerde de randevu oluşturma ve 
+  oluşturulan randevuları görüntüleme seçeneklerimiz mevcut. Ayrıca sayfalarda hazır bootstrap modülleri mevcut: sidebar, toolbar vs.</p>
+<a href="{{ base }}/assets/images/phphospital/image9.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/image9.jpg" alt=""></a><br/>
+
+<h5 class="txt-weight-bold">Doktor Girişi</h5>
+<p>Projede hastaların yanı sıra doktorlar için de geçmiş randevularını görüntüleme ihtiyaçları duyduklarında veya mevcut profillerini güncellemek istediklerinde ihtiyaçlarını karşılamak için 
+  imkan sunuluyor. Hastalar gibi doktorlar da şifrelerinde değişiklik yapabiliyor.</p>
+<a href="{{ base }}/assets/images/phphospital/image10.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/image10.jpg" alt=""></a><br/>
+
+<p>Profili güncelle seçeneğine tıkladığımızda aşağıda görünen sayfa karşımıza çıkıyor. Değişiklik yapmak istediğimiz kısımlara uyguladığımız değişikliklerden sonra <b>Güncelle</b> seçeneğine tıkladığımızda bilgilerimiz güncellenmiş oluyor.</p>
+<a href="{{ base }}/assets/images/phphospital/image11.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/image11.jpg" alt=""></a><br/>
+
+<h5 class="txt-weight-bold">Admin Girişi</h5>
+<p>Admin sayfasında diğerlerine kıyasla çok daha fazla özellik mevcut. Sonuç olarak sitenin yöneticisi konumunda olduğu için her olaya, veriye müdahale edebilecek bir pozisyonda olmalı. Giriş yaptıktan sonra karşımıza çıkan sayfa şu şekilde;</p>
+<a href="{{ base }}/assets/images/phphospital/image12.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/image12.jpg" alt=""></a><br/>
+
+<p>Burada admin, doktor, hasta ve randevu bilgilerini görüp müdahale edebiliyor. Örneğin hastaneye yeni gelen bir doktor için kayıt oluşturabiliyor.</p>
+<a href="{{ base }}/assets/images/phphospital/image13.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/image13.jpg" alt=""></a><br/>
+
+<p><b>Doktor Uzmanlığı</b> seçeneğinde sağlamasını düşündüğüm avantaj, hastaneye mevcut olmayan bir bölüm açıldığı zaman direkt olarak buradan yeni bir bölüm ekleyebileceğiz. “Doktor Ekle” seçeneği ile de bölümün doktorunun kaydını yaparak hastaların hizmetine sunacağız.</p>
+<a href="{{ base }}/assets/images/phphospital/image14.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/image14.jpg" alt=""></a><br/>
+
+<p>Burada yaptığımız değişiklikler veri tabanında aynı şekilde güncellenecek.</p>
+
+
+
+
+
+
+
+
+
+
