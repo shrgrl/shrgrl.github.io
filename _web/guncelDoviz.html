@@ -5,12 +5,10 @@ order: 5
 ---
 
 <h5 class="txt-weight-bold">Açıklama</h5>
-<p>
-  Bu uygulama, API şeklinde döviz kurları ve farklı bilgilerini güncel olarak kullanıcıya göstermek amacıyla yapıldı.
-</p>
+  Herkese merhaba. Burada, API şeklinde döviz kurları ve farklı bilgilerin güncel olarak kullanıcıya nasıl gösterileceğini göreceğiz. Kaynak kodlar için Github hesabımı takip edebilirsiniz:</p>
 
 <p>
-  <a href="https://github.com/shrgrl/guncelDovizKurlari" target="_blank" class="btn btn-sasha-darkest"><i class="fab fa-github"></i>Detay için tıkla</a>
+  <a href="https://github.com/shrgrl/guncelDovizKurlari" target="_blank" class="btn btn-sasha-darkest"><i class="fab fa-github"></i>Fork me</a>
 </p>
 
 <h5 class="txt-weight-bold">Kullanılan Teknolojiler</h5>
@@ -20,3 +18,30 @@ order: 5
   <li>JavaScript</li>
   <li>HTML</li>
 </ul>
+
+<p>Bu proje, bir <i>Güncel Döviz Kurları Web Uygulaması</i>'dır. Node.js/Express ile yazılmış olup, lokal bilgisayarımızda çalıştırabiliyoruz. Uygulama, kök dizinine (root directory) 
+  gelen bir “get request” için arka planda <a href="https://api.canlidoviz.com/web/items?marketId=1&type=0" target="_blank" >buradaki</a> adrese bir “get request” gönderiyor ve cevap olarak geri dönen JSON Stringini parse ediyor. Sonrasında kullanıcıya şekildeki 
+  gibi bir HTML sayfasını response olarak gönderiyor.</p>
+
+<a href="{{ base }}/assets/images/projects/gunceldoviz/img1.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/projects/gunceldoviz/img1.jpg" alt=""></a><br/>
+
+<p>Kullanıcı select listesinden bir döviz kuru seçtiğinde ekranın sağ tarafında ilgili kura ait bilgiler görüntüleniyor. Kullanıcı eğer isterse, yine ekranın sağında yer alan bir buton sayesinde döviz kurlarını yenileyebiliyor.</p>
+
+<h5 class="txt-weight-bold">Projenin Çalıştırılması</h5>
+<p>Projeyi çalıştırmak için, projenin bulunduğu kök dizininde bir komut ekranı açmamız ve node ProjeAdi.js yazmamız gerekiyor. Ardından komut ekranında bize gösterilen port adresini web tarayıcımıza yazarak uygulamayı kullanabiliriz. Bu proje için çalıştırma komutu aşağıdaki gibidir:</p>
+<a href="{{ base }}/assets/images/projects/gunceldoviz/img2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/projects/gunceldoviz/img2.jpg" alt=""></a><br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
