@@ -5,10 +5,8 @@ order: 4
 ---
 
 <h5 class="txt-weight-bold">Açıklama</h5>
-<p>
-  1 Ocak 1970 günü saat 00:00’da başlayan ve sonrasındaki herhangi bir ana kadar geçen saniye cinsinden süreye Epoch Zamanı adı verilmektedir. Bu projede 3 kısımdan oluşan bir sayfada çeşitli Epoch Zamanı hesaplamaları mevcuttur.
-</p>
-<p><a href="https://github.com/shrgrl/epochConverter" target="_blank" class="btn btn-sasha-darkest"><i class="fab fa-github"></i>Detay için tıkla</a></p>
+<p>Herkese merhaba. Burada, Epoch zamanı ile ilgili bilgiler vereceğim ve Epoh Zaman Dönüştürücü uygulamasını anlatacağım. Kaynak kodlar için Github hesabımı takip edebilirsiniz:</p>
+<p><a href="https://github.com/shrgrl/epochConverter" target="_blank" class="btn btn-sasha-darkest"><i class="fab fa-github"></i>Fork me</a></p>
 
 <h5 class="txt-weight-bold">Kullanılan Teknolojiler</h5>
 <ul>
@@ -17,3 +15,20 @@ order: 4
   <li>JavaScript</li>
   <li>Bootstrap</li>
 </ul>
+
+<p>1 Ocak 1970 günü saat 00:00’da başlayan ve sonrasındaki herhangi bir ana kadar geçen saniye cinsinden süreye <b>Epoch Zamanı<B> adı verilmektedir. (Hesaplamalarda artık yılları 
+  da dikkate almamız gerek, artık olmayan her bir yılda 86400x365=31536000 saniye ve her bir artık yılda 86400x366=31622400 saniye tüketildiğini hatırlayalım.)</p>
+
+<p>Proje 3 kısımdan oluşuyor. Uygulamanın birinci (en üst) bölümünde aşağıdaki gibi bir ekran yer alıyor ve bu ekrana ait 3 bilginin her biri her saniye güncellenerek kullanıcıya sunuluyor.</p>
+<a href="{{ base }}/assets/images/projects/epoch/img1.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/projects/epoch/img1.jpg" alt=""></a><br/>
+
+<p>Uygulamanın ikinci bölümünde aşağıdaki gibi bir ekran yer alıyor ve bu ekrandaki text kutucuğuna girilen Epoch zamanı yandaki butona tıklandığında bizim kullandığımız zaman formatına dönüştürülerek kullanıcıya sunuluyor.</p>
+<a href="{{ base }}/assets/images/projects/epoch/img2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/projects/epoch/img2.jpg" alt=""></a><br/>
+  
+<p>Uygulamanın üçüncü ve son bölümünde aşağıdakine benzer bir ekran yer alıyor ve bu ekrandaki her bir HTML form elemanı select olmalıdır. Yani kullanıcı her bir veri girişini bir drop-down listesi sayesinde yapabiliyor. (Year için listelenecek değerler 1971 ile 2023, Month için 01-January ile 12-December, Day için 01 ile 31, Hour için 01 ile 23, Minute için 01 ile 59 ve Second için 01 ile 59 arasındadır. Öte yandan Time Zone Local veya GMT olarak seçilebiliyor. Kullanıcı veri girişi yaptıktan sonra Convert isimli butonu tıkladığında ilgili tarihe denk gelen Epoch zamanı hemen altta ekrana yansıtılıyor.</p>
+<a href="{{ base }}/assets/images/projects/epoch/img3.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/projects/epoch/img3.jpg" alt=""></a><br/> 
+  
+<p>Projeyi direkt mevcut html sayfasını çalıştırarak kullanabilirsiniz.</p> 
