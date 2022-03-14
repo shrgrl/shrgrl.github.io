@@ -4,9 +4,8 @@ layout: project-item
 order: 1
 ---
 
-<h5 class="txt-weight-bold">Açıklama</h5>
 <p>
-	Bu uygulamada, belirlediğimiz ID’ye sahip kartı okuttuğumuzda led yanarken farklı bir kart okuttuğumuzda led sönecek.
+Herkese merhaba. Bu uygulamada, belirlediğimiz ID’ye sahip kartı okuttuğumuzda led yanarken farklı bir kart okuttuğumuzda led sönecek. Projenin kaynak kodları için Github hesabımı takip edebilirsiniz:
 </p>
 <p><a href="https://github.com/shrgrl/RaspberryPiRFIDUygulamasi" target="_blank" class="btn btn-sasha-darkest"><i class="fab fa-github"></i>Detay için tıkla</a></p>
 
@@ -16,3 +15,108 @@ order: 1
   <li>Python</li>
   <li>RC522</li>
 </ul>
+
+<h5 class="txt-weight-bold">Raspberry Pi</h5>
+<p>Projeye başlamadan önce Raspberry Pi kurulumunu, detaylıca anlattığım buradaki linkten yararlanarak yapabilirsiniz. İlk olarak proje için gerekli olan ayarlamaları yaptım. Bunun için Raspberry Pi’nin ayarlarında SSH, SPI ve kenbi bilgisayarımda kullanabilmek için VNC’yi enable etmem gerekti.</p>
+<ul>
+  <li><b>SSH:</b> Ağ üzerinden uzak komut satırı bağlantısı sağlar. SSH arayüzünü güvenlik sebebiyle “pi” kullanıcısının şifresini değiştirmeden aktifleştirmememiz gerekir.</li>
+  <li><b>VNC:</b> Ağ üzerinden uzak masaüstü bağlantısı sağlar.</li>
+  <li><b>SPI:</b> Donanımsal SPI bağlantısını aktifleştirir. GPIO pinleri aracılığı ile SPI bağlantısına sahip bir cihaz kullanmak istersek (sensör, RFID okuyucu, LCD ekran v.b.) aktifleştirmemiz gerekir.</li>
+</ul>
+
+<p>Daha sonra gerekli devre elemanlarını ayarladım:</p>
+<ul>
+  <li>Raspberry Pi</li>
+  <li>Breadboard</li>
+  <li>RC522 RFID seti</li>
+  <li>LED</li>
+  <li>220 Ω direnç</li>
+  <li>Jumper kablo</li>	
+</ul>
+
+<p>Daha sonra fritzing ile devre çizimimi yaptım.</p>
+<a href="{{ base }}/assets/images/projects/rasppi/img1.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/projects/rasppi/img1.jpg" alt=""></a><br/>
+
+<p>Ardından çok dikkatli şekilde devremi hazırladım.</p>
+<a href="{{ base }}/assets/images/projects/rasppi/img2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/projects/rasppi/img2.jpg" alt=""></a><br/>
+
+<p>Devre bağlantımızı tamamladıktan sonra, Python kodumuzun çalışabilmesi için öncelikle gerekli kütüphaneyi yüklememiz gerekli:</p>
+{% highlight javascript %}
+sudo pip install pi-rc522
+{% endhighlight %}
+
+<p>Aşağıdaki Python kodunu rfid-read.py isimli bir dosyaya kaydediyoruz.</p>
+{% highlight javascript %}
+from pirc522 import RFID
+import signal
+import time
+
+rdr = RFID()
+util = rdr.util()
+util.debug = True
+print("Kart bekleniyor...")
+rdr.wait_for_tag()
+(error, data) = rdr.request()
+
+if not error:
+ print("Kart Algilandi!")
+ (error, uid) = rdr.anticoll()
+ if not error:
+ kart_uid = str(uid[0])+" "+str(uid[1])+" "+str(uid[2])+" "+str(uid[3])+" "+str(uid[4])
+ print(kart_uid)
+{% endhighlight %}
+
+<p>Kodu kaydettikten sonra;</p>
+{% highlight javascript %}
+python rfid-read.py
+{% endhighlight %}
+
+<p>komutu ile çalıştırıyor ve kartımızı okutuyoruz. Böylelikle okuttuğumuz kartın UID’sini öğrenebiliriz.</p>
+<a href="{{ base }}/assets/images/projects/rasppi/img6.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/projects/rasppi/img6.jpg" alt=""></a><br/>
+
+<p>Bana böyle bir id verdi. Bu id’yi bir kenara not ettim. Daha sonra aşağıdaki kodu rc522.py isimli dosyaya kaydettim.</p>
+{% highlight javascript %}
+from pirc522 import RFID
+import signal
+import time
+import RPi.GPIO as GPIO 
+
+ledpin = 7
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(ledpin, GPIO.OUT)
+rdr = RFID()
+util = rdr.util()
+util.debug = True
+
+while True:
+ rdr.wait_for_tag()
+ (error, data) = rdr.request()
+ if not error:
+ print("\nKart Algilandi!")
+ (error, uid) = rdr.anticoll()
+ if not error:
+ # Print UID
+ kart_uid = str(uid[0])+" "+str(uid[1])+" "+str(uid[2])+" "+str(uid[3])+" "+str(uid[4])
+ print(kart_uid)
+ if kart_uid == "xxxxxxxxxxxxxxxx":
+ print("LED Yandi!")
+ GPIO.output(ledpin, True) 
+ else: 
+ print("LED Sondu!")
+ GPIO.output(ledpin, False)
+{% endhighlight %}
+
+<p>Daha önce kopyaladığım UID’yi, bu kodda yer alan</p>
+{% highlight javascript %}
+if kart_uid == "xxxxxxxxxxxxxxxx":
+{% endhighlight %}
+
+<p>satırındaki değer ile değiştirdim. Böylece program bizim okutmuş olduğumuz RFID kartını algıladığı zaman bağlamış olduğumuz LED’i yakacak. Farklı bir kart okuttuğumuzda ise LED sönecek:</p>
+<a href="{{ base }}/assets/images/projects/rasppi/img9.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/projects/rasppi/img9.jpg" alt=""></a><br/>
+<a href="{{ base }}/assets/images/projects/rasppi/img10.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/projects/rasppi/img10.jpg" alt=""></a><br/>
+
