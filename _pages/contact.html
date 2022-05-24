@@ -11,38 +11,38 @@ hero-image: 6
 
 <form action="https://formspree.io/shrgurel@gmail.com" method="POST">
   <div class="form-group row">
-    <label for="fname" class="col-md-3 col-form-label">Ad</label>
+    <label for="fname" class="col-md-3 col-form-label">First Name</label>
     <div class="col-md-9">
-      <input type="text" class="form-control" id="fname" name="first_name" maxlength="64" placeholder="" required autocomplete="off">
+      <input type="text" class="form-control" id="fname" name="first_name" maxlength="64" placeholder="Elon" required autocomplete="off">
     </div>
   </div>
 
   <div class="form-group row">
-    <label for="lname" class="col-md-3 col-form-label">Soyad</label>
+    <label for="lname" class="col-md-3 col-form-label">Last Name</label>
     <div class="col-md-9">
-      <input type="text" class="form-control" id="lname" name="last_name" maxlength="64" placeholder="" required autocomplete="off">
+      <input type="text" class="form-control" id="lname" name="last_name" maxlength="64" placeholder="Musk" required autocomplete="off">
     </div>
   </div>
 
   <div class="form-group row">
-    <label for="email" class="col-md-3 col-form-label">Eposta</label>
+    <label for="email" class="col-md-3 col-form-label">Email</label>
     <div class="col-md-9">
-      <input type="email" class="form-control" id="email" name="_replyto" maxlength="64" placeholder=""
+      <input type="email" class="form-control" id="email" name="_replyto" maxlength="64" placeholder="elonmusk@spacex.com"
         required autocomplete="off">
     </div>
   </div>
 
   <div class="form-group row">
-    <label for="subject" class="col-md-3 col-form-label">Başlık</label>
+    <label for="subject" class="col-md-3 col-form-label">Title</label>
     <div class="col-md-9">
-      <input type="text" class="form-control" id="subject" name="_subject" maxlength="128" placeholder="" required autocomplete="off">
+      <input type="text" class="form-control" id="subject" name="_subject" maxlength="128" placeholder="Hello World" required autocomplete="off">
     </div>
   </div>
 
   <div class="form-group row">
-    <label for="message" class="col-md-3 col-form-label">Mesaj İçeriği</label>
+    <label for="message" class="col-md-3 col-form-label">Message</label>
     <div class="col-md-9">
-      <textarea class="form-control" id="message" name="message" maxlength="4096" rows="3" autocomplete="off" placeholder=""
+      <textarea class="form-control" id="message" name="message" maxlength="4096" rows="3" autocomplete="off" placeholder="Hi there! Let’s change the world.. or let’s inhabit Mars."
         required></textarea>
     </div>
   </div>
@@ -54,7 +54,7 @@ hero-image: 6
     <div class="col-md-12">
       <p class="txt-align-r txt-color-muted">
         <small>
-          <strong>Gönder</strong> butonuna tıkladığınızda <a href="/privacy" target="_blank">Gizlilik&nbsp;Politikası</a>'nı kabul edersiniz.
+          By clicking Send, you agree that you’ve read the <a href="/privacy" target="_blank">Privacy&nbsp;Policy</a>.
         </small>
       </p>
       <div id="form-status" class="alert"></div>
@@ -63,11 +63,9 @@ hero-image: 6
 
   <div class="form-group row">
     <div class="col-md-12">
-      <input type="submit" class="btn btn-primary float-r" value="Gönder">
+      <input type="submit" class="btn btn-primary float-r" value="Send">
       
     </div>
-    <input type="hidden" name="_after" value="https://shrgrl.github.io/contact">
-    <input type="hidden" name="_honeypot" value="">
   </div>
 </form>
 
