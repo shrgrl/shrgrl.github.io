@@ -9,7 +9,7 @@ hero-color: 43849F
 hero-image: 6
 ---
 
-<form action="https://mailthis.to/shrgurel@gmail.com" method="POST" encType="multipart/form-data">
+<form action="https://formspree.io/shrgurel@gmail.com" method="POST">
   <div class="form-group row">
     <label for="fname" class="col-md-3 col-form-label">Ad</label>
     <div class="col-md-9">
@@ -97,13 +97,12 @@ hero-image: 6
 
       // Create a message object
       var message = {
-        loading: 'Mesajınız Gönderiliyor...',
-        success: '<strong>Teşekkürler!</strong> 24 saat içinde <strong>' + email + '</strong> ardresinize geri dönüş yapacağım. Yorumlarınız ve fikirleriniz için teşekkür ederim.',
-        error: '<strong>oPs!</strong> mesajınız gönderilirken bir hata oluştu. Lütfen tekrar deneyiniz.'
+        loading: 'Sending message...',
+        success: '<strong>Thank you!</strong> I should get back to <strong>' + email + '</strong> within 24 hours. I will find you and I will say hello to you.',
+        error: '<strong>Woah!</strong> There was a problem sending your cool message.'
       };
 
-      // 
-      the form status classList
+      // Reset the form status classList
       formStatus.classList.remove('alert-success');
       formStatus.classList.remove('alert-warning');
       formStatus.classList.add('alert-info');
@@ -134,7 +133,7 @@ hero-image: 6
         var formData = new FormData(form);
 
         // Set up the http request re-using my custom http function
-        postData('//mailthis.to/shrgurel@gmail.com', 'accept', 'application/json', formData, function (success) {
+        postData('//formspree.io/cefjoeii@gmail.com', 'accept', 'application/json', formData, function (success) {
           if (success) {
             formStatus.classList.remove('alert-info');
             formStatus.classList.add('alert-success');
@@ -142,10 +141,7 @@ hero-image: 6
 
             // Clear out the form input
             form.reset();
-            document.getElementById(#message).text=""
-          }.then(function () {
-  location.href = 'https://mailthis.to/confirm'
-}); else {
+          } else {
             formStatus.classList.remove('alert-info');
             formStatus.classList.add('alert-warning');
             formStatus.innerHTML = message.error;
@@ -154,7 +150,7 @@ hero-image: 6
       }); // end of getData
     }); // end of form submit event
   } else {
-    alert('Lütfen farklı bir tarayıcı deneyin ya da iletişim fonksiyonu çalışmıyor olabilir.');
+    alert('Please try a different browser or the contact function may not work.');
   }
 
   // See: https://stackoverflow.com/questions/2400935/browser-detection-in-javascript
