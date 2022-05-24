@@ -9,19 +9,27 @@ hero-color: 43849F
 hero-image: 6
 ---
 
-<form
-  action="https://formspree.io/f/xwkyyvwg"
-  method="POST"
->
-  <label>
-    Your email:
+<form action="https://formspree.io/f/xwkyyvwg" method="POST">
+  
+  <div class="form-group row">
+    <label for="fname" class="col-md-3 col-form-label">Adınız</label>
+    <div class="col-md-9">
     <input type="email" name="email">
-  </label>
-  <label>
-    Your message:
+    </div>
+  </div>
+  
+  <div class="form-group row">
+    <label for="message" class="col-md-3 col-form-label">Mesajınız</label>
+    <div class="col-md-9">
     <textarea name="message"></textarea>
-  </label>
-  <!-- your other form fields go here -->
-  <button type="submit">Send</button>
+    </div>
+  </div>
+  
+  <div class="form-group row">
+    <div class="col-md-12">
+      <button type="submit">Gönder</button>
+    </div>
+  </div>
+  
 </form>
 
