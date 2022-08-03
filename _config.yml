@@ -82,5 +82,8 @@ collections:
   sap:
     output: true
     permalink: /:collection/:path
+  amazon:
+    output: true
+    permalink: /:collection/:path
    
 include: ["_pages"]
