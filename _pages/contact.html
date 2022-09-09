@@ -1,10 +1,10 @@
 ---
-title: İletişim
+title: Contact
 permalink: "/contact"
 layout: page
 
-heading: İletişim kuralım.
-sub-heading: Sayfamı ziyaret ettiğiniz için teşekkür ederim. Yorum ve mesajlarınız için lütfen aşağıdaki formu doldurunuz.
+heading: Contact Me
+sub-heading: Thank you for visiting my page. Please fill out the form below for your comments and messages.
 hero-color: 43849F
 hero-image: 6
 ---
@@ -12,14 +12,14 @@ hero-image: 6
 <form action="https://formspree.io/f/xwkyyvwg" method="POST">
   
   <div class="form-group row">
-    <label for="fname" class="col-md-3 col-form-label">Adınız</label>
+    <label for="fname" class="col-md-3 col-form-label">Name</label>
     <div class="col-md-9">
     <input type="email" name="email">
     </div>
   </div>
   
   <div class="form-group row">
-    <label for="message" class="col-md-3 col-form-label">Mesajınız</label>
+    <label for="message" class="col-md-3 col-form-label">Message</label>
     <div class="col-md-9">
     <textarea name="message"></textarea>
     </div>
@@ -27,7 +27,7 @@ hero-image: 6
   
   <div class="form-group row">
     <div class="col-md-12">
-      <button type="submit">Gönder</button>
+      <button type="submit">Send</button>
     </div>
   </div>
   
@@ -37,21 +37,14 @@ hero-image: 6
 <!--<form action="https://mailthis.to/shrgurel@gmail.com" method="POST" encType="multipart/form-data">-->
 <form action="https://formspree.io/f/xwkyyvwg" method="POST">
   <div class="form-group row">
-    <label for="fname" class="col-md-3 col-form-label">Ad</label>
+    <label for="fname" class="col-md-3 col-form-label">Name</label>
     <div class="col-md-9">
       <input type="text" class="form-control" id="fname" name="first_name" maxlength="64" placeholder="" required autocomplete="off">
     </div>
   </div>
 
   <div class="form-group row">
-    <label for="lname" class="col-md-3 col-form-label">Soyad</label>
-    <div class="col-md-9">
-      <input type="text" class="form-control" id="lname" name="last_name" maxlength="64" placeholder="" required autocomplete="off">
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label for="email" class="col-md-3 col-form-label">Eposta</label>
+    <label for="email" class="col-md-3 col-form-label">Email</label>
     <div class="col-md-9">
       <input type="email" class="form-control" id="email" name="_replyto" maxlength="64" placeholder=""
         required autocomplete="off">
@@ -59,14 +52,14 @@ hero-image: 6
   </div>
 
   <div class="form-group row">
-    <label for="subject" class="col-md-3 col-form-label">Başlık</label>
+    <label for="subject" class="col-md-3 col-form-label">Title</label>
     <div class="col-md-9">
       <input type="text" class="form-control" id="subject" name="_subject" maxlength="128" placeholder="" required autocomplete="off">
     </div>
   </div>
 
   <div class="form-group row">
-    <label for="message" class="col-md-3 col-form-label">Mesaj İçeriği</label>
+    <label for="message" class="col-md-3 col-form-label">Message Content</label>
     <div class="col-md-9">
       <textarea class="form-control" id="message" name="message" maxlength="4096" rows="3" autocomplete="off" placeholder=""
         required></textarea>
@@ -80,7 +73,7 @@ hero-image: 6
     <div class="col-md-12">
       <p class="txt-align-r txt-color-muted">
         <small>
-          <strong>Gönder</strong> butonuna tıkladığınızda <a href="/privacy" target="_blank">Gizlilik&nbsp;Politikası</a>'nı kabul edersiniz.
+          By clicking the <strong>Submit</strong> button, you agree to the <a href="/privacy" target="_blank">Privacy&nbsp;Policy</a>.
         </small>
       </p>
       <div id="form-status" class="alert"></div>
@@ -89,7 +82,7 @@ hero-image: 6
 
   <div class="form-group row">
     <div class="col-md-12">
-      <input type="submit" class="btn btn-primary float-r" value="Gönder">
+      <input type="submit" class="btn btn-primary float-r" value="Send">
       
     </div>
     <input type="hidden" name="_after" value="https://shrgrl.github.io/contact">
@@ -123,9 +116,9 @@ hero-image: 6
 
       // Create a message object
       var message = {
-        loading: 'Mesajınız Gönderiliyor...',
-        success: '<strong>Teşekkürler!</strong> 24 saat içinde <strong>' + email + '</strong> ardresinize geri dönüş yapacağım. Yorumlarınız ve fikirleriniz için teşekkür ederim.',
-        error: '<strong>oPs!</strong> mesajınız gönderilirken bir hata oluştu. Lütfen tekrar deneyiniz.'
+        loading: 'Sending Your Message...',
+        success: '<strong>Thanks!</strong> I will respond as soon as possible.',
+        error: '<strong>oPs!</strong> An error occurred while sending your message. Please try again.'
       };
 
       // 
@@ -180,7 +173,7 @@ hero-image: 6
       }); // end of getData
     }); // end of form submit event
   } else {
-    alert('Lütfen farklı bir tarayıcı deneyin ya da iletişim fonksiyonu çalışmıyor olabilir.');
+    alert('Please try a different browser or the communication function may not be working.');
   }
 
   // See: https://stackoverflow.com/questions/2400935/browser-detection-in-javascript
