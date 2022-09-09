@@ -87,7 +87,7 @@ $(document).on('click', '[data-toggle="lightbox"]', function(event) {
             <a href="{{ p.url | remove: '.html' }}" {% if p.url == page.url %}class="active" {% endif %}>
               <i class="{{ p.font-awesome }}"></i>
               {% if p.url == '/' %}
-              Ana Sayfa
+              Home
               {% else %}
               {{ p.title }}
               {% endif %}
