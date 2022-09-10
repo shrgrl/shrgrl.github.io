@@ -33,12 +33,13 @@ function loadCountry(callback) {
       case 'Solomon Islands':
       case 'Turks and Caicos Islands':
       case 'Virgin Islands':
-        country = 'the ' + flag ; 
+        country = 'the ' + flag + ' ' + country;
+        break;
       default:
-        country = flag ;
+        country = flag + ' ' + country;
         break;
     }
-    callback('Hoşgeldin, ' + country + ' ’den gelen misafir.' );
+    callback('Hi there, visitor from ' + country + '.');
   });
 }
 
