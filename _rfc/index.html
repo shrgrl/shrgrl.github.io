@@ -11,30 +11,30 @@ layout: blog-item
 <p>İlk olarak bir senaryo belirlemekle başlıyorum. Bir market zincirinin SAP sistemler kullanarak ürün stok yönetimi yaptığını varsayalım. Bu şirket SAP’de bir tabloya, stoğa yeni eklenen ürünlerin kaydını atsın. 
   Aynı malzeme numarasına sahip ürünlerin adet sayısı artarken, her yeni eklenen ürün için yeni bir satır eklensin. Ürün bilgisini de müşterinin düzenli olarak güncellediği bir bakım tablosundan alsın.</p>
 <a href="{{ base }}/assets/images/rfc/pseudo.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/rfc/pseudo.png" alt="pseudo"></a>
+<img class="img-blg" src="{{ base }}/assets/images/rfc/pseudo.png" alt="pseudo"></a><br>
 
 <p>İlk olarak kullanacağımız tabloları oluşturalım. Ürün bilgilerinin tutulacağı bakım tablomuzda hangi bilgileri istiyorsak, o alanları ekleyelim. Ben bu aşamada sadece Ürün Kodu ve Ürün Adı ekliyorum.</p>
 <a href="{{ base }}/assets/images/rfc/product_list.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/rfc/product_list.png" alt="Product List"></a>
+<img class="img-blg" src="{{ base }}/assets/images/rfc/product_list.png" alt="Product List"></a><br>
 
 <p>Oluşturduğum bakım tablosunu T-Code’a bağladım ve kolayca eklemek istediğim ürün bilgilerini ekledim:</p>
 <a href="{{ base }}/assets/images/rfc/sm30.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/rfc/sm30.png" alt="Product List İşlem Kodu"></a>
+<img class="img-blg" src="{{ base }}/assets/images/rfc/sm30.png" alt="Product List İşlem Kodu"></a><br>
 
 <p>Şimdi de stok bilgisini tutup, web service ile güncelleyeceğimiz tabloyu oluşturalım:</p>
 <a href="{{ base }}/assets/images/rfc/stok_check.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/rfc/stok_check.png" alt="Stock Check Table"></a>
+<img class="img-blg" src="{{ base }}/assets/images/rfc/stok_check.png" alt="Stock Check Table"></a><br>
 
 <p>Tablolarımızı tamamladıktan sonra RFC bağlamak için bir fonksiyon modülü oluşturmalıyız. Bunun için SE37 T-Code’una gidelim ve oluşturmak istediğimiz fonksiyonun adını yazarak başlayalım:</p>
 <a href="{{ base }}/assets/images/rfc/se37.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/rfc/se37.png" alt="SE37 Screen"></a>
+<img class="img-blg" src="{{ base }}/assets/images/rfc/se37.png" alt="SE37 Screen"></a><br>
 
 <p>Oluşturduğumuz fonksiyon modülünün parametrelerini belirleyeceğiz. Benim senaryomda sadece ürün kodu girerek, ürün bilgisini bakım tablosundan aldıracağım için import parametresi olarak ürün kodunu ekliyorum. 
   Requesti ilettikten sonra yapılan işlemin başarılı ya da başarısız olduğunu dönmesi için export parametrlerine de text parametreler ekliyorum:</p>
 <a href="{{ base }}/assets/images/rfc/import.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/rfc/import.png" alt="Import Parameter"></a>
+<img class="img-blg" src="{{ base }}/assets/images/rfc/import.png" alt="Import Parameter"></a><br>
 <a href="{{ base }}/assets/images/rfc/export.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/rfc/export.png" alt="Export Parameter"></a>
+<img class="img-blg" src="{{ base }}/assets/images/rfc/export.png" alt="Export Parameter"></a><br>
 
 <p>Kurduğum senaryoya göre fonksiyonun source kodunu aşağıdaki şekilde yazdım:</p>
 {% highlight javascript %}
@@ -95,74 +95,74 @@ ENDFUNCTION.
 
 <p>Oluşturduğumuz fonksiyonu RFC’ye bağlamak için aşağıdaki şekilde, Proccessing Type alanını <b>Remote-Enabled Module</b> olarak değiştiriyorum ve fonksiyonumu Activate ediyorum.</p>
 <a href="{{ base }}/assets/images/rfc/attributes.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/rfc/attributes.png" alt="Attributes"></a>
+<img class="img-blg" src="{{ base }}/assets/images/rfc/attributes.png" alt="Attributes"></a><br>
 
 <p>Oluşturduğumuz fonksiyonun web servisini oluşturmak için <b>Utulities->More Utulities->Create Web Service->From the Function Module</b>.</p>
 
 <p>Tek bir fonksiyon modülü üzerinde çalıştığım için Module olarak oluşturuyorum. Biden fazla fonksiyon modülünü tek web servise bağlamak isteseydim Fuction Group olarak seçim yapmam gerekirdi.</p>
 <a href="{{ base }}/assets/images/rfc/utulities.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/rfc/utulities.png" alt="Utulities"></a>
+<img class="img-blg" src="{{ base }}/assets/images/rfc/utulities.png" alt="Utulities"></a><br>
 
 <p>Yaptığımız seçimlerin ardından RFC özellikleri belirlediğimiz ekran açılacak. Bu alanlara gerekli isimlendirme ve açıklamaları yazmamız yeterli. Tüm tanımlamarın ardından bu işlemi Complete ettikten sonra 
   açılan ekranda oluşturduğumuz RFC’nin bazı özelliklerini değiştirmemiz gerekiyor. Servis çağırılırken uygulanacak güvenlik önlemi olarak en sık kullanılan yöntem olan Username/Password kullanımı için Profile 
   Low olarak belirliyoruz ve servisi çağırmak istediğimizde SAP kullanıcı adı/şifremizi girerek işlem yapabileceğiz.</p>
 <a href="{{ base }}/assets/images/rfc/config.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/rfc/config.png" alt="Configuration"></a>
+<img class="img-blg" src="{{ base }}/assets/images/rfc/config.png" alt="Configuration"></a><br>
 
 <p> Soamanager ayarlarını yapmamız gerekiyor. Soamanager, web servislerin SAP ile bağlantısını sağlayan linki üreten ve bazı özellikleri tanımladığımız ekran. SAP’de T-Code kısmına Soamanager yazarak erişebiliriz. 
   Soamanager yazdıktan sonra browser’da açılan ekranda Web Service Configuration kısmına gireceğiz.</p>
 <a href="{{ base }}/assets/images/rfc/soamanager.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/rfc/soamanager.png" alt="Soamanager"></a>
+<img class="img-blg" src="{{ base }}/assets/images/rfc/soamanager.png" alt="Soamanager"></a><br>
 
 <p>Object Name olarak oluşturduğumuz fonksiyon modülünü adını aratarak bulabiliriz.</p>
 <a href="{{ base }}/assets/images/rfc/webservice.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/rfc/webservice.png" alt="Soamanager"></a>
+<img class="img-blg" src="{{ base }}/assets/images/rfc/webservice.png" alt="Soamanager"></a><br>
 
 <p>Çıkan fonksiyonun içine girdiğimizde boş bir sayfa açılacak. Create Service diyerek aşağıdaki gibi servisi oluşturabilirsiniz:</p>
 <a href="{{ base }}/assets/images/rfc/services.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/rfc/services.png" alt="Create Service"></a>
+<img class="img-blg" src="{{ base }}/assets/images/rfc/services.png" alt="Create Service"></a><br>
 
 <p>İsimlendirmeleri yaptıktan sonra dikkat edeceğimiz en önemli husus Provider Security kısmında User ID/Password seçeneğini işaretlememiz gerekiyor. Çünkü SAP’den web service ayarlarını düzenlerken Authontication olarak Low seçmiştik.</p>
 <a href="{{ base }}/assets/images/rfc/security.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/rfc/security.png" alt="Security"></a>
+<img class="img-blg" src="{{ base }}/assets/images/rfc/security.png" alt="Security"></a><br>
 
 <p>Tüm bu işlemlerin ardından servisi kullanabilmek için Republish edebiliriz. Republish ettikten sonra aşağıda gösterdiğim icona basarak oluşan linki alabiliriz.</p>
 <a href="{{ base }}/assets/images/rfc/republish.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/rfc/republish.png" alt="Republish"></a>
+<img class="img-blg" src="{{ base }}/assets/images/rfc/republish.png" alt="Republish"></a><br>
 
 <a href="{{ base }}/assets/images/rfc/link.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/rfc/link.png" alt="Link"></a>
+<img class="img-blg" src="{{ base }}/assets/images/rfc/link.png" alt="Link"></a><br>
 
 <p>Artık bir Web Service URL’ine sahibiz. Bu URL’i kullanabileceğimiz çeşitli uygulamalar var. Ben kullanıcı arayüzü kolay ve kullanışlı olduğunu düşündüğüm SOAPUI uygulamasını kullanacağım. Uygulamayı başlattıktan sonra SOAP seçeneğine tıklayıp 
   Initial WSDL alanına kopyaladığımız linki yapıştırıyoruz:</p>
 <a href="{{ base }}/assets/images/rfc/soap.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/rfc/soap.png" alt="SOAPUI"></a>
+<img class="img-blg" src="{{ base }}/assets/images/rfc/soap.png" alt="SOAPUI"></a><br>
 
 <p>OK dediğimizde bizden kullanıcı adı ve şifre girmemizi isteyen ekran açılacak. SAP giriş kullanıcı bilgilerimizi buraya yazıp OK dedikten sonra servisimiz ekrana gelecek. Servisi kullanılabilir hale getirmek için Authantication seçeneğine girerek yeni kullanıcı yetkisi eklememiz gerekiyor:</p>
 <a href="{{ base }}/assets/images/rfc/Auth.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/rfc/Auth.png" alt="Authorization"></a>
+<img class="img-blg" src="{{ base }}/assets/images/rfc/Auth.png" alt="Authorization"></a><br>
 <a href="{{ base }}/assets/images/rfc/AuthUser.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/rfc/AuthUser.png" alt="User Authorization"></a>
+<img class="img-blg" src="{{ base }}/assets/images/rfc/AuthUser.png" alt="User Authorization"></a><br>
 
 <p>Kullanıcı bilgilerini girdikten sonra Request detaylarında görüneceği üzere, import parametresi olarak sadece Ürün Kodu belirlemiştik. Şimdi denemelerimizi yapabiliriz.</p>
 
 <p>İlk olarak ürün listesinde varolan kodlardan biri ile başarılı bir kayıt girelim ve response detaylarını inceleyelim:</p>
 <a href="{{ base }}/assets/images/rfc/success.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/rfc/success.png" alt="Success Response"></a>
+<img class="img-blg" src="{{ base }}/assets/images/rfc/success.png" alt="Success Response"></a><br>
 
 <p>Göreceğimiz üzere tablomuzda bir kayıt eklendi:</p>
 <a href="{{ base }}/assets/images/rfc/successtable.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/rfc/successtable.png" alt="Success Table"></a>
+<img class="img-blg" src="{{ base }}/assets/images/rfc/successtable.png" alt="Success Table"></a><br>
 
 <p>Şimdi aynı üründen bir tane daha ekleyelim. Response detayında stoğun güncellendiğine dair mesajı ve tabloda stok miktarının arttığını görüyoruz.</p>
 <a href="{{ base }}/assets/images/rfc/update.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/rfc/update.png" alt="Update Response"></a>
+<img class="img-blg" src="{{ base }}/assets/images/rfc/update.png" alt="Update Response"></a><br>
 <a href="{{ base }}/assets/images/rfc/updatetable.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/rfc/updatetable.png" alt="Update Table"></a>
+<img class="img-blg" src="{{ base }}/assets/images/rfc/updatetable.png" alt="Update Table"></a><br>
 
 <p>Son olarak ürün listesinde olmayan bir kod eklemeyi deneyelim:</p>
 <a href="{{ base }}/assets/images/rfc/error.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-<img class="img-blg" src="{{ base }}/assets/images/rfc/error.png" alt="Error Response"></a>
+<img class="img-blg" src="{{ base }}/assets/images/rfc/error.png" alt="Error Response"></a><br>
 
 <p>Geçerli olmayan ürün kodu ile ilgili mesajı görüyoruz. </p>
 
