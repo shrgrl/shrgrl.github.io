@@ -88,5 +88,8 @@ collections:
   abap1:
     output: true
     permalink: /:collection/:path
+  rfc:
+    output: true
+    permalink: /:collection/:path
    
 include: ["_pages"]
