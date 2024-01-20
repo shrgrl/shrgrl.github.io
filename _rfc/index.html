@@ -1,17 +1,25 @@
 ---
-title: Fiori'ye Giriş
-sub-title: ERP, SAP, ABAP
-collection: fiori1 
+title: SAP'de Web Service Kullanımı
+sub-title: Web Service, RFC
+collection: rfc 
 layout: blog-item
 ---
 
 <p>Herkese merhaba. Bu yazımda, yazdığım bir fonksiyonu RFC’ye bağlayarak temel düzeyde bir web servisin çalışma mantığını ve örnek senaryoda işleyişini göstereceğim. Web servisler, 
   SAP’yi farklı bir sisteme bağlamak ve dışardan veri akışı sağlamak için kullanılan bir yöntemdir.</p>
-<h4><b>Web Service</b></h4>
-<p>Kurumsal Kaynak Planlama anlamına gelen ERP(Enterprise Resource Planning) planlama, üretim, işletme... gibi bir kurumun ihtiyaç duyduğu tüm yapıyı tek bir bünyeye toplayan
-  sistemlere verilen genel ad olarak tanımlayabiliriz. ERP dünyasının en bilinen ve yaygın programı da SAP'dir. SAP tüm ihtiyaçları karşılamaya yönelik kendi içinde modüllere ayrılmış
-  bir sistemdir. Firmaların satış ve dağıtımdan sorumlu modülü SD(Sale and Distrubition), üretim ve planlamadan sorumlu modülü PP(Production Planning) gibi örnek verebiliriz. Her
-  modül kendi alanında uzmanlık gerektirmekte ve yetiştirilmektedir. 
+<h4><b>Ürün Stok Kontrolü Uygulaması</b></h4>
+<p>İlk olarak bir senaryo belirlemekle başlıyorum. Bir market zincirinin SAP sistemler kullanarak ürün stok yönetimi yaptığını varsayalım. Bu şirket SAP’de bir tabloya, stoğa yeni eklenen ürünlerin kaydını atsın. 
+  Aynı malzeme numarasına sahip ürünlerin adet sayısı artarken, her yeni eklenen ürün için yeni bir satır eklensin. Ürün bilgisini de müşterinin düzenli olarak güncellediği bir bakım tablosundan alsın.</p>
+<a href="{{ base }}/assets/images/rfc/pseudo.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/rfc/pseudo.png" alt="pseudo"></a>
+
+
+
+
+
+
+
+
 <p>ABAP(Advanced Business Application Programming) ise SAP tarafından SAP yazılımlarının geliştirilmesi için ortaya çıkmış, nesneye yönelik, yüksek seviyeli bir yazılım dilidir. 
   ABAP ile istenilen bilgiler veritabanından okunur, sisteme kayıt eklenebilmesi için gerekli alanlar ve SAP sistemleri arasında veri alışverişini sağlayan kullanıcı arayüzleri yazılıp raporlanabilir.
 </p>
