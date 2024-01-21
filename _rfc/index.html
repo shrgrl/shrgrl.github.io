@@ -5,7 +5,9 @@ collection: rfc
 layout: blog-item
 ---
 
-<p>Herkese merhaba. Bu yazımda, yazdığım bir fonksiyonu RFC’ye bağlayarak temel düzeyde bir web servisin çalışma mantığını ve örnek senaryoda işleyişini göstereceğim. Web servisler, 
+<p>Herkese merhaba!</p>
+
+<p>Bu yazımda, oluşturduğum bir fonksiyonu RFC’ye bağlayarak temel düzeyde bir web servisin çalışma mantığını ve örnek senaryoda işleyişini göstereceğim. Web servisler, 
   SAP’yi farklı bir sisteme bağlamak ve dışardan veri akışı sağlamak için kullanılan bir yöntemdir.</p>
 <h4><b>Ürün Stok Kontrolü Uygulaması</b></h4>
 <p>İlk olarak bir senaryo belirlemekle başlıyorum. Bir market zincirinin SAP sistemler kullanarak ürün stok yönetimi yaptığını varsayalım. Bu şirket SAP’de bir tabloya, stoğa yeni eklenen ürünlerin kaydını atsın. 
@@ -30,7 +32,7 @@ layout: blog-item
 <img class="img-blg" src="{{ base }}/assets/images/rfc/se37.png" alt="SE37 Screen"></a><br>
 
 <p>Oluşturduğumuz fonksiyon modülünün parametrelerini belirleyeceğiz. Benim senaryomda sadece ürün kodu girerek, ürün bilgisini bakım tablosundan aldıracağım için import parametresi olarak ürün kodunu ekliyorum. 
-  Requesti ilettikten sonra yapılan işlemin başarılı ya da başarısız olduğunu dönmesi için export parametrlerine de text parametreler ekliyorum:</p>
+  Requesti ilettikten sonra yapılan işlemin başarılı ya da başarısız olduğunu dönmesi için export parametrlerine de text parametreleri ekliyorum:</p>
 <a href="{{ base }}/assets/images/rfc/import.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/rfc/import.png" alt="Import Parameter"></a><br>
 <a href="{{ base }}/assets/images/rfc/export.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
@@ -97,9 +99,8 @@ ENDFUNCTION.
 <a href="{{ base }}/assets/images/rfc/attributes.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/rfc/attributes.png" alt="Attributes"></a><br>
 
-<p>Oluşturduğumuz fonksiyonun web servisini oluşturmak için <b>Utulities->More Utulities->Create Web Service->From the Function Module</b>.</p>
-
-<p>Tek bir fonksiyon modülü üzerinde çalıştığım için Module olarak oluşturuyorum. Biden fazla fonksiyon modülünü tek web servise bağlamak isteseydim Fuction Group olarak seçim yapmam gerekirdi.</p>
+<p>Fonksiyonun web servisini oluşturmak için <b>Utulities->More Utulities->Create Web Service->From the Function Module</b> seçimini yapmamız gerekiyor.
+  Tek bir fonksiyon modülü üzerinde çalıştığım için Module olarak oluşturuyorum. Biden fazla fonksiyon modülünü tek web servise bağlamak isteseydim Fuction Group olarak seçim yapmam gerekirdi.</p>
 <a href="{{ base }}/assets/images/rfc/utulities.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/rfc/utulities.png" alt="Utulities"></a><br>
 
@@ -114,7 +115,7 @@ ENDFUNCTION.
 <a href="{{ base }}/assets/images/rfc/soamanager.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/rfc/soamanager.png" alt="Soamanager"></a><br>
 
-<p>Object Name olarak oluşturduğumuz fonksiyon modülünü adını aratarak bulabiliriz.</p>
+<p>Object Name kısmına, oluşturduğumuz fonksiyon modülünün adını aratarak bulabiliriz.</p>
 <a href="{{ base }}/assets/images/rfc/webservice.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/rfc/webservice.png" alt="Soamanager"></a><br>
 
@@ -168,6 +169,9 @@ ENDFUNCTION.
 
 <p>Böylece SAP’de veri akışı sağlamak için Web Service oluşturarak bu gibi işlemler yapabildiğimizi görmüş olduk. Fonksiyon içeriğini detaylandırarak daha farklı senarryolar kurgulanabilir. Umarım ilk adım için yardımcı bir doküman olmuştur.</p>
 
+<br>
+<p>Kaynakça: <a href="https://www.udemy.com/course/sap-abap-ileri-seviye-egitim/learn/lecture/34615096" target="_blank">Burak Kocaaslan Udemy Eğitimi</a></p>
+  
 <div id="disqus_thread"></div>
 <script>
 /**
