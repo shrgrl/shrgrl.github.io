@@ -12,7 +12,7 @@ layout: default
 <div class="container page-component project-item-content nfloat-up">
   {{ content }}
  
-  <a href="/{{ page.collection }}" class="btn btn-sasha-greyest" id="txt" style="margin-top: 15px;"></a>
+  <a href="{% if page.collection == 'web' %}/blog/technoblog/web{% elsif page.collection == 'parallel' %}/blog/technoblog/parallel{% elsif page.collection == 'rfid' %}/blog/technoblog/rfid{% elsif page.collection == 'graphics' %}/blog/technoblog/graphics{% else %}/{{ page.collection }}{% endif %}" class="btn btn-sasha-greyest" id="txt" style="margin-top: 15px;"></a>
 </div>
   <script>
   var x = "{{ page.collection | capitalize }}"

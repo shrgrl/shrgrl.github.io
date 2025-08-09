@@ -1,5 +1,4 @@
 title: Seher Gurel Mousselli
-
 tagline: Computer Engineer
 
 sass:
@@ -7,89 +6,100 @@ sass:
   style: expanded
 
 collections:
+  # Main blog categories (shown in navbar)
+  technology:
+    output: true
+    permalink: /technology/:path
+  hobby:
+    output: true
+    permalink: /hobby/:path
+  polyglot:
+    output: true
+    permalink: /polyglot/:path
+
+  # Technoblog content (hierarchical URLs)
+  restApi:
+    output: true
+    permalink: /blog/technoblog/restapi/:path
+  sap:
+    output: true
+    permalink: /blog/technoblog/sap/:path
+  fiori1:
+    output: true
+    permalink: /blog/technoblog/fiori1/:path
+  fiori2:
+    output: true
+    permalink: /blog/technoblog/fiori2/:path
+  ghPages:
+    output: true
+    permalink: /blog/technoblog/ghpages/:path
+  nodered:
+    output: true
+    permalink: /blog/technoblog/nodered/:path
+  selenium:
+    output: true
+    permalink: /blog/technoblog/selenium/:path
+  abap1:
+    output: true
+    permalink: /blog/technoblog/abap/:path
+  rfc:
+    output: true
+    permalink: /blog/technoblog/rfc/:path
+  blogger:
+    output: true
+    permalink: /blog/technoblog/blogger/:path
+
+  # Hobbylog content (hierarchical URLs)  
+  netflix:
+    output: true
+    permalink: /blog/hobbylog/netflix/:path
+  telegram:
+    output: true
+    permalink: /blog/hobbylog/telegram/:path
+  amazon:
+    output: true
+    permalink: /blog/hobbylog/amazon/:path
+  kendinyap:
+    output: true
+    permalink: /blog/hobbylog/kendinyap/:path
+  painting:
+    output: true
+    permalink: /blog/hobbylog/painting/:path
+
+  # Polyblog content (hierarchical URLs)
+  english:
+    output: true
+    permalink: /blog/polyblog/english/:path
+  poem:
+    output: true
+    permalink: /blog/polyblog/poem/:path
+  toefl:
+    output: true
+    permalink: /blog/polyblog/toefl/:path
+
+  # Project collections (moved under technoblog)
+  web:
+    output: true
+    permalink: /blog/technoblog/web/:path
+  parallel:
+    output: true  
+    permalink: /blog/technoblog/parallel/:path
+  graphics:
+    output: true
+    permalink: /blog/technoblog/graphics/:path
+  rfid:
+    output: true
+    permalink: /blog/technoblog/rfid/:path
+
+  # Unused collections
   mobile:
     output: false
     permalink: /:collection/:path
   cinema:
-    output: true
-    permalink: /:collection/:path
-  web:
-    output: true
-    permalink: /:collection/:path
-  parallel:
-    output: true
-    permalink: /:collection/:path
-  graphics:
-    output: true
+    output: false
     permalink: /:collection/:path
   game:
     output: false
     permalink: /:collection/:path
-  rfid:
-    output: true
-    permalink: /:collection/:path
-  blogger:
-    output: true
-    permalink: /:collection/:path
-  restApi:
-    output: true
-    permalink: /:collection/:path
-  fiori1:
-    output: true
-    permalink: /:collection/:path
-  fiori2:
-    output: true
-    permalink: /:collection/:path
-  ghPages:
-    output: true
-    permalink: /:collection/:path
-  technology:
-    output: true
-    permalink: /:collection/:path
-  hobby:
-    output: true
-    permalink: /:collection/:path
-  netflix:
-    output: true
-    permalink: /:collection/:path
-  nodered:
-    output: true
-    permalink: /:collection/:path
-  selenium:
-    output: true
-    permalink: /:collection/:path
-  telegram:
-    output: true
-    permalink: /:collection/:path
-  polyglot:
-    output: true
-    permalink: /:collection/:path
-  english:
-    output: true
-    permalink: /:collection/:path
-  poem:
-    output: true
-    permalink: /:collection/:path
-  kendinyap:
-    output: true
-    permalink: /:collection/:path
-  painting:
-    output: true
-    permalink: /:collection/:path
-  toefl:
-    output: true
-    permalink: /:collection/:path
-  sap:
-    output: true
-    permalink: /:collection/:path
-  amazon:
-    output: true
-    permalink: /:collection/:path
-  abap1:
-    output: true
-    permalink: /:collection/:path
-  rfc:
-    output: true
-    permalink: /:collection/:path
-   
+
 include: ["_pages"]

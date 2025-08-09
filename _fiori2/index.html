@@ -1,17 +1,17 @@
 ---
-title: ODATA Web Service Uygulaması
-sub-title: ODATA, Destinations, CRUD İşlemler
+title: ODATA Web Service Application
+sub-title: ODATA, Destinations, CRUD Operations
 collection: fiori2 
 layout: blog-item
 ---
 
-<p>Herkese merhaba. Önceki yazımda sizlerle beraber Fiori’ye küçük bir giriş yapmıştık ve herhangi bir web servise bağlamadan küçük örnekler göstermiştik. Bugün ise işi bir adım ileri götürerek 
-  kendi ODATA servisimizi oluşturup CRUD(Create, Read, Update, Delete) işelemler yapabileceğimiz temel bir örnek ile konumuzu pekiştireceğiz.</p>
+<p>Hello everyone. In my previous article, we made a small introduction to Fiori together and showed small examples without connecting to any web service. Today, we will take it a step further by 
+  creating our own ODATA service and reinforcing our topic with a basic example where we can perform CRUD (Create, Read, Update, Delete) operations.</p>
 
 <h4><b>ODATA SERVICES</b></h4>
-<p>SAP’nin farklı istemciler ile veri alışverişi sağladığı bir servis yapısıdır. Bu veri alışverişini GUI tarafında yazdığımız ABAP kodları ile işlemler yaparak sağlıyoruz. 
-  Servisler temel olarak varlıklar<i>(entity)</i>, bu varlıkların özellikleri<i>(property)</i> ve bu varlıklara bağlı <i>metot</i>lar’dan oluşur. ODATA servisleri için GUI’de 
-  <b><i>SEGW</i></b> t-code ile işlemler yapılır. ODATA servisler ile kullanabildiğimiz HTTP request tipleri: 
+<p>It is a service structure that SAP provides for data exchange with different clients. We provide this data exchange by performing operations with ABAP codes written on the GUI side. 
+  Services basically consist of entities<i>(entity)</i>, properties of these entities<i>(property)</i> and <i>methods</i> linked to these entities. For ODATA services, operations are performed in the GUI with 
+  <b><i>SEGW</i></b> t-code. HTTP request types we can use with ODATA services: 
 </p>
 <a href="{{ base }}/assets/images/odata/request_type.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/odata/request_type.jpg" alt="HTTP Request Tipleri"></a><br>
@@ -365,18 +365,18 @@ onKayitFrag: function() {
 		Soyad: vSoyad,
 		Tarih: vTarih
 	};
-	sap.ui.core.BusyIndicator.show(); //Bir işlem devam ederken başka işlem başlatmamak için
+	sap.ui.core.BusyIndicator.show(); //To not start another operation while an operation is ongoing
 	this.getView().getModel().create("/ListSet", sData, {
 		success: function(oData) {
 			sap.ui.core.BusyIndicator.hide();
 			that._getKayitDialog().close();
 			that.onRefresh();
-			MessageToast.show("Başarılı");
+			MessageToast.show("Successful");
 		},
 		error: function(oError) {
 			sap.ui.core.BusyIndicator.hide();
 			that._getKayitDialog().close();
-			MessageToast.show("Başarısız");
+			MessageToast.show("Failed");
 		}
 	});
 }
@@ -445,7 +445,7 @@ onInit: function() {
 		Id: "",
 		Ad: "",
 		Soyad: "",
-		Tarih: new Date() //new Date() bugünün tarihini veriyor. Bu alanı boş bırakınca hata verdiği için bugünün tarihini verdik.
+		Tarih: new Date() //new Date() gives today's date. We gave today's date because it gives an error when this field is left blank.
 	};
 	var oModel = new JSONModel(sData);
 	this.getView().setModel(oModel, "list");
@@ -461,10 +461,10 @@ onKisiSil: function(oEvent) {
 	this.getView().getModel().remove("/ListSet('" + vId + "')", {
 		method: "DELETE",
 		success: function(data) {
-			MessageToast.show(vId + " numaralı aktivite silindi.");
+			MessageToast.show(vId + " numbered activity deleted.");
 		},
 		error: function(e) {
-			MessageToast.show(vId + " numaralı aktivite silinemedi.");
+			MessageToast.show(vId + " numbered activity could not be deleted.");
 		}
 	});
 },
@@ -480,9 +480,9 @@ onKisiGuncelle: function(oEvent) {
 }
 {% endhighlight %}
 
-<p>Bütün bu adımların ardından CRUD işlemler yapabildiğimiz temel bir uygulamayı tamamlamış olduk. Uygulamanın eksiklikleri ya da daha nasıl kullanışlı ve güzel hale getirilebilir 
-kısmı bizlere kalmış😊. Görselleri ile detaylı bir şekilde anlatmaya çalıştığım bu yazı umarım ilgilenenler için faydalı bir yazı olmuştur.<p>
-<p>Okuduğunuz için teşekkür ederim, bir sonraki yazıda görüşmek üzere.</p>
+<p>After all these steps, we have completed a basic application where we can perform CRUD operations. The shortcomings of the application or how it can be made more useful and beautiful 
+is left to us😊. I hope this article, which I tried to explain in detail with its visuals, has been a useful article for those interested.<p>
+<p>Thank you for reading, see you in the next article.</p>
 
 <div id="disqus_thread"></div>
 <script>

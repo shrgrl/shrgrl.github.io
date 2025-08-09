@@ -1,101 +1,101 @@
 ---
-title: Java Hastane Yönetim Sistemi Uygulaması
+title: Java Hospital Management System Application
 layout: project-item
 order: 1
 ---
 
 <p>
-  Herkese merhaba. Bu projede Java ile yazılmış bir Hastane Yönetim Sistemi uygulamasını anlatacağım. Kaynak kodlar için Github hesabımı takip edebilirsiniz:
+  Hello everyone. In this project, I will explain a Hospital Management System application written in Java. You can follow my Github account for source codes:
 </p>
-<p><a href="https://github.com/shrgrl/JavaHospitalManagementSystem" target="_blank" class="btn btn-sasha-darkest"><i class="fab fa-github"></i>Detay için tıkla</a></p>
+<p><a href="https://github.com/shrgrl/JavaHospitalManagementSystem" target="_blank" class="btn btn-sasha-darkest"><i class="fab fa-github"></i>Click for Details</a></p>
 
-<h5 class="txt-weight-bold">Kullanılan Teknolojiler</h5>
+<h5 class="txt-weight-bold">Technologies Used</h5>
 <ul>
   <li>Java</li>
   <li>JavaSwing</li>
   <li>MySL</li>
 </ul>
 
-<p>Hastane Yönetim Sistemi otomasyon projesine başlarken, öncelikle hakim olmamız gereken konular mevcuttur. Java Swing ve MySQL veri tabanı konuları hakkında bilgi sahibi olmamız 
-  gerekli. Projede programdan veri tabanına bir bağlantı söz konusu. Temel olarak bir programlama dilinden (JAVA veya farklı bir dil) bir veritabanına bağlanmak ve veri almak için aşağıdaki üç adım izlenmelidir:</p>
+<p>When starting a Hospital Management System automation project, there are topics we need to master first. We need to have knowledge about Java Swing and MySQL database topics. 
+  The project involves a connection from the program to the database. Basically, to connect from a programming language (JAVA or another language) to a database and retrieve data, the following three steps should be followed:</p>
 <ul>
-  <li>Veri tabanına bir bağlantı oluşturmak (connection)</li>
-  <li>Bağlantı üzerinden bir sorgunun çalıştırılması</li>
-  <li>Sorgunun sonucunun bir veri yapısı (Datastructure) içerisine alınması</li>
+  <li>Creating a connection to the database (connection)</li>
+  <li>Executing a query through the connection</li>
+  <li>Storing the query result in a data structure (Datastructure)</li>
 </ul>
 
-<h5 class="txt-weight-bold">Veri Tabanına Bağlantı Oluşturulması</h5>
-<p>Bu aşamada ve bundan sonraki veri tabanı işlemlerinde JAVA dilinde bulunan java.sql.* paketini kullanıyoruz. Bu paket için;</p>
+<h5 class="txt-weight-bold">Creating Database Connection</h5>
+<p>At this stage and in subsequent database operations, we use the java.sql.* package available in JAVA language. For this package;</p>
 {% highlight javascript %}
 import java.sql.*;
 {% endhighlight %}
 
-<p>satırını kodumuzun başına ekliyoruz. Bağlantıyı oluşturmak için java.sql.Connection sınıfından (class) bir nesne (object) oluşturuyoruz. Bu işlem için aşağıdaki satırı kullanabiliriz:</p>
+<p>we add this line to the beginning of our code. To create the connection, we create an object from the java.sql.Connection class. We can use the following line for this operation:</p>
 {% highlight javascript %}
 Connection con = DriverManager.getConnection(
   "jdbc:derby://localhost:1527/xyz;user=username;password=userpassword;");
 {% endhighlight %}
 
-<p>Yukarıdaki satırda con ismi verilen nesne(object) oluşturulmuş ve yerel bilgisayarda(localhost) bulunan <i>xyz</i> isimli veritabanına <i>username</i> kullanıcısı ve <i>userpassword</i> şifresi ile bağlanmaya çalışmıştır.1527 bilgisayarımızda kurulu olan JavaDB’nin port numarasıdır. 1527 bilgisayarımızda kurulu olan JavaDB’nin port numarasıdır.</p>
+<p>In the line above, an object named con has been created and attempted to connect to the database named <i>xyz</i> located on the local computer (localhost) with the username <i>username</i> and password <i>userpassword</i>. 1527 is the port number of JavaDB installed on our computer. 1527 is the port number of JavaDB installed on our computer.</p>
 
-<h5 class="txt-weight-bold">MySQL Veri Tabanı</h5>
-<p>MySQL, Unix, OS/2 ve Windows sistemlerde kullanılan açık kaynak kodlu bir veri tabanı sistemidir. Bir web tabanlı takip ve otomasyon sistemi için gerekli olan kayıt tutma işlemi MySQL ile çok hızlı ve kolay bir şekilde yapılır. Ayrıca masaüstü programlarınızın verilerinin kaydını tutmak; bu muhasebe programı veya bir kayıt defteri vb. gibi bilgi saklanabilen programlar içinde olabilir. MySQL ile birlikte adını sıkça duyduğunuz phpMyadmin ise MySQL’i kolayca yönetebilmek ve veri tabanı işlemlerini hızlıca yapabilmek için gerekli olan bir programdır. PhpMyadmin ile birçok kaydı veri tabanınıza işleyebilirsiniz. Ayrıca MYSQL hem asp hem php sayfalarına uyumlu bir şekilde çalıştırılabilir. MYSQL veri tabanı erişim süresi oldukça hızlıdır. Gerçekten bu anlamda MYSQL diğer veri tabanı yönetim sistemlerine fark atar. MYSQL veri tabanı yönetimi için birçok program kullanılabilir. PHPMYADMIN adını verdiğimi yönetim programı en eski ve en çok kullanılan programların başında gelir. “MySQL-Front” da son günlerde oldukça fazla kullanılan MYSQL veri tabanı yönetim programlarından biridir.</p>
-<p>Aşağıda sizin için bir veri tabanına iki farklı programla da giriş yaptım. Görüldüğü gibi aslında aralarındaki tek fark buttonların yerleri ve isimleri. Sonuçta yaptığınız iş MYSQL tipindeki bir veri tabanını yönetmekten öteye geçmez. Fakat ben PHYMYADMIN kullanmayı tercih ediyorum.</p>
+<h5 class="txt-weight-bold">MySQL Database</h5>
+<p>MySQL is an open-source database system used on Unix, OS/2, and Windows systems. The record-keeping process required for a web-based tracking and automation system is done very quickly and easily with MySQL. It can also be used to keep records of your desktop programs' data; this can be within programs that can store information such as accounting programs or a registry, etc. PhpMyadmin, which you often hear about along with MySQL, is a program necessary to easily manage MySQL and quickly perform database operations. You can process many records into your database with PhpMyadmin. Additionally, MYSQL can be run compatibly with both asp and php pages. MYSQL database access time is quite fast. MySQL really makes a difference compared to other database management systems in this regard. Many programs can be used for MYSQL database management. The management program I call PHPMYADMIN is among the oldest and most used programs. "MySQL-Front" is also one of the MYSQL database management programs that has been used quite frequently recently.</p>
+<p>Below, I have logged into a database for you with two different programs. As you can see, the only difference between them is actually the locations and names of the buttons. In the end, what you do is nothing more than managing a MYSQL-type database. However, I prefer to use PHPMYADMIN.</p>
 
 <a href="{{ base }}/assets/images/projects/javahospital/img3.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/projects/javahospital/img3.jpg" alt=""></a><br/>
 <a href="{{ base }}/assets/images/projects/javahospital/img4.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/projects/javahospital/img4.jpg" alt=""></a><br/>
 
-<h5 class="txt-weight-bold">MySQL Veritabanı Oluşturma</h5>
-<p>MySQL’e kısa bir giriş yapıp temel bilgileri edindikten sonra veri tabanı oluşturmayı öğrendim. Fakat MySQL veri tabanı oluşturmadan önce bilgisayarımızda MySQL veri tabanı sunucusunun phpmyadmin veritabanı yöneticisinin yüklü olması gerekmekte. Beim bilgisayarımda zaten yüklü bulunan XAMPP uygulaması benim işime yarıyordu. Ben de ondan faydalanarak devam ettim.</p>
+<h5 class="txt-weight-bold">Creating MySQL Database</h5>
+<p>After making a brief introduction to MySQL and gaining basic information, I learned to create a database. However, before creating a MySQL database, the MySQL database server and phpmyadmin database manager need to be installed on our computer. The XAMPP application that was already installed on my computer served my purpose. I continued by making use of it.</p>
 <a href="{{ base }}/assets/images/projects/javahospital/img5.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/projects/javahospital/img5.jpg" alt=""></a><br/>
 
-<p>XAMPP’i çalıştırdıktan sonra Apache ve MySQL’i start yapmamız gerekiyor. Her hangi bir internet tarayıcısının url adresine "http://localhost/phpmyadmin/" yazıyoruz.
-Karşımıza gelen ekranda sol kısımda bulunan new linki ile yeni bir veri tabanı oluşturma işlemine başlıyoruz.</p>
+<p>After running XAMPP, we need to start Apache and MySQL. We type "http://localhost/phpmyadmin/" into the URL address of any internet browser.
+On the screen that appears, we start the process of creating a new database with the new link located on the left side.</p>
 <a href="{{ base }}/assets/images/projects/javahospital/img6.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/projects/javahospital/img6.jpg" alt=""></a><br/>
 
-<p>Yeni veritabanı oluştur linkine tıkladıktan sonra aşağıdaki şekilde veri tabanı adını ve kullanılacak dil seçeneğini <i>Turkish_ci</i> ya da <i>utf8_bin</i> seçiyoruz.</p>
+<p>After clicking the create new database link, we select the database name and the language option to be used as <i>Turkish_ci</i> or <i>utf8_bin</i> as shown below.</p>
 <a href="{{ base }}/assets/images/projects/javahospital/img7.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/projects/javahospital/img7.jpg" alt=""></a><br/>
 
-<p>Bu işlemden sonra bizden veritabanına tablo eklememiz istenecek. yazar tablosunusu 3 alan olacak şekilde seçiyoruz.</p>
+<p>After this process, we will be asked to add a table to the database. We select the author table to have 3 fields.</p>
 <a href="{{ base }}/assets/images/projects/javahospital/img8.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/projects/javahospital/img8.jpg" alt=""></a><br/>
 
-<p>Tablo ekleme işleminden sonraki adım tablo içindeki sütün(alan) isimlerini oluşturma işlemine geçiyoruz. Resimdeki gibi yazar tablosuna 3 tane alan ekleyip. 1. alanı Birincil anahtar ve A_I(Otomatik artan sayı) olarak belirliyoruz.) Yazarın adı ve soyadı alanı metinsel tipte olduğu için onu var_char(25) olarak belirliyoruz. Birincil anahtar işleminde sizden onaylamanız gerektiği ifade edilebilir. Onaylama çıkarsa go butonuna basmanız yeterli olacaktır.</p>
+<p>The step after the table addition process is to create the column (field) names within the table. As shown in the picture, we add 3 fields to the author table. We set the 1st field as Primary key and A_I (Auto increment). Since the author's name and surname field is of text type, we set it as var_char(25). In the primary key process, it may be stated that you need to confirm. If a confirmation appears, pressing the go button will be sufficient.</p>
 <a href="{{ base }}/assets/images/projects/javahospital/img9.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/projects/javahospital/img9.jpg" alt=""></a><br/>
 <a href="{{ base }}/assets/images/projects/javahospital/img10.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/projects/javahospital/img10.jpg" alt=""></a><br/>
 
-<p>Tabloyu oluşturduktan sonra phpmyadmin ara yüzü ile tablomuza örnek iki tane kayıt girişi yapalım. Yatay menüde Insert/Ekle linkine tıklayıp örnek iki tane girdikten sonra GİT/GO butonuna tıklayınız.</p>
+<p>After creating the table, let's make two sample record entries to our table with the phpmyadmin interface. Click on the Insert link in the horizontal menu and after entering two samples, click the GO button.</p>
 <a href="{{ base }}/assets/images/projects/javahospital/img11.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/projects/javahospital/img11.jpg" alt=""></a><br/>
 
-<p>Ve böylece örnek bir veri tabanı oluşturmuş olduk.</p>
+<p>And thus we have created a sample database.</p>
 
-<h5 class="txt-weight-bold">Projenin Çalıştırılması</h5>
+<h5 class="txt-weight-bold">Running the Project</h5>
 
-<p>Projeyi çalıştırmak için extra 3 jar dosyasına ihtiyacımız var. <a href="https://github.com/shrgrl/JavaHospitalManagementSystem/tree/master/jarDosyalari" target="_blank" >Buradan</a> ulaşabilirsiniz. NetBeans ile projeyi başlattıktan sonra Library kısmına bu jar dosyalarını eklememiz gerekli. XAMPP'de Apache ve MySQL'i başlattıktan sonra projemizi çalıştırabiliriz.</p>
+<p>We need 3 extra jar files to run the project. You can access them <a href="https://github.com/shrgrl/JavaHospitalManagementSystem/tree/master/jarDosyalari" target="_blank" >from here</a>. After starting the project with NetBeans, we need to add these jar files to the Library section. After starting Apache and MySQL in XAMPP, we can run our project.</p>
 
-<h5 class="txt-weight-bold">Hastane Yönetim Sistemi Proje Arayüzleri</h5>
+<h5 class="txt-weight-bold">Hospital Management System Project Interfaces</h5>
 <a href="{{ base }}/assets/images/projects/javahospital/img12.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/projects/javahospital/img12.jpg" alt=""></a><br/>
 
-<p>Ana ekranımızda bulunan sekmeler ile işlemler yapabileceğiz.</p>
+<p>We will be able to perform operations with the tabs on our main screen.</p>
 <a href="{{ base }}/assets/images/projects/javahospital/img13.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/projects/javahospital/img13.jpg" alt=""></a><br/>
 <a href="{{ base }}/assets/images/projects/javahospital/img14.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/projects/javahospital/img14.jpg" alt=""></a><br/>
 
-<p>Projemizin tasarımı bu şekildedir.</p>
+<p>This is the design of our project.</p>
 
-<h5 class="txt-weight-bold">Veri Tabanı</h5>
-<p>Projemizin veri tabanı 13 adet tablodan oluşuyor. Hasta kabul, fatura, taburcu, doktor, hasta kayıt, oda, servis, hemşire, koğuş olmak üzere tablolar mevcut.</p>
+<h5 class="txt-weight-bold">Database</h5>
+<p>Our project's database consists of 13 tables. There are tables including patient admission, invoice, discharge, doctor, patient registration, room, service, nurse, and ward.</p>
 <a href="{{ base }}/assets/images/projects/javahospital/img15.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/projects/javahospital/img15.jpg" alt=""></a><br/>
 
-<p>Tabloların her birine bir takım veriler ekledim. Siz de kendi isteğinize göre çeşitli tablolar ekleyebilirsiniz.</p>
+<p>I added some data to each of the tables. You can also add various tables according to your own preference.</p>

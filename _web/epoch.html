@@ -1,13 +1,13 @@
 ---
-title: Epoch Zaman Dönüştürücü Uygulaması
+title: Epoch Time Converter Application
 layout: project-item
 order: 4
 ---
 
-<p>Herkese merhaba. Burada, Epoch zamanı ile ilgili bilgiler vereceğim ve Epoh Zaman Dönüştürücü uygulamasını anlatacağım. Kaynak kodlar için Github hesabımı takip edebilirsiniz:</p>
+<p>Hello everyone. Here, I will give information about Epoch time and explain the Epoch Time Converter application. You can follow my Github account for source codes:</p>
 <p><a href="https://github.com/shrgrl/epochConverter" target="_blank" class="btn btn-sasha-darkest"><i class="fab fa-github"></i>Fork me</a></p>
 
-<h5 class="txt-weight-bold">Kullanılan Teknolojiler</h5>
+<h5 class="txt-weight-bold">Technologies Used</h5>
 <ul>
   <li>HTML</li>
   <li>CSS</li>
@@ -15,19 +15,18 @@ order: 4
   <li>Bootstrap</li>
 </ul>
 
-<p>1 Ocak 1970 günü saat 00:00’da başlayan ve sonrasındaki herhangi bir ana kadar geçen saniye cinsinden süreye <b>Epoch Zamanı</b> adı verilmektedir. (Hesaplamalarda artık yılları 
-  da dikkate almamız gerek, artık olmayan her bir yılda 86400x365=31536000 saniye ve her bir artık yılda 86400x366=31622400 saniye tüketildiğini hatırlayalım.)</p>
+<p>The duration in seconds from January 1, 1970 at 00:00 to any subsequent moment is called <b>Epoch Time</b>. (We need to take leap years into account in calculations, remember that 86400x365=31536000 seconds are consumed in each non-leap year and 86400x366=31622400 seconds in each leap year.)</p>
 
-<p>Proje 3 kısımdan oluşuyor. Uygulamanın birinci (en üst) bölümünde aşağıdaki gibi bir ekran yer alıyor ve bu ekrana ait 3 bilginin her biri her saniye güncellenerek kullanıcıya sunuluyor.</p>
+<p>The project consists of 3 parts. In the first (top) section of the application, there is a screen like the one below and each of the 3 information on this screen is updated every second and presented to the user.</p>
 <a href="{{ base }}/assets/images/projects/epoch/img1.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/projects/epoch/img1.jpg" alt=""></a><br/>
 
-<p>Uygulamanın ikinci bölümünde aşağıdaki gibi bir ekran yer alıyor ve bu ekrandaki text kutucuğuna girilen Epoch zamanı yandaki butona tıklandığında bizim kullandığımız zaman formatına dönüştürülerek kullanıcıya sunuluyor.</p>
+<p>In the second section of the application, there is a screen like the one below and when the Epoch time entered in the text box on this screen is clicked on the button next to it, it is converted to the time format we use and presented to the user.</p>
 <a href="{{ base }}/assets/images/projects/epoch/img2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/projects/epoch/img2.jpg" alt=""></a><br/>
   
-<p>Uygulamanın üçüncü ve son bölümünde aşağıdakine benzer bir ekran yer alıyor ve bu ekrandaki her bir HTML form elemanı select olmalıdır. Yani kullanıcı her bir veri girişini bir drop-down listesi sayesinde yapabiliyor. (Year için listelenecek değerler 1971 ile 2023, Month için 01-January ile 12-December, Day için 01 ile 31, Hour için 01 ile 23, Minute için 01 ile 59 ve Second için 01 ile 59 arasındadır. Öte yandan Time Zone Local veya GMT olarak seçilebiliyor. Kullanıcı veri girişi yaptıktan sonra Convert isimli butonu tıkladığında ilgili tarihe denk gelen Epoch zamanı hemen altta ekrana yansıtılıyor.</p>
+<p>In the third and final section of the application, there is a screen similar to the one below and each HTML form element on this screen should be select. So the user can make each data entry thanks to a drop-down list. (The values to be listed for Year are between 1971 and 2023, for Month 01-January to 12-December, for Day 01 to 31, for Hour 01 to 23, for Minute 01 to 59 and for Second 01 to 59. On the other hand, Time Zone can be selected as Local or GMT. When the user enters data and clicks the button named Convert, the Epoch time corresponding to the relevant date is immediately reflected on the screen below.</p>
 <a href="{{ base }}/assets/images/projects/epoch/img3.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/projects/epoch/img3.jpg" alt=""></a><br/> 
   
-<p>Projeyi direkt mevcut html sayfasını çalıştırarak kullanabilirsiniz.</p> 
+<p>You can use the project directly by running the current html page.</p>

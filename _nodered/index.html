@@ -1,55 +1,54 @@
 ---
-title: Node-Red Nedir?
-sub-title: Node-Red'e Giriş ve Başlangıç Seviye Örnekler
+title: What is Node-Red?
+sub-title: Introduction to Node-Red and Beginner Level Examples
 collection: nodered 
 layout: blog-item
 ---
-<p>Herkese merhaba. Bugün yakın zamanda tanıştığım ve gelecekte sıklıkla karşılaşacağımızı düşündüğüm Node-Red uygulama geliştirme ortamı hakkında konuşmak istiyorum. Node-Red, 
-  NodeJS tabanlı, web tarayıcıları üzerinde, olay akış mantığı ile çalışan bir geliştirme ortamıdır. Node-Red ile olay veya uygulamaları birbirine çok kolay bir şekilde 
-  bağlayabiliyoruz. Local bilgisayarımızda, bir cihazda ya da bulutta çalıştırabiliyoruz.</p>
+<p>Hello everyone. Today I want to talk about the Node-Red application development environment, which I recently became acquainted with and believe we will encounter frequently in the future. Node-Red is 
+  a NodeJS-based development environment that works with event flow logic on web browsers. With Node-Red, we can connect events or applications to each other very easily. 
+  We can run it on our local computer, on a device, or in the cloud.</p>
 
-<h4><b>Node-Red Kurulumu</b></h4>
-<p>Node-Red için ilk olarak bilgisayarımıza NodeJS kurulumu yapmalıyız. Bunun için <a href="https://nodejs.org/en/" target="_blank">kendi sitesinden</a> önerilen sürümü 
-  indirerek kurulumunu yapabilirsiniz.</p>
+<h4><b>Node-Red Installation</b></h4>
+<p>For Node-Red, we first need to install NodeJS on our computer. For this, you can download and install the recommended version from <a href="https://nodejs.org/en/" target="_blank">its official website</a>.</p>
 <a href="{{ base }}/assets/images/nodered/nodejs.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/nodered/nodejs.png" alt=""></a><br/>
 
-<p>NodeJS kurulumu yaptıktan sonra sorunsuz tamamladığımızdan emin olmak için CMD’den versiyon kontrolü yapalım:</p>
+<p>After installing NodeJS, let's check the version from CMD to make sure we completed it successfully:</p>
   {% highlight javascript %}
     node - -version
   {% endhighlight %}
 <a href="{{ base }}/assets/images/nodered/nodejs-ver.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/nodered/nodejs-ver.png" alt=""></a><br/>
 
-  <p>NodeJS’in kurulu olduğundan emin olduktan sonra Node-Red için gerekli komutu girelim:</p>
+  <p>After making sure NodeJS is installed, let's enter the necessary command for Node-Red:</p>
   {% highlight javascript %}
     npm install -g --unsafe-perm node-red
   {% endhighlight %}
   
-  <p>Kurulumu Linux üzerinden yapıyorsanız:</p>
+  <p>If you are installing on Linux:</p>
   {% highlight javascript %}
     sudo npm install -g --unsafe-perm node-red  
   {% endhighlight %}
   
-  <p>ile tamamlayabilirsiniz.</p>
+  <p>you can complete it with this.</p>
   
-  <p>Bu işlemi tamamlandıktan sonra gerekli tüm dosyaları indirmiş oluyoruz. CMD’ye node-red yazarak servislerin çalışmasını sağlayacağız.</p>
+  <p>After completing this process, we will have downloaded all the necessary files. We will start the services by typing node-red in CMD.</p>
   <a href="{{ base }}/assets/images/nodered/node-red-start.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
   <img class="img-blg" src="{{ base }}/assets/images/nodered/node-red-start.png" alt=""></a><br/>
   
-  <p>Gördüğünüz gibi server <i>http://127.0.0.1:1880</i> portunda çalışmaya başladı. Şimdi bu adrese gidelim ve Node-Red arayüzünü inceleyelim.</p>
+  <p>As you can see, the server started running on port <i>http://127.0.0.1:1880</i>. Now let's go to this address and examine the Node-Red interface.</p>
   <a href="{{ base }}/assets/images/nodered/node-red-ui.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
   <img class="img-blg" src="{{ base }}/assets/images/nodered/node-red-ui.png" alt=""></a><br/>
   
-  <p>İlk açtığımızda karşımıza <i>“Flow 1”</i> adında boş bir akış ekranı çıkıyor. Sol tarafta kullanabileceğimiz Node paletleri ve sağda Node-Red ve uygulama akışı bilgilerini takip 
-    edeceğimiz alanlar bulunuyor. İlk olarak bütün yazılım dillerinde olduğu gibi <i>“Hello World!”</i> örneğimizle giriş yapalım.</p>
+  <p>When we first open it, we see an empty flow screen named <i>"Flow 1"</i>. On the left side, there are Node palettes we can use, and on the right side, there are areas where we will track 
+    Node-Red and application flow information. First, let's start with our <i>"Hello World!"</i> example, as in all programming languages.</p>
   
-  <p>Bunun için Node paletinden inject node’u seçerek string şeklinde metni yazdırıp mesaj ile output node’una göndereceğiz ve debug ile metin çıktımızı alacağız:</p>
+  <p>For this, we will select the inject node from the Node palette, print the text as a string, send it to the output node with a message, and get our text output with debug:</p>
   <a href="{{ base }}/assets/images/nodered/HelloWorld.gif" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
   <img class="img-blg" src="{{ base }}/assets/images/nodered/HelloWorld.gif" alt=""></a><br/>
   
-  <p>Bu basit örneğin ardından şimdi fonksiyon kullanabileceğimiz bir örnek yapalım. Hello World ile birlikte aşağıdaki anlık zamanı gösteren javascript fonksiyon kodunu ekleyelim 
-    ve ikisini beraber yazdıralım.</p>
+  <p>After this simple example, let's now make an example where we can use functions. Along with Hello World, let's add the following javascript function code that shows the current time 
+    and print both together.</p>
   {% highlight javascript %}
     var dateNow = new Date();
     var timeAsString = dateNow.toLocaleTimeString();
@@ -61,13 +60,13 @@ layout: blog-item
   <a href="{{ base }}/assets/images/nodered/function.gif" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
   <img class="img-blg" src="{{ base }}/assets/images/nodered/function.gif" alt=""></a><br/>
   
-  <p>Farklı bir opsiyon olarak mesajı belirli saniye aralıklarla yazdırmak istiyorsak inject node içinde aşağıdaki ayarları yapabiliriz. 
-    Örnek olarak 2 saniye aralıklarla Hello World! Yazdırabileceğimiz zaman aralığını ayarlıyorum:</p>
+  <p>As a different option, if we want to print the message at specific second intervals, we can make the following settings in the inject node. 
+    As an example, I'm setting the time interval where we can print Hello World! at 2-second intervals:</p>
   <a href="{{ base }}/assets/images/nodered/repeat.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
   <img class="img-blg" src="{{ base }}/assets/images/nodered/repeat.png" alt=""></a><br/>
 
-  <p>Her yaptığımız düzenlemeden sonra Deploy diyerek çalıştırabiliriz. Bunlar Node-Red’i nasıl kullanabileceğimize dair en basit örneklerdi. 
-    İlerleyen günlerde daha kapsamlı örnekler ile Node-Red çalışma mantığını anlayacağız. Umarım okuyan herkes faydalı olur.</p>
+  <p>We can run it by clicking Deploy after each modification we make. These were the simplest examples of how we can use Node-Red. 
+    In the coming days, we will understand the working logic of Node-Red with more comprehensive examples. I hope it will be useful for everyone who reads it.</p>
 
 <div id="disqus_thread"></div>
 <script>

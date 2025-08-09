@@ -7,42 +7,80 @@ order: 1
 font-awesome: fas fa-home
 ---
 
-<header class="hero hero-fluid hero-home txt-color-sasha-white txt-align-c" style="background: #272727 url('{{ base }}/assets/images/backgrounds/bg7.jpg'); background-position: center; background-size: cover;">
-  <div class="container nfloat-down">
-    <figure class="avatar rounded-circle">
-      <img class="img-fluid" src="{{ base }}/assets/images/avatars/avatar.jpg" alt="Seher Gürel Profil Picture">
-    </figure>
-    <h1><strong>Seher Gurel Mousselli</strong></h1>
-    <p class="txt-size-lead">
-      SAP ABAP & FIORI Developer | Technical SAP Consultant
-    </p>
-    {% include social.html %}
+<header class="hero hero-fluid hero-home txt-color-sasha-white txt-align-c" style="background: linear-gradient(rgba(15,15,30,0.85), rgba(10,10,20,0.9)), url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2134') center/cover; position: relative; min-height: 100vh; display: flex; align-items: center;">
+  <div class="container" style="position: relative; z-index: 2;">
+    <div style="animation: fadeInUp 1s ease-out;">
+      <!-- Modern profile photo with glow effect -->
+      <figure style="margin-bottom: 2rem; position: relative; display: inline-block;">
+        <div style="width: 150px; height: 150px; margin: 0 auto; position: relative;">
+          <img class="img-fluid" src="{{ base }}/assets/images/avatars/avatar.jpg" alt="Seher Gürel Profile Picture" 
+               style="border-radius: 50%; border: 3px solid rgba(102, 126, 234, 0.5); box-shadow: 0 0 30px rgba(102, 126, 234, 0.3);">
+          <div style="position: absolute; top: -3px; left: -3px; right: -3px; bottom: -3px; border-radius: 50%; 
+                      background: linear-gradient(45deg, #667eea, #764ba2); opacity: 0.3; z-index: -1; 
+                      animation: pulse 2s infinite;"></div>
+        </div>
+      </figure>
+      
+      <!-- Name with modern typography -->
+      <h1 style="font-size: 3rem; font-weight: 300; letter-spacing: 2px; margin-bottom: 0.5rem; 
+                 text-transform: uppercase; background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%); 
+                 -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        Seher Gurel Mousselli
+      </h1>
+      
+      <!-- Title with typing indicator -->
+      <div style="margin: 1.5rem 0;">
+        <p style="font-size: 1.1rem; color: #667eea; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 0.5rem;">
+          SAP SOLUTIONS ENGINEER
+        </p>
+        <p style="font-size: 0.95rem; color: rgba(255,255,255,0.7); font-weight: 300;">
+          ABAP & Fiori Developer • Technical SAP Consultant • Integration Specialist
+        </p>
+      </div>
+      
+      <!-- Modern social buttons -->
+      <div style="margin-top: 2rem;">
+        {% include social.html %}
+      </div>
+      
+      <!-- Scroll indicator -->
+      <div style="position: absolute; bottom: -60px; left: 50%; transform: translateX(-50%); animation: bounce 2s infinite;">
+        <div style="width: 30px; height: 50px; border: 2px solid rgba(255,255,255,0.3); border-radius: 25px; position: relative;">
+          <div style="width: 4px; height: 10px; background: #667eea; border-radius: 2px; position: absolute; 
+                      top: 8px; left: 50%; transform: translateX(-50%); animation: scroll 2s infinite;"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </header>
 
 <div class="home-component" id="passion">
   <div class="container txt-align-c">
     <h2 class="txt-color-primary">What am I interested in?</h2>
-    <div class="row">
+    <div class="row" style="margin-top: 40px;">
       
       <div class="col-md-3">
-        <img class="img-fluid" src="{{ base }}/assets/images/skill-icons/mobile.svg" alt="Mobile Apps">
-        <h5 class="txt-weight-medium txt-color-primary">Mobile</h5>
+        <div style="font-size: 4rem; margin-bottom: 15px;">💻</div>
+        <h5 class="txt-weight-medium txt-color-primary">ABAP Development</h5>
+        <p class="txt-size-small">ALV, Module Pool, Smartforms, performance optimization, and debugging.</p>
       </div>
       
       <div class="col-md-3">
-        <img class="img-fluid" src="{{ base }}/assets/images/skill-icons/monitor.svg" alt="Full-Stack">
-        <h5 class="txt-weight-medium txt-color-primary">Full-Stack</h5>
+        <div style="font-size: 4rem; margin-bottom: 15px;">📱</div>
+        <h5 class="txt-weight-medium txt-color-primary">Fiori / SAPUI5</h5>
+        <p class="txt-size-small">Custom and standard app enhancements, UX improvements, and screen arrangements.</p>
       </div>
 
       <div class="col-md-3">
-        <img class="img-fluid" src="{{ base }}/assets/images/skill-icons/nodes.svg" alt="Web">
-        <h5 class="txt-weight-medium txt-color-primary">Web</h5>
+        <div style="font-size: 4rem; margin-bottom: 15px;">🔄</div>
+        <h5 class="txt-weight-medium txt-color-primary">SAP Integrations</h5>
+        <p class="txt-size-small">Secure SAP ↔ third-party integration via APIs, RFC, SOAP, IDoc.</p>
       </div>
 
       <div class="col-md-3">
-        <img class="img-fluid" src="{{ base }}/assets/images/skill-icons/mountains.svg" alt="Graphics">
-        <h5 class="txt-weight-medium txt-color-primary">Graphics and GUI</h5>
+        <div style="font-size: 4rem; margin-bottom: 15px;">📋</div>
+        <h5 class="txt-weight-medium txt-color-primary">e-Transformation & Compliance</h5>
+        <p class="txt-size-small">e-Invoice, e-Archive, e-Ledger, VAT Return (EU compliance focus).</p>
       </div>
       
     </div>
@@ -150,6 +188,287 @@ font-awesome: fas fa-home
   </div>
 </div>
 
+
+<style>
+  /* Import modern font */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap');
+  
+  /* Modern Navbar Styling - Complete Redesign */
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  
+  .nav-fixed {
+    background: linear-gradient(to bottom, rgba(10, 10, 20, 0.98), rgba(15, 15, 30, 0.95)) !important;
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border: none;
+    box-shadow: 0 1px 0 rgba(102, 126, 234, 0.1);
+    padding: 0.75rem 0 !important;
+    transition: all 0.3s ease;
+  }
+  
+  /* Navbar container */
+  .nav-fixed .container {
+    max-width: 1200px;
+  }
+  
+  /* Brand Logo - Minimalist Design */
+  .nav-fixed .navbar-brand {
+    font-family: 'Inter', sans-serif;
+    font-weight: 200;
+    letter-spacing: 3px;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    color: #fff !important;
+    position: relative;
+    padding: 0;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-fixed .navbar-brand::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 20px;
+    background: #667eea;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-fixed .navbar-brand:hover {
+    color: #667eea !important;
+    transform: translateX(3px);
+  }
+  
+  /* Navigation Links - Clean Modern Style */
+  .nav-fixed .navbar-nav {
+    align-items: center;
+  }
+  
+  .nav-fixed .navbar-nav .nav-link {
+    font-family: 'Inter', sans-serif;
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-weight: 300;
+    letter-spacing: 1.5px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    padding: 0.75rem 1.25rem;
+    margin: 0 0.5rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Modern hover effect with glow */
+  .nav-fixed .navbar-nav .nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #667eea, transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  
+  .nav-fixed .navbar-nav .nav-link:hover {
+    color: rgba(255, 255, 255, 1) !important;
+    transform: translateY(-1px);
+  }
+  
+  .nav-fixed .navbar-nav .nav-link:hover::before {
+    opacity: 1;
+  }
+  
+  /* Active state with dot indicator */
+  .nav-fixed .navbar-nav .nav-link.active {
+    color: #fff !important;
+    position: relative;
+  }
+  
+  .nav-fixed .navbar-nav .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #667eea;
+    box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+  }
+  
+  /* Contact button - Special styling */
+  .nav-fixed .navbar-nav .nav-link:last-child {
+    background: rgba(102, 126, 234, 0.1);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    border-radius: 25px;
+    padding: 0.5rem 1.5rem;
+    margin-left: 1rem;
+  }
+  
+  .nav-fixed .navbar-nav .nav-link:last-child:hover {
+    background: rgba(102, 126, 234, 0.2);
+    border-color: #667eea;
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.2);
+  }
+  
+  /* Mobile menu toggle - Modern hamburger */
+  .navbar-toggler {
+    border: none;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .navbar-toggler:focus {
+    box-shadow: none;
+  }
+  
+  .navbar-toggler-icon {
+    background: none;
+    position: relative;
+    width: 22px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.8);
+    display: block;
+    transition: all 0.3s ease;
+  }
+  
+  .navbar-toggler-icon::before,
+  .navbar-toggler-icon::after {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+  }
+  
+  .navbar-toggler-icon::before {
+    top: -6px;
+  }
+  
+  .navbar-toggler-icon::after {
+    bottom: -6px;
+  }
+  
+  /* Dropdown menu - Glass effect */
+  .nav-fixed .dropdown-menu {
+    background: rgba(10, 10, 20, 0.98);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(102, 126, 234, 0.1);
+    border-radius: 12px;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  }
+  
+  .nav-fixed .dropdown-item {
+    font-family: 'Inter', sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-fixed .dropdown-item:hover {
+    background: rgba(102, 126, 234, 0.15);
+    color: #fff;
+    transform: translateX(5px);
+  }
+  
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Hero Section Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.3;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.5;
+    }
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    40% {
+      transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+      transform: translateX(-50%) translateY(-5px);
+    }
+  }
+  
+  @keyframes scroll {
+    0% {
+      top: 8px;
+      opacity: 1;
+    }
+    100% {
+      top: 28px;
+      opacity: 0;
+    }
+  }
+  
+  /* Enhanced social media buttons */
+  .social-list {
+    display: inline-flex;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .social-list a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+  
+  .social-list a:hover {
+    background: #667eea;
+    border-color: #667eea;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+  }
+</style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
 <script src="//twemoji.maxcdn.com/2/twemoji.min.js?2.3.0"></script>

@@ -1,40 +1,40 @@
 ---
-title: OpenGL Okyanus Tabakalarının Sıcaklık Seviyeleri Gösterimi Uygulaması
+title: OpenGL Ocean Layer Temperature Levels Visualization Application
 layout: project-item
 order: 2
 ---
 
 <p>
-  Herkese merhaba. Bu uygulama, OpenGL 3D özelliklerini kullanarak okyanus tabakalarının sıcaklık seviyelerini gösterme amacıyla yapıldı. Kaynak kodlar için Github hesabımı takip edebilirsiniz:
+  Hello everyone. This application was developed to display temperature levels of ocean layers using OpenGL 3D features. You can follow my Github account for the source code:
 </p>
 
-<p><a href="https://github.com/shrgrl/simpleOpenGL3dGraph" target="_blank" class="btn btn-sasha-darkest"><i class="fab fa-github"></i>Detay için tıkla</a></p>
+<p><a href="https://github.com/shrgrl/simpleOpenGL3dGraph" target="_blank" class="btn btn-sasha-darkest"><i class="fab fa-github"></i>Click for Details</a></p>
 
-<h5 class="txt-weight-bold">Kullanılan Teknolojiler</h5>
+<h5 class="txt-weight-bold">Technologies Used</h5>
 <ul>
   <li>C++</li>
   <li>OpenGL</li>
 </ul>
 
 <h5 class="txt-weight-bold">OpenGL</h5>
-<p>OpenGL, taşınabilir, 2D ve 3D grafik uygulamaları geliştirmek için öncü bir sistemdir. 1992 yılından beri, endüstride 2D ve 3D desteği olan ve kullanılan program arayüzü olup çok geniş bir bilgisayar ağına hizmet etmektedir. OPENGL, özel efektlerle, güçlü görsel fonksiyonlarla, haritalama için hızlı uygulama geliştirme sağlar.</p>
+<p>OpenGL is a leading system for developing portable 2D and 3D graphics applications. Since 1992, it has been a programming interface that supports 2D and 3D in the industry and serves a very wide computer network. OpenGL provides fast application development for mapping with special effects and powerful visual functions.</p>
 
-<h5 class="txt-weight-bold">Projenin Çalıştırılması</h5>
-<p>Projeyi çalıştırmak için ortam olarak Visual Studio programını edinmemiz gerekiyor. Daha sonra dışardan indirerek eklememiz gereken GLU/GLUT kütüphaneleri var. Onlara 
-  <a href="http://www.mediafire.com/file/cmlnr0pj0pyha5d/Glew_and_Glut.zip/file" target="_blank">buradaki</a> linkten ulaşabilirsiniz. Dosyayı indirdikten sonra ilk olarak dosya içindeki ".dll" uzantılı belgeleri C:\Windows\System32 dosya yolundaki klasörün içine kopyalayıp yapıştırmamız gerekli.</p>
-<p>Ardından projeyi Visual Studio ile başlattıktan sonra sağ tarafta bulunan kısımda projenin üzerine sağ tıklayarak <b>Özellikler</b> kısmına giriyoruz.</p>
+<h5 class="txt-weight-bold">Running the Project</h5>
+<p>To run the project, we need to obtain Visual Studio as the environment. Then we have GLU/GLUT libraries that we need to download and add externally. You can access them from the link 
+  <a href="http://www.mediafire.com/file/cmlnr0pj0pyha5d/Glew_and_Glut.zip/file" target="_blank">here</a>. After downloading the file, we first need to copy and paste the ".dll" extension files from within the file into the folder at C:\Windows\System32 file path.</p>
+<p>Then, after starting the project with Visual Studio, we right-click on the project in the section on the right side and enter the <b>Properties</b> section.</p>
 <a href="{{ base }}/assets/images/projects/opengl/img.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/projects/opengl/img.jpg" alt=""></a><br/>
 
-<p>Burada karşımıza çıkan ekranda C/C++ seçeneğinin Genel kısmındaki Ek İçeren Dizinler seçeneğine girip, indirdiğimiz dosya dizininin içinden ayrı ayrı include dosyalarını ekliyoruz.</p>
+<p>On the screen that appears here, we enter the Additional Include Directories option in the General section of the C/C++ option and add the include files separately from within the downloaded file directory.</p>
 <a href="{{ base }}/assets/images/projects/opengl/img1.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/projects/opengl/img1.jpg" alt=""></a><br/>
 
-<p>İkinci olarak Bağlayıcı kısmındaki Ek Kitaplık Dizinleri seçeneğine girip, indirdiğimiz dosya dizininin içinden ayrı ayrı lib dosyalarını ekliyoruz.</p>
+<p>Secondly, we enter the Additional Library Directories option in the Linker section and add the lib files separately from within the downloaded file directory.</p>
 <a href="{{ base }}/assets/images/projects/opengl/img2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/projects/opengl/img2.jpg" alt=""></a><br/>
 
-<p>Bütün ekleme işlemlerinin ardından projemizi çalıştırabiliriz. Run tuşuna bastıktan sonra karşımıza çıkan arayüzde beliren graphımızı, fare ve klavye ile kontrol ederek hareket ve konumlarını değiştirebiliriz.</p>
+<p>After all the addition operations, we can run our project. After pressing the Run button, we can control the graph that appears in the interface by using the mouse and keyboard to change its movement and positions.</p>
 <a href="{{ base }}/assets/images/projects/opengl/img3.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/projects/opengl/img3.jpg" alt=""></a><br/>
 

@@ -1,47 +1,44 @@
 ---
-title: SAP ABAP'a Giriş
-sub-title: SAP ABAP Programlama
+title: Introduction to SAP ABAP
+sub-title: SAP ABAP Programming
 collection: abap1 
 layout: blog-item
 ---
 
-<p>Herkese merhaba. Bugünkü yazımda ABAP programlama diline bir başlangıç yapacağım ve temel seviyeden üst seviyeye doğru ilerleyerek bir blog serisi hazırlayacağım. 
-  Bazı teorikj bilgiler ve pratikler ile pekiştireceğim bilgiler umarım ilgilenenler için faydalı olur.</p>
+<p>Hello everyone. In today's post, I will make an introduction to the ABAP programming language and prepare a blog series progressing from basic to advanced level. 
+  I hope the information I will reinforce with some theoretical knowledge and practices will be useful for those interested.</p>
 <br>
-<h4><b>SAP ABAP Nedir?</b></h4>
+<h4><b>What is SAP ABAP?</b></h4>
 
-<p>ABAP(Advanced Business Application Programming), bir Alman yazılım şirketi olan SAP tarafından ERP ürünlerini geliştirmek için kullanılan üst seviye bir yazılım 
-  dilidir. ABAP programlama ile finansal muhasebe, malzeme yönetimi, varlık yönetimi ve diğer tüm SAP modüllerini içeren ürünler özelleştirilir. Öğrenmesi oldukça kolay,
-  SQL sorgularına benzer bir sözdizimi vardır. Standart ya da kullanıcı özelinde oluşturulan tablolar, bu tablolara ait veriler ve bu verilerin kullanılıp, işlenmesi ile
-  ürünler geliştirilir.</p>
+<p>ABAP (Advanced Business Application Programming) is a high-level software 
+  language used by SAP, a German software company, to develop ERP products. With ABAP programming, products containing financial accounting, material management, asset management and all other SAP modules are customized. It is quite easy to learn,
+  has a syntax similar to SQL queries. Products are developed with standard or user-specific tables, data belonging to these tables and the use and processing of this data.</p>
 
-<p>ABAP geliştirme ortamı lisanslı bir ürün olan SAP Logon’dur. SAP Logon içerisinde sistemler tanımlanır ve her system kendi içinde farklı sistemlere ayrılır. Genel 
-  olarak her firma 3 farklı sisteme sahiptir. Bunlar Dev-Geliştirme Sistemi, QA-Test Sistemi ve PRD-Canlı Sistem’dir. Firma özelinde bu sistemler değişkenlik gösterebilir. 
-  Dev sistemde geliştirmeler yapılır, Test sistemde yapılan geliştirmeler test edilir ve Canlı sisteme son kullanıcıya ulaşacak ürün taşınır. Bu taşıma işlemi Requestler 
-  aracılığıyla yapılır. Yazının ilerleyen bölümlerinde Request alma işlemine değineceğim. Şimdi SAP Logon araçlarına ve ABAP geliştirmelerini nasıl yapacağımıza devam 
-  edelim.</p>
+<p>The ABAP development environment is SAP Logon, which is a licensed product. Systems are defined within SAP Logon and each system is divided into different systems within itself. Generally 
+  every company has 3 different systems. These are Dev-Development System, QA-Test System and PRD-Production System. These systems may vary depending on the company. 
+  Developments are made in the Dev system, developments made in the Test system are tested, and the product that will reach the end user is moved to the Production system. This transportation process is done through Requests 
+  . I will mention the process of getting a Request in the later parts of the article. Now let's continue with SAP Logon tools and how to make ABAP developments.</p>
 <br>
-<h4><b>SAP LOGON SİSTEM TANIMLAMA</b></h4>
+<h4><b>SAP LOGON SYSTEM DEFINITION</b></h4>
 
-<p>SAP Logon’u çalıştırdığımızda boş bir ekran karşımıza çıkacak. Biz geliştirme yapacağımız sistemi aşağıdaki adımlar ile tanımlayacağız. Arayüz görüntüsü versiyon ya
-  da temaya bağlı olarak değişkenlik gösterebilir.</p>
+<p>When we run SAP Logon, an empty screen will appear. We will define the system we will develop with the following steps. The interface appearance may vary depending on the version or
+  theme.</p>
 
-<p><b>1.</b> İlk olarak New Item diyoruz.</p>
+<p><b>1.</b> First, we click New Item.</p>
   <a href="{{ base }}/assets/images/abap1/newitem.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
   <img class="img-blg" src="{{ base }}/assets/images/abap1/newitem.jpg" alt="New Item"></a><br>
 
-<p><b>2.</b> Sonrasında açılan pop-up’da next diyerek devam ediyoruz.</p>
+<p><b>2.</b> Then we continue by clicking next in the pop-up that opens.</p>
   <a href="{{ base }}/assets/images/abap1/create.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
   <img class="img-blg" src="{{ base }}/assets/images/abap1/create.jpg" alt="Create"></a><br>
 
-<p><b>3.</b> Açılan ekranda system bilgilerini gireceğimiz alanlar gelecek. Buraları eksiksiz bir şekilde doldurduktan sonra Finish diyebiliriz.</p>
+<p><b>3.</b> In the opened screen, fields where we will enter system information will appear. After filling these fields completely, we can click Finish.</p>
   <a href="{{ base }}/assets/images/abap1/finish.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
   <img class="img-blg" src="{{ base }}/assets/images/abap1/finish.jpg" alt="Finish"></a><br>
 <br>
 <h4><b>SAP ABAP WORKBENCH</b></h4>
 
-<p>ABAP Workbench, birbirleri ile entegre bir şekilde çalışan, bir ürün geliştirmede kullanılacak bütün araçları içeren, ABAP uygulamaları geliştirmeyi 
-  sağlayan araçlar bütünü olarak tanımlayabiliriz:</p>
+<p>We can define ABAP Workbench as a set of tools that work in an integrated way with each other, contain all the tools to be used in developing a product, and enable the development of ABAP applications:</p>
 
 <ul>
   <li>ABAP Editor</li>
@@ -53,45 +50,45 @@ layout: blog-item
   <li>Object Navigator</li>
 </ul>
 
-<p>Her bir araç için farklı bir Transaction Code vardır. Bu T-Code’lar ile kullanmak istediğimiz araca giderek uygulama geliştirmeye başlayabiliriz. Programlamaya geçmeden 
-  önce bazı önemli araçları görelim. </p>
+<p>There is a different Transaction Code for each tool. With these T-Codes, we can go to the tool we want to use and start developing applications. Before moving on to programming, 
+  let's see some important tools. </p>
 <br>
 <h4><b>DATA DICTIONARY</b></h4>
 
-<p>Sol üst köşedeki alana SE11 T-Code’unu yazarak Data Dictionary’ye gidebiliriz.</p>
+<p>We can go to Data Dictionary by typing the SE11 T-Code in the field in the upper left corner.</p>
 <a href="{{ base }}/assets/images/abap1/datadic1.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/abap1/datadic1.jpg" alt="Data Dictionary"></a><br>
 
-<p>Ardından karşımıza çıkacak enran şu şekildedir:</p>
+<p>Then the screen that will appear is as follows:</p>
 <a href="{{ base }}/assets/images/abap1/datadic2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/abap1/datadic2.jpg" alt="Data Dictionary"></a><br>
 
-<p>Buradan göreceğimiz üzere Data Dictionary adı altında bazı araçlar mevcuttur. Burada görünen araçlar bir uygulama geliştirmek için kullanılır. En önemli ve sık 
-  kullanılanlar ise Database Table ve Data Type’dır. Bu araçlar standart ya da özel nesnelerden oluşur. SAP’nin bazı standard nesneleri vardır. Bunları ayırt etmenin 
-  en kolay yolu isimlendirme standardıdır. Çünkü bizim oluşturduğumuz nesneler isimlendirilirken Z ile başlar. Z ile başlamayan isimlendirmeleri SAP’nin standard 
-  nesneleri olarak düşünebiliriz. </p>
+<p>As we can see here, there are some tools under the name Data Dictionary. The tools shown here are used to develop an application. The most important and frequently 
+  used ones are Database Table and Data Type. These tools consist of standard or custom objects. SAP has some standard objects. The 
+  easiest way to distinguish them is the naming standard. Because the objects we create start with Z when named. We can consider namings that do not start with Z as SAP's standard 
+  objects. </p>
 <br>
 <h4><b>OBJECT NAVIGATOR</b></h4>
 
-<p>SE80 T-Code’u ile Object Navigator’e gideriz.</p>
+<p>We go to Object Navigator with SE80 T-Code.</p>
 <a href="{{ base }}/assets/images/abap1/objnav1.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/abap1/objnav1.jpg" alt="Object Navigator"></a><br>
 
-<p>Sol tarafta göreceğimiz üzere objeler bulunuyor.</p>
+<p>As we can see on the left side, there are objects.</p>
 <a href="{{ base }}/assets/images/abap1/objnav2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/abap1/objnav2.jpg" alt="Object Navigator"></a><br>
 
-<p>Burada bulunan objeleri görüntülemek ya da yeni oluşturmak istiyorsak, SE80 Object Navigator transaction’ı kullanabiliriz.</p>
+<p>If we want to view or create new objects found here, we can use the SE80 Object Navigator transaction.</p>
 <br>
 <h4><b>ABAP EDITOR</b></h4>
 
-<p>SE38 T-code’u ile ABAP kodları yazacağımız editöre erişebiliriz.</p>
+<p>We can access the editor where we will write ABAP codes with SE38 T-code.</p>
 <a href="{{ base }}/assets/images/abap1/abapeditor.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/abap1/abapeditor.jpg" alt="ABAP Editor"></a><br>
 
-<p>Burada gördüğümüz alanda var olan programları görüntüleyebilir ya da yeni bir program oluşturabiliriz.</p>
+<p>In the field we see here, we can view existing programs or create a new program.</p>
 
-<p>Bu yazıda ABAP programlamaya başlamadan önce bilmemiz gereken en temel bilgileri aktardım. Bir sonraki yazıda programlamaya başlayacağız.</p>
+<p>In this article, I have shared the most basic information we need to know before starting ABAP programming. We will start programming in the next article.</p>
 
 <div id="disqus_thread"></div>
 <script>

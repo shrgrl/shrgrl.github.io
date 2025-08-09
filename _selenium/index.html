@@ -1,29 +1,28 @@
 ---
 title: Web Scraping
-sub-title: Selenium Modülü ve Python ile Web Scraping - Stok Kontrolü ile Otomatik Alışveriş Uygulaması
+sub-title: Web Scraping with Selenium Module and Python - Automatic Shopping Application with Stock Control
 collection: selenium 
 layout: blog-item
 ---
 
-<p>Herkese merhaba. Bugün sizlerle son zamanlarda merak saldığım web-scraping ile ilgili araştırmalarımı ve çalışmalarımı paylaşacağım. Web-scraping dediğimiz olay programlarla 
-  farklı web sitelerinde olaylar tetikleyip yönetebildiğimiz bir çalışma alanı. Biraz irdelediğimde günlük yaşama entegre edilebilir birçok proje fikri geldi aklıma ve küçük çaplı 
-  denemeler yapmaya karar verdim. Böylece Selenium modülünü tanıma ve kullanma fırsatım oldu. Şimdi Selenium modülü ile ilgili küçük bilgiler, ipuçları göstereceğim ve ardından 
-  geliştirdiğim Stok Kontrolü İle Otomatik Alışveriş projemi anlatacağım.</p>
+<p>Hello everyone. Today I will share my research and work on web-scraping that I have been curious about recently. Web-scraping is a field where we can trigger and manage events 
+  on different websites using programs. When I explored it a bit, many project ideas that could be integrated into daily life came to mind, and I decided to make small-scale 
+  experiments. This gave me the opportunity to learn and use the Selenium module. Now I will show you some small information and tips about the Selenium module, and then 
+  explain the Automatic Shopping with Stock Control project I developed.</p>
 
 <a href="{{ base }}/assets/images/selenium/gif3.gif" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/selenium/gif3.gif" alt=""></a><br/>
 
-<h4><b>Selenium Nedir?</b></h4>
-<p>Selenium farklı tarayıcılarda, farklı web sitelerini programlar aracılığıyla kontrol edebildiğimiz bir modüldür. Java, Python, CSharp, Ruby, JavaScript, Kotlin gibi dillerde 
-  yazılabilir. Yazdığımız program ile manuel olarak yaptığımız tüm işlemleri otomatik olarak halledebiliyoruz. Click eventler, form doldurma, mail gönderimi… Kısaca bir insanın 
-  bir web sitesi üzerinde yapabileceği tüm işlemleri yapabilen kullanışlı bir modüldür. Selenium kullanabilmek için hangi tarayıcı kullanıyorsak/kullanacaksak ona ait driver’ı 
-  bilgisayarımıza yüklememiz gerekiyor. İndirme işlemini <a href="https://chromedriver.chromium.org/downloads" target="_blank">buradan</a> yapabilirsiniz. Ben Chrome kullandığım için Chrome’un driver’ını 
-  indirdim. İndirirken kendi tarayıcınızın versiyonunuza uygun versiyonu seçmeniz gerekli. İndirdikten sonra .exe dosyasını C:/Windows gibi kolay erişilebilir bir klasör içine 
-  taşıyalım. Edindiğimiz driver ile artık yeni ve tertemiz bir sayfa açabiliriz…</p>
+<h4><b>What is Selenium?</b></h4>
+<p>Selenium is a module that allows us to control different websites in different browsers through programs. It can be written in languages like Java, Python, CSharp, Ruby, JavaScript, Kotlin. 
+  With the program we write, we can automatically handle all the operations we do manually. Click events, form filling, email sending... In short, it's a useful module that can do all the operations 
+  a human can do on a website. To use Selenium, we need to install the driver for the browser we use/will use on our computer. You can download it from <a href="https://chromedriver.chromium.org/downloads" target="_blank">here</a>. 
+  Since I use Chrome, I downloaded Chrome's driver. When downloading, you need to select the version that matches your browser version. After downloading, let's move the .exe file to an easily 
+  accessible folder like C:/Windows. With the driver we obtained, we can now open a new and clean page...</p>
 
-<p>Şimdi adım adım ilerleyelim. Ben paket yönetimi ve diğer tüm avantajlı ayrıcalıklardan dolayı Python <i>Anaconda</i> kullanacağım ve geliştirmelerimi <i>Jupyter Notebook</i> 
-  kullanarak yapacağım. İlk olarak basit örnekler denemek için bir ortam oluşturalım ve adım adım ilerleyerek gerekli paketleri indirelim. Şimdi conda ile <b>testenv</b> adında bir
-  ortam oluşturalım. Bunun için <i>Anaconda Promt</i>’u açalım ve aşağıdaki komutu yazalım.</p>
+<p>Now let's proceed step by step. I will use Python <i>Anaconda</i> for package management and all other advantageous privileges, and I will do my development using <i>Jupyter Notebook</i>. 
+  First, let's create an environment to try simple examples and download the necessary packages step by step. Now let's create an environment called <b>testenv</b> with conda. 
+  For this, let's open <i>Anaconda Prompt</i> and write the following command.</p>
 
 {% highlight python %}
 conda create -n myenv python=3.6
@@ -31,50 +30,49 @@ conda create -n myenv python=3.6
 <a href="{{ base }}/assets/images/selenium/img1.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/selenium/img1.png" alt=""></a><br/>
 
-<p>Şimdi oluşturduğumuz ortamı aktifleştirelim:</p>
+<p>Now let's activate the environment we created:</p>
 {% highlight python %}
 conda activate testenv
 {% endhighlight %}
 <a href="{{ base }}/assets/images/selenium/img2.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/selenium/img2.png" alt=""></a><br/>
 
-<p>Buradan sonra oluşturduğumuz ortamları Jupyter notebook’a eklemek için bu adımları yapalım ve geliştirmelerimize başlayalım:</p>
+<p>After this, let's do these steps to add the environments we created to Jupyter notebook and start our development:</p>
 {% highlight python %}
 conda install -c anaconda ipykernel
 python -m ipykernel kurulumu --user --name = testenv
 {% endhighlight %}
 
-<p>İlk önce Selenium özelliklerini kullanabilmek için modülü indirmemiz gerekiyor. Modül ve kütüphaneleri Anaconda kullandığımız için conda install ile indiriyoruz:</p>
+<p>First, we need to download the module to use Selenium features. Since we use Anaconda for modules and libraries, we download with conda install:</p>
 {% highlight python %}
 conda install -c conda-forge selenium
 {% endhighlight %}
 <a href="{{ base }}/assets/images/selenium/img3.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/selenium/img3.png" alt=""></a><br/>
 
-<p>Selenium dışında ihtiyaç duyduğumuz bütün kütüphane ve paketleri conda install ile indirebiliriz. İstediğimiz pakete uygun indirme komutlarını 
-  <a href="https://anaconda.org/anaconda/repo" target="_blank">Anaconda</a>’nın resmi sitesinden de bulabiliriz. Daha sonra programın en başında bu modülü tanımlamamız gerek. 
-  Driver içinde tanımladığımız path indirdiğimiz driver'ın path’idir.</p>
+<p>We can download all the libraries and packages we need besides Selenium with conda install. We can also find download commands suitable for the package we want from 
+  <a href="https://anaconda.org/anaconda/repo" target="_blank">Anaconda</a>'s official website. Then we need to define this module at the beginning of the program. 
+  The path we define in the driver is the path of the driver we downloaded.</p>
 {% highlight python %}
 from selenium import webdriver
 driver = webdriver.Chrome('C:\Windows\chromedriver')
 {% endhighlight %}
 
-<p>Çalıştırdığımızda boş bir Chrome sekmesi açılacak. Açılan sekme üzerinde istediğimiz siteye yönlendirme yapabiliriz:</p>
+<p>When we run it, a blank Chrome tab will open. We can redirect to the site we want on the opened tab:</p>
 {% highlight python %}
 driver.get('https://www.google.com/')
 {% endhighlight %}
 
-<p>Açılan sekmeyi kapatmak için de close eventini kullanabiliriz:</p>
+<p>We can also use the close event to close the opened tab:</p>
 {% highlight python %}
 driver.close()
 {% endhighlight %}
 
-<p>Buraya kadar sadece driver'ı nasıl çalıştıracağımızı gördük. Fakat asıl mesele açılan pencerelerde işlem yapabilmekte. Bunun için sayfalardaki elementleri yakalamamız gerek.
-Bunu farklı yöntemler ile yapabiliyoruz.</p>
+<p>So far we have only seen how to run the driver. But the real issue is being able to perform operations in the opened windows. For this, we need to capture the elements on the pages.
+We can do this with different methods.</p>
 
-<h4><b>Açılan Pencerede Elementleri Yakalama Yöntemleri</b></h4>
-<p>Sayfalar üzerinde çalışırken sayfa üzerindeki elementleri yakalamak için yöntemler vardır. Bu ifadeler sayfa tamamen yüklendiğinde çalışır. Elementleri yakalamak için kullanılan 
-  yöntemler;</p>
+<h4><b>Methods for Capturing Elements in the Opened Window</b></h4>
+<p>When working on pages, there are methods to capture elements on the page. These expressions work when the page is fully loaded. Methods used to capture elements are:</p>
 <ul>
   <li>ID</li>
   <li>Class Name</li>
@@ -87,16 +85,16 @@ Bunu farklı yöntemler ile yapabiliyoruz.</p>
   <li>DOM Locator</li>
 </ul>
 
-<p>Kullanım şekillerine bakmak için örneğimize devam edecek olursak Google sayfasını açınca arama yapacağımız alan <i>search-box</i> alanıdır ve bizim bu search-box alanını bulup text 
-  girmemiz gerekiyor. Bunun için sitenin ihtiyacımız olan elementine tıklayarak sayfa kaynağını görüntüleyip alanla ilgili bilgileri bulabiliriz. Search alanını bulduktan sonra 
-  dilediğim text’i girerek arama yapabilirim.</p>
+<p>To look at the usage patterns, if we continue with our example, when we open the Google page, the area where we will search is the <i>search-box</i> area and we need to find this search-box area and enter text. 
+  For this, we can click on the element of the site that we need and view the page source to find information about the area. After finding the search area, 
+  I can search by entering the text I want.</p>
 <a href="{{ base }}/assets/images/selenium/img4.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/selenium/img4.png" alt=""></a><br/>
 {% highlight python %}
 search_box = driver.find_element_by_name('q')
 {% endhighlight %}
 
-<p>Burada search-box’ı belirtildiği <i>tag</i>’da <i>name</i> benzersiz özelliği ile yakalayabiliyoruz. Bu elementi yakaladıktan sonra artık herhangi bir arama yapabiliyorum.</p>
+<p>Here we can capture the search-box with the unique <i>name</i> attribute in the specified <i>tag</i>. After capturing this element, I can now do any search.</p>
 {% highlight python %}
 search_box.send_keys('Seher Gürel')
 search_box.submit()
@@ -104,12 +102,12 @@ search_box.submit()
 <a href="{{ base }}/assets/images/selenium/img5.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/selenium/img5.png" alt=""></a><br/>
 
-<p>Herhangi bir aramada en ilgili olan ilk arama sonucuna baktığımızda <i>cite</i> tagları arasında olduğunu görüyoruz. İlk sekmeye erişmek için bu yolu kullanabiliriz:</p>
+<p>When we look at the most relevant first search result in any search, we see that it is between <i>cite</i> tags. We can use this way to access the first tab:</p>
 {% highlight python %}
 results = driver.find_element_by_tag_name("cite").click() 
 {% endhighlight %}
 
-<p>Buraya kadar bir web sitesini arama ve click eventleri neye göre yaptığımızı bir nebze görmüş olduk. Şimdi kodumuzun tamamını çalıştıraralım ve işleyişe bakalım:</p>
+<p>So far we have seen to some extent how we do search and click events on a website. Now let's run our entire code and look at the operation:</p>
 {% highlight python %}
 from selenium import webdriver
 driver = webdriver.Chrome('C:\Windows\chromedriver')
@@ -160,7 +158,7 @@ server.sendmail(gmail_user, [TO], BODY.encode('utf-8'))
 <a href="{{ base }}/assets/images/selenium/img6.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/selenium/img6.png" alt=""></a><br/>
 
-<h4><b>Wait Türleri: <i>Implicit – Explicit Wait</i></b></h4>
+<h4><b>Wait Types: <i>Implicit – Explicit Wait</i></b></h4>
 
 <p>Bir sayfa yüklenirken bazen gecikmeler olabiliyor. Beklenen sürenin üstünde yükleme gerçekleşmezse web driver hata verebilir. Implicit wait ile bir elementi ararken hata 
   atmadan önce web driver’ı verdiğimiz zaman kadar bekletebiliriz. Verilen zamanın üstünde sayfa yüklenmezse ancak o zaman hata alırız. Implicit Wait metotu iki parametre alır. 
@@ -192,13 +190,13 @@ old_window = driver.window_handles[0]
 driver.switch_to_window(old_window)
 {% endhighlight %}
 
-<h4><b>Stok Kontrolü İle Otomatik Alışveriş Uygulaması</b></h4>
+<h4><b>Automatic Shopping Application with Stock Control</b></h4>
 
-<p>Buraya kadar edindiğimiz bilgiler ile yaptığım projeyi kısaca tanıtmak istiyorum. Projenin temel amacı; istenilen ürün stokta yoksa kontrol ediyor ve stoğun yenilendiği 
-  durumda tespit ederek manuel işlem yapmadan direkt satın alıyor. İşlemin tamamlanması halinde kullanıcı mail ile bilgilendiriliyor. Şimdi adım adım aşamalar ile uygulamaya ait 
-  görüntüleri inceleyelim.</p>
+<p>I want to briefly introduce the project I made with the information we have gained so far. The basic purpose of the project is; if the desired product is not in stock, it checks and 
+  detects when the stock is renewed and buys directly without manual operation. When the process is completed, the user is informed by email. Now let's examine the images of the application 
+  with step-by-step stages.</p>
 
-<p>İlk olarak driver'ı başlatıyorum ve ilgili alışveriş sitesinin sayfasını açıyorum:</p>
+<p>First, I start the driver and open the page of the relevant shopping site:</p>
 {% highlight python %}
 from selenium import webdriver
 import smtplib
@@ -321,13 +319,13 @@ pay = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@id='CheckoutA
 <a href="{{ base }}/assets/images/selenium/img8.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/selenium/img8.png" alt=""></a><br/>
 
-<p>Uygulamadaki temel adımları tek tek gösterdim. Şimdi <i>Windows Task Scheduler</i> ile uygulamamızı belirli süre aralıklarla otomatik olarak nasıl çalıştıracağımıza bakalım.</p>
+<p>I showed the basic steps in the application one by one. Now let's see how to automatically run our application at certain time intervals with <i>Windows Task Scheduler</i>.</p>
 
-<p>İlk olarak <i>Windows Task Scheduler</i>’ı açalım.</p>
+<p>First, let's open <i>Windows Task Scheduler</i>.</p>
 <a href="{{ base }}/assets/images/selenium/ts1.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/selenium/ts1.png" alt=""></a><br/>
 
-<p>Açtığımız ekranda <i>Görev Oluştur</i> seçeneğine tıklayacağız. <i>Görev adı</i> girerek sırayla aşağıdaki adımları gerçekleştireceğiz.</p>
+<p>On the screen we opened, we will click on the <i>Create Task</i> option. We will perform the following steps in order by entering a <i>Task name</i>.</p>
 <a href="{{ base }}/assets/images/selenium/ts2.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/selenium/ts2.png" alt=""></a><br/>
 
@@ -375,8 +373,8 @@ C:\Users\seher\OneDrive\Belgeler\Python
   yapacaktır. Task Schedule oluşturma yöntemlerinden birisi bu şekilde. Tabi ki çok daha farklı yöntemler ile zamanlayıcı oluşturarak uygulamamızı belirli zaman aralıklarında 
   çalıştırabiliriz. </p>
 
-<p>Bugün sizlere <i>Python</i>, <i>Selenium Module</i> ve <i>Windows Task Schedule</i> kullanarak geliştirdiğim uygulamam hakkında bilgiler verdim. Umarım faydalı bir yazı olmuştur. Farklı zamanda, 
-  yeni bilgilerle görüşmek üzere.</p>
+<p>Today I gave you information about the application I developed using <i>Python</i>, <i>Selenium Module</i> and <i>Windows Task Schedule</i>. I hope it was a useful article. See you at a different time 
+  with new information.</p>
 
 <div id="disqus_thread"></div>
 <script>

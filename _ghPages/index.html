@@ -1,52 +1,52 @@
 ---
 title: Github Pages
-sub-title: Ücretsiz Hosting Hizmeti
+sub-title: Free Hosting Service
 collection: ghPages 
 layout: blog-item
 ---
 
-<p>Herkese merhaba. Sizlere yaklaşık 2 sene önce tecrübe edindiğim, faydalandığım ve sonucundan oldukça memnun kaldığım bir ortamdan bahsetmek istiyorum. Üniversitenin son yıllarında kendi tecrübelerimi paylaşabileceğim bir web site kurmak için nereden başlamam gerektiği konusunda bazı araştırmalar yaptım. Onlarca portfolio-template örnekleri inceledim. En beğendiğim fikir Github Pages ile kendi portfolio sitemi oluşturmak oldu. Bu şekilde Github Pages’in ücretsiz hosting imkanından faydalanarak kendi web sitemi yayınlayabildim. Şimdi sizlere adım adım Github Pages ile kendi web sitenizi nasıl oluşturabileceğinize dair faydalı bilgiler verebilmeyi umuyorum.</p>
-<h4><b>Github Pages Nedir?</b></h4>
-<p>Öncelikle Github Pages özelliklerinden kısaca bahsedelim. GitHub Pages, HTML, CSS ve JavaScript dosyalarını doğrudan GitHub'daki bir repositoryden alıp web sitesi yayınlayan statik bir hosting hizmetidir. Buradan daha detaylı bilgi edinip Github’ın kendi <a href="https://github.com/collections/github-pages-examples" target="_blank">örnek koleksyonunu</a> inceleyebilirsiniz. Github Pages sitesi oluşturmaktaki ilk ve en önemli adım isimlendirme standardıdır. Birazdan yapacağımız örnekte de göreceğiniz gibi kural:</p>
+<p>Hello everyone. I would like to talk to you about an environment that I experienced about 2 years ago, benefited from, and was quite satisfied with the results. During my final years at university, I did some research on where to start to build a website where I could share my own experiences. I examined dozens of portfolio-template examples. My favorite idea was to create my own portfolio site with Github Pages. This way, I was able to publish my own website by taking advantage of Github Pages' free hosting opportunity. Now I hope to provide you with useful information on how you can create your own website with Github Pages step by step.</p>
+<h4><b>What is Github Pages?</b></h4>
+<p>First, let's briefly talk about the features of Github Pages. GitHub Pages is a static hosting service that takes HTML, CSS and JavaScript files directly from a repository on GitHub and publishes a website. You can get more detailed information from here and examine Github's own <a href="https://github.com/collections/github-pages-examples" target="_blank">example collection</a>. The first and most important step in creating a Github Pages site is the naming standard. As you will see in the example we will do soon, the rule is:</p>
 {% highlight javascript %}
 your-uname.github.io
 {% endhighlight %}
 
-<p>Şimdi hızlı bir araştırma ile hoş bir tasarım bulalım. Tabi isterseniz baştan sona kendiniz de yapabilirsiniz ama bunun için Github Pages Markdown Cheatsheet iyice bilmeniz gerekecektir. Şu an ücretsiz bir şekilde kendi adınıza nasıl kullanabileceğinizi göstermek için hazır bir template kullanmayı daha faydalı buluyorum. Gelelim kullanacağımız template örneğine;</p>
+<p>Now let's find a nice design with a quick search. Of course, you can do it yourself from start to finish, but for this you will need to know the Github Pages Markdown Cheatsheet well. I find it more useful to use a ready-made template to show how you can use it for free in your own name. Let's come to the template example we will use;</p>
 <br/>
-<p>Github Pages’in kendi koleksyonuna da bakabilirsiniz fakat ben rastgele bir araştırma yapmayı tercih ediyorum ve karşıma çıkan <a href="https://github.com/RyanFitzgerald/devportfolio" target="_blank">bu</a> ilk örneği inceliyorum.</p>
+<p>You can also look at Github Pages' own collection, but I prefer to do a random research and examine <a href="https://github.com/RyanFitzgerald/devportfolio" target="_blank">this</a> first example that I came across.</p>
 <a href="{{ base }}/assets/images/ghPages/Animation1.gif" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/ghPages/Animation1.gif" alt=""></a><br/>
   
-<p>Karşımıza çıkan ilk örneği referans alarak web sitesini inceledik. Deneme yapmak için yeterli bir örnek. Siz de dilediğiniz örnek ya da kendi tasarımınız üzerinden gidebilirsiniz. Şimdi Github hesabımızdan bir repository oluşturacağız.</p>
+<p>We examined the website by taking the first example we encountered as a reference. It's a sufficient example to try. You can also go with any example you want or your own design. Now we will create a repository from our Github account.</p>
 <a href="{{ base }}/assets/images/ghPages/img2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/ghPages/img2.jpg" alt=""></a><br/>
 
-<p>Daha önce dediğimiz gibi burada isimlendirme standardımıza çok dikkat etmeliyiz. Aşağıda gördüğünüz gibi <b>“your-uname.github.io”</b> şeklinde isimlendirmemizi yapıyoruz ve repositorymizi oluşturuyoruz.</p>
+<p>As we said before, we need to pay close attention to our naming standard here. As you can see below, we name it as <b>"your-uname.github.io"</b> and create our repository.</p>
 <a href="{{ base }}/assets/images/ghPages/img3.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/ghPages/img3.jpg" alt=""></a><br/>
 
-<p>Ve bu şekilde boş bir repository oluşturmuş olduk:</p>
+<p>And thus we have created an empty repository:</p>
 <a href="{{ base }}/assets/images/ghPages/img4.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/ghPages/img4.jpg" alt=""></a><br/>
 
-<p>Şimdi daha önceden incelediğimiz repositoryi kendi repositorymize push etmemiz için boş repository içine baktığımız zaman bize bazı seçenekler sunuyor. Şimdi incelediğimiz projeyi Git Bash ile clone edip kendi repositorymize push edeceğiz.</p>
+<p>Now, when we look into the empty repository to push the repository we examined earlier to our own repository, it offers us some options. Now we will clone the project we examined with Git Bash and push it to our own repository.</p>
 <a href="{{ base }}/assets/images/ghPages/img5.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/ghPages/img5.png" alt=""></a><br/>
   
-<p>Burada push işlemine başlamadan önce baz aldığımız repositoryi clone etmemiz gerek:</p>
+<p>Here, before starting the push process, we need to clone the repository we based on:</p>
 {% highlight javascript %}
 git clone https://github.com/your-uname/reponame.git
 {% endhighlight %}
 <a href="{{ base }}/assets/images/ghPages/img7.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/ghPages/img7.jpg" alt=""></a><br/>
 
-<p>Clone yaptıktan sonra bu dosyanın dizinine geçelim:</p>
+<p>After cloning, let's navigate to this file's directory:</p>
 {% highlight javascript %}
 cd reponame
 {% endhighlight %}
 
-<p>Ve sırasıyla aşağıdaki işlemleri yapalım:</p>
+<p>And let's perform the following operations respectively:</p>
 {% highlight javascript %}
 git init
 git remote set-url origin https://github.com/your-uname/your-uname.github.io.git
@@ -54,31 +54,31 @@ git branch -M main
 git push -u origin main
 {% endhighlight %}
   
-<p>En sonunda böyle hata almadan push etmiş olmamız gerekli.</p>
+<p>Finally, we need to have pushed without getting such an error.</p>
 <a href="{{ base }}/assets/images/ghPages/img8.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/ghPages/img8.jpg" alt=""></a><br/>
   
-<p>Bu işlemin ardından repository içeriğimizi kontrol ettiğimizde sorunsuz bir şekilde kopyaladığımızı görüyoruz.</p>
+<p>After this process, when we check our repository content, we see that we have copied it without any problems.</p>
 <a href="{{ base }}/assets/images/ghPages/Animation2.gif" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/ghPages/Animation2.gif" alt=""></a><br/>
   
-<p>Şimdi bu projeyi <b>your-uname.github.io</b> URL’i ile çalıştırabilirsiniz.</p>
+<p>Now you can run this project with the <b>your-uname.github.io</b> URL.</p>
 <a href="{{ base }}/assets/images/ghPages/img9.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/ghPages/img9.png" alt=""></a><br/>
   
-<p>İstediğiniz değişiklikleri kendi repositoryniz üzerinden yapabilirsiniz.</p>
+<p>You can make the changes you want through your own repository.</p>
 <a href="{{ base }}/assets/images/ghPages/img10.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/ghPages/img10.jpg" alt=""></a><br/>
 
-<p>Mesela <b>index.html</b> dizininin içinde yapabileceğim işlemlere baktığım zaman:</p>
+<p>For example, when I look at the operations I can do within the <b>index.html</b> directory:</p>
 <a href="{{ base }}/assets/images/ghPages/img11.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/ghPages/img11.jpg" alt=""></a><br/>
 <a href="{{ base }}/assets/images/ghPages/img12.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/ghPages/img12.jpg" alt=""></a><br/>
  
-<p>Bunun gibi mevcut tasarım üzerinden gidebilir, yeni alanlar ekleyip/çıkarabilir, resimleri, renk özelliklerini değiştirerek kendinize göre bir özelleştirme yapıp kullanabilirsiniz. Daha sonra bir domain adı satın alıp yine Github Pages’in ücretsiz hosting hizmetinden yararlanarak kendi domain adınız ile web sitenizi kullanabilirsiniz.</p>
+<p>Like this, you can go with the existing design, add/remove new areas, change images, color properties and make a customization according to yourself and use it. Later, you can buy a domain name and use your website with your own domain name by taking advantage of Github Pages' free hosting service.</p>
 <br/>
-<p>Umarım ilgilenenler için faydalı bir kaynak olmuştur. İyi çalışmalar.</p>
+<p>I hope it has been a useful resource for those interested. Good work.</p>
 
 <div id="disqus_thread"></div>
 <script>

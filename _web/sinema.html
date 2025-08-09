@@ -1,14 +1,14 @@
 ---
-title: Sinema Otomasyonu
+title: Cinema Management System
 layout: project-item
 order: 7
 ---
 
-<p>Herkese merhaba. Burada PHP tabanlı, bir Sinema Otomasyonu projesi hakkında detaylı bilgi ve çalıştırma aşamalarını göstereceğim. Kaynak kodlar için Github hesabımı takip edebilirsiniz:</p>
+<p>Hello everyone. Here I will show detailed information and execution steps about a PHP-based Cinema Management System project. You can follow my Github account for source codes:</p>
 
 <p><a href="https://github.com/shrgrl/seherSinema" target="_blank" class="btn btn-sasha-darkest"><i class="fab fa-github"></i>Fork Me</a></p>
 
-<h5 class="txt-weight-bold">Kullanılan Teknolojiler</h5>
+<h5 class="txt-weight-bold">Technologies Used</h5>
 <ul>
   <li>HTML</li>
   <li>MySQL</li>
@@ -19,83 +19,82 @@ order: 7
 </ul>
 
 <p>
-  PHP programlama dili ve mySql sorgu dili olarak seçtiğimiz Sinema Otamasyonu projemizde Kullanıcı Girişi ve Yönetici Girişi olarak iki adet giriş ekranımız bulunmaktadır. Çalışmamızda Bootstrap da kullanılmıştır.
-Veritabanı olarak mySql kullandığımız projemizde 13 adet tablomuz bulunmaktadır. Aşağıda tablolarımızı görüyorsunuz:
+  In our Cinema Management System project, which we chose PHP programming language and MySQL query language, we have two login screens as User Login and Admin Login. Bootstrap is also used in our work.
+In our project where we use MySQL as a database, we have 13 tables. You can see our tables below:
 </p>
 
 <a href="{{ base }}/assets/images/cinema/img1.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/cinema/img1.jpg" alt=""></a><br/>
 
-<h5 class="txt-weight-bold">Kullanılan Teknolojiler</h5>
+<h5 class="txt-weight-bold">Running the Project</h5>
 
-<p>Projeyi çalıştırmak için ilk önce bilgisayarımızda yüklü bulunan <i>XAMPP</i> programını açıp, <i>Apache</i> ve <i>MySQL</i> seçeneklerini Start etmemiz gerekiyor.</p>
+<p>To run the project, first we need to open the <i>XAMPP</i> program installed on our computer and start the <i>Apache</i> and <i>MySQL</i> options.</p>
 <a href="{{ base }}/assets/images/cinema/img1_1.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/cinema/img1_1.jpg" alt=""></a><br/>
 
-<p>Ardından web tarayıcımıza <b>localhost</b> yazıyoruz ve önceden veritabanına eklemiş olduğumuz projemizi seçiyoruz. Bu seçenek bizi direk projemizin giriş sayfasına yönlendirecektir.</p>
+<p>Then we type <b>localhost</b> in our web browser and select our project that we have previously added to the database. This option will redirect us directly to the login page of our project.</p>
 <a href="{{ base }}/assets/images/cinema/image.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/cinema/image.jpg" alt=""></a><br/>
 
-<p>Projemizin ilk sayfasında giriş ekranı bulunmaktadır. Kullanıcı Girişi veya Yönetici Girişi olarak giriş yapabiliriz. Aşağıda Kullanıcı ve Yönetici Girişi olarak uygulayabileceğimiz adımları aşağıda sıralanmıştır.</p>
+<p>On the first page of our project, there is a login screen. We can login as User Login or Admin Login. The steps we can apply as User and Admin Login are listed below.</p>
 
-<h5 class="txt-weight-bold">Kullanılan Teknolojiler</h5>
-<p>Burada kullanıcı kayıtlı ise bilgilerini girerek sisteme giriş yapabilmektedir. Eğer kayıtlı değilse kayıt ol butonu ile kayıt yapabilmektedir.</p>
+<h5 class="txt-weight-bold">User Login</h5>
+<p>Here, if the user is registered, they can log into the system by entering their information. If they are not registered, they can register with the register button.</p>
 <a href="{{ base }}/assets/images/cinema/img2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/cinema/img2.jpg" alt=""></a><br/>
 
-<p>Kullanıcının yeni kayıt yapması için kullanılan sayfamız bu şekilde görünmektedir. Verilen bilgileri doğru bir şekilde tamamlayıp kayıt ol butonuna basarak kayıt işlemini tamamlar. Daha sonra yukarıda “Kayıt işlemi başarılı” ya da “Kayıt işlemi başarısız” tarzında uyarılar vermektedir. Başarısız kayıt nedenleri eksik bilgiler ya da halıhazırda mevcut bir hesap ile kayıt yapılmak istenmesi olabilir:</p>
+<p>Our page used for new user registration looks like this. They complete the registration process by correctly completing the given information and pressing the register button. Then it gives warnings such as "Registration successful" or "Registration failed". The reasons for unsuccessful registration may be missing information or attempting to register with an already existing account:</p>
 <a href="{{ base }}/assets/images/cinema/img3.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/cinema/img3.jpg" alt=""></a><br/>
 
-<p>Kayıtlı kullanıcının tekrar kayıt isteği üzerine verilen uyarı örnekteki gibidir:</p>
+<p>The warning given upon a registered user's request to register again is as in the example:</p>
 <a href="{{ base }}/assets/images/cinema/img4.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/cinema/img4.jpg" alt=""></a><br/>
 
-<p>Kayıt yaptıktan sonra artık sisteme giriş yapabiliriz. İstenilen bilgileri girdikten sonra giriş yap diyerek sistemimize giriş yapıyoruz:</p>
+<p>After registering, we can now log into the system. After entering the required information, we log into our system by clicking login:</p>
 <a href="{{ base }}/assets/images/cinema/img5.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/cinema/img5.jpg" alt=""></a><br/>
 
-<p>Kullanıcı girişi ardından karşılaşacağımız sayfamız bu şekilde görünmektedir. Kullanıcı “Sinema, Film ve Tarih” seçeneklerinden dilediğini seçerek arama yapabilir veya sunulmuş mevcut arayüz ile seçimlerini gerçekleştirebilir.</p>
+<p>Our page that we will encounter after user login looks like this. The user can search by selecting from "Cinema, Movie and Date" options or make their selections with the current interface provided.</p>
 <a href="{{ base }}/assets/images/cinema/img6.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/cinema/img6.jpg" alt=""></a><br/>
 
-<p>Kullanıcının “Hokkabaz” filmini seçtiğini varsayalım. Resimde de görüldüğü gibi filmin müsait koltuk sayılarını göstererek bir yönlendirme yapıyor.</p>
+<p>Let's assume the user selects the movie "Hokkabaz". As seen in the picture, it shows the number of available seats of the movie and makes a redirection.</p>
 <a href="{{ base }}/assets/images/cinema/img7.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/cinema/img7.jpg" alt=""></a><br/>
 
-<p>Müsait koltuklar var ise tekrar tıklıyoruz ve istediğimiz koltuk numaralarını seçerek satın alma işlemi gerçekleştiriyoruz. Kırmızı renkli koltuklar dolu, beyaz renkli koltuklar boş ve yeşil renkte görünen de bizim seçim yaptığımız koltuk. Satın alma işleminin ardından yeşil renk kırmızı olacak.</p>
+<p>If there are available seats, we click again and select the seat numbers we want and make the purchase. Red seats are occupied, white seats are empty, and the green one is the seat we selected. After the purchase, the green color will turn red.</p>
 <a href="{{ base }}/assets/images/cinema/img8.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/cinema/img8.jpg" alt=""></a><br/>
 
-<h5 class="txt-weight-bold">Kullanılan Teknolojiler</h5>
-<p>Yönetici giriş ekranımız da müşteri giriş ekranı ile aynı özelliklere sahiptir. İstenen bilgileri girerek yönetici sayfamıza giriş yapabiliriz.</p>
+<h5 class="txt-weight-bold">Admin Login</h5>
+<p>Our admin login screen also has the same features as the customer login screen. We can log into our admin page by entering the required information.</p>
 <a href="{{ base }}/assets/images/cinema/img9.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/cinema/img9.jpg" alt=""></a><br/>
 
-<p>Yönetici sayfası bize filmlerin seansları, gösterimleri, bilet işlemleri vs. hakkında bilgilerini girmemize olanak sağlıyor.</p>
+<p>The admin page allows us to enter information about movie showtimes, screenings, ticket transactions, etc.</p>
 <a href="{{ base }}/assets/images/cinema/img10.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/cinema/img10.jpg" alt=""></a><br/>
 
-<p><b>Sinema&Salon</b>'a tıkladığımızda girebileceğimiz ve görebileceğimiz bilgiler:</p>
+<p>Information we can enter and see when we click <b>Cinema&Hall</b>:</p>
 <a href="{{ base }}/assets/images/cinema/img11.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/cinema/img11.jpg" alt=""></a><br/>
 
-<p><b>Seans</b>'a tıkladığımızda girebileceğimiz ve görebileceğimiz bilgiler:</p>
+<p>Information we can enter and see when we click <b>Session</b>:</p>
 <a href="{{ base }}/assets/images/cinema/img12.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/cinema/img12.jpg" alt=""></a><br/>
 
-<p><b>Film</b>'e tıkladığımızda girebileceğimiz ve görebileceğimiz bilgiler:</p>
+<p>Information we can enter and see when we click <b>Movie</b>:</p>
 <a href="{{ base }}/assets/images/cinema/img13.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/cinema/img13.jpg" alt=""></a><br/>
 
-<p><b>Gösterim&Bilet</b>'e tıkladığımızda girebileceğimiz ve görebileceğimiz bilgiler:</p>
+<p>Information we can enter and see when we click <b>Screening&Ticket</b>:</p>
 <a href="{{ base }}/assets/images/cinema/img14.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/cinema/img14.jpg" alt=""></a><br/>
 
-<p><b>Satış</b>'a tıkladığımızda görebileceğimiz bilgiler :</p>
+<p>Information we can see when we click <b>Sales</b>:</p>
 <a href="{{ base }}/assets/images/cinema/img15.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/cinema/img15.jpg" alt=""></a><br/>
 
 <a href="{{ base }}/assets/images/cinema/img16.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/cinema/img16.jpg" alt=""></a>
-
