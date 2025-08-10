@@ -122,12 +122,28 @@ footer .row {
   flex-wrap: wrap !important;
   align-items: flex-start !important;
   gap: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 footer .col-lg-4 {
-  flex: 1 !important;
-  min-width: 300px !important;
+  flex: 1 1 100% !important;
+  min-width: 0 !important;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
   margin-bottom: 40px !important;
+}
+
+@media (min-width: 992px) {
+  footer .col-lg-4 {
+    flex: 1 1 33.333% !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  footer .col-lg-4 {
+    flex: 1 1 50% !important;
+  }
 }
 
 /* Responsive Design */
@@ -159,7 +175,7 @@ footer .col-lg-4 {
   }
   
   footer .col-lg-4 {
-    min-width: auto !important;
+    flex: 1 1 100% !important;
     margin-bottom: 30px !important;
   }
 }
