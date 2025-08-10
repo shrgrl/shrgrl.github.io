@@ -9,6 +9,10 @@ function loadQuotes(callback) {
 // Detect the visitor's location
 function loadCountry(callback) {
   getData('https://freegeoip.app/json/', function (result) {
+    if (!result || !result.country_name) {
+      callback('Hi there, visitor!');
+      return;
+    }
     var country = result.country_name
     const flag = result.country_code.toUpperCase().replace(/./g, char => String.fromCodePoint(char.charCodeAt(0) + 127397));
 

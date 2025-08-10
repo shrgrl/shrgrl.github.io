@@ -1,15 +1,15 @@
 ---
-title: Güncel Döviz Kurları Uygulaması
+title: Current Exchange Rates Application
 layout: project-item
 order: 5
 ---
 
-<p>Herkese merhaba. Burada, API şeklinde döviz kurları ve farklı bilgilerin güncel olarak kullanıcıya nasıl gösterileceğini göreceğiz. Kaynak kodlar için Github hesabımı takip edebilirsiniz:</p>
+<p>Hello everyone. Here, we will see how to show current exchange rates and different information to users in API format. You can follow my Github account for source codes:</p>
 <p>
   <a href="https://github.com/shrgrl/guncelDovizKurlari" target="_blank" class="btn btn-sasha-darkest"><i class="fab fa-github"></i>Fork me</a>
 </p>
 
-<h5 class="txt-weight-bold">Kullanılan Teknolojiler</h5>
+<h5 class="txt-weight-bold">Technologies Used</h5>
 <ul>
   <li>Express</li>
   <li>Node.js</li>
@@ -17,29 +17,14 @@ order: 5
   <li>HTML</li>
 </ul>
 
-<p>Bu proje, bir <i>Güncel Döviz Kurları Web Uygulaması</i>'dır. Node.js/Express ile yazılmış olup, lokal bilgisayarımızda çalıştırabiliyoruz. Uygulama, kök dizinine (root directory) 
-  gelen bir “get request” için arka planda <a href="https://api.canlidoviz.com/web/items?marketId=1&type=0" target="_blank" >buradaki</a> adrese bir “get request” gönderiyor ve cevap olarak geri dönen JSON Stringini parse ediyor. Sonrasında kullanıcıya şekildeki 
-  gibi bir HTML sayfasını response olarak gönderiyor.</p>
+<p>This project is a <i>Current Exchange Rates Web Application</i>. It is written with Node.js/Express and we can run it on our local computer. The application sends a "get request" to <a href="https://api.canlidoviz.com/web/items?marketId=1&type=0" target="_blank" >this address</a> in the background for a "get request" coming to the root directory and parses the JSON String returned as a response. Then it sends an HTML page like the one shown in the figure as a response to the user.</p>
 
 <a href="{{ base }}/assets/images/projects/gunceldoviz/img.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/projects/gunceldoviz/img.jpg" alt=""></a><br/>
 
-<p>Kullanıcı select listesinden bir döviz kuru seçtiğinde ekranın sağ tarafında ilgili kura ait bilgiler görüntüleniyor. Kullanıcı eğer isterse, yine ekranın sağında yer alan bir buton sayesinde döviz kurlarını yenileyebiliyor.</p>
+<p>When the user selects an exchange rate from the select list, information about the relevant rate is displayed on the right side of the screen. If the user wants, they can refresh the exchange rates thanks to a button located on the right side of the screen.</p>
 
-<h5 class="txt-weight-bold">Projenin Çalıştırılması</h5>
-<p>Projeyi çalıştırmak için, projenin bulunduğu kök dizininde bir komut ekranı açmamız ve node ProjeAdi.js yazmamız gerekiyor. Ardından komut ekranında bize gösterilen port adresini web tarayıcımıza yazarak uygulamayı kullanabiliriz. Bu proje için çalıştırma komutu aşağıdaki gibidir:</p>
+<h5 class="txt-weight-bold">Running the Project</h5>
+<p>To run the project, we need to open a command screen in the root directory where the project is located and write node ProjectName.js. Then we can use the application by typing the port address shown on the command screen into our web browser. The run command for this project is as follows:</p>
 <a href="{{ base }}/assets/images/projects/gunceldoviz/img2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/projects/gunceldoviz/img2.jpg" alt=""></a><br/>
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,133 +1,105 @@
 ---
-title: Fiori'ye Giriş
+title: Introduction to Fiori
 sub-title: ERP, SAP, ABAP
 collection: fiori1 
 layout: blog-item
+hero-bg: "{{ base }}/assets/images/fiori/ffiori.png"
 ---
 
-<p>Herkese merhaba. Bugünkü yazımda benim de henüz kendimi yeni yeni geliştirmekte olduğum Fiori dünyasına giriş yapacağız. Fiori nedir sorusuna gelmeden önce temel birkaç bilgi 
-  vermek istiyorum.</p>
-<h4><b>ERP, SAP ve ABAP</b></h4>
-<p>Kurumsal Kaynak Planlama anlamına gelen ERP(Enterprise Resource Planning) planlama, üretim, işletme... gibi bir kurumun ihtiyaç duyduğu tüm yapıyı tek bir bünyeye toplayan
-  sistemlere verilen genel ad olarak tanımlayabiliriz. ERP dünyasının en bilinen ve yaygın programı da SAP'dir. SAP tüm ihtiyaçları karşılamaya yönelik kendi içinde modüllere ayrılmış
-  bir sistemdir. Firmaların satış ve dağıtımdan sorumlu modülü SD(Sale and Distrubition), üretim ve planlamadan sorumlu modülü PP(Production Planning) gibi örnek verebiliriz. Her
-  modül kendi alanında uzmanlık gerektirmekte ve yetiştirilmektedir. 
-<p>ABAP(Advanced Business Application Programming) ise SAP tarafından SAP yazılımlarının geliştirilmesi için ortaya çıkmış, nesneye yönelik, yüksek seviyeli bir yazılım dilidir. 
-  ABAP ile istenilen bilgiler veritabanından okunur, sisteme kayıt eklenebilmesi için gerekli alanlar ve SAP sistemleri arasında veri alışverişini sağlayan kullanıcı arayüzleri yazılıp raporlanabilir.
+<p>Hello everyone. In today's article, we will enter the world of Fiori, which I am also still developing myself in. Before we get to the question of what Fiori is, I want to give some basic information.</p>
+<h4><b>ERP, SAP and ABAP</b></h4>
+<p>ERP (Enterprise Resource Planning), which means Enterprise Resource Planning, can be defined as the general name given to systems that bring together all the structures that an organization needs, such as planning, production, operations, etc., under one roof. The most well-known and widespread program in the ERP world is SAP. SAP is a system divided into modules to meet all needs. We can give examples such as the SD (Sale and Distribution) module responsible for sales and distribution of companies, and the PP (Production Planning) module responsible for production and planning. Each module requires expertise in its own field and is trained accordingly. 
+<p>ABAP (Advanced Business Application Programming) is an object-oriented, high-level programming language developed by SAP for the development of SAP software. With ABAP, desired information is read from the database, necessary fields for adding records to the system and user interfaces that enable data exchange between SAP systems can be written and reported.
 </p>
-<p>Bugünkü konumuz Fiori olduğu için genel SAP yapısından bahsederek başlamak istedim. İnternet ortamında SAP ve bileşenleri hakkında birçok bilgiye erişebilirsiniz.
-  Fiori uygulamaları geliştirmek için backend tarafında ABAP bilgisine de ihtiyaç duyduğumuzu hatırlatarak artık Fiori'ye giriş yapabiliriz...</p>
-<h4><b>Fiori Nedir?</b></h4>
-<p>Abap ekran çıktılarının daha kullanışlı, kolay ve farklı platformlarda kullanılabilirliğini sağlayan kullanıcı arayüzüdür. User Interface ve HTML5'in birleşimi olan UI5 
-  teknolojisi ile geliştirilir. Bir Fiori uygulamasının çalışması için GW server, backend ve frontend kurulumlar gereklidir. WebIde Fiori uygulamaları geliştirdiğimiz geliştirme
-  ortamıdır. WebIde direkt browserda ya da local olarak kullanabileceğimiz farklı ortamlar sağlayabilir. WebIde için SAP GUI gibi harici bir kuruluma gerek yoktur fakat kullanabilemek
-  için farklı kurulumlara ihtiyacımız var. Başlangıç seviye Fiori kullanıcılarından herkesin rahatlıkla kullanabileceği ve kurulum aşamasında kolay erişilebilirliği açısından
-  Local WebIde kurulumu ve kullanımına devam edeceğiz.
+<p>Since our topic today is Fiori, I wanted to start by talking about the general SAP structure. You can access a lot of information about SAP and its components on the internet. Reminding that we also need ABAP knowledge on the backend side to develop Fiori applications, we can now introduce Fiori...</p>
+<h4><b>What is Fiori?</b></h4>
+<p>It is a user interface that makes ABAP screen outputs more useful, easy and usable on different platforms. It is developed with UI5 technology, which is a combination of User Interface and HTML5. For a Fiori application to work, GW server, backend and frontend installations are required. WebIde is the development environment where we develop Fiori applications. WebIde can provide different environments that we can use directly in the browser or locally. There is no need for an external installation like SAP GUI for WebIde, but we need different installations to be able to use it. We will continue with Local WebIde installation and usage in terms of easy accessibility during the installation phase and that everyone from beginner level Fiori users can use comfortably.
   <a href="{{ base }}/assets/images/fiori/webide_icon.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
   <img class="img-blg" src="{{ base }}/assets/images/fiori/webide_icon.jpg" alt="Web Ide"></a>
 </p>
-<h4><b>Local Web Ide Kurulumu</b></h4>
-<p>İlk olarak <a href="https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html" target="_blank">buradaki</a> linkten JDK 1.8 versiyonu indirmeliyiz.
+<h4><b>Local Web IDE Installation</b></h4>
+<p>First, we need to download JDK 1.8 version from the link <a href="https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html" target="_blank">here</a>.
   <a href="{{ base }}/assets/images/fiori/jdk.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
 <img class="img-blg" src="{{ base }}/assets/images/fiori/jdk.jpg" alt="JDK 1.8"></a>
 </p>
-<p>İndirdiğimiz dosyayı çalıştırınca bilgisayarımızda "Local Disk C:/Program Files" içerisinde bir Java klasörü oluşması ve içerisinde jdk ve jre olarak iki klasör 
-  bulunması gereklidir.
+<p>When we run the file we downloaded, a Java folder should be created in "Local Disk C:/Program Files" on our computer and there should be two folders as jdk and jre inside it.
   <a href="{{ base }}/assets/images/fiori/jdk_klasor.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-  <img class="img-blg" src="{{ base }}/assets/images/fiori/jdk_klasor.jpg" alt="JDK Klasör"></a>
+  <img class="img-blg" src="{{ base }}/assets/images/fiori/jdk_klasor.jpg" alt="JDK Folder"></a>
 </p>
-<p>JDK dosyalarımızın sorunsuz bir şekilde indiğinden emin olduktan sonra bilgisayarımızın Envarioment Variables ekranına girerek aşağıdaki eklemeleri yapalım:
+<p>After making sure that our JDK files are downloaded without any problems, let's enter our computer's Environment Variables screen and make the following additions:
 <a href="{{ base }}/assets/images/fiori/env_var.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-  <img class="img-blg" src="{{ base }}/assets/images/fiori/env_var.jpg" alt="Envarioment Variables"></a>
+  <img class="img-blg" src="{{ base }}/assets/images/fiori/env_var.jpg" alt="Environment Variables"></a>
 </p> 
-<p>Bu adımı da sorunsuz bir şekilde hallettikten sonra <a href="https://tools.hana.ondemand.com/#sapui5" target="_blank">buradaki</a> linke girelim ve Web Ide'yi kullanabilmek 
-  için çalıştırmamız gerekli olan linki indirelim.
+<p>After completing this step without any problems, let's go to the link <a href="https://tools.hana.ondemand.com/#sapui5" target="_blank">here</a> and download the link we need to run to be able to use Web IDE.
 <a href="{{ base }}/assets/images/fiori/go_bat.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-  <img class="img-blg" src="{{ base }}/assets/images/fiori/go_bat.jpg" alt="go.bat Dosyası"></a>
+  <img class="img-blg" src="{{ base }}/assets/images/fiori/go_bat.jpg" alt="go.bat File"></a>
 </p>
-<p>Buradaki dosyayı indirdikten sonra zip klasöründen çıkarmadan önce "Yerel Disk C:/"'de yeni bir klasör oluşturun ve bunu <b>SAPLocalWebIDE</b> olarak adlandırın. İndirdiğiniz dosyayı 
-  bu klasör içerisinde çıkartın.
+<p>After downloading the file here, before extracting it from the zip folder, create a new folder in "Local Disk C:/" and name it <b>SAPLocalWebIDE</b>. Extract the file you downloaded inside this folder.
 <a href="{{ base }}/assets/images/fiori/go_bat_klasor.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-  <img class="img-blg" src="{{ base }}/assets/images/fiori/go_bat_klasor.jpg" alt="go.bat Dosya Klasörü"></a>
+  <img class="img-blg" src="{{ base }}/assets/images/fiori/go_bat_klasor.jpg" alt="go.bat File Folder"></a>
 </p>
-<p>Çıkarttığımız klasördeki <b>orion</b> dosyasını çalıştıralım. Sunucu başarıyla başlatıldıysa aşağıdaki ekranı göreceksiniz. Ayrıca Local Web Ide kullandığımız zaman içerisinde 
-  <b>orion</b> dosyasının her zaman çalışır halde olması gerektiğini unutmayalım.
+<p>Let's run the <b>orion</b> file in the folder we extracted. If the server is started successfully, you will see the screen below. Also, let's not forget that the <b>orion</b> file must always be running when we use Local Web IDE.
  <a href="{{ base }}/assets/images/fiori/go_bat_cmd.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-  <img class="img-blg" src="{{ base }}/assets/images/fiori/go_bat_cmd.jpg" alt="go.bat CMD Ekranı"></a>
+  <img class="img-blg" src="{{ base }}/assets/images/fiori/go_bat_cmd.jpg" alt="go.bat CMD Screen"></a>
 </p>
-<p>Bu adımı da sorunsuz şekilde atlattıktan sonra Localhost'a girmemiz gerekli. Şimdi <a href="http://localhost:8080/webide/index.html" target="_blank">localhost</a> linkini 
-  çalıştıralım ve Local Web Ide arayüzümüze bağlanalım. Burada kendi adımıza yeni bir hesap oluşturarak giriş yapabiliriz.
+<p>After getting through this step without any problems, we need to enter Localhost. Now let's run the <a href="http://localhost:8080/webide/index.html" target="_blank">localhost</a> link and connect to our Local Web IDE interface. Here we can create a new account in our name and log in.
  <a href="{{ base }}/assets/images/fiori/localhost.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
   <img class="img-blg" src="{{ base }}/assets/images/fiori/localhost.jpg" alt="Local Host"></a>
 </p>
-<p>Bu kurulumu tamamlamamızın ardından geliştirmeye başlamak için sunulan versiyonlar güncel versiyonlar değildir. İhtiyaç hallerinde daha güncel versiyonlarda çalışmak için
-<a href="https://medium.com/@pehlivan.ertugruls/local-web-ide-de-g%C3%BCncel-versiyonlarda-%C3%A7al%C4%B1%C5%9Fma-299d0c99e655" target="_blank">buradaki</a> adımları 
-  izleyebilirsiniz. Ben de mevcut versiyonlar dışında daha güncel versiyonları indirdim ve geliştirmelere bu şekilde devam edeceğim. Siz de en güncel versiyonları
-  indirerek geliştirmelere devam edebilirsiniz.
+<p>After completing this installation, the versions offered to start development are not current versions. In case of need, to work with more current versions, you can follow the steps <a href="https://medium.com/@pehlivan.ertugruls/local-web-ide-de-g%C3%BCncel-versiyonlarda-%C3%A7al%C4%B1%C5%9Fma-299d0c99e655" target="_blank">here</a>. I also downloaded more current versions other than the existing versions and will continue development this way. You can also continue development by downloading the most current versions.
 <a href="{{ base }}/assets/images/fiori/guncel_version.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-  <img class="img-blg" src="{{ base }}/assets/images/fiori/guncel_version.jpg" alt="Güncel Versiyon"></a>
+  <img class="img-blg" src="{{ base }}/assets/images/fiori/guncel_version.jpg" alt="Current Version"></a>
 </p>
-<h4><b>Local Web Ide Arayüz Tanıtımı</b></h4>
-<p>Buradan sonra başlangıç seviyesinde ihtiyaç duyduğumuz bilgileri paylaşıp basit örnekler ile pekiştireceğiz. İlk olarak genel arayüz tanıtımını yapacak olursak; giriş 
-  yapmamızın ardından bizi ilk karşılayacak olan ekran Welcome ekranıdır. Welcome sekmesi geliştirmede kullanılan kısayolların bir arada bulunduğu alandır. Proje oluşturma vs. 
-  buradan yapılabilir.
+<h4><b>Local Web IDE Interface Introduction</b></h4>
+<p>From here on, we will share the information we need at the beginner level and reinforce it with simple examples. If we first introduce the general interface; the first screen that will welcome us after logging in is the Welcome screen. The Welcome tab is the area where shortcuts used in development are brought together. Project creation etc. can be done from here.
   <a href="{{ base }}/assets/images/fiori/welcome.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
   <img class="img-blg" src="{{ base }}/assets/images/fiori/welcome.jpg" alt="Welcome"></a>
  </p>
-<p>Bir sonraki sekme Development sekmesidir. Oluşturulmuş bütün projeler bu sekmede bulunur. Ayrıca proje oluşturma vs. Welcome sekmesinden ziyade burada yapılır. Local Web Ide
-geliştirme ortamında kullanılan sekme burasıdır.
+<p>The next tab is the Development tab. All created projects are found in this tab. Also, project creation etc. is done here rather than from the Welcome tab. This is the tab used in the Local Web IDE development environment.
 <a href="{{ base }}/assets/images/fiori/development.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
   <img class="img-blg" src="{{ base }}/assets/images/fiori/development.jpg" alt="Development"></a>
 </p>
-<p>Sonraki sekme ise Preferences yani teknik bilgileri görüp, değişiklik yapabildiğimiz kısımdır. Otomatik kod bloklarının düzenlenmesi(Beautify), otomatik kaydetme, tema ayarları
-gibi gözümüze daha güzel gelen ya da kullanışlılık sağlayan değiştirmeleri ayarlayabilirsiniz.
+<p>The next tab is Preferences, which is the part where we can view and make changes to technical information. You can set changes that look better to us or provide usability, such as automatic code block organization (Beautify), automatic saving, theme settings.
 <a href="{{ base }}/assets/images/fiori/preferences.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
   <img class="img-blg" src="{{ base }}/assets/images/fiori/preferences.jpg" alt="Preferences"></a>
 </p>
-<h4><b>Yeni Proje Oluşturma</b></h4>
-<p>İlk aşama olarak herhangi bir servise bağlamadan bir uygulama nasıl oluşturulur onu görelim. Aşağıdaki adımları izleyerek projenizi oluşturup, istediğiniz versiyonu seçerek
-isimlendirebilirsiniz.
+<h4><b>Creating a New Project</b></h4>
+<p>As a first step, let's see how to create an application without connecting to any service. You can create your project by following the steps below, select the version you want and name it.
 <a href="{{ base }}/assets/images/fiori/new_project.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
-  <img class="img-blg" src="{{ base }}/assets/images/fiori/new_project.jpg" alt="Yeni Proje"></a>
+  <img class="img-blg" src="{{ base }}/assets/images/fiori/new_project.jpg" alt="New Project"></a>
 </p>
-<p>Proje oluşturduktan sonra Development sekmesinde Workspace'in altında bizim için bir klasör oluşacak.
+<p>After creating the project, a folder will be created for us under Workspace in the Development tab.
 <a href="{{ base }}/assets/images/fiori/helloworld.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
   <img class="img-blg" src="{{ base }}/assets/images/fiori/helloworld.jpg" alt="Hello World"></a>
 </p>
 <p>
-<b>HelloWorld  :</b> Proje Adı<br>
-<b>Webapp      :</b> Uygulamanın çalıştırılması için gerekli tüm dosyaları barındıran ana klasör.<br>
-<b>Controller  :</b> View içindeki alanların kontrolleri yapılır.<br>
-<b>i18n        :</b> İsimlendirme parametrelerinin bulunduğu yer. Başlıklar, textler vs yazdığımızda manuel olarak ekrana yazmak yerine burada tanımlayıp kısa tanımlamasını 
-  kullanıyoruz. Ayrıca dil bakımı için de kullanılır. Detay bilgi ve örneğe <a href="https://sapyard.com/sapui5-resource-model-for-freshers/ ">buradan</a> ulaşabilirsiniz.<br>
-<b>Model       :</b> Yeni bir model oluşturup kullanmak istediğimizde burada tanımlanıyor. Çok ihtiyaç duyulmuyor.<br>
-<b>View        :</b> Ekran tasarımının yapıldığı klasör. Xml kodları buraya yazılıyor.<br>
-<b>Component.js:</b> Başlangıç durumunda uygulamanın çalışılır hale gelmesi için kullanılır.<br>
-<b>Index.html  :</b> Uygulamanın basıldığı ve çalıştırıldığı kısım.<br>
+<b>HelloWorld  :</b> Project Name<br>
+<b>Webapp      :</b> The main folder that hosts all files required for running the application.<br>
+<b>Controller  :</b> Controls of fields within the View are performed.<br>
+<b>i18n        :</b> Where naming parameters are located. When we write titles, texts etc., instead of manually writing them to the screen, we define them here and use their short definitions. It is also used for language maintenance. You can access detailed information and examples <a href="https://sapyard.com/sapui5-resource-model-for-freshers/ ">here</a>.<br>
+<b>Model       :</b> When we want to create and use a new model, it is defined here. Not much needed.<br>
+<b>View        :</b> The folder where screen design is done. XML codes are written here.<br>
+<b>Component.js:</b> Used to make the application operational at startup.<br>
+<b>Index.html  :</b> The part where the application is pressed and run.<br>
 </p>
-<p>Proje geliştirmeye View ile sayfa tasarımı yaparak başlayabiliriz. View'daki satırların anlamından kısaca bahsedelim:
+<p>We can start project development by doing page design with View. Let's briefly talk about the meaning of the lines in View:
 <a href="{{ base }}/assets/images/fiori/view.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
   <img class="img-blg" src="{{ base }}/assets/images/fiori/view.jpg" alt="View"></a>
-<b>controllerName:</b> View’ı yöneten controller’ın adı. Her view’ı tek bir controller yönetebilir. <br>
-<b>Xmlns         :</b> Kütüphaneler.<br>
-  Sayfamızın tamamı Page tagları arasında bulunmakta olup sayfaya eklemek istediğimiz bütün tagları content içerisine yazabiliriz.
+<b>controllerName:</b> The name of the controller that manages the View. A single controller can manage each view. <br>
+<b>Xmlns         :</b> Libraries.<br>
+  Our entire page is located between Page tags and we can write all the tags we want to add to the page inside the content.
   <a href="{{ base }}/assets/images/fiori/view_code.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
   <img class="img-blg" src="{{ base }}/assets/images/fiori/view_code.jpg" alt="View Code"></a>
-Yukarıdaki resimde görüldüğü gibi bütün kodlar taglar içerisine yazılır. View'da tetiklemek istediğimiz ifadelere örnek verecek olursak; yularıda buton içerisine koyduğumuz 
-  press ile belirttiğimiz eventler controller dosyası içerisinde tetiklenir. Controller içerisinde javascript kodları ile kontrollerimizi yaparız.
+As seen in the image above, all codes are written inside tags. To give an example of the expressions we want to trigger in View; the events we specify with press that we put inside the button above are triggered within the controller file. We perform our controls with javascript codes inside the Controller.
   <a href="{{ base }}/assets/images/fiori/controller.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
     <img class="img-blg" src="{{ base }}/assets/images/fiori/controller.jpg" alt="Controller"></a>
   <br>
   <a href="{{ base }}/assets/images/fiori/run.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
     <img class="img-blg" src="{{ base }}/assets/images/fiori/run.jpg" alt="Run"></a>
-Bu örnekte olduğu gibi press içerisinde verdiğimiz <b>onPress</b> fonksiyonunu burada tetikledik ve Run butonuna basarak çalıştırıp ekrana bir mesaj yazdırdık. Ayrıca uygulamalarımızda 
-  kullanmak istediğimiz SAP'nin bizlere geniş seçenekler sunduğu kütüphaneleri <b>sap.ui.define</b> altında tanımlayabiliriz.
+As in this example, we triggered the <b>onPress</b> function we gave inside press here and ran it by pressing the Run button and printed a message to the screen. We can also define the libraries that SAP offers us with wide options that we want to use in our applications under <b>sap.ui.define</b>.
 </p>
-<p>Bu yazımda Fiori'ye küçük bir giriş yaptık. Local Web Ide'nin kurulum ve kullanımından bahsettiğimiz bu yazıda okyanus içerisindeki küçücük bir balığı gösterdim sadece. 
-  Siz de kullanabileceğimiz sayısız özellikler içeren uygulamalar geliştirebildiğimiz SAP'nin bizlere sunduğu <a href="https://sapui5.hana.ondemand.com/#/controls">dökümandan</a>
-  faydalanabilirsiniz. Aradığınız herşey bu dökümanda mevcuttur. Ayrıca hangi versiyonda çalışacaksanız dökümanın versiyonunu kendinize göre değiştirerek araştırmalarınızı 
-  sürdürebilirsiniz. Bir sonraki yazımda <b>ODATA Web Servis</b>lerinden bahsedip temel bir örnek ile pekiştireceğiz.</p>
-  <p>Okuduğunuz için teşekkürler...</p>
+<p>In this article, we made a small introduction to Fiori. In this article where we talked about the installation and usage of Local Web IDE, I only showed a tiny fish in the ocean. You can also benefit from the <a href="https://sapui5.hana.ondemand.com/#/controls">documentation</a> that SAP offers us, with which we can develop applications containing countless features that we can use. Everything you are looking for is available in this documentation. Also, depending on which version you will work with, you can continue your research by changing the version of the documentation according to yourself. In my next article, we will talk about <b>ODATA Web Services</b> and reinforce it with a basic example.</p>
+  <p>Thank you for reading...</p>
 
 <div id="disqus_thread"></div>
 <script>

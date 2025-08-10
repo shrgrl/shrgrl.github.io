@@ -7,142 +7,340 @@ order: 1
 font-awesome: fas fa-home
 ---
 
-<header class="hero hero-fluid hero-home txt-color-sasha-white txt-align-c" style="background: #272727 url('{{ base }}/assets/images/backgrounds/bg7.jpg'); background-position: center; background-size: cover;">
-  <div class="container nfloat-down">
-    <figure class="avatar rounded-circle">
-      <img class="img-fluid" src="{{ base }}/assets/images/avatars/avatar.jpg" alt="Seher Gürel Profil Picture">
-    </figure>
-    <h1><strong>Seher Gurel Mousselli</strong></h1>
-    <p class="txt-size-lead">
-      SAP ABAP & FIORI Developer | Technical SAP Consultant
-    </p>
-    {% include social.html %}
+<header class="hero hero-fluid hero-home txt-color-sasha-white txt-align-c" style="background: linear-gradient(rgba(15,15,30,0.85), rgba(10,10,20,0.9)), url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2134') center/cover; position: relative; min-height: 100vh; display: flex; align-items: center;">
+  <div class="container" style="position: relative; z-index: 2;">
+    <div style="animation: fadeInUp 1s ease-out;">
+      <!-- Modern profile photo with glow effect -->
+      <figure style="margin-bottom: 2rem; position: relative; display: inline-block;">
+        <div style="width: 150px; height: 150px; margin: 0 auto; position: relative;">
+          <img class="img-fluid" src="{{ base }}/assets/images/avatars/fotor_creation_2025-08-09.jfif" alt="Seher Gürel Profile Picture" 
+               style="border-radius: 50%; border: 3px solid rgba(102, 126, 234, 0.5); box-shadow: 0 0 30px rgba(102, 126, 234, 0.3); width: 100%; height: 100%; object-fit: cover; object-position: center 15%;">
+          <div style="position: absolute; top: -3px; left: -3px; right: -3px; bottom: -3px; border-radius: 50%; 
+                      background: linear-gradient(45deg, #667eea, #764ba2); opacity: 0.3; z-index: -1; 
+                      animation: pulse 2s infinite;"></div>
+        </div>
+      </figure>
+      
+      <!-- Name with modern typography -->
+      <h1 style="font-size: 3rem; font-weight: 300; letter-spacing: 2px; margin-bottom: 0.5rem; 
+                 text-transform: uppercase; background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%); 
+                 -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        Seher Gurel Mousselli
+      </h1>
+      
+      <!-- Title with typing indicator -->
+      <div style="margin: 1.5rem 0;">
+        <p style="font-size: 1.1rem; color: #667eea; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 0.5rem;">
+          SAP SOLUTIONS ENGINEER
+        </p>
+        <p style="font-size: 0.95rem; color: rgba(255,255,255,0.7); font-weight: 300;">
+          ABAP & Fiori Developer • Technical SAP Consultant • Integration Specialist
+        </p>
+      </div>
+      
+      <!-- Modern social buttons -->
+      <div style="margin-top: 2rem;">
+        {% include social.html %}
+      </div>
+      
+      <!-- Scroll indicator -->
+      <div style="position: absolute; bottom: -60px; left: 50%; transform: translateX(-50%); animation: bounce 2s infinite; cursor: pointer;" onclick="document.getElementById('passion').scrollIntoView({behavior: 'smooth'});">
+        <div style="width: 30px; height: 50px; border: 2px solid rgba(255,255,255,0.3); border-radius: 25px; position: relative;">
+          <div style="width: 4px; height: 10px; background: #667eea; border-radius: 2px; position: absolute; 
+                      top: 8px; left: 50%; transform: translateX(-50%); animation: scroll 2s infinite;"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </header>
 
-<div class="home-component" id="passion">
-  <div class="container txt-align-c">
-    <h2 class="txt-color-primary">What am I interested in?</h2>
+<div class="home-component" id="passion" style="background: linear-gradient(135deg, rgba(10,10,20,1), rgba(15,15,30,0.98)); position: relative; padding: 80px 0;">
+  <div class="container txt-align-c" style="position: relative; z-index: 2;">
+    <h2 style="color: #fff; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px;">What am I interested in?</h2>
+    <div style="width: 60px; height: 2px; background: #667eea; margin: 0 auto 50px;"></div>
     <div class="row">
       
-      <div class="col-md-3">
-        <img class="img-fluid" src="{{ base }}/assets/images/skill-icons/mobile.svg" alt="Mobile Apps">
-        <h5 class="txt-weight-medium txt-color-primary">Mobile</h5>
+      <div class="col-md-3" style="margin-bottom: 30px;">
+        <div style="background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(102,126,234,0.2); border-radius: 15px; padding: 35px 25px; height: 100%; transition: all 0.3s ease; position: relative; overflow: hidden;"
+             onmouseover="this.style.background='rgba(102,126,234,0.1)'; this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(102,126,234,0.3)'"
+             onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="font-size: 3.5rem; margin-bottom: 20px; filter: drop-shadow(0 0 20px rgba(102,126,234,0.3));">💻</div>
+          <h5 style="color: #667eea; font-weight: 500; margin-bottom: 15px; letter-spacing: 1px; font-size: 0.95rem;">ABAP Development</h5>
+          <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.6;">ALV, Module Pool, Smartforms, performance optimization, and debugging.</p>
+        </div>
       </div>
       
-      <div class="col-md-3">
-        <img class="img-fluid" src="{{ base }}/assets/images/skill-icons/monitor.svg" alt="Full-Stack">
-        <h5 class="txt-weight-medium txt-color-primary">Full-Stack</h5>
+      <div class="col-md-3" style="margin-bottom: 30px;">
+        <div style="background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(102,126,234,0.2); border-radius: 15px; padding: 35px 25px; height: 100%; transition: all 0.3s ease; position: relative; overflow: hidden;"
+             onmouseover="this.style.background='rgba(102,126,234,0.1)'; this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(102,126,234,0.3)'"
+             onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="font-size: 3.5rem; margin-bottom: 20px; filter: drop-shadow(0 0 20px rgba(102,126,234,0.3));">📱</div>
+          <h5 style="color: #667eea; font-weight: 500; margin-bottom: 15px; letter-spacing: 1px; font-size: 0.95rem;">Fiori / SAPUI5</h5>
+          <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.6;">Custom and standard app enhancements, UX improvements, and screen arrangements.</p>
+        </div>
       </div>
 
-      <div class="col-md-3">
-        <img class="img-fluid" src="{{ base }}/assets/images/skill-icons/nodes.svg" alt="Web">
-        <h5 class="txt-weight-medium txt-color-primary">Web</h5>
+      <div class="col-md-3" style="margin-bottom: 30px;">
+        <div style="background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(102,126,234,0.2); border-radius: 15px; padding: 35px 25px; height: 100%; transition: all 0.3s ease; position: relative; overflow: hidden;"
+             onmouseover="this.style.background='rgba(102,126,234,0.1)'; this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(102,126,234,0.3)'"
+             onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="font-size: 3.5rem; margin-bottom: 20px; filter: drop-shadow(0 0 20px rgba(102,126,234,0.3));">🔄</div>
+          <h5 style="color: #667eea; font-weight: 500; margin-bottom: 15px; letter-spacing: 1px; font-size: 0.95rem;">SAP Integrations</h5>
+          <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.6;">Secure SAP ↔ third-party integration via APIs, RFC, SOAP, IDoc.</p>
+        </div>
       </div>
 
-      <div class="col-md-3">
-        <img class="img-fluid" src="{{ base }}/assets/images/skill-icons/mountains.svg" alt="Graphics">
-        <h5 class="txt-weight-medium txt-color-primary">Graphics and GUI</h5>
+      <div class="col-md-3" style="margin-bottom: 30px;">
+        <div style="background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(102,126,234,0.2); border-radius: 15px; padding: 35px 25px; height: 100%; transition: all 0.3s ease; position: relative; overflow: hidden;"
+             onmouseover="this.style.background='rgba(102,126,234,0.1)'; this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(102,126,234,0.3)'"
+             onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="font-size: 3.5rem; margin-bottom: 20px; filter: drop-shadow(0 0 20px rgba(102,126,234,0.3));">📋</div>
+          <h5 style="color: #667eea; font-weight: 500; margin-bottom: 15px; letter-spacing: 1px; font-size: 0.95rem;">e-Transformation & Compliance</h5>
+          <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.6;">e-Invoice, e-Archive, e-Ledger, VAT Return (EU compliance focus).</p>
+        </div>
       </div>
       
     </div>
   </div>
 </div>
 
-<div class="home-component txt-color-sasha-white" id="quote-machine" style="background: #171719 url('{{ base }}/assets/images/backgrounds/bg1.jpg'); background-position: center; background-size: cover;">
-  <div class="container txt-align-c">
-    <h4 class="txt-weight-light" id="quote-text">Loading...</h4>
-    <p class="txt-size-lead" id="quote-author">&nbsp;</p>
-    <small class="txt-color-sasha-greyest">Random quotes from my personal list...</small>
-  </div>
-</div>
 
-<div class="home-component" id="education">
+<div class="home-component" id="education" style="background: linear-gradient(135deg, rgba(15,15,30,0.98), rgba(20,20,40,0.95)); padding: 80px 0; color: #fff;">
   <div class="container">
-    <h2 class="txt-color-primary">Education</h2>
-    <p class="txt-size-lead">
-      I'm Seher, graduated from Atatürk University Computer Engineering department. During my education, I took part in many different tasks, 
-      have worked individually and in teams and was especially interested in web development projects and as a result I developed my own website.
-      And also, I was accepted to the <strong>SAP Young Professional Program</strong>, which is the talent evaluation program of SAP. 
-      Here we received great trainings to improve our technical and individual skills and earned certificates. I still continue to improve myself.
+    <h2 style="color: #fff; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; text-align: center;">Education</h2>
+    <div style="width: 60px; height: 2px; background: #667eea; margin: 0 auto 50px;"></div>
+    <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; line-height: 1.8; text-align: center; max-width: 900px; margin: 0 auto 50px; font-weight: 300;">
+      Computer Engineering graduate from <strong style="color: #667eea;">Atatürk University</strong> with extensive experience in collaborative software development and individual project management. 
+      Specialized in web development technologies, culminating in the development of comprehensive web solutions. 
+      Selected for the prestigious <strong style="color: #667eea;">SAP Young Professional Program</strong>, a competitive talent development initiative that provided 
+      advanced technical training and professional certification. Committed to continuous learning and professional development in enterprise software solutions.
     </p>
-    <br>
-    <div class="row">
-      <div class="col-sm-4 col-lg-2">
-         <img class="img-fluid img-grayscale" src="{{ base }}/assets/images/education/atauni.jpg" alt="Ataturk University">
+    <div class="row justify-content-center">
+      <div class="col-sm-3 col-lg-2" style="margin-bottom: 30px;">
+        <div style="background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(102,126,234,0.2); border-radius: 15px; padding: 25px; height: 100%; transition: all 0.3s ease; text-align: center;"
+             onmouseover="this.style.background='rgba(102,126,234,0.1)'; this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(102,126,234,0.3)'"
+             onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <img class="img-fluid" src="{{ base }}/assets/images/education/UCO.png" alt="University of Central Oklahoma" style="filter: grayscale(0%) brightness(1); transition: filter 0.3s ease;">
+        </div>
       </div>
-      <div class="col-sm-4 col-lg-2">
-        <img class="img-fluid img-grayscale" src="{{ base }}/assets/images/education/youtube.png" alt="YouTube">
+      <div class="col-sm-3 col-lg-2" style="margin-bottom: 30px;">
+        <div style="background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(102,126,234,0.2); border-radius: 15px; padding: 25px; height: 100%; transition: all 0.3s ease; text-align: center;"
+             onmouseover="this.style.background='rgba(102,126,234,0.1)'; this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(102,126,234,0.3)'"
+             onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <img class="img-fluid" src="{{ base }}/assets/images/education/atauni.jpg" alt="Ataturk University" style="filter: grayscale(0%) brightness(1); transition: filter 0.3s ease;">
+        </div>
       </div>
-      <div class="col-sm-4 col-lg-2">
-        <img class="img-fluid img-grayscale" src="{{ base }}/assets/images/education/udemy-new.png" alt="Udemy">
+      <div class="col-sm-3 col-lg-2" style="margin-bottom: 30px;">
+        <div style="background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(102,126,234,0.2); border-radius: 15px; padding: 25px; height: 100%; transition: all 0.3s ease; text-align: center;"
+             onmouseover="this.style.background='rgba(102,126,234,0.1)'; this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(102,126,234,0.3)'"
+             onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <img class="img-fluid" src="{{ base }}/assets/images/education/udemy-new.png" alt="Udemy" style="filter: grayscale(0%) brightness(1); transition: filter 0.3s ease;">
+        </div>
       </div>
-      <div class="col-sm-4 col-lg-2">
-        <img class="img-fluid img-grayscale" src="{{ base }}/assets/images/education/SAP.png" alt="SAP Young Professionals Program">
+      <div class="col-sm-3 col-lg-2" style="margin-bottom: 30px;">
+        <div style="background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(102,126,234,0.2); border-radius: 15px; padding: 25px; height: 100%; transition: all 0.3s ease; text-align: center;"
+             onmouseover="this.style.background='rgba(102,126,234,0.1)'; this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(102,126,234,0.3)'"
+             onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <img class="img-fluid" src="{{ base }}/assets/images/education/SAP.png" alt="SAP Young Professionals Program" style="filter: grayscale(0%) brightness(1); transition: filter 0.3s ease;">
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="home-component txt-color-sasha-white" id="greetings" style="background: #403735 url('{{ base }}/assets/images/backgrounds/bg3.jpg'); background-position: center; background-size: cover;">
-  <div class="container txt-align-c">
-    <h3 class="txt-weight-light" id="greetings-country">...</h3>
-    <p class="txt-size-lead" id="greetings-weekday">...</p>
-  </div>
-</div>
 
-<div class="home-component" id="technologies">
+<div class="home-component" id="technologies" style="background: linear-gradient(135deg, rgba(20,20,40,0.95), rgba(25,25,50,0.98)); padding: 80px 0; color: #fff;">
   <div class="container">
-    <h2 class="txt-color-primary">Technologies</h2>
-    <p class="txt-size-lead">
-      Here are some of the technologies I've used before. I add to my resume what I think I am more confident and competent.
-    </p>
+    <h2 style="color: #fff; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; text-align: center;">Technologies</h2>
+    <div style="width: 60px; height: 2px; background: #667eea; margin: 0 auto 40px;"></div>
 
-    <div class="table-container" style="margin-top: 30px;">
-      <table class="table table-bordered">
-        <tr>
-          <th>Front-End</th>
-          <td>SAPUI5, HTML, CSS, JavaScript, Bootstrap</td>
+    <div class="table-container" style="margin-top: 30px; perspective: 1000px;">
+      <table style="width: 100%; 
+                    background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); 
+                    backdrop-filter: blur(20px); 
+                    border: 2px solid transparent;
+                    background-clip: padding-box;
+                    border-radius: 15px; 
+                    overflow: hidden; 
+                    font-family: 'Inter', sans-serif;
+                    box-shadow: 0 15px 35px rgba(0,0,0,0.2), 
+                                0 0 0 1px rgba(102,126,234,0.2),
+                                inset 0 1px 0 rgba(255,255,255,0.1);
+                    transform: translateY(0);
+                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);"
+             onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 20px 45px rgba(0,0,0,0.3), 0 0 0 1px rgba(102,126,234,0.3), inset 0 1px 0 rgba(255,255,255,0.15)'"
+             onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 15px 35px rgba(0,0,0,0.2), 0 0 0 1px rgba(102,126,234,0.2), inset 0 1px 0 rgba(255,255,255,0.1)'">
+        <!-- Header Row -->
+        <tr style="background: linear-gradient(135deg, rgba(102,126,234,0.2), rgba(102,126,234,0.15)); 
+                   border-bottom: 1px solid rgba(102,126,234,0.3);">
+          <th style="color: #fff; 
+                     font-weight: 600; 
+                     padding: 16px 20px; 
+                     text-align: left; 
+                     letter-spacing: 1px; 
+                     font-size: 0.95rem; 
+                     border-right: 1px solid rgba(102,126,234,0.3);
+                     text-transform: uppercase;">
+            <span style="display: flex; align-items: center;">
+              <i class="fas fa-layer-group" style="font-size: 1.1rem; margin-right: 10px; color: #667eea; filter: drop-shadow(0 0 8px rgba(102,126,234,0.5));"></i>
+              Category
+            </span>
+          </th>
+          <th style="color: #fff; 
+                     font-weight: 600; 
+                     padding: 16px 20px; 
+                     font-size: 0.95rem; 
+                     letter-spacing: 1px;
+                     text-transform: uppercase;">
+            <span style="display: flex; align-items: center;">
+              <i class="fas fa-code" style="font-size: 1.1rem; margin-right: 10px; color: #667eea; filter: drop-shadow(0 0 8px rgba(102,126,234,0.5));"></i>
+              Technologies
+            </span>
+          </th>
         </tr>
-        <tr>
-          <th>Back-End</th>
-          <td>ABAP, Node.js, REST API</td>
+        
+        <!-- Data Rows -->
+        <tr style="border-bottom: 1px solid rgba(102,126,234,0.1); 
+                   transition: all 0.3s ease;" 
+            onmouseover="this.style.background='linear-gradient(90deg, rgba(102,126,234,0.06), rgba(102,126,234,0.02))'" 
+            onmouseout="this.style.background='transparent'">
+          <th style="color: #667eea; 
+                     font-weight: 500; 
+                     padding: 14px 20px; 
+                     text-align: left; 
+                     font-size: 0.9rem; 
+                     border-right: 1px solid rgba(102,126,234,0.1);
+                     display: flex;
+                     align-items: center;">
+            <i class="fas fa-palette" style="font-size: 1.1rem; margin-right: 12px; color: #667eea; filter: drop-shadow(0 0 6px rgba(102,126,234,0.4));"></i>
+            <span>Frontend & Web</span>
+          </th>
+          <td style="color: rgba(255,255,255,0.95); 
+                     font-weight: 400; 
+                     padding: 14px 20px; 
+                     font-size: 0.85rem; 
+                     line-height: 1.5;">
+            <span style="background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 500;">SAPUI5</span>, HTML, CSS, JavaScript, SOAPUI
+          </td>
         </tr>
-        <tr>
-          <th>Database Systems</th>
-          <td>MongoDB, MySQL</td>
+        
+        <tr style="border-bottom: 1px solid rgba(102,126,234,0.1); 
+                   transition: all 0.3s ease;" 
+            onmouseover="this.style.background='linear-gradient(90deg, rgba(102,126,234,0.06), rgba(102,126,234,0.02))'" 
+            onmouseout="this.style.background='transparent'">
+          <th style="color: #667eea; 
+                     font-weight: 500; 
+                     padding: 14px 20px; 
+                     text-align: left; 
+                     font-size: 0.9rem; 
+                     border-right: 1px solid rgba(102,126,234,0.1);
+                     display: flex;
+                     align-items: center;">
+            <i class="fas fa-server" style="font-size: 1.1rem; margin-right: 12px; color: #667eea; filter: drop-shadow(0 0 6px rgba(102,126,234,0.4));"></i>
+            <span>Backend & Data</span>
+          </th>
+          <td style="color: rgba(255,255,255,0.95); 
+                     font-weight: 400; 
+                     padding: 14px 20px; 
+                     font-size: 0.85rem; 
+                     line-height: 1.5;">
+            <span style="background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 500;">SAP ABAP</span>, Web Services, RFC, IDoc, SQL, JSON, XML, XSLT
+          </td>
         </tr>
-        <tr>
-          <th>Software Architecture</th>
-          <td>MVC, MVVM, MVP</td>
+        
+        <tr style="border-bottom: 1px solid rgba(102,126,234,0.1); 
+                   transition: all 0.3s ease;" 
+            onmouseover="this.style.background='linear-gradient(90deg, rgba(102,126,234,0.06), rgba(102,126,234,0.02))'" 
+            onmouseout="this.style.background='transparent'">
+          <th style="color: #667eea; 
+                     font-weight: 500; 
+                     padding: 14px 20px; 
+                     text-align: left; 
+                     font-size: 0.9rem; 
+                     border-right: 1px solid rgba(102,126,234,0.1);
+                     display: flex;
+                     align-items: center;">
+            <i class="fas fa-cube" style="font-size: 1.1rem; margin-right: 12px; color: #667eea; filter: drop-shadow(0 0 6px rgba(102,126,234,0.4));"></i>
+            <span>SAP Modules</span>
+          </th>
+          <td style="color: rgba(255,255,255,0.95); 
+                     font-weight: 400; 
+                     padding: 14px 20px; 
+                     font-size: 0.85rem; 
+                     line-height: 1.5;">
+            SD, FI, MM, <span style="background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 500;">e-Invoice, e-Archive, e-Ledger</span>, VAT Return
+          </td>
         </tr>
-        <tr>
-          <th>Source Control</th>
-          <td>Git, GitHub</td>
+        
+        <tr style="border-bottom: 1px solid rgba(102,126,234,0.1); 
+                   transition: all 0.3s ease;" 
+            onmouseover="this.style.background='linear-gradient(90deg, rgba(102,126,234,0.06), rgba(102,126,234,0.02))'" 
+            onmouseout="this.style.background='transparent'">
+          <th style="color: #667eea; 
+                     font-weight: 500; 
+                     padding: 14px 20px; 
+                     text-align: left; 
+                     font-size: 0.9rem; 
+                     border-right: 1px solid rgba(102,126,234,0.1);
+                     display: flex;
+                     align-items: center;">
+            <i class="fas fa-wrench" style="font-size: 1.1rem; margin-right: 12px; color: #667eea; filter: drop-shadow(0 0 6px rgba(102,126,234,0.4));"></i>
+            <span>Tools & Platforms</span>
+          </th>
+          <td style="color: rgba(255,255,255,0.95); 
+                     font-weight: 400; 
+                     padding: 14px 20px; 
+                     font-size: 0.85rem; 
+                     line-height: 1.5;">
+            MS Office, <span style="background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 500;">Git</span>, GitHub
+          </td>
         </tr>
-        <tr>
-          <th>Data Serialisation</th>
-          <td>JSON, YAML, XML</td>
+        
+        <tr style="border-bottom: 1px solid rgba(102,126,234,0.1); 
+                   transition: all 0.3s ease;" 
+            onmouseover="this.style.background='linear-gradient(90deg, rgba(102,126,234,0.06), rgba(102,126,234,0.02))'" 
+            onmouseout="this.style.background='transparent'">
+          <th style="color: #667eea; 
+                     font-weight: 500; 
+                     padding: 14px 20px; 
+                     text-align: left; 
+                     font-size: 0.9rem; 
+                     border-right: 1px solid rgba(102,126,234,0.1);
+                     display: flex;
+                     align-items: center;">
+            <i class="fas fa-code-branch" style="font-size: 1.1rem; margin-right: 12px; color: #667eea; filter: drop-shadow(0 0 6px rgba(102,126,234,0.4));"></i>
+            <span>IDEs & Editors</span>
+          </th>
+          <td style="color: rgba(255,255,255,0.95); 
+                     font-weight: 400; 
+                     padding: 14px 20px; 
+                     font-size: 0.85rem; 
+                     line-height: 1.5;">
+            <span style="background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 500;">SAP Web IDE</span>, VS Code, Visual Studio, NetBeans IDE
+          </td>
         </tr>
-        <tr>
-          <th>Hosting Services</th>
-          <td>GitHub Pages, Heroku</td>
-        </tr>
-        <tr>
-          <th>Programming</th>
-          <td>SQL, Python</td>
-        </tr>
-        <tr>
-          <th>IDE, Text Editor</th>
-          <td>VSCode, Atom, Sublime Text, Visual Studio, NetBeans IDE, SAP Web IDE</td>
-        </tr>
-        <tr>
-          <th>OS</th>
-          <td>Windows, Linux</td>
-        </tr>
-        <tr>
-          <th>Marketing, Research</th>
-          <td>Google Analytics, Google Ads</td>
+        
+        <tr style="transition: all 0.3s ease;" 
+            onmouseover="this.style.background='linear-gradient(90deg, rgba(102,126,234,0.06), rgba(102,126,234,0.02))'" 
+            onmouseout="this.style.background='transparent'">
+          <th style="color: #667eea; 
+                     font-weight: 500; 
+                     padding: 14px 20px; 
+                     text-align: left; 
+                     font-size: 0.9rem; 
+                     border-right: 1px solid rgba(102,126,234,0.1);
+                     display: flex;
+                     align-items: center;">
+            <i class="fas fa-desktop" style="font-size: 1.1rem; margin-right: 12px; color: #667eea; filter: drop-shadow(0 0 6px rgba(102,126,234,0.4));"></i>
+            <span>Operating Systems</span>
+          </th>
+          <td style="color: rgba(255,255,255,0.95); 
+                     font-weight: 400; 
+                     padding: 14px 20px; 
+                     font-size: 0.85rem; 
+                     line-height: 1.5;">
+            Windows, Linux
+          </td>
         </tr>
       </table>
     </div>
@@ -150,6 +348,287 @@ font-awesome: fas fa-home
   </div>
 </div>
 
+
+<style>
+  /* Import modern font */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap');
+  
+  /* Modern Navbar Styling - Complete Redesign */
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  
+  .nav-fixed {
+    background: linear-gradient(to bottom, rgba(10, 10, 20, 0.98), rgba(15, 15, 30, 0.95)) !important;
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border: none;
+    box-shadow: 0 1px 0 rgba(102, 126, 234, 0.1);
+    padding: 0.75rem 0 !important;
+    transition: all 0.3s ease;
+  }
+  
+  /* Navbar container */
+  .nav-fixed .container {
+    max-width: 1200px;
+  }
+  
+  /* Brand Logo - Minimalist Design */
+  .nav-fixed .navbar-brand {
+    font-family: 'Inter', sans-serif;
+    font-weight: 200;
+    letter-spacing: 3px;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    color: #fff !important;
+    position: relative;
+    padding: 0;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-fixed .navbar-brand::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 20px;
+    background: #667eea;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-fixed .navbar-brand:hover {
+    color: #667eea !important;
+    transform: translateX(3px);
+  }
+  
+  /* Navigation Links - Clean Modern Style */
+  .nav-fixed .navbar-nav {
+    align-items: center;
+  }
+  
+  .nav-fixed .navbar-nav .nav-link {
+    font-family: 'Inter', sans-serif;
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-weight: 300;
+    letter-spacing: 1.5px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    padding: 0.75rem 1.25rem;
+    margin: 0 0.5rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Modern hover effect with glow */
+  .nav-fixed .navbar-nav .nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #667eea, transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  
+  .nav-fixed .navbar-nav .nav-link:hover {
+    color: rgba(255, 255, 255, 1) !important;
+    transform: translateY(-1px);
+  }
+  
+  .nav-fixed .navbar-nav .nav-link:hover::before {
+    opacity: 1;
+  }
+  
+  /* Active state with dot indicator */
+  .nav-fixed .navbar-nav .nav-link.active {
+    color: #fff !important;
+    position: relative;
+  }
+  
+  .nav-fixed .navbar-nav .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #667eea;
+    box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+  }
+  
+  /* Contact button - Special styling */
+  .nav-fixed .navbar-nav .nav-link:last-child {
+    background: rgba(102, 126, 234, 0.1);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    border-radius: 25px;
+    padding: 0.5rem 1.5rem;
+    margin-left: 1rem;
+  }
+  
+  .nav-fixed .navbar-nav .nav-link:last-child:hover {
+    background: rgba(102, 126, 234, 0.2);
+    border-color: #667eea;
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.2);
+  }
+  
+  /* Mobile menu toggle - Modern hamburger */
+  .navbar-toggler {
+    border: none;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .navbar-toggler:focus {
+    box-shadow: none;
+  }
+  
+  .navbar-toggler-icon {
+    background: none;
+    position: relative;
+    width: 22px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.8);
+    display: block;
+    transition: all 0.3s ease;
+  }
+  
+  .navbar-toggler-icon::before,
+  .navbar-toggler-icon::after {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+  }
+  
+  .navbar-toggler-icon::before {
+    top: -6px;
+  }
+  
+  .navbar-toggler-icon::after {
+    bottom: -6px;
+  }
+  
+  /* Dropdown menu - Glass effect */
+  .nav-fixed .dropdown-menu {
+    background: rgba(10, 10, 20, 0.98);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(102, 126, 234, 0.1);
+    border-radius: 12px;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  }
+  
+  .nav-fixed .dropdown-item {
+    font-family: 'Inter', sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-fixed .dropdown-item:hover {
+    background: rgba(102, 126, 234, 0.15);
+    color: #fff;
+    transform: translateX(5px);
+  }
+  
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Hero Section Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.3;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.5;
+    }
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    40% {
+      transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+      transform: translateX(-50%) translateY(-5px);
+    }
+  }
+  
+  @keyframes scroll {
+    0% {
+      top: 8px;
+      opacity: 1;
+    }
+    100% {
+      top: 28px;
+      opacity: 0;
+    }
+  }
+  
+  /* Enhanced social media buttons */
+  .social-list {
+    display: inline-flex;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .social-list a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+  
+  .social-list a:hover {
+    background: #667eea;
+    border-color: #667eea;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+  }
+</style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
 <script src="//twemoji.maxcdn.com/2/twemoji.min.js?2.3.0"></script>
@@ -202,17 +681,29 @@ font-awesome: fas fa-home
      });
 */
     loadCountry(function (text) {
-      document.querySelector('#greetings-country').innerHTML = text;
-      twemoji.parse(document.querySelector('#greetings-country')/*, { folder: 'svg', ext: '.svg' }*/);
+      const countryElement = document.querySelector('#greetings-country');
+      if (countryElement) {
+        countryElement.innerHTML = text;
+        twemoji.parse(countryElement/*, { folder: 'svg', ext: '.svg' }*/);
+      }
     });
 
     loadWeekdayQuotes(function (text) {
-      document.querySelector('#greetings-weekday').innerHTML = text;
+      const weekdayElement = document.querySelector('#greetings-weekday');
+      if (weekdayElement) {
+        weekdayElement.innerHTML = text;
+      }
     });
 
     loadQuotes(function (text, author) {
-      document.querySelector('#quote-text').innerHTML = text;
-      document.querySelector('#quote-author').innerHTML = "&mdash; " + author;
+      const quoteTextElement = document.querySelector('#quote-text');
+      const quoteAuthorElement = document.querySelector('#quote-author');
+      if (quoteTextElement) {
+        quoteTextElement.innerHTML = text;
+      }
+      if (quoteAuthorElement) {
+        quoteAuthorElement.innerHTML = "&mdash; " + author;
+      }
     });
   });
 </script>

@@ -4,16 +4,200 @@ permalink: "/privacy"
 layout: page
 
 heading: Privacy Policy
-sub-heading: What is the Privacy Policy?
-hero-color: 20221F
+sub-heading: Your privacy and data protection matter to me
+hero-color: 667eea
 hero-image: 0
+custom-hero-bg: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
 ---
 
-<p class="txt-size-lead">Your privacy is just as important as you. This is for you to feel more secure while following my site. I work to know as little as possible about you and to ensure that the information you share remains confidential.</p>
+<style>
+/* Modern Privacy Page Styling */
+body {
+  background: linear-gradient(135deg, rgba(15,15,30,0.95), rgba(20,20,40,0.98)) !important;
+  min-height: 100vh;
+}
 
-<ul style="margin-top: 30px;">
-  <li>I use Google Analytics so I can better understand who my website visitors are and where they come from.</li>
-  <li style="margin-top: 15px;">An estimated geographic information is added when using the contact form on my website. I use this predictive information to better understand who and where my contact person is. I keep this in strict security and utmost confidentiality with the information you provide in the contact form. You can choose not to use the contact form.</li>
-</ul>
+.page-component {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  background: transparent !important;
+  color: #fff !important;
+  padding: 80px 0 !important;
+  min-height: 100vh !important;
+}
 
-<p style="margin-top: 30px;">I may update this privacy policy from time to time. If you have questions, suggestions or other feedback, please contact <strong>shrgurel@gmail.com</strong>.</p>
+.privacy-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.privacy-intro {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(102,126,234,0.2);
+  border-radius: 15px;
+  padding: 40px;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.privacy-section {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(102,126,234,0.15);
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 30px;
+  transition: all 0.3s ease;
+}
+
+.privacy-section:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(102,126,234,0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102,126,234,0.1);
+}
+
+.section-title {
+  color: #667eea;
+  font-weight: 500;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.section-title i {
+  margin-right: 12px;
+  font-size: 1.1rem;
+  filter: drop-shadow(0 0 8px rgba(102,126,234,0.4));
+}
+
+.privacy-text {
+  color: rgba(255,255,255,0.9);
+  font-size: 1rem;
+  line-height: 1.7;
+  font-weight: 300;
+  margin: 0;
+}
+
+.privacy-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.privacy-list li {
+  background: rgba(255,255,255,0.02);
+  border-left: 3px solid #667eea;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 0 8px 8px 0;
+  color: rgba(255,255,255,0.9);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  font-weight: 300;
+  position: relative;
+}
+
+.privacy-list li:before {
+  content: "•";
+  color: #667eea;
+  font-weight: bold;
+  position: absolute;
+  left: -15px;
+  background: rgba(15,15,30,1);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+}
+
+.contact-info {
+  background: linear-gradient(135deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1));
+  border: 1px solid rgba(102,126,234,0.3);
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.contact-email {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.contact-email:hover {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(102,126,234,0.5);
+}
+</style>
+
+<div class="privacy-content">
+  <div class="privacy-intro">
+    <p class="privacy-text" style="font-size: 1.1rem; text-align: center; margin-bottom: 0;">
+      Your privacy is just as important as you are. This policy helps you feel more secure while browsing my site. I work to know as little as possible about you and ensure that any information you share remains confidential.
+    </p>
+  </div>
+
+  <div class="privacy-section">
+    <h3 class="section-title">
+      <i class="fas fa-chart-line"></i>
+      Website Analytics
+    </h3>
+    <p class="privacy-text">
+      I use Google Analytics to better understand who my website visitors are and where they come from. This helps me improve the user experience and content relevance. All data collected is anonymized and used solely for analytical purposes.
+    </p>
+  </div>
+
+  <div class="privacy-section">
+    <h3 class="section-title">
+      <i class="fas fa-envelope"></i>
+      Contact Form Information
+    </h3>
+    <p class="privacy-text">
+      When you use the contact form on my website, estimated geographic information may be added to help me better understand my audience. I maintain strict security and utmost confidentiality with all information you provide. Using the contact form is entirely optional.
+    </p>
+  </div>
+
+  <div class="privacy-section">
+    <h3 class="section-title">
+      <i class="fas fa-shield-alt"></i>
+      Data Protection Principles
+    </h3>
+    <ul class="privacy-list">
+      <li>All personal data is processed lawfully, fairly, and transparently</li>
+      <li>Data collection is limited to what's necessary for legitimate purposes</li>
+      <li>Information is kept accurate and up-to-date</li>
+      <li>Data is retained only as long as necessary</li>
+      <li>Your information is processed securely with appropriate technical measures</li>
+    </ul>
+  </div>
+
+  <div class="privacy-section">
+    <h3 class="section-title">
+      <i class="fas fa-sync-alt"></i>
+      Policy Updates
+    </h3>
+    <p class="privacy-text">
+      I may update this privacy policy from time to time to reflect changes in practices or legal requirements. Any updates will be posted on this page with the revision date clearly indicated.
+    </p>
+  </div>
+
+  <div class="contact-info">
+    <p class="privacy-text" style="margin-bottom: 15px;">
+      If you have questions, suggestions, or other feedback regarding this privacy policy, please don't hesitate to contact me:
+    </p>
+    <a href="mailto:shrgurel@gmail.com" class="contact-email">
+      <i class="fas fa-paper-plane" style="margin-right: 8px;"></i>
+      shrgurel@gmail.com
+    </a>
+  </div>
+</div>

@@ -106,41 +106,124 @@ $(document).on('click', '[data-toggle="lightbox"]', function(event) {
     {{ content }}
   </div>
   
-  <footer class="footer">
-    <div class="container">
+  <footer style="background: linear-gradient(135deg, rgba(10,10,20,1), rgba(15,15,30,0.98)); 
+                 border-top: 1px solid rgba(102,126,234,0.2); 
+                 font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
+    <div class="container" style="padding: 60px 15px 40px;">
       <div class="row">
-        <div class="col-lg-4">
-          <h5 class="txt-weight-medium txt-color-sasha-white">About me</h5>
-          <p class="txt-color-sasha-dark">
+        <div class="col-lg-4" style="margin-bottom: 40px;">
+          <h5 style="color: #fff; 
+                     font-weight: 500; 
+                     font-size: 1.1rem; 
+                     letter-spacing: 1px; 
+                     margin-bottom: 20px;
+                     text-transform: uppercase;
+                     position: relative;">
+            <i class="fas fa-user" style="color: #667eea; margin-right: 10px; font-size: 1rem;"></i>
+            About me
+          </h5>
+          <p style="color: rgba(255,255,255,0.8); 
+                    font-size: 0.95rem; 
+                    line-height: 1.7; 
+                    font-weight: 300;
+                    margin: 0;">
             Hi all! Thanks for visiting my site. This website contains information about me and some of the projects I have done.
           </p>
         </div>
         
-        <div class="col-lg-4">
-          <h5 class="txt-weight-medium txt-color-sasha-white">Resume</h5>
-          <p class="txt-color-sasha-dark">
-            You can access my <strong>Resume</strong> from the links below.
+        <div class="col-lg-4" style="margin-bottom: 40px;">
+          <h5 style="color: #fff; 
+                     font-weight: 500; 
+                     font-size: 1.1rem; 
+                     letter-spacing: 1px; 
+                     margin-bottom: 20px;
+                     text-transform: uppercase;
+                     position: relative;">
+            <i class="fas fa-file-alt" style="color: #667eea; margin-right: 10px; font-size: 1rem;"></i>
+            Resume
+          </h5>
+          <p style="color: rgba(255,255,255,0.8); 
+                    font-size: 0.95rem; 
+                    line-height: 1.7; 
+                    font-weight: 300;
+                    margin-bottom: 20px;">
+            You can access my <strong style="color: #fff;">Resume</strong> from the link below.
           </p>
-          <p>
-            <a href="https://drive.google.com/file/d/1nhWcBcEnddDOZcRCGgRq4289IjP_lmZl/view?usp=sharing" target="_blank" class="btn btn-danger btn-sm">View as PDF</a>
-            <!--
-            <a href="https://shrgrl.github.io/ozgecmis/" target="_blank" class="btn btn-primary btn-sm">View as Website</a> 
-            -->
-          </p>
+          <div>
+            <a href="https://drive.google.com/file/d/1nhWcBcEnddDOZcRCGgRq4289IjP_lmZl/view?usp=sharing" 
+               target="_blank" 
+               style="display: inline-flex;
+                      align-items: center;
+                      background: linear-gradient(135deg, #667eea, #764ba2);
+                      color: white;
+                      text-decoration: none;
+                      padding: 12px 24px;
+                      border-radius: 8px;
+                      font-size: 0.9rem;
+                      font-weight: 500;
+                      letter-spacing: 0.5px;
+                      transition: all 0.3s ease;
+                      box-shadow: 0 4px 15px rgba(102,126,234,0.3);"
+               onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(102,126,234,0.4)'"
+               onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102,126,234,0.3)'">
+              <i class="fas fa-download" style="margin-right: 8px;"></i>
+              View as PDF
+            </a>
+          </div>
         </div>
         
-        <div class="col-lg-4">
-          <h5 class="txt-weight-medium txt-color-sasha-white">Follow Me</h5>
-          {% include social.html %}
+        <div class="col-lg-4" style="margin-bottom: 40px;">
+          <h5 style="color: #fff; 
+                     font-weight: 500; 
+                     font-size: 1.1rem; 
+                     letter-spacing: 1px; 
+                     margin-bottom: 20px;
+                     text-transform: uppercase;
+                     position: relative;">
+            <i class="fas fa-share-alt" style="color: #667eea; margin-right: 10px; font-size: 1rem;"></i>
+            Follow Me
+          </h5>
+          <div style="margin-top: 15px;">
+            {% include social.html %}
+          </div>
         </div>
       </div>
-    </div>
-    <div class="copyright">
-      <p class="txt-align-c no-margin-b txt-color-sasha-dark">
-        &copy; 2019 &ndash; <script>document.write(new Date().getFullYear());</script> Seher Gürel
-        <br>
-      <a href="/privacy">Privacy Policy</a> 
-      </p>
+      
+      <!-- Copyright and Privacy Section -->
+      <div style="padding: 15px 0 30px 0;">
+        <div class="container">
+          <hr style="border: none; 
+                     height: 1px; 
+                     background: linear-gradient(90deg, transparent, rgba(102,126,234,0.3), transparent); 
+                     margin-bottom: 20px;">
+          <div style="text-align: center;">
+            <p style="color: rgba(255,255,255,0.7); 
+                      font-size: 0.85rem; 
+                      font-weight: 300;
+                      line-height: 1.6;
+                      margin-bottom: 8px;">
+              &copy; 2019 &ndash; <script>document.write(new Date().getFullYear());</script> 
+              <span style="color: #667eea; font-weight: 400;">Seher Gürel Mousselli</span>
+            </p>
+            <p style="margin: 0;">
+              <a href="/privacy" 
+                 style="color: rgba(255,255,255,0.8); 
+                        text-decoration: none; 
+                        font-size: 0.85rem;
+                        font-weight: 300;
+                        transition: color 0.3s ease;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;"
+                 onmouseover="this.style.color='#667eea'"
+                 onmouseout="this.style.color='rgba(255,255,255,0.8)'">
+                <i class="fas fa-shield-alt" style="margin-right: 6px; font-size: 0.8rem;"></i>
+                Privacy Policy
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </footer>
   
