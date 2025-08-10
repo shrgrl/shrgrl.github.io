@@ -17,6 +17,21 @@ body {
   min-height: 100vh;
 }
 
+/* Make navbar match home page exactly - dark gradient with blur */
+.nav-fixed {
+  background: linear-gradient(to bottom, rgba(10, 10, 20, 0.98), rgba(15, 15, 30, 0.95)) !important;
+  backdrop-filter: saturate(180%) blur(20px) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
+  border: none !important;
+  box-shadow: 0 1px 0 rgba(102, 126, 234, 0.1) !important;
+  padding: 0.75rem 0 !important;
+  transition: all 0.3s ease !important;
+}
+
+.nav-fixed .container {
+  max-width: 1200px !important;
+}
+
 .page-component {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
   background: transparent !important;
