@@ -13,8 +13,8 @@ font-awesome: fas fa-home
       <!-- Modern profile photo with glow effect -->
       <figure style="margin-bottom: 2rem; position: relative; display: inline-block;">
         <div style="width: 150px; height: 150px; margin: 0 auto; position: relative;">
-          <img class="img-fluid" src="{{ base }}/assets/images/avatars/avatar.jpg" alt="Seher Gürel Profile Picture" 
-               style="border-radius: 50%; border: 3px solid rgba(102, 126, 234, 0.5); box-shadow: 0 0 30px rgba(102, 126, 234, 0.3);">
+          <img class="img-fluid" src="{{ base }}/assets/images/avatars/fotor_creation_2025-08-09.jfif" alt="Seher Gürel Profile Picture" 
+               style="border-radius: 50%; border: 3px solid rgba(102, 126, 234, 0.5); box-shadow: 0 0 30px rgba(102, 126, 234, 0.3); width: 100%; height: 100%; object-fit: cover; object-position: center 15%;">
           <div style="position: absolute; top: -3px; left: -3px; right: -3px; bottom: -3px; border-radius: 50%; 
                       background: linear-gradient(45deg, #667eea, #764ba2); opacity: 0.3; z-index: -1; 
                       animation: pulse 2s infinite;"></div>
@@ -54,33 +54,50 @@ font-awesome: fas fa-home
   </div>
 </header>
 
-<div class="home-component" id="passion">
-  <div class="container txt-align-c">
-    <h2 class="txt-color-primary">What am I interested in?</h2>
-    <div class="row" style="margin-top: 40px;">
+<div class="home-component" id="passion" style="background: linear-gradient(135deg, rgba(10,10,20,1), rgba(15,15,30,0.98)); position: relative; padding: 80px 0;">
+  <div class="container txt-align-c" style="position: relative; z-index: 2;">
+    <h2 style="color: #fff; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px;">What am I interested in?</h2>
+    <div style="width: 60px; height: 2px; background: #667eea; margin: 0 auto 50px;"></div>
+    <div class="row">
       
-      <div class="col-md-3">
-        <div style="font-size: 4rem; margin-bottom: 15px;">💻</div>
-        <h5 class="txt-weight-medium txt-color-primary">ABAP Development</h5>
-        <p class="txt-size-small">ALV, Module Pool, Smartforms, performance optimization, and debugging.</p>
+      <div class="col-md-3" style="margin-bottom: 30px;">
+        <div style="background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(102,126,234,0.2); border-radius: 15px; padding: 35px 25px; height: 100%; transition: all 0.3s ease; position: relative; overflow: hidden;"
+             onmouseover="this.style.background='rgba(102,126,234,0.1)'; this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(102,126,234,0.3)'"
+             onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="font-size: 3.5rem; margin-bottom: 20px; filter: drop-shadow(0 0 20px rgba(102,126,234,0.3));">💻</div>
+          <h5 style="color: #667eea; font-weight: 500; margin-bottom: 15px; letter-spacing: 1px; font-size: 0.95rem;">ABAP Development</h5>
+          <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.6;">ALV, Module Pool, Smartforms, performance optimization, and debugging.</p>
+        </div>
       </div>
       
-      <div class="col-md-3">
-        <div style="font-size: 4rem; margin-bottom: 15px;">📱</div>
-        <h5 class="txt-weight-medium txt-color-primary">Fiori / SAPUI5</h5>
-        <p class="txt-size-small">Custom and standard app enhancements, UX improvements, and screen arrangements.</p>
+      <div class="col-md-3" style="margin-bottom: 30px;">
+        <div style="background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(102,126,234,0.2); border-radius: 15px; padding: 35px 25px; height: 100%; transition: all 0.3s ease; position: relative; overflow: hidden;"
+             onmouseover="this.style.background='rgba(102,126,234,0.1)'; this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(102,126,234,0.3)'"
+             onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="font-size: 3.5rem; margin-bottom: 20px; filter: drop-shadow(0 0 20px rgba(102,126,234,0.3));">📱</div>
+          <h5 style="color: #667eea; font-weight: 500; margin-bottom: 15px; letter-spacing: 1px; font-size: 0.95rem;">Fiori / SAPUI5</h5>
+          <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.6;">Custom and standard app enhancements, UX improvements, and screen arrangements.</p>
+        </div>
       </div>
 
-      <div class="col-md-3">
-        <div style="font-size: 4rem; margin-bottom: 15px;">🔄</div>
-        <h5 class="txt-weight-medium txt-color-primary">SAP Integrations</h5>
-        <p class="txt-size-small">Secure SAP ↔ third-party integration via APIs, RFC, SOAP, IDoc.</p>
+      <div class="col-md-3" style="margin-bottom: 30px;">
+        <div style="background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(102,126,234,0.2); border-radius: 15px; padding: 35px 25px; height: 100%; transition: all 0.3s ease; position: relative; overflow: hidden;"
+             onmouseover="this.style.background='rgba(102,126,234,0.1)'; this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(102,126,234,0.3)'"
+             onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="font-size: 3.5rem; margin-bottom: 20px; filter: drop-shadow(0 0 20px rgba(102,126,234,0.3));">🔄</div>
+          <h5 style="color: #667eea; font-weight: 500; margin-bottom: 15px; letter-spacing: 1px; font-size: 0.95rem;">SAP Integrations</h5>
+          <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.6;">Secure SAP ↔ third-party integration via APIs, RFC, SOAP, IDoc.</p>
+        </div>
       </div>
 
-      <div class="col-md-3">
-        <div style="font-size: 4rem; margin-bottom: 15px;">📋</div>
-        <h5 class="txt-weight-medium txt-color-primary">e-Transformation & Compliance</h5>
-        <p class="txt-size-small">e-Invoice, e-Archive, e-Ledger, VAT Return (EU compliance focus).</p>
+      <div class="col-md-3" style="margin-bottom: 30px;">
+        <div style="background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(102,126,234,0.2); border-radius: 15px; padding: 35px 25px; height: 100%; transition: all 0.3s ease; position: relative; overflow: hidden;"
+             onmouseover="this.style.background='rgba(102,126,234,0.1)'; this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(102,126,234,0.3)'"
+             onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="font-size: 3.5rem; margin-bottom: 20px; filter: drop-shadow(0 0 20px rgba(102,126,234,0.3));">📋</div>
+          <h5 style="color: #667eea; font-weight: 500; margin-bottom: 15px; letter-spacing: 1px; font-size: 0.95rem;">e-Transformation & Compliance</h5>
+          <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.6;">e-Invoice, e-Archive, e-Ledger, VAT Return (EU compliance focus).</p>
+        </div>
       </div>
       
     </div>
