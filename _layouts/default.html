@@ -26,6 +26,261 @@
   href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css"
 />
 
+  <!-- Dark Mode Code Block Styling -->
+  <style>
+    /* Override Prism.js default styles for dark mode */
+    pre[class*="language-"],
+    code[class*="language-"] {
+      background: rgba(10, 10, 20, 0.9) !important;
+      color: #f8f8f2 !important;
+      text-shadow: 0 1px rgba(0, 0, 0, 0.3) !important;
+      font-family: 'Consolas', 'Monaco', 'Courier New', monospace !important;
+      font-size: 0.95rem !important;
+      line-height: 1.5 !important;
+      tab-size: 4 !important;
+      hyphens: none !important;
+      border-radius: 8px !important;
+    }
+
+    pre[class*="language-"] {
+      padding: 1.5em !important;
+      margin: 1.5em 0 !important;
+      overflow: auto !important;
+      border: 1px solid rgba(102, 126, 234, 0.2) !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+      max-height: 600px !important;
+    }
+
+    /* Inline code */
+    :not(pre) > code[class*="language-"],
+    :not(pre) > code {
+      background: rgba(102, 126, 234, 0.2) !important;
+      color: #f8f8f2 !important;
+      padding: 0.2em 0.4em !important;
+      border-radius: 4px !important;
+      font-size: 0.9rem !important;
+      white-space: normal !important;
+    }
+
+    /* Syntax highlighting colors for dark mode */
+    .token.comment,
+    .token.prolog,
+    .token.doctype,
+    .token.cdata {
+      color: #6272a4 !important;
+    }
+
+    .token.punctuation {
+      color: #f8f8f2 !important;
+    }
+
+    .token.property,
+    .token.tag,
+    .token.boolean,
+    .token.number,
+    .token.constant,
+    .token.symbol,
+    .token.deleted {
+      color: #ff79c6 !important;
+    }
+
+    .token.selector,
+    .token.attr-name,
+    .token.string,
+    .token.char,
+    .token.builtin,
+    .token.inserted {
+      color: #50fa7b !important;
+    }
+
+    .token.operator,
+    .token.entity,
+    .token.url,
+    .language-css .token.string,
+    .style .token.string {
+      color: #ffb86c !important;
+    }
+
+    .token.atrule,
+    .token.attr-value,
+    .token.keyword {
+      color: #bd93f9 !important;
+    }
+
+    .token.function,
+    .token.class-name {
+      color: #8be9fd !important;
+    }
+
+    .token.regex,
+    .token.important,
+    .token.variable {
+      color: #f1fa8c !important;
+    }
+
+    .token.important,
+    .token.bold {
+      font-weight: bold !important;
+    }
+
+    .token.italic {
+      font-style: italic !important;
+    }
+
+    .token.entity {
+      cursor: help !important;
+    }
+
+    /* Line numbers if used */
+    pre[class*="language-"].line-numbers {
+      padding-left: 3.8em !important;
+      counter-reset: linenumber !important;
+    }
+
+    pre[class*="language-"].line-numbers > code {
+      position: relative !important;
+      white-space: inherit !important;
+    }
+
+    .line-numbers .line-numbers-rows {
+      position: absolute !important;
+      pointer-events: none !important;
+      top: 0 !important;
+      font-size: 100% !important;
+      left: -3.8em !important;
+      width: 3em !important;
+      letter-spacing: -1px !important;
+      border-right: 1px solid rgba(102, 126, 234, 0.2) !important;
+      user-select: none !important;
+    }
+
+    .line-numbers-rows > span {
+      display: block !important;
+      counter-increment: linenumber !important;
+    }
+
+    .line-numbers-rows > span:before {
+      content: counter(linenumber) !important;
+      color: #6272a4 !important;
+      display: block !important;
+      padding-right: 0.8em !important;
+      text-align: right !important;
+    }
+
+    /* Scrollbar styling for code blocks */
+    pre[class*="language-"]::-webkit-scrollbar {
+      width: 10px !important;
+      height: 10px !important;
+    }
+
+    pre[class*="language-"]::-webkit-scrollbar-track {
+      background: rgba(30, 30, 40, 0.5) !important;
+      border-radius: 5px !important;
+    }
+
+    pre[class*="language-"]::-webkit-scrollbar-thumb {
+      background: rgba(102, 126, 234, 0.5) !important;
+      border-radius: 5px !important;
+    }
+
+    pre[class*="language-"]::-webkit-scrollbar-thumb:hover {
+      background: rgba(102, 126, 234, 0.7) !important;
+    }
+
+    /* Back to Top Button Styling */
+    .back-to-top-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+      transition: all 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+    }
+
+    .back-to-top-btn.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top-btn:hover {
+      background: linear-gradient(135deg, #5a6fd8, #6a42a0);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
+    }
+
+    .back-to-top-btn:active {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.5);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .back-to-top-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+      }
+    }
+
+    /* Jekyll highlight blocks */
+    .highlight {
+      background: rgba(10, 10, 20, 0.9) !important;
+      border-radius: 8px !important;
+      padding: 1.5em !important;
+      margin: 1.5em 0 !important;
+      border: 1px solid rgba(102, 126, 234, 0.2) !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+      overflow: auto !important;
+    }
+
+    .highlight pre {
+      margin: 0 !important;
+      padding: 0 !important;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    .highlight code {
+      color: #f8f8f2 !important;
+      background: transparent !important;
+      padding: 0 !important;
+    }
+
+    /* Language label on code blocks */
+    pre[class*="language-"]::before {
+      content: attr(data-lang);
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0.25em 0.75em;
+      background: rgba(102, 126, 234, 0.2);
+      color: #667eea;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      border-radius: 0 8px 0 8px;
+      letter-spacing: 0.5px;
+    }
+  </style>
+
   <!-- lightbox kullanım için script -->
 <script>
 $(document).on('click', '[data-toggle="lightbox"]', function(event) {
@@ -105,6 +360,11 @@ $(document).on('click', '[data-toggle="lightbox"]', function(event) {
   <div class="content">
     {{ content }}
   </div>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="back-to-top-btn">
+    <i class="fas fa-chevron-up"></i>
+  </button>
   
   <footer style="background: linear-gradient(135deg, rgba(10,10,20,1), rgba(15,15,30,0.98)); 
                  border-top: 1px solid rgba(102,126,234,0.2); 
@@ -245,6 +505,22 @@ $(document).on('click', '[data-toggle="lightbox"]', function(event) {
             navT.classList.add('nav-t');
           }
         }
+
+        // Handle back to top button visibility
+        var backToTopBtn = document.getElementById('backToTop');
+        if (bodyScrollTop > 200) {
+          backToTopBtn.classList.add('show');
+        } else {
+          backToTopBtn.classList.remove('show');
+        }
+      });
+
+      // Back to Top Button Click Handler
+      document.getElementById('backToTop').addEventListener('click', function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
       });
     });
   </script>
