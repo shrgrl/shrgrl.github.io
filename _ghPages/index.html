@@ -1,0 +1,102 @@
+---
+title: Github Pages
+sub-title: Free Hosting Service
+collection: ghPages 
+layout: blog-item
+hero-bg: "{{ base }}/assets/images/ghPages/ghPages.png"
+---
+
+<p>Hello everyone. I would like to talk to you about an environment that I experienced about 2 years ago, benefited from, and was quite satisfied with the results. During my final years at university, I did some research on where to start to build a website where I could share my own experiences. I examined dozens of portfolio-template examples. My favorite idea was to create my own portfolio site with Github Pages. This way, I was able to publish my own website by taking advantage of Github Pages' free hosting opportunity. Now I hope to provide you with useful information on how you can create your own website with Github Pages step by step.</p>
+<h4><b>What is Github Pages?</b></h4>
+<p>First, let's briefly talk about the features of Github Pages. GitHub Pages is a static hosting service that takes HTML, CSS and JavaScript files directly from a repository on GitHub and publishes a website. You can get more detailed information from here and examine Github's own <a href="https://github.com/collections/github-pages-examples" target="_blank">example collection</a>. The first and most important step in creating a Github Pages site is the naming standard. As you will see in the example we will do soon, the rule is:</p>
+{% highlight javascript %}
+your-uname.github.io
+{% endhighlight %}
+
+<p>Now let's find a nice design with a quick search. Of course, you can do it yourself from start to finish, but for this you will need to know the Github Pages Markdown Cheatsheet well. I find it more useful to use a ready-made template to show how you can use it for free in your own name. Let's come to the template example we will use;</p>
+<br/>
+<p>You can also look at Github Pages' own collection, but I prefer to do a random research and examine <a href="https://github.com/RyanFitzgerald/devportfolio" target="_blank">this</a> first example that I came across.</p>
+<a href="{{ base }}/assets/images/ghPages/Animation1.gif" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/ghPages/Animation1.gif" alt=""></a><br/>
+  
+<p>We examined the website by taking the first example we encountered as a reference. It's a sufficient example to try. You can also go with any example you want or your own design. Now we will create a repository from our Github account.</p>
+<a href="{{ base }}/assets/images/ghPages/img2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/ghPages/img2.jpg" alt=""></a><br/>
+
+<p>As we said before, we need to pay close attention to our naming standard here. As you can see below, we name it as <b>"your-uname.github.io"</b> and create our repository.</p>
+<a href="{{ base }}/assets/images/ghPages/img3.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/ghPages/img3.jpg" alt=""></a><br/>
+
+<p>And thus we have created an empty repository:</p>
+<a href="{{ base }}/assets/images/ghPages/img4.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/ghPages/img4.jpg" alt=""></a><br/>
+
+<p>Now, when we look into the empty repository to push the repository we examined earlier to our own repository, it offers us some options. Now we will clone the project we examined with Git Bash and push it to our own repository.</p>
+<a href="{{ base }}/assets/images/ghPages/img5.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/ghPages/img5.png" alt=""></a><br/>
+  
+<p>Here, before starting the push process, we need to clone the repository we based on:</p>
+{% highlight javascript %}
+git clone https://github.com/your-uname/reponame.git
+{% endhighlight %}
+<a href="{{ base }}/assets/images/ghPages/img7.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/ghPages/img7.jpg" alt=""></a><br/>
+
+<p>After cloning, let's navigate to this file's directory:</p>
+{% highlight javascript %}
+cd reponame
+{% endhighlight %}
+
+<p>And let's perform the following operations respectively:</p>
+{% highlight javascript %}
+git init
+git remote set-url origin https://github.com/your-uname/your-uname.github.io.git
+git branch -M main
+git push -u origin main
+{% endhighlight %}
+  
+<p>Finally, we need to have pushed without getting such an error.</p>
+<a href="{{ base }}/assets/images/ghPages/img8.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/ghPages/img8.jpg" alt=""></a><br/>
+  
+<p>After this process, when we check our repository content, we see that we have copied it without any problems.</p>
+<a href="{{ base }}/assets/images/ghPages/Animation2.gif" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/ghPages/Animation2.gif" alt=""></a><br/>
+  
+<p>Now you can run this project with the <b>your-uname.github.io</b> URL.</p>
+<a href="{{ base }}/assets/images/ghPages/img9.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/ghPages/img9.png" alt=""></a><br/>
+  
+<p>You can make the changes you want through your own repository.</p>
+<a href="{{ base }}/assets/images/ghPages/img10.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/ghPages/img10.jpg" alt=""></a><br/>
+
+<p>For example, when I look at the operations I can do within the <b>index.html</b> directory:</p>
+<a href="{{ base }}/assets/images/ghPages/img11.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/ghPages/img11.jpg" alt=""></a><br/>
+<a href="{{ base }}/assets/images/ghPages/img12.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/ghPages/img12.jpg" alt=""></a><br/>
+ 
+<p>Like this, you can go with the existing design, add/remove new areas, change images, color properties and make a customization according to yourself and use it. Later, you can buy a domain name and use your website with your own domain name by taking advantage of Github Pages' free hosting service.</p>
+<br/>
+<p>I hope it has been a useful resource for those interested. Good work.</p>
+
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://sehergurel-com-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<script id="dsq-count-scr" src="//sehergurel-com-1.disqus.com/count.js" async></script>

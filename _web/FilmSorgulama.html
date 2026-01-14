@@ -1,0 +1,110 @@
+---
+title: Movie Search Application
+layout: project-item
+order: 1
+---
+
+<p>
+  Hello everyone. Here, I will talk about an application that searches a MongoDB database and shows us the properties of the movie we're looking for. Additionally, we'll see the use of RedisCache and acceleration of query operations. You can follow my Github account for source code:</p>
+<p><a href="https://github.com/shrgrl/moviesIndexDemoRedis" target="_blank" class="btn btn-sasha-darkest"><i class="fab fa-github"></i>Fork me</a></p>
+
+<h5 class="txt-weight-bold">Technologies Used</h5>
+<ul>
+  <li>HTML</li>
+  <li>Node.js</li>
+  <li>Express</li>
+  <li>Mongoose</li>
+  <li>RedisCache</li>
+</ul>
+
+<h5 class="txt-weight-bold">MongoDB</h5>
+<p>Before going into the details of the application, let's briefly talk about MongoDB. MongoDB, in simple terms, is an open-source NoSQL database application. 
+  It has become popular in a short time and is used by a wide audience due to its flexibility and ease of use. We can list its features as follows:</p>
+<ul>
+  <li>The primary feature is that it is scalable.</li>
+  <li>It stores data as documents. JSON data can be used. Since data is stored as JSON, you won't have any trouble saving data even if the structure of incoming data changes.</li>
+  <li>You can store multiple copies of data. This way, you prevent data loss.</li>
+  <li>You can create indexes on data. This allows you to access all the data you're looking for quickly and easily.</li>
+</ul>
+
+<h5 class="txt-weight-bold">MongoDB Installation for Windows</h5>
+<ul>
+  <li>First, start by downloading the MongoDB program suitable for your computer's operating system. If you add the download path to your Windows path system, you can run your commands much more comfortably in the future. 
+    You can use <a href="https://www.mongodb.org/downloads" target="_blank" class="btn btn-sasha-darkest">this</a> link to download the program.</li>
+  <li>Click on the downloaded installation file and complete the installation by following the steps that guide you. Your download path will be: <i>C:\Program Files\MongoDB\Server\3.0.1\bin</i></li>
+  <li>After going to this path, you will see two important files: <i>mongo.exe</i> and <i>mongod.exe</i></li>
+  <li>If you use Command Prompt for MongoDB usage, you'll be comfortable in the next steps. First, add the path you used earlier to environment variables. To do this, right-click on the computer file and go to properties, then click on advanced system settings. Here you will see environment variables.</li>
+  <li>After entering environment variables, a window will open. In this window, find the relevant path and paste MongoDB's own path at the end.</li>
+  <li>If the process is complete, in the next step you need to determine where your database will be saved. First, open Cmd and run these commands: md \data, md \data\db. By running these commands, you first created a data folder under the C directory, then created a db folder under this data folder.</li>
+  <li>Now you can run your database application. Type mongod for the server. If you see a text like "on port 27017" on the screen, you have successfully completed your installation.</li>
+</ul>
+
+<h5 class="txt-weight-bold">Redis Cache</h5>
+<p>Redis is an in-memory data structure store used as a NoSQL database, for caching, and as a message server. The reason Redis calls itself a data structure store is that it supports more data types than its alternatives. We can list its advantages as follows:</p>
+<ul>
+  <li>It is extremely fast because it works synchronously.</li>
+  <li>It supports many data types.</li>
+  <li>It can save data both on RAM and on disk according to the configuration you set.</li>
+  <li>Since it saves to disk, it continues to work with the same data after restart.</li>
+  <li>It has an extremely active user base.</li>
+  <li>It has many enterprise features such as Sharding, Cluster, Sentinel, Replication.</li>
+</ul>
+
+<h5 class="txt-weight-bold">Running the Project</h5>
+<p>This project is a web application that uses the Movies.csv file located on the github page and is written with <i>Node.js/Express/MongoDB/RedisCache</i> and we can run it on our local computer. 
+  First, we need to import the Movies.csv file to the MongoDB database on your computer.</p>
+
+{% highlight javascript %}
+mongoimport --db databaseName --collection collectionName --type csv --headerline --file csvFileName.csv
+{% endhighlight %}
+
+<p>GET requests to the root directory return an HTML page containing a text box where the user can enter data and a search button as a response. 
+  After a POST request where the user sends a movie name written in this text box to the web server by clicking the search button, all properties of the relevant movie
+  are returned as a response in a table. The movie name that reaches the server with a POST request is first searched in the cache and if found, it is sent back immediately. 
+  Movie information not found in the cache is searched in the database and if found, it is both brought to the cache and sent to the user as a response in table format. 
+  Hash data structure was used for data stored in the cache.</p>
+<p>When running the project, a command screen should be opened in the root directory where the project is located and we need to first do the initialization process to create the environment. After this process, we will get various 
+  questions. We can answer them if we want, or we can skip them by pressing enter.</p>
+{% highlight javascript %}
+npm init
+{% endhighlight %}
+
+<p>Then the modules we used while writing the project should be installed in order.</p>
+{% highlight javascript %}
+npm install express
+npm install redis
+npm install body-parser
+npm install mongoose
+{% endhighlight %}
+
+<p>After downloading the modules, we can run our project.</p>
+{% highlight javascript %}
+node moviesIndexDemo.js
+{% endhighlight %}
+
+<a href="{{ base }}/assets/images/filmsorgu/img1.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/filmsorgu/img1.jpg" alt=""></a><br/>
+
+<p>After entering the port address shown in the command screen into our web browser, our application will appear.</p>
+<a href="{{ base }}/assets/images/filmsorgu/img2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/filmsorgu/img2.jpg" alt=""></a><br/>
+
+<p>We need to enter a movie name that exists in our database in the search screen on our main page and press the Search button. After the process, all information about the movie we searched for in the database is reflected to us.</p>
+<a href="{{ base }}/assets/images/filmsorgu/img3.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/filmsorgu/img3.jpg" alt=""></a><br/>
+
+<p>If the movie we searched for is not found in Redis Cache, the movie is added to Redis Cache. In other searches, it is used from Redis Cache.</p>
+<a href="{{ base }}/assets/images/filmsorgu/img4.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/filmsorgu/img4.jpg" alt=""></a><br/>
+
+<p>If we leave the box empty, a warning box is shown to us.</p>
+<a href="{{ base }}/assets/images/filmsorgu/img5.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/filmsorgu/img5.jpg" alt=""></a><br/>
+
+
+<p>When we enter a movie name that is not in the database in the box, a text appears saying that the movie could not be found.</p>
+<a href="{{ base }}/assets/images/filmsorgu/img6.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/filmsorgu/img6.jpg" alt=""></a><br/>
+<a href="{{ base }}/assets/images/filmsorgu/img7.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/filmsorgu/img7.jpg" alt=""></a><br/>
+<p>This is how the application's interfaces and functionality work.</p>

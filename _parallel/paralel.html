@@ -1,0 +1,136 @@
+---
+title: Image Filtering Applications with Parallel Programming
+layout: project-item
+order: 3
+---
+
+<p>
+  Hello everyone. This project includes 4 different applications. Each application performs filtering operations using different parallelism techniques. Now let's examine the applications together.
+  You can follow my Github account for source codes:
+</p>
+
+<p><a href="https://github.com/shrgrl/parallelImageFiltering" target="_blank" class="btn btn-sasha-darkest"><i class="fab fa-github"></i>Fork me</a></p>
+
+<h5 class="txt-weight-bold">Technologies</h5>
+<ul>
+  <li>MPI</li>
+  <li>OpenMP</li>
+  <li>C++</li>
+</ul>
+
+<h5 class="txt-weight-bold">Parallel Programming</h5>
+<p>Parallel Programming, in simple terms, is the simultaneous use of multiple computational resources in solving a problem.</p>
+<ul>
+  <li>Multiple processors are used in solving the problem.</li>
+  <li>The problem is divided into different parts to be solved concurrently.</li>
+  <li>Each part is divided into different command series.</li>
+  <li>Commands are processed simultaneously on different processors.</li>
+</ul>
+
+<p>In this project, each application performs filtering operations using different parallelism techniques. To run the applications, you need to have Ubuntu operating system. If you don't want to install it on your computer, you can install it in a VirtualMachine virtual environment and run it.
+Since all applications use the same image and matrices, the process was done through a single image, image matrix and script file.</p>
+
+<h5 class="txt-weight-bold">filter1 Application</h5>
+<p>We open a terminal in Ubuntu and go to the directory where the project is located. As the first step to run the filter1.cpp application;</p>
+{% highlight javascript %}
+g++ filter1.cpp
+{% endhighlight %}
+
+<p>we create an a.out file. Now we need to process our image matrix to obtain a filtered image matrix. For this;</p>
+{% highlight javascript %}
+./a.out GoruntuMatrisi1.txt
+{% endhighlight %}
+
+<p>we write and obtain the GoruntuMatrisi1_filtered.txt file, which is the filtered image matrix. We will use this matrix to obtain the filtered image.</p>
+
+<p>Now we will obtain the filtered image by running the script file. Before doing this operation, we need to install the possible packages that we will encounter. For this, we need the octave package. You can follow the steps below to download.</p>
+{% highlight javascript %}
+sudo add-apt-repository ppa:octave/stable
+sudo apt-get update
+sudo apt-get install octave
+{% endhighlight %}
+
+<p>After finishing the package installations, we can complete the last step of our project.</p>
+{% highlight javascript %}
+./Proje1Script.sh GoruntuMatrisi1_filtered.txt
+{% endhighlight %}
+
+<p>After running, the original Goruntu1.bmp image and the filtered image will be as follows.</p>
+<a href="{{ base }}/assets/images/projects/parallel/img1.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/projects/parallel/img1.jpg" alt=""></a><br/>
+<a href="{{ base }}/assets/images/projects/parallel/img2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/projects/parallel/img2.jpg" alt=""></a><br/>
+
+<h5 class="txt-weight-bold">filter2 Application</h5>
+<p>In this application, as a different technique <b>MPI</b> library was used. MPI is a platform used for parallel programming purposes. MPI is basically based on running the same program on multiple computers 
+  and during this execution, programs communicate with each other and transfer data from each other. With MPI, we can distribute our work to computers 
+  as well as run multiple jobs (processes) on a single computer. Therefore, for example, in an environment with 10 computers, 
+  if 3 jobs are run on each computer, a total of 30 jobs will be executed. This means our program must behave as if it's running on 30 different computers.</p>
+
+<p>We open a terminal in Ubuntu and go to the directory where the project is located. As the first step to run the filter2.cpp application, we need to download the necessary MPI library. You can perform the following operations sequentially:</p>
+{% highlight javascript %}
+sudo apt install libmpich-dev
+sudo apt install libopenmpi-dev
+{% endhighlight %}
+
+<p>After completing the download operations, we can run our project. First;</p>
+{% highlight javascript %}
+mpicxx filter2.cpp
+{% endhighlight %}
+
+<p>we create an a.out file. Then;</p>
+{% highlight javascript %}
+mpi run -np 4 ./a.out
+{% endhighlight %}
+
+<p>You can write any even number instead of 4 depending on how many times you want the program to run. After this process, we will obtain the matrix of the filtered image. Then;</p>
+{% highlight javascript %}
+./Proje1Script.sh GoruntuMatrisi1_filtered.txt
+{% endhighlight %}
+
+<p>we obtain the filtered image by writing the command. The results will be as follows.</p>
+<a href="{{ base }}/assets/images/projects/parallel/img1.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/projects/parallel/img1.jpg" alt=""></a><br/>
+<a href="{{ base }}/assets/images/projects/parallel/img2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/projects/parallel/img2.jpg" alt=""></a><br/>
+
+<h5 class="txt-weight-bold">filter3 Application</h5>
+<p>This application was also written using the MPI library. Its operation is sequentially;</p>
+{% highlight javascript %}
+mpicxx filter3.cpp
+mpi run -np 4 ./a.out
+./Proje1Script.sh GoruntuMatrisi1_filtered.txt
+{% endhighlight %}
+
+<p>And the result;</p>
+<a href="{{ base }}/assets/images/projects/parallel/img1.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/projects/parallel/img1.jpg" alt=""></a><br/>
+<a href="{{ base }}/assets/images/projects/parallel/img2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/projects/parallel/img2.jpg" alt=""></a><br/>
+
+<h5 class="txt-weight-bold">filter4 Application</h5>
+<p>In this application, the <i>OPENMP</i> library was used. OpenMP is an API that facilitates parallel programming work. Its working principle is to branch in parts that need to be processed in parallel, work in parallel, and merge again when the process is finished. 
+  To be able to use it in our application, we must first make the necessary downloads.</p>
+{% highlight javascript %}
+sudo apt-get install libomp-dev
+{% endhighlight %}
+
+<p>After completing our downloads smoothly, we can run the application.</p>
+{% highlight javascript %}
+g++ filter4.cpp -fopenmp
+./a.out GoruntuMatrisi1.txt
+./Proje1Script.sh GoruntuMatrisi1_filtered.txt
+{% endhighlight %}
+
+<p>After running, the original and filtered image will be as follows:</p>
+<a href="{{ base }}/assets/images/projects/parallel/img1.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/projects/parallel/img1.jpg" alt=""></a><br/>
+<a href="{{ base }}/assets/images/projects/parallel/img2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/projects/parallel/img2.jpg" alt=""></a><br/>
+
+
+
+
+
+
+

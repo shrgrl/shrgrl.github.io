@@ -1,0 +1,162 @@
+---
+title: Hospital Management System with PHP
+layout: project-item
+order: 3
+---
+
+<p>
+  Hello everyone. Here, I will show the project I developed during my internship as a student at Sinerji Information Technology Company, which offers quite extensive options for hospitals with user and admin panels. 
+  You can follow my Github account for source codes:</p>
+
+ <p><a href="https://github.com/shrgrl/PHPHospitalManagementSystem" target="_blank" class="btn btn-sasha-darkest"><i class="fab fa-github"></i>Fork me</a></p>
+
+<h5 class="txt-weight-bold">Technologies Used</h5>
+<ul>
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>JavaScript</li>
+  <li>MySQL</li>
+</ul>
+
+<h5 class="txt-weight-bold">Creating MySQL Database Connection with PHP</h5>
+<p>In projects we write using PHP, database management operations are usually performed through MySQL. There are two methods for connecting to an SQL database with PHP: 
+  MySQLi and PDO. First, we need to create a MySQL database. We had previously provided information about creating a database in another project. You can access it <a href="https://github.com/shrgrl/JavaHospitalManagementSystem#mysql-veri-taban%C4%B1" target="_blank">here</a>. After 
+  creating the database, we can start writing PHP code.</p>
+
+<p>Database connection is provided by creating a variable object:</p>
+{% highlight javascript %}
+$my_Object = new Object();
+{% endhighlight %}
+
+<p>Let's examine an example PHP code:</p>
+{% highlight javascript %}
+$conn = mysqli_connect("localhost", "my_user", "my_password", "my_database");
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+echo "Connected successfully";
+mysqli_close($conn);
+{% endhighlight %}
+
+<p>The main method used in this script is the mysqli_connect() method. The mysqli_connect() method opens a new connection to the MySQL server. The syntax is: <b>mysqli_connect (host, username, password, dbname, port, socket);</b>. I'm thinking of adding tabs to the main page of the project to provide operations similar to other projects with doctor, patient and admin logins. The admin will be able to control all operations. 
+  At first, I will need to create a database. I have created a template of the elements I will add to this database. I will create tables for admin, appointment, doctor information including a doctor table, a separate doctor table containing username and password for them to login, a doctor table to separate them according to their branches, and tables for any user to login and keep their information.
+</p>
+<p>The first step of my hospital management system project was to create a database. My project's database consists of 7 tables:</p>
+<a href="{{ base }}/assets/images/phphospital/image1.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/image1.jpg" alt=""></a><br/>
+
+<p>I added some content to each of the tables. For example:</p>
+
+<ul>
+  <li>Doctor table:
+    <a href="{{ base }}/assets/images/phphospital/image2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+    <img class="img-blg" src="{{ base }}/assets/images/phphospital/image2.jpg" alt=""></a><br/>
+  </li>
+  <li>Users table:
+    <a href="{{ base }}/assets/images/phphospital/image3.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+    <img class="img-blg" src="{{ base }}/assets/images/phphospital/image3.jpg" alt=""></a><br/>
+  </li>
+</ul>
+
+<h5 class="txt-weight-bold">Running the Project</h5>
+<p>To run the project, first we need to open the XAMPP program installed on our computer and <b>Start</b> the Apache and MySQL options.</p>
+<a href="{{ base }}/assets/images/phphospital/img1.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/img1.jpg" alt=""></a><br/>
+
+<p>Then we type <b>localhost</b> in our web browser and select our project that we have previously added to the database.</p>
+<a href="{{ base }}/assets/images/phphospital/img2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/img2.jpg" alt=""></a><br/>
+
+<p>Finally, the <i>src</i> option, when clicked, will redirect us to the main page.</p>
+<a href="{{ base }}/assets/images/phphospital/img3.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/img3.jpg" alt=""></a><br/>
+
+<h5 class="txt-weight-bold">Site Design</h5>
+<p>I added tabs to the main page design of the project and we will provide links to the pages we want to reach from here.</p>
+<a href="{{ base }}/assets/images/phphospital/image4.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/image4.jpg" alt=""></a><br/>
+
+<p>The page we are currently on is the Home Page. We can click on Contact to see the contact information. We can log in through patient login in the Patients tab, and similarly doctor login and 
+  admin login in the others. I also tried to achieve a modern design using image effects with a slider in HTML code on the main page, and for that I used the ready-made <i>responsiveslides.js</i>:</p>
+<a href="{{ base }}/assets/images/phphospital/image5.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/image5.jpg" alt=""></a><br/>
+
+<p>With this function, we specified the maximum width and speed of the slider:</p>
+{% highlight javascript %}
+<script>
+    $(function () {
+        $("#slider1").responsiveSlides({
+        maxwidth: 1600,
+        speed: 600
+        )};
+    )};
+</script>
+{% endhighlight %}
+
+<p>The following code snippet specifies how many images the slider consists of and their order:</p>
+{% highlight javascript %}
+<div class="image-slider">
+    <ul class="rslides" id="slider1">
+        <li><img src="images/slider-image1.jpg" alt=""></li>
+        <li><img src="images/slider-image2.jpg" alt=""></li>
+        <li><img src="images/slider-image1.jpg" alt=""></li>
+    </ul>
+</div>
+{% endhighlight %}
+
+<h5 class="txt-weight-bold">Contact</h5>
+<p>One of the essential features of a website is the ability for people to directly reach their contacts. The page that appears when we click on the essential <b>Contact</b> tab on all websites is as follows:</p>
+<a href="{{ base }}/assets/images/phphospital/image6.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/image6.jpg" alt=""></a><br/>
+
+<h5 class="txt-weight-bold">Patients</h5>
+<p>When we click to enter the <b>Patients</b> page of the project, a login page appears.</p>
+<a href="{{ base }}/assets/images/phphospital/image7.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/image7.jpg" alt=""></a><br/>
+
+<p>Initially, I can log in with the patient information I previously determined in the database. In addition to being able to add information to the database, patients can create a membership 
+  account through this page. Clicking on the "Create account" section below is sufficient for this.</p>
+<a href="{{ base }}/assets/images/phphospital/image8.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/image8.jpg" alt=""></a><br/>
+
+<p>When we click, a registration page will appear. On this page, when we enter the requested information and click the <b>Send</b> button, we add one more member to the database and 
+  we can log in with the membership username and password we added. The page that appears after logging in is as below. When we click on the name in the upper right corner, 
+  we will have options to view profile, change password and log out. The first page that appears is the "Control Panel" page. In other tabs, we have options to create appointments and 
+  view created appointments. Additionally, ready-made bootstrap modules are available on the pages: sidebar, toolbar, etc.</p>
+<a href="{{ base }}/assets/images/phphospital/image9.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/image9.jpg" alt=""></a><br/>
+
+<h5 class="txt-weight-bold">Doctor Login</h5>
+<p>In the project, in addition to patients, opportunities are provided for doctors to meet their needs when they need to view their past appointments or when they want to update their current profiles. 
+  Like patients, doctors can also make changes to their passwords.</p>
+<a href="{{ base }}/assets/images/phphospital/image10.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/image10.jpg" alt=""></a><br/>
+
+<p>When we click on the update profile option, the page shown below appears. After applying changes to the parts we want to modify, when we click the <b>Update</b> option, our information is updated.</p>
+<a href="{{ base }}/assets/images/phphospital/image11.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/image11.jpg" alt=""></a><br/>
+
+<h5 class="txt-weight-bold">Admin Login</h5>
+<p>The admin page has much more features compared to others. As a result, since they are in the position of site administrator, they should be in a position to intervene in every event and data. The page that appears after logging in is as follows:</p>
+<a href="{{ base }}/assets/images/phphospital/image12.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/image12.jpg" alt=""></a><br/>
+
+<p>Here, the admin can view and intervene in doctor, patient and appointment information. For example, they can create a registration for a new doctor coming to the hospital.</p>
+<a href="{{ base }}/assets/images/phphospital/image13.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/image13.jpg" alt=""></a><br/>
+
+<p>The advantage I think of providing in the <b>Doctor Specialty</b> option is that when a department that does not currently exist in the hospital is opened, we can directly add a new department from here. With the "Add Doctor" option, we will register the department's doctor and offer it to the service of patients.</p>
+<a href="{{ base }}/assets/images/phphospital/image14.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/phphospital/image14.jpg" alt=""></a><br/>
+
+<p>The changes we make here will be updated in the database in the same way.</p>
+
+
+
+
+
+
+
+
+
+

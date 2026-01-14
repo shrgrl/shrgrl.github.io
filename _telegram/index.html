@@ -1,0 +1,90 @@
+---
+title: Telegram Bot
+sub-title: Creating a Telegram Bot with Node-Red
+collection: telegram 
+layout: blog-item
+hero-bg: "{{ base }}/assets/images/telegram/telegram.png"
+---
+
+<p>Hello everyone. We all engage in various activities to make use of our free time. I've been spending my time with fun 
+  applications I've come across since I started working with Node-Red. We've probably all chatted with Bot virtual persons that we encounter in almost all applications. Have you 
+  ever wondered how they are controlled? I wondered and decided to make my own Bot. For this, I used Node-Red's chatbot modules. When we first run Node-Red, there are 
+  standard modules in the Module Palette. I want to add the Telegram bot I want to use to the palette with a specific search. For this; </p>
+<a href="{{ base }}/assets/images/telegram/img1__.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/telegram/img1__.png" alt=""></a><br>
+
+<p>I downloaded the telegram bot module from the Palette tab:</p>
+{% highlight javascript %}
+node-red-contrib-telegrambot
+{% endhighlight %}
+<a href="{{ base }}/assets/images/telegram/img2.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/telegram/img2.png" alt=""></a><br>
+
+<p>After the download is complete, we will see that the Telegram module has been added to the Palette menu.</p>
+<a href="{{ base }}/assets/images/telegram/img3__.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/telegram/img3__.png" alt=""></a><br>
+
+<p>After downloading the Telegram module, we can start creating our own flow with the standard modules we have. First, we start with the Inject module. In the flow diagram, 
+  <i>Inject</i> is used first to transmit commands to the program. Then we will use the Function module where we write the process and finally the <i>Telegram
+  Sender</i> module that sends the message we transmit to the Telegram address.</p>
+<a href="{{ base }}/assets/images/telegram/img4.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/telegram/img4.png" alt=""></a><br>
+
+<p>We don't need to make any changes to the content of the Inject module. In Function, there will be some information we need to obtain. Let's get the <i>Chat Id</i> as I show below and place our code 
+  in the relevant place.</p>
+<a href="{{ base }}/assets/images/telegram/img5.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/telegram/img5.png" alt=""></a><br>
+{% highlight javascript %}
+msg.payload = {}
+msg.payload.chatId = xxxxxxxxx
+msg.payload.type = 'message'
+msg.payload.content = 'Hello, my name is Seher!'
+return msg;
+{% endhighlight %}
+
+<p>Here, to find the <i>Chat Id</i>, I got the User Id from UserInfoBot, which is Telegram's own Bot:</p>
+<a href="{{ base }}/assets/images/telegram/img6_.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/telegram/img6_.png" alt=""></a><br>
+
+<p>After filling the inside of the Function, it's time for the Telegram Sender module. We will enter the module and fill in the necessary places. Let's enter a bot name and say edit.</p>
+<a href="{{ base }}/assets/images/telegram/img7.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/telegram/img7.png" alt=""></a><br>
+
+<p>When we say edit, the <i>Bot-Name</i> and <i>Token</i> fields that we have to fill will appear.</p>
+<a href="{{ base }}/assets/images/telegram/img8.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/telegram/img8.png" alt=""></a><br>
+
+<p>To be able to fill these fields, I need a Token from BotFather, which is Telegram's own Bot. To get a Token, I need to create a Bot. I'm creating a <i>test_bot</i> for my application 
+  and getting the Token belonging to the Bot I created. The necessary commands for this are as follows:</p>
+<a href="{{ base }}/assets/images/telegram/img9.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/telegram/img9.png" alt=""></a><br>
+
+<p>After filling all the necessary fields, we can run our application. First, I find the test_bot I created above and write the /start command. Then I start the application with the Inject 
+  module. In every button event, the message I wrote in the function will be transmitted to the test_bot.</p>
+<a href="{{ base }}/assets/images/telegram/img10__.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/telegram/img10__.png" alt=""></a><br>
+
+<p>I got a result as you can see below. This was, of course, the first step in creating a complex bot. We can develop the next steps with broader functions. 
+  I started this way, to be continued later 😊 </p>
+<a href="{{ base }}/assets/images/telegram/img11.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/telegram/img11.png" alt=""></a><br>
+
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://sehergurel-com-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<script id="dsq-count-scr" src="//sehergurel-com-1.disqus.com/count.js" async></script>

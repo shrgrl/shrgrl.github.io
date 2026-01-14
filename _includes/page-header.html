@@ -1,0 +1,7 @@
+<header class="hero hero-fluid hero-page txt-color-sasha-white"
+  style="background: {% if page.custom-hero-bg %}linear-gradient(rgba(15,15,30,0.85), rgba(10,10,20,0.9)), url('{{ page.custom-hero-bg }}'){% else %}{% if page.title == 'About Me' %}linear-gradient(rgba(15,15,30,0.8), rgba(10,10,20,0.85)), url({{ base }}/assets/images/backgrounds/bg{{ page.hero-image }}.jpg){% else %}#{{ page.hero-color }} url({{ base }}/assets/images/backgrounds/bg{{ page.hero-image }}.jpg){% endif %}{% endif %}; background-position: center; background-size: cover;">
+  <div class="container nfloat-down">
+    <h1>{{ page.heading }}</h1>
+    <p class="txt-size-lead">{{ page.sub-heading }}</p>
+  </div>
+</header>

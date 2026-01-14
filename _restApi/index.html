@@ -1,0 +1,268 @@
+---
+title: Simple Node.js Application and Heroku Usage
+sub-title: 
+collection: restApi 
+layout: blog-item
+hero-bg: "{{ base }}/assets/images/restApi/restapi.png"
+---
+
+<p>Hello friends. In today's article, I will talk about concepts like RestAPI and Node.js, and together we will develop a simple RestAPI example and see how to upload this example to the HEROKU platform.</p>
+<p>Before starting to write the application, we need to have the necessary environments to run the application. For this, first, if we don't have Node.js on our computer, we need to download it. Node.js is a runtime environment developed for network-connected applications that allows commands written in JavaScript to run on the server side. To get Node.js on our computer, we can easily download it from <a href="https://nodejs.org/en/" target="_blank">its own website</a>.</p>
+<a href="{{ base }}/assets/images/restApi/node.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/node.jpg" alt="node">
+</a>
+<br>
+
+<h4><b>Hello World Application</b></h4>
+<p>After completing the download process, let's look at Node.js usage with a simple example. Let's create a file with <b>.js</b> extension inside a folder and write the following codes into it.</p>
+{% highlight javascript %}
+//For the required external express module
+var express=require('express');
+var app=express();
+
+app.get('/',function(req,res){ //this method sends a request to the http root directory
+	res.send('Hello World'); //we get the hello world response
+});
+
+app.listen(8080,function(){ //our application will run on localhost:8080 port
+	console.log('Web Server is running at http://127.0.0.1:8080/');
+});
+{% endhighlight %}
+
+<p>We use the <b>express</b> module to develop web applications with Node.js. This module is necessary for methods like <b>get</b> that we will use in our application. We will run the application by opening CMD in its own root directory.</p>
+<p>First, let's run the following command to create the <b>package.json</b> file.</p>
+{% highlight language %}$ npm init{% endhighlight %}
+
+<p>Then let's download the external modules we used in the code, namely our <b>express</b> module.</p>
+{% highlight language %}$ npm install express -s{% endhighlight %}
+
+<p>After completing the external download processes, we can run our application.</p>
+{% highlight language %}
+$ node helloworld.js
+{% endhighlight %}
+
+<p>We can see the result by running the <b>localhost:8080</b> port in our browser.</p>
+
+<a href="{{ base }}/assets/images/restApi/helloworld.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/helloworld.jpg" alt="helloworld"><br>
+</a>
+<br>
+
+<p>In this way, we have seen how to run a simple and basic <b>Node.js, Express</b> application. From here on, I will talk about how to display data retrieved from a JSON file in the browser, and we can use this data in different applications we will develop in the future.</p>
+
+<h4><b>Simple RestAPI Application with NodeJS, Express, JSON</b></h4>
+<p>Now let's go step by step together. First, let's create a file with <b>.json</b> extension inside a folder and write the data we want in JSON format. My sample JSON data is as follows:</p>
+{% highlight json %}
+[
+    {    
+    "ad": "seher",   
+    "soyad": "gürel" 
+    }
+]
+{% endhighlight %}
+
+<p>Now it's time to write our Node.js codes. Let's create a second file with <b>.js</b> extension inside the folder and write the following codes into it.</p>
+{% highlight javascript %}
+//we define and initialize the express module
+var express = require("express");
+var app = express();
+
+var data = require("./app.json"); //we request data from our app.json file
+
+//we send the data in our json file as a response to our http page
+app.get("/", function(req, res) { 
+  res.json(data);
+});
+
+app.listen(5000, function() {
+	console.log("Server running on port 5000...");
+});
+{% endhighlight %}
+
+<p>To run the application, as I mentioned above, let's open CMD in the directory where the application is located and run the following commands in order.</p>
+{% highlight language %}
+$ npm init
+$ npm install express -s
+$ node app.js
+{% endhighlight %}
+
+<p>When we run it in the browser, the result we get will be as follows.</p>
+<a href="{{ base }}/assets/images/restApi/api.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/api.jpg" alt="api">
+</a>
+<br>
+
+<p>Up to this point, we have tried to understand the definition <b>"REST API is a system where software developers make requests like GET and POST using the HTTP protocol and receive responses to these requests in various formats."</b> by practicing. In the next step, we will discuss what we can do to use our own developed RestAPI not only on local computers but also in different environments. We need a domain to use our API on different computers as well. We can buy a domain from paid sites or take advantage of some free platforms. I took advantage of the HEROKU platform, which offers a limited number of free domain rights for my own API. Now let's see what steps we need to follow.</p>
+
+<h4><b>HEROKU</b></h4>
+<p>Heroku doesn't support every language. You can upload your applications written in languages like <b>Node.js, Ruby, Java, PHP, Python, Go, Scala, Clojure</b> to Heroku and use a free domain. To upload our own application, we first need to create an account. You can create an account by visiting Heroku's own website.</p>
+<a href="{{ base }}/assets/images/restApi/herokucreate.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/herokucreate.jpg" alt="herokucreate">
+</a>
+<br>
+
+<p>Then we need to install <b>Heroku CLI</b> to be able to control applications.</p>
+<a href="{{ base }}/assets/images/restApi/herokucli.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/herokucli.jpg" alt="herokucli">
+</a>
+<br>
+
+<p>You can download from the link suitable for your operating system. Since I use Windows, I downloaded the link in the figure. We complete our HerokuCLI installation quickly and simply from the downloaded file. To confirm that we have completed the installation without any problems, let's open command prompt and do a version check.</p>
+<a href="{{ base }}/assets/images/restApi/herokuversion.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/herokuversion.jpg" alt="herokuversion">
+</a>
+<br>
+
+<p>From here on, there are a few things we need to do. To be able to run the application with Heroku, we will make some additions and changes within this directory. First, let's create a file named <b>procfile</b> without an extension and add the following line to it.</p>
+{% highlight language %}
+$ web: node app.js
+{% endhighlight %}
+
+<p>The <b>procfile</b> file is required to declare various process types in Heroku. For more detailed information, you can benefit from <a href="https://devcenter.heroku.com/articles/procfile" target="_blank">this link</a>.</p>
+<p>Then we make the following changes in our code.</p>
+{% highlight javascript %}
+//External modules
+const express = require("express");
+const app = express();
+//we use the cors module to be able to run this application in other applications as well
+const cors = require('cors');
+app.use(cors());
+app.options('*', cors());
+
+//Use PORT 5000 if there is no pre-configured port
+const PORT = process.env.PORT || 5000
+
+var data = require("./app.json");
+
+app.get("/", function(req, res) {
+  res.json(data);
+});
+
+app.listen(PORT, function() {
+  console.log("Server running on port 5000...");
+});
+{% endhighlight %}
+
+<p>If we don't use the <b>cors</b> module, our application will not work on other platforms or applications. With this module, we can use our application on heroku or in different applications we develop. The reason for the change in the port variable is that it is more appropriate to specify it this way for the port to work properly in environments like Heroku. After saving the changes in our code, let's run it locally and check.</p>
+{% highlight language %}
+$ npm init
+$ npm install express -s
+$ npm install cors -s
+$ node app.js
+{% endhighlight %}
+<a href="{{ base }}/assets/images/restApi/api.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/api.jpg" alt="api">
+</a>
+<br>
+
+<p>As we can see, our application ran smoothly on our local computer as a result of the changes we made. If there are no problems up to this point, we can proceed to the main part. Since we will upload the application via Github, let's first create a new project on Github.</p>
+<a href="{{ base }}/assets/images/restApi/githubrepo.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/githubrepo.jpg" alt="githubrepo">
+</a>
+<br>
+
+<p>Then let's add the application to our Github project using <b>Github Bash</b> with the following commands.</p>
+<a href="{{ base }}/assets/images/restApi/gitbash.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/gitbash.jpg" alt="gitbash">
+</a>
+<br>
+
+{% highlight language %}
+$ git init
+$ git add .
+$ git commit -m "first commit"
+$ git remote add origin https://github.com/shrgrl/example-rest-api.git
+$ git push -u origin master
+{% endhighlight %}
+
+<p>After all commands are finished, it means our application has been uploaded to our Github project.</p>
+<a href="{{ base }}/assets/images/restApi/githubrepo2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/githubrepo2.jpg" alt="githubrepo2">
+</a>
+<br>
+
+<p>Then we will clone our Github project to our computer and upload it to Heroku. For more detailed information, you can look at the article about uploading Node.js projects on Heroku's own website <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs" target="_blank">here</a>.</p>
+
+<p>First, we open CMD and write the following command to work with Heroku and log in from the screen that opens in the browser.</p>
+{% highlight language %}
+$ heroku login
+{% endhighlight %}
+<a href="{{ base }}/assets/images/restApi/herokulogin.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/herokulogin.jpg" alt="herokulogin">
+</a>
+<br>
+<a href="{{ base }}/assets/images/restApi/herokulogin2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/herokulogin2.jpg" alt="herokulogin2">
+</a>
+<br>
+
+<p>After successfully completing the login, we clone our Github project to our computer.</p>
+{% highlight language %}
+$ git clone https://github.com/shrgrl/restapi-for-blog.git
+$ cd restapi-for-blog
+{% endhighlight %}
+
+<p>Now let's create a Heroku project and add all our files to this project. If you want, you can name it yourself like me, or you can have Heroku give a random name by not writing any name.</p>
+{% highlight language %}
+$ heroku create restapi-for-blog
+{% endhighlight %}
+<a href="{{ base }}/assets/images/restApi/herokucreate2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/herokucreate2.jpg" alt="herokucreate2">
+</a>
+<br>
+
+<p>Let's make sure we have successfully created the new project because Heroku can be a bit picky about naming. As the final step, we will upload the application to the Heroku project we created.</p>
+{% highlight language %}
+$ git push heroku master
+{% endhighlight %}
+
+<p>Let's make sure we get an error-free result. If everything goes well, after this command finishes running, there should be a result similar to the following in the last part of the output.</p>
+<a href="{{ base }}/assets/images/restApi/done.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/done.jpg" alt="done">
+</a>
+<br>
+
+<p>Our application has been successfully uploaded and now we can run it.</p>
+{% highlight language %}
+$ heroku open
+{% endhighlight %}
+
+<p>After the command, an automatic tab will open in the browser.</p>
+<a href="{{ base }}/assets/images/restApi/herokuapp.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/herokuapp.jpg" alt="herokuapp">
+</a>
+<br>
+
+<p>Or you can run it by clicking the <b>Open app</b> tab in the upper right corner of the project you created in your Heroku account.</p>
+<a href="{{ base }}/assets/images/restApi/herokuopen.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/herokuopen.jpg" alt="herokuopen">
+</a>
+<br>
+
+<p>Now you have a free RestAPI domain.</p>
+<a href="{{ base }}/assets/images/restApi/domain.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000"  >
+	<img class="img-blg" src="{{ base }}/assets/images/restApi/domain.jpg" alt="domain">
+</a>
+<br>
+
+<p>You can use this API in any projects you want. I hope this article will be useful for you too to convert data into a free API. See you in the next publication...</p>
+
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://sehergurel-com-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<script id="dsq-count-scr" src="//sehergurel-com-1.disqus.com/count.js" async></script>

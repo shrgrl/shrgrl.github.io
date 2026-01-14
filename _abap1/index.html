@@ -1,0 +1,112 @@
+---
+title: Introduction to SAP ABAP
+sub-title: SAP ABAP Programming
+collection: abap1 
+layout: blog-item
+hero-bg: "{{ base }}/assets/images/abap1/abap1.jpeg"
+---
+
+<p>Hello everyone. In today's post, I will make an introduction to the ABAP programming language and prepare a blog series progressing from basic to advanced level. 
+  I hope the information I will reinforce with some theoretical knowledge and practices will be useful for those interested.</p>
+<br>
+<h4><b>What is SAP ABAP?</b></h4>
+
+<p>ABAP (Advanced Business Application Programming) is a high-level software 
+  language used by SAP, a German software company, to develop ERP products. With ABAP programming, products containing financial accounting, material management, asset management and all other SAP modules are customized. It is quite easy to learn,
+  has a syntax similar to SQL queries. Products are developed with standard or user-specific tables, data belonging to these tables and the use and processing of this data.</p>
+
+<p>The ABAP development environment is SAP Logon, which is a licensed product. Systems are defined within SAP Logon and each system is divided into different systems within itself. Generally 
+  every company has 3 different systems. These are Dev-Development System, QA-Test System and PRD-Production System. These systems may vary depending on the company. 
+  Developments are made in the Dev system, developments made in the Test system are tested, and the product that will reach the end user is moved to the Production system. This transportation process is done through Requests 
+  . I will mention the process of getting a Request in the later parts of the article. Now let's continue with SAP Logon tools and how to make ABAP developments.</p>
+<br>
+<h4><b>SAP LOGON SYSTEM DEFINITION</b></h4>
+
+<p>When we run SAP Logon, an empty screen will appear. We will define the system we will develop with the following steps. The interface appearance may vary depending on the version or
+  theme.</p>
+
+<p><b>1.</b> First, we click New Item.</p>
+  <a href="{{ base }}/assets/images/abap1/newitem.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+  <img class="img-blg" src="{{ base }}/assets/images/abap1/newitem.jpg" alt="New Item"></a><br>
+
+<p><b>2.</b> Then we continue by clicking next in the pop-up that opens.</p>
+  <a href="{{ base }}/assets/images/abap1/create.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+  <img class="img-blg" src="{{ base }}/assets/images/abap1/create.jpg" alt="Create"></a><br>
+
+<p><b>3.</b> In the opened screen, fields where we will enter system information will appear. After filling these fields completely, we can click Finish.</p>
+  <a href="{{ base }}/assets/images/abap1/finish.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+  <img class="img-blg" src="{{ base }}/assets/images/abap1/finish.jpg" alt="Finish"></a><br>
+<br>
+<h4><b>SAP ABAP WORKBENCH</b></h4>
+
+<p>We can define ABAP Workbench as a set of tools that work in an integrated way with each other, contain all the tools to be used in developing a product, and enable the development of ABAP applications:</p>
+
+<ul>
+  <li>ABAP Editor</li>
+  <li>Data Dictionary</li>
+  <li>Menu Painter</li>
+  <li>Screen Painter</li>
+  <li>Function Builder</li>
+  <li>Debugger</li>
+  <li>Object Navigator</li>
+</ul>
+
+<p>There is a different Transaction Code for each tool. With these T-Codes, we can go to the tool we want to use and start developing applications. Before moving on to programming, 
+  let's see some important tools. </p>
+<br>
+<h4><b>DATA DICTIONARY</b></h4>
+
+<p>We can go to Data Dictionary by typing the SE11 T-Code in the field in the upper left corner.</p>
+<a href="{{ base }}/assets/images/abap1/datadic1.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/abap1/datadic1.jpg" alt="Data Dictionary"></a><br>
+
+<p>Then the screen that will appear is as follows:</p>
+<a href="{{ base }}/assets/images/abap1/datadic2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/abap1/datadic2.jpg" alt="Data Dictionary"></a><br>
+
+<p>As we can see here, there are some tools under the name Data Dictionary. The tools shown here are used to develop an application. The most important and frequently 
+  used ones are Database Table and Data Type. These tools consist of standard or custom objects. SAP has some standard objects. The 
+  easiest way to distinguish them is the naming standard. Because the objects we create start with Z when named. We can consider namings that do not start with Z as SAP's standard 
+  objects. </p>
+<br>
+<h4><b>OBJECT NAVIGATOR</b></h4>
+
+<p>We go to Object Navigator with SE80 T-Code.</p>
+<a href="{{ base }}/assets/images/abap1/objnav1.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/abap1/objnav1.jpg" alt="Object Navigator"></a><br>
+
+<p>As we can see on the left side, there are objects.</p>
+<a href="{{ base }}/assets/images/abap1/objnav2.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/abap1/objnav2.jpg" alt="Object Navigator"></a><br>
+
+<p>If we want to view or create new objects found here, we can use the SE80 Object Navigator transaction.</p>
+<br>
+<h4><b>ABAP EDITOR</b></h4>
+
+<p>We can access the editor where we will write ABAP codes with SE38 T-code.</p>
+<a href="{{ base }}/assets/images/abap1/abapeditor.jpg" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/abap1/abapeditor.jpg" alt="ABAP Editor"></a><br>
+
+<p>In the field we see here, we can view existing programs or create a new program.</p>
+
+<p>In this article, I have shared the most basic information we need to know before starting ABAP programming. We will start programming in the next article.</p>
+
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://sehergurel-com-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<script id="dsq-count-scr" src="//sehergurel-com-1.disqus.com/count.js" async></script>

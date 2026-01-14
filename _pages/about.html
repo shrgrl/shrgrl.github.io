@@ -1,0 +1,578 @@
+---
+title: About Me
+permalink: "/about"
+layout: default
+order: 3
+description: "Learn about Seher Gurel Mousselli - SAP ABAP Developer and Enterprise Solutions Engineer with expertise in S/4HANA, SQL, SSRS, and AI-assisted development. Based in Oklahoma, USA."
+
+heading: We all have a story to tell
+sub-heading: This is my story...
+hero-color: 667eea
+hero-image: 4
+font-awesome: fas fa-user
+---
+
+<style>
+/* Modern About Page Styling */
+body {
+  background: linear-gradient(135deg, rgba(15,15,30,0.95), rgba(20,20,40,0.98)) !important;
+  min-height: 100vh;
+}
+
+/* Make navbar match home page exactly - dark gradient with blur */
+.nav-fixed {
+  background: linear-gradient(to bottom, rgba(10, 10, 20, 0.98), rgba(15, 15, 30, 0.95)) !important;
+  backdrop-filter: saturate(180%) blur(20px) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
+  border: none !important;
+  box-shadow: 0 1px 0 rgba(102, 126, 234, 0.1) !important;
+  padding: 0.75rem 0 !important;
+  transition: all 0.3s ease !important;
+}
+
+.nav-fixed .container {
+  max-width: 1200px !important;
+}
+
+.page-component {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  background: transparent !important;
+  color: #fff !important;
+  padding: 80px 0 !important;
+}
+
+.bg-sasha-grey {
+  background: linear-gradient(135deg, rgba(25,25,50,0.98), rgba(30,30,60,0.95)) !important;
+  border-top: 1px solid rgba(102,126,234,0.2);
+  border-bottom: 1px solid rgba(102,126,234,0.2);
+}
+
+/* Timeline Styling */
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.timeline ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.timeline ul:before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, #667eea, #764ba2);
+  transform: translateX(-50%);
+}
+
+.tl-block {
+  position: relative;
+  margin-bottom: 60px;
+  width: 100%;
+}
+
+/* Position timeline blocks relative for absolute positioning */
+.tl-block {
+  position: relative !important;
+}
+
+/* Timeline Text Content */
+.tl-block:nth-child(odd) .tl-event {
+  float: right;
+  text-align: right;
+  padding-left: 0;
+  padding-right: 60px;
+  width: 45%;
+}
+
+.tl-block:nth-child(odd) .tl-event p {
+  text-align: center !important;
+}
+
+.tl-block:nth-child(even) .tl-event {
+  float: left;
+  text-align: left;
+  padding-right: 0;
+  padding-left: 60px;
+  width: 45%;
+}
+
+.tl-block:nth-child(even) .tl-event p {
+  text-align: center !important;
+}
+
+.tl-year {
+  color: #fff !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  background: linear-gradient(135deg, #667eea, #764ba2) !important;
+  padding: 6px 12px !important;
+  border-radius: 6px !important;
+  box-shadow: 0 3px 10px rgba(102,126,234,0.3) !important;
+  border: 1px solid rgba(102,126,234,0.4) !important;
+  display: inline-block !important;
+  letter-spacing: 0.5px !important;
+  width: auto !important;
+  max-width: fit-content !important;
+  position: absolute !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 10 !important;
+}
+
+.tl-event {
+  background: rgba(255,255,255,0.05) !important;
+  backdrop-filter: blur(15px) !important;
+  border: 1px solid rgba(102,126,234,0.2) !important;
+  border-radius: 15px !important;
+  padding: 30px !important;
+  position: relative !important;
+  transition: all 0.3s ease !important;
+  margin-top: 40px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 25px !important;
+}
+
+.tl-event:hover {
+  background: rgba(255,255,255,0.08) !important;
+  border-color: rgba(102,126,234,0.3) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 10px 30px rgba(102,126,234,0.15) !important;
+}
+
+.tl-event p {
+  color: rgba(255,255,255,0.9) !important;
+  font-size: 1rem !important;
+  line-height: 1.7 !important;
+  font-weight: 300 !important;
+  margin: 0 !important;
+  text-align: center !important;
+}
+
+.tl-event p.no-margin-b {
+  text-align: center !important;
+}
+
+.tl-event strong {
+  color: #667eea !important;
+  font-weight: 500 !important;
+}
+
+.tl-figure-circle {
+  width: 80px !important;
+  height: 80px !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  border: 3px solid #667eea !important;
+  box-shadow: 0 0 20px rgba(102,126,234,0.3) !important;
+  margin: 0 !important;
+  flex-shrink: 0 !important;
+}
+
+.tl-figure-circle img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  filter: grayscale(30%) !important;
+  transition: all 0.3s ease !important;
+}
+
+.tl-figure-circle:hover img {
+  filter: grayscale(0%) !important;
+  transform: scale(1.1) !important;
+}
+
+.figure-fluid {
+  margin: 35px 0 0 0 !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  border: 2px solid rgba(102,126,234,0.3) !important;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2) !important;
+}
+
+/* Interests Section */
+.bg-sasha-grey h2 {
+  color: #fff !important;
+  font-weight: 500 !important;
+  font-size: 2rem !important;
+  letter-spacing: 1px !important;
+  margin-bottom: 50px !important;
+  text-align: center !important;
+  position: relative !important;
+}
+
+.bg-sasha-grey h2:after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: #667eea;
+  margin: 15px auto 0;
+}
+
+.bg-sasha-grey ul {
+  list-style: none !important;
+  padding: 0 !important;
+  max-width: 800px !important;
+  margin: 0 auto !important;
+}
+
+.bg-sasha-grey li {
+  background: rgba(255,255,255,0.03) !important;
+  border-left: 3px solid #667eea !important;
+  padding: 25px !important;
+  margin-bottom: 20px !important;
+  border-radius: 0 12px 12px 0 !important;
+  color: rgba(255,255,255,0.9) !important;
+  font-size: 1rem !important;
+  line-height: 1.7 !important;
+  font-weight: 300 !important;
+  position: relative !important;
+  transition: all 0.3s ease !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.bg-sasha-grey li:hover {
+  background: rgba(255,255,255,0.05) !important;
+  border-left-color: #fff !important;
+  transform: translateX(5px) !important;
+  box-shadow: 0 5px 15px rgba(102,126,234,0.1) !important;
+}
+
+.interest-icon {
+  background: linear-gradient(135deg, #667eea, #764ba2) !important;
+  color: white !important;
+  width: 45px !important;
+  height: 45px !important;
+  border-radius: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 1.1rem !important;
+  margin-right: 20px !important;
+  flex-shrink: 0 !important;
+  box-shadow: 0 4px 15px rgba(102,126,234,0.3) !important;
+}
+
+.interest-content {
+  flex: 1 !important;
+}
+
+.interest-title {
+  color: #667eea !important;
+  font-weight: 500 !important;
+  font-size: 1rem !important;
+  margin: 0 0 5px 0 !important;
+  letter-spacing: 0.5px !important;
+}
+
+.interest-text {
+  color: rgba(255,255,255,0.9) !important;
+  font-size: 0.95rem !important;
+  line-height: 1.6 !important;
+  font-weight: 300 !important;
+  margin: 0 !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .timeline ul:before {
+    left: 30px;
+  }
+  
+  .tl-block:nth-child(odd) .tl-event,
+  .tl-block:nth-child(even) .tl-event {
+    float: none;
+    text-align: left;
+    width: 100%;
+    padding-left: 80px;
+    padding-right: 20px;
+  }
+  
+  .tl-year {
+    left: 30px !important;
+    transform: translateX(-50%) !important;
+  }
+  
+  .interest-icon {
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 1rem !important;
+    margin-right: 15px !important;
+  }
+  
+  .interest-title {
+    font-size: 0.95rem !important;
+  }
+  
+  .interest-text {
+    font-size: 0.9rem !important;
+  }
+}
+</style>
+
+{% include page-header.html %}
+
+<div class="container page-component nfloat-up">
+  <div class="timeline">
+    <ul>
+      <li class="tl-block">
+        <div class="tl-year txt-color-primary">1996</div>
+        <div class="tl-span"></div>
+        <div class="tl-event">
+          <figure class="tl-figure-circle rounded-circle">
+            <img class="img-fluid" src="{{ base }}/assets/images/timeline/bebek.jpg" alt="Baby Seher">
+          </figure>
+          <p class="no-margin-b">
+            I was born in Giresun, a small but peaceful coastal city in Turkey where I spent most of my childhood and youth.
+          </p>
+        </div>
+      </li>
+      <li class="tl-block">
+        <div class="tl-year txt-color-primary">2002</div>
+        <div class="tl-span"></div>
+        <div class="tl-event">
+          <figure class="tl-figure-circle rounded-circle">
+            <img class="img-fluid" src="{{ base }}/assets/images/timeline/ilkokul.jpg" alt="Primary School">
+          </figure>
+          <p class="no-margin-b">
+            During my primary and secondary school years, I developed a passion for poetry and prose. I participated in various competitions and won several awards, which became some of the proudest moments of my childhood.
+          </p>
+        </div>
+      </li>
+      <li class="tl-block">
+        <div class="tl-year txt-color-primary">2010</div>
+        <div class="tl-span"></div>
+        <div class="tl-event">
+          <figure class="tl-figure-circle rounded-circle">
+            <img style="min-height:100%; min-width:100%;" class="img-fluid" src="{{ base }}/assets/images/timeline/lise.jpg" alt="Highschool">
+          </figure>
+          <p>
+            In my early high school years, I was passionate about painting and music, which led me to start taking guitar lessons. However, my interest gradually shifted toward science and technology.
+          </p>
+        </div>
+      </li>
+      <li class="tl-block">
+        <div class="tl-year txt-color-primary">2015</div>
+        <div class="tl-span"></div>
+        <div class="tl-event">
+          <figure class="tl-figure-circle rounded-circle">
+            <img class="img-fluid" src="{{ base }}/assets/images/timeline/atauni.jpg" alt="Ataturk University">
+          </figure>
+          <p class="no-margin-b">
+            In 2015, I began my <strong>Computer Engineering</strong> degree at <strong>Atatürk University</strong> in Erzurum, one of Turkey's respected universities.
+            I maintained an active balance between academic and social life while developing various projects through both individual and collaborative team efforts.
+          </p>
+        </div>
+      </li>
+      <li class="tl-block">
+        <div class="tl-year txt-color-primary">2017</div>
+        <div class="tl-span"></div>
+        <div class="tl-event">
+          <figure class="tl-figure-circle rounded-circle">
+            <img style="width: 70%; height: 70%; object-fit: cover;" class="img-fluid" src="{{ base }}/assets/images/timeline/tt.jpg" alt="Internship in Turk Telekom">
+          </figure>
+          <p class="no-margin-b">
+            I completed my hardware internship at <strong>Türk Telekomünikasyon A.Ş.</strong> where I studied <strong>Network Systems</strong> with colleagues and teammates.
+            I gained valuable knowledge and hands-on experience with the company's software and hardware infrastructure, as well as field operations.
+          </p>
+        </div>
+      </li>
+      <li class="tl-block">
+        <div class="tl-year txt-color-primary">2018</div>
+        <div class="tl-span"></div>
+        <div class="tl-event">
+          <figure class="tl-figure-circle rounded-circle">
+            <img class="img-fluid" src="{{ base }}/assets/images/timeline/bizmed.jpg" alt="Internship in Bizmed">
+          </figure>
+          <p class="no-margin-b">
+            I completed my software internship at <strong>Bizmed - Sinerji Bilişim Consulting</strong> in Istanbul, where I developed <strong>Hospital Automation System</strong> modules using Java, PHP, and MySQL database technologies aligned with the company's existing products.
+            This experience provided valuable insights into professional office environments and the complete product development lifecycle.
+          </p>
+        </div>
+      </li>
+      <li class="tl-block">
+        <div class="tl-year txt-color-primary">2019</div>
+        <div class="tl-span"></div>
+        <div class="tl-event">
+          <figure class="tl-figure-circle rounded-circle">
+            <img class="img-fluid" src="{{ base }}/assets/images/timeline/barsoft.jpg" alt="Internship in Barsoft">
+          </figure>
+          <p class="no-margin-b">
+            I completed another hardware internship at <strong>Barsoft</strong> in Giresun, where I analyzed the company's hardware systems and studied barcode reader applications. Building on this knowledge, I developed card reader system projects using <strong>Raspberry Pi</strong> and <strong>Arduino Uno</strong>.
+          </p>
+        </div>
+      </li>
+      <li class="tl-block">
+        <div class="tl-year txt-color-primary">2019</div>
+        <div class="tl-span"></div>
+        <div class="tl-event">
+          <p>
+            <strong>And now I've graduated...</strong>
+          </p>
+          <figure class="figure figure-fluid">
+            <img class="img-fluid" src="{{ base }}/assets/images/timeline/mezuniyet.jpg" alt="Graduation Day">
+          </figure>
+        </div>
+      </li>
+      <li class="tl-block">
+        <div class="tl-year txt-color-primary">2020</div>
+        <div class="tl-span"></div>
+        <div class="tl-event">
+          <figure class="tl-figure-circle rounded-circle">
+            <img class="img-fluid" src="{{ base }}/assets/images/timeline/renova.jpg" alt="First job in Renova">
+          </figure>
+          <p class="no-margin-b">
+            I began my professional career as an ABAP|Fiori Consultant at Renova Consulting. Working collaboratively with my team, I developed various SAP modules and delivered professional solutions to clients through custom reports and form designs during a productive and rewarding year.
+          </p>
+        </div>
+      </li>
+      <li class="tl-block">
+        <div class="tl-year txt-color-primary">2022</div>
+        <div class="tl-span"></div>
+        <div class="tl-event">
+          <figure class="tl-figure-circle rounded-circle">
+            <img style="min-height:100%; min-width:100%;" class="img-fluid" src="{{ base }}/assets/images/timeline/sapypp.jpg" alt="Sap Young Professionals Program">
+          </figure>
+          <p class="no-margin-b">
+            To further my professional development, I completed SAP's internationally recognized certification training program.
+            Working with world-class instructors, I gained deep understanding of SAP's functional modules and learned to transform them into comprehensive technology solutions.
+            I successfully earned both <strong>SAP Certified Associate - SAP Activate Project Manager</strong> and <strong>SAP Certified Application Associate - Business Process Integration with SAP S/4HANA 2020</strong> certifications.
+          </p>
+        </div>
+      </li>
+      <li class="tl-block">
+        <div class="tl-year txt-color-primary">2022</div>
+        <div class="tl-span"></div>
+        <div class="tl-event">
+          <figure class="tl-figure-circle rounded-circle">
+            <img class="img-fluid" src="{{ base }}/assets/images/timeline/sovos.jpg" alt="Second job in Sovos">
+          </figure>
+          <p class="no-margin-b">
+            I joined Sovos as a <strong>Software Support Analyst</strong>, resolving technical issues and providing support for production systems. In 2024, I was promoted to <strong>Solution Engineer</strong>, where I continued to grow professionally and contribute to complex technical solutions until 2025.
+          </p>
+        </div>
+      </li>
+      <li class="tl-block">
+        <div class="tl-year txt-color-primary">2025</div>
+        <div class="tl-span"></div>
+        <div class="tl-event">
+          <figure class="tl-figure-circle rounded-circle">
+            <img class="img-fluid" src="{{ base }}/assets/images/timeline/usa-flag.jpg" alt="Moving to Oklahoma USA">
+          </figure>
+          <p class="no-margin-b">
+            I embarked on an exciting new chapter by relocating to <strong>Oklahoma, USA</strong>. This significant move represents a major milestone in my personal and professional journey. I actively integrate <strong>AI-assisted development tools</strong> like <strong>Claude Code</strong> and <strong>ChatGPT</strong> into my workflow to enhance productivity and code quality. I am thrilled about the opportunities and challenges that lie ahead as I continue advancing my expertise in <strong>SAP ABAP</strong>, <strong>SQL</strong>, and enterprise solutions.
+          </p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="bg-sasha-grey">
+  <div class="container page-component nfloat-up">
+    <h2 class="txt-color-primary">My Interests and Hobbies</h2>
+    <ul>
+      <li>
+        <div class="interest-icon">
+          <i class="fas fa-book-open"></i>
+        </div>
+        <div class="interest-content">
+          <h3 class="interest-title">Reading & Learning</h3>
+          <p class="interest-text">I enjoy watching documentaries and reading books across various genres that expand my knowledge and perspectives.</p>
+        </div>
+      </li>
+      <li>
+        <div class="interest-icon">
+          <i class="fas fa-globe-americas"></i>
+        </div>
+        <div class="interest-content">
+          <h3 class="interest-title">Cultural Exploration</h3>
+          <p class="interest-text">I'm passionate about learning different cultures, traditions, and languages. Meeting people from diverse backgrounds enriches my worldview.</p>
+        </div>
+      </li>
+      <li>
+        <div class="interest-icon">
+          <i class="fas fa-tv"></i>
+        </div>
+        <div class="interest-content">
+          <h3 class="interest-title">Foreign Series</h3>
+          <p class="interest-text">I enjoy watching international series, which helps me improve my language skills while experiencing different storytelling styles.</p>
+        </div>
+      </li>
+      <li>
+        <div class="interest-icon">
+          <i class="fas fa-search"></i>
+        </div>
+        <div class="interest-content">
+          <h3 class="interest-title">Mystery & Research</h3>
+          <p class="interest-text">I'm fascinated by mysterious and extraordinary events. Exploring unique stories and perspectives allows me to expand my imagination and understanding of human experiences.</p>
+        </div>
+      </li>
+      <li>
+        <div class="interest-icon">
+          <i class="fas fa-music"></i>
+        </div>
+        <div class="interest-content">
+          <h3 class="interest-title">Music & Guitar</h3>
+          <p class="interest-text">Music is a passion of mine, particularly Pop-Rock genres. I studied guitar for a period, though academic commitments eventually took priority.</p>
+        </div>
+      </li>
+      <li>
+        <div class="interest-icon">
+          <i class="fas fa-hands-helping"></i>
+        </div>
+        <div class="interest-content">
+          <h3 class="interest-title">Helping Others</h3>
+          <p class="interest-text">I find deep satisfaction in listening to others and helping them find solutions to their challenges.</p>
+        </div>
+      </li>
+      <li>
+        <div class="interest-icon">
+          <i class="fas fa-plane"></i>
+        </div>
+        <div class="interest-content">
+          <h3 class="interest-title">Travel & Adventure</h3>
+          <p class="interest-text">Travel is a passion of mine. I aspire to explore the world and discover new cultures and destinations.</p>
+        </div>
+      </li>
+      <li>
+        <div class="interest-icon">
+          <i class="fas fa-robot"></i>
+        </div>
+        <div class="interest-content">
+          <h3 class="interest-title">AI & Emerging Technologies</h3>
+          <p class="interest-text">I actively explore AI-assisted development using tools like Claude Code and ChatGPT to enhance coding efficiency, problem-solving, and staying current with cutting-edge technologies.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!--<div>
+  <div class="container page-component nfloat-up">
+    <h2 class="txt-color-primary">My Travel List</h2>
+    <p class="txt-size-lead">
+      Countries I've been to so far. Of course there will be more to come. 😁
+    </p>
+    <ul class="fav-countries">
+      <li>🇹🇷 Türkiye</li>
+      <li>🇬🇪 Georgia</li>
+    </ul>
+  </div>
+</div>-->
+
+<!-- Parse emojis using this twitter emoji script -->
+<script src="//twemoji.maxcdn.com/2/twemoji.min.js?2.3.0"></script>
+<script>
+  twemoji.parse(document.querySelectorAll('.fav-countries')[0]);
+</script>

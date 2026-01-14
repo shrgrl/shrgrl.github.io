@@ -1,0 +1,197 @@
+---
+title: Web Service Usage in SAP
+sub-title: Web Service, RFC
+collection: rfc 
+layout: blog-item
+hero-bg: "{{ base }}/assets/images/rfc/rfc.png"
+---
+
+<p>Hello everyone!</p>
+
+<p>In this article, I will show the basic working logic of a web service and its operation in an example scenario by connecting a function I created to RFC. Web services are 
+  a method used to connect SAP to a different system and provide external data flow.</p>
+<a href="{{ base }}/assets/images/rfc/SAP_RFC.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/rfc/SAP_RFC.png" alt="RFC"></a><br>
+
+<h4><b>Product Stock Control Application</b></h4>
+<p>First, I start by defining a scenario. Let's assume that a supermarket chain manages product stock using SAP systems. This company should record newly added products to stock in a table in SAP. 
+  While the quantity of products with the same material number increases, a new row should be added for each newly added product. It should also get product information from a maintenance table that the customer regularly updates.</p>
+<a href="{{ base }}/assets/images/rfc/pseudo.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/rfc/pseudo.png" alt="pseudo"></a><br>
+
+<p>First, let's create the tables we will use. In our maintenance table where product information will be kept, let's add the fields for whatever information we want. At this stage, I'm only adding Product Code and Product Name.</p>
+<a href="{{ base }}/assets/images/rfc/product_list.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/rfc/product_list.png" alt="Product List"></a><br>
+
+<p>I connected the maintenance table I created to T-Code and easily added the product information I wanted to add:</p>
+<a href="{{ base }}/assets/images/rfc/sm30.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/rfc/sm30.png" alt="Product List Transaction Code"></a><br>
+
+<p>Now let's create the table that will hold stock information and that we will update with the web service:</p>
+<a href="{{ base }}/assets/images/rfc/stok_check.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/rfc/stok_check.png" alt="Stock Check Table"></a><br>
+
+<p>After completing our tables, we need to create a function module to connect RFC. For this, let's go to SE37 T-Code and start by writing the name of the function we want to create:</p>
+<a href="{{ base }}/assets/images/rfc/se37.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/rfc/se37.png" alt="SE37 Screen"></a><br>
+
+<p>We will determine the parameters of the function module we created. In my scenario, I'm adding the product code as an import parameter because I will only enter the product code and get the product information from the maintenance table. 
+  I'm also adding text parameters to the export parameters so that it returns whether the operation was successful or failed after the request is processed:</p>
+<a href="{{ base }}/assets/images/rfc/import.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/rfc/import.png" alt="Import Parameter"></a><br>
+<a href="{{ base }}/assets/images/rfc/export.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/rfc/export.png" alt="Export Parameter"></a><br>
+
+<p>According to the scenario I set up, I wrote the source code of the function as follows:</p>
+{% highlight javascript %}
+FUNCTION zsg_fm_product_stok.
+*"----------------------------------------------------------------------
+*"*"Local Interface:
+*"  IMPORTING
+*"     VALUE(IV_PRODUCT_CODE) TYPE  ZPRODUCT_CODE_DE
+*"  EXPORTING
+*"     VALUE(EV_SUCCESS) TYPE  XFELD
+*"     VALUE(EV_MESSAGE) TYPE  BAPI_MSG
+*"----------------------------------------------------------------------
+
+  DATA: ls_stok    TYPE zsg_stok_check,
+        ls_product TYPE zsg_product_list.
+
+  ls_stok-product_code = iv_product_code.
+  ls_stok-uname        = sy-uname.
+  ls_stok-datum        = sy-datum.
+  ls_stok-uzeit        = sy-uzeit.
+
+  SELECT * FROM zsg_product_list
+    WHERE product_code EQ @iv_product_code
+      INTO CORRESPONDING FIELDS OF @ls_product.
+  ENDSELECT.
+
+  IF sy-subrc EQ 0.
+    SELECT * FROM zsg_stok_check
+      WHERE product_code EQ @iv_product_code
+        INTO CORRESPONDING FIELDS OF @ls_stok.
+    ENDSELECT.
+    IF sy-subrc EQ 0.
+      ADD 1 TO ls_stok-stok.
+      UPDATE zsg_stok_check FROM ls_stok.
+      IF sy-subrc EQ 0.
+        COMMIT WORK.
+        ev_success = abap_true.
+        ev_message = 'Stok güncellendi! / Stock updated!'.
+      ENDIF.
+    ELSE.
+      ls_stok-product_name = ls_product-product_name.
+      ADD 1 TO ls_stok-stok.
+      INSERT zsg_stok_check FROM ls_stok.
+      IF sy-subrc EQ 0.
+        COMMIT WORK.
+        ev_success = abap_true.
+        ev_message = 'Yeni kayıt eklendi! / New record added!'.
+      ENDIF.
+    ENDIF.
+  ELSE.
+    ROLLBACK WORK.
+    ev_success = abap_false.
+    ev_message = 'Ürün kodu geçerli değildir! / Product code is not valid!'.
+  ENDIF.
+
+ENDFUNCTION.
+{% endhighlight %}
+
+<p>To connect our created function to RFC, I change the Processing Type field to <b>Remote-Enabled Module</b> as shown below and Activate my function.</p>
+<a href="{{ base }}/assets/images/rfc/attributes.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/rfc/attributes.png" alt="Attributes"></a><br>
+
+<p>To create the web service for the function, we need to make the selection <b>Utilities->More Utilities->Create Web Service->From the Function Module</b>.
+  Since I'm working on a single function module, I'm creating it as a Module. If I wanted to connect more than one function module to a single web service, I would need to select Function Group.</p>
+<a href="{{ base }}/assets/images/rfc/utulities.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/rfc/utulities.png" alt="Utulities"></a><br>
+
+<p>After our selections, the screen where we determine RFC properties will open. It's sufficient to write the necessary naming and descriptions in these fields. After completing all definitions and completing this process, 
+  we need to change some properties of the RFC we created on the opened screen. We set the Profile as Low for Username/Password usage, which is the most commonly used method as a security measure applied when calling the service, 
+  and we will be able to perform operations by entering our SAP username/password when we want to call the service.</p>
+<a href="{{ base }}/assets/images/rfc/config.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/rfc/config.png" alt="Configuration"></a><br>
+
+<p> We need to configure Soamanager settings. Soamanager is the screen that generates the link connecting web services with SAP and where we define some properties. We can access it by typing Soamanager in the T-Code section in SAP. 
+  After typing Soamanager, we will enter the Web Service Configuration section on the screen that opens in the browser.</p>
+<a href="{{ base }}/assets/images/rfc/soamanager.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/rfc/soamanager.png" alt="Soamanager"></a><br>
+
+<p>In the Object Name section, we can find it by searching for the name of the function module we created.</p>
+<a href="{{ base }}/assets/images/rfc/webservice.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/rfc/webservice.png" alt="Soamanager"></a><br>
+
+<p>When we enter the function that appears, a blank page will open. You can create the service as shown below by saying Create Service:</p>
+<a href="{{ base }}/assets/images/rfc/services.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/rfc/services.png" alt="Create Service"></a><br>
+
+<p>After naming, the most important thing we need to pay attention to is that we need to check the User ID/Password option in the Provider Security section. Because we had selected Low as Authentication when configuring web service settings from SAP.</p>
+<a href="{{ base }}/assets/images/rfc/security.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/rfc/security.png" alt="Security"></a><br>
+
+<p>After all these operations, we can Republish to use the service. After republishing, we can get the generated link by clicking on the icon I show below.</p>
+<a href="{{ base }}/assets/images/rfc/republish.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/rfc/republish.png" alt="Republish"></a><br>
+
+<a href="{{ base }}/assets/images/rfc/link.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/rfc/link.png" alt="Link"></a><br>
+
+<p>Now we have a Web Service URL. There are various applications where we can use this URL. I will use the SOAPUI application, which I think has an easy and convenient user interface. After starting the application, we click on the SOAP option and 
+  paste the link we copied into the Initial WSDL field:</p>
+<a href="{{ base }}/assets/images/rfc/soap.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/rfc/soap.png" alt="SOAPUI"></a><br>
+
+<p>When we click OK, a screen will open asking us to enter username and password. After entering our SAP login user information here and clicking OK, our service will appear on the screen. To make the service usable, we need to enter the Authentication option and add new user authorization:</p>
+<a href="{{ base }}/assets/images/rfc/Auth.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/rfc/Auth.png" alt="Authorization"></a><br>
+<a href="{{ base }}/assets/images/rfc/AuthUser.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/rfc/AuthUser.png" alt="User Authorization"></a><br>
+
+<p>After entering user information, as will be seen in the Request details, we had only specified Product Code as an import parameter. Now we can make our tests.</p>
+
+<p>First, let's enter a successful record with one of the existing codes in the product list and examine the response details:</p>
+<a href="{{ base }}/assets/images/rfc/successres.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/rfc/successres.png" alt="Success Response"></a><br>
+
+<p>As we can see, a record has been added to our table:</p>
+<a href="{{ base }}/assets/images/rfc/successtable.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/rfc/successtable.png" alt="Success Table"></a><br>
+
+<p>Now let's add one more of the same product. We see the message about the stock being updated in the response detail and the stock quantity increasing in the table.</p>
+<a href="{{ base }}/assets/images/rfc/updateres.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/rfc/updateres.png" alt="Update Response"></a><br>
+<a href="{{ base }}/assets/images/rfc/updatetable.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/rfc/updatetable.png" alt="Update Table"></a><br>
+
+<p>Finally, let's try adding a code that is not in the product list:</p>
+<a href="{{ base }}/assets/images/rfc/errorres.png" data-toggle="lightbox" data-max-height="1000"  data-max-width="1000">
+<img class="img-blg" src="{{ base }}/assets/images/rfc/errorres.png" alt="Error Response"></a><br>
+
+<p>We see the message about the invalid product code. </p>
+
+<p>Thus, we have seen that we can perform such operations by creating Web Services to provide data flow in SAP. Different scenarios can be designed by detailing the function content. I hope this has been a helpful document for the first step.</p>
+
+<br>
+<p>References: <a href="https://www.udemy.com/course/sap-abap-ileri-seviye-egitim/learn/lecture/34615096" target="_blank">Burak Kocaaslan Udemy Course</a></p>
+  
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://sehergurel-com-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<script id="dsq-count-scr" src="//sehergurel-com-1.disqus.com/count.js" async></script>

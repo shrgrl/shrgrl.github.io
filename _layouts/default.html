@@ -1,0 +1,618 @@
+{% include base.html %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- Primary SEO Meta Tags -->
+  <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+  <meta name="keywords" content="{{ site.keywords }}">
+  <meta name="author" content="{{ site.author }}">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:title" content="{{ page.title }} - {{ site.title }}">
+  <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+  <meta property="og:image" content="{{ site.url }}/assets/images/avatars/fotor_creation_2025-08-09.jfif">
+  <meta property="og:locale" content="{{ site.locale }}">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page.title }} - {{ site.title }}">
+  <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+  <meta name="twitter:image" content="{{ site.url }}/assets/images/avatars/fotor_creation_2025-08-09.jfif">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+
+  <!-- Schema.org Structured Data for AI Search -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Seher Gurel Mousselli",
+    "jobTitle": "SAP ABAP Developer & Enterprise Solutions Engineer",
+    "description": "SAP ABAP & Enterprise Reporting Engineer with expertise in S/4HANA, SAP Fiori, SAPUI5, SQL Server Reporting Services, and web development (HTML, CSS, JavaScript). Additionally experienced with AI-assisted development tools.",
+    "url": "{{ site.url }}",
+    "sameAs": [
+      "https://www.linkedin.com/in/sehergurel",
+      "https://github.com/sehergurel"
+    ],
+    "knowsAbout": [
+      "SAP ABAP",
+      "S/4HANA",
+      "SAP Fiori",
+      "SAPUI5",
+      "SQL",
+      "SQL Server Reporting Services",
+      "SSRS",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Web Development",
+      "SAP SD",
+      "SAP FI",
+      "SAP MM",
+      "RFC",
+      "Web Services",
+      "API Integration",
+      "e-Invoice",
+      "e-Archive",
+      "ChatGPT",
+      "Claude Code"
+    ],
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "SAP Certified Application Associate - Business Process Integration with SAP S/4HANA 2020"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "SAP Certified Associate - SAP Activate Project Manager"
+      }
+    ],
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Ataturk University",
+      "department": "Computer Engineering"
+    },
+    "workLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Oklahoma",
+        "addressCountry": "USA"
+      }
+    }
+  }
+  </script>
+  
+  <!-- 12 May, lightbox kullanım için bootstrap kütüphaneler -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
+  <!-- end -->
+  <link rel="stylesheet" href="{{ base }}/assets/css/carverous.min.css">
+  <link rel="stylesheet" href="{{ base }}/assets/css/font-awesome-all.min.css">
+  <link rel="stylesheet" href="{{ base }}/assets/css/styles.css">
+  <link rel="icon" type="image/png" href="{{ base }}/assets/images/faviconimg.png">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css"
+/>
+
+  <!-- Dark Mode Code Block Styling -->
+  <style>
+    /* Override Prism.js default styles for dark mode */
+    pre[class*="language-"],
+    code[class*="language-"] {
+      background: rgba(10, 10, 20, 0.9) !important;
+      color: #f8f8f2 !important;
+      text-shadow: 0 1px rgba(0, 0, 0, 0.3) !important;
+      font-family: 'Consolas', 'Monaco', 'Courier New', monospace !important;
+      font-size: 0.95rem !important;
+      line-height: 1.5 !important;
+      tab-size: 4 !important;
+      hyphens: none !important;
+      border-radius: 8px !important;
+    }
+
+    pre[class*="language-"] {
+      padding: 1.5em !important;
+      margin: 1.5em 0 !important;
+      overflow: auto !important;
+      border: 1px solid rgba(102, 126, 234, 0.2) !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+      max-height: 600px !important;
+    }
+
+    /* Inline code */
+    :not(pre) > code[class*="language-"],
+    :not(pre) > code {
+      background: rgba(102, 126, 234, 0.2) !important;
+      color: #f8f8f2 !important;
+      padding: 0.2em 0.4em !important;
+      border-radius: 4px !important;
+      font-size: 0.9rem !important;
+      white-space: normal !important;
+    }
+
+    /* Syntax highlighting colors for dark mode */
+    .token.comment,
+    .token.prolog,
+    .token.doctype,
+    .token.cdata {
+      color: #6272a4 !important;
+    }
+
+    .token.punctuation {
+      color: #f8f8f2 !important;
+    }
+
+    .token.property,
+    .token.tag,
+    .token.boolean,
+    .token.number,
+    .token.constant,
+    .token.symbol,
+    .token.deleted {
+      color: #ff79c6 !important;
+    }
+
+    .token.selector,
+    .token.attr-name,
+    .token.string,
+    .token.char,
+    .token.builtin,
+    .token.inserted {
+      color: #50fa7b !important;
+    }
+
+    .token.operator,
+    .token.entity,
+    .token.url,
+    .language-css .token.string,
+    .style .token.string {
+      color: #ffb86c !important;
+    }
+
+    .token.atrule,
+    .token.attr-value,
+    .token.keyword {
+      color: #bd93f9 !important;
+    }
+
+    .token.function,
+    .token.class-name {
+      color: #8be9fd !important;
+    }
+
+    .token.regex,
+    .token.important,
+    .token.variable {
+      color: #f1fa8c !important;
+    }
+
+    .token.important,
+    .token.bold {
+      font-weight: bold !important;
+    }
+
+    .token.italic {
+      font-style: italic !important;
+    }
+
+    .token.entity {
+      cursor: help !important;
+    }
+
+    /* Line numbers if used */
+    pre[class*="language-"].line-numbers {
+      padding-left: 3.8em !important;
+      counter-reset: linenumber !important;
+    }
+
+    pre[class*="language-"].line-numbers > code {
+      position: relative !important;
+      white-space: inherit !important;
+    }
+
+    .line-numbers .line-numbers-rows {
+      position: absolute !important;
+      pointer-events: none !important;
+      top: 0 !important;
+      font-size: 100% !important;
+      left: -3.8em !important;
+      width: 3em !important;
+      letter-spacing: -1px !important;
+      border-right: 1px solid rgba(102, 126, 234, 0.2) !important;
+      user-select: none !important;
+    }
+
+    .line-numbers-rows > span {
+      display: block !important;
+      counter-increment: linenumber !important;
+    }
+
+    .line-numbers-rows > span:before {
+      content: counter(linenumber) !important;
+      color: #6272a4 !important;
+      display: block !important;
+      padding-right: 0.8em !important;
+      text-align: right !important;
+    }
+
+    /* Scrollbar styling for code blocks */
+    pre[class*="language-"]::-webkit-scrollbar {
+      width: 10px !important;
+      height: 10px !important;
+    }
+
+    pre[class*="language-"]::-webkit-scrollbar-track {
+      background: rgba(30, 30, 40, 0.5) !important;
+      border-radius: 5px !important;
+    }
+
+    pre[class*="language-"]::-webkit-scrollbar-thumb {
+      background: rgba(102, 126, 234, 0.5) !important;
+      border-radius: 5px !important;
+    }
+
+    pre[class*="language-"]::-webkit-scrollbar-thumb:hover {
+      background: rgba(102, 126, 234, 0.7) !important;
+    }
+
+    /* Back to Top Button Styling */
+    .back-to-top-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+      transition: all 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+    }
+
+    .back-to-top-btn.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top-btn:hover {
+      background: linear-gradient(135deg, #5a6fd8, #6a42a0);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
+    }
+
+    .back-to-top-btn:active {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.5);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .back-to-top-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+      }
+    }
+
+    /* Jekyll highlight blocks */
+    .highlight {
+      background: rgba(10, 10, 20, 0.9) !important;
+      border-radius: 8px !important;
+      padding: 1.5em !important;
+      margin: 1.5em 0 !important;
+      border: 1px solid rgba(102, 126, 234, 0.2) !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+      overflow: auto !important;
+    }
+
+    .highlight pre {
+      margin: 0 !important;
+      padding: 0 !important;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    .highlight code {
+      color: #f8f8f2 !important;
+      background: transparent !important;
+      padding: 0 !important;
+    }
+
+    /* Language label on code blocks */
+    pre[class*="language-"]::before {
+      content: attr(data-lang);
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0.25em 0.75em;
+      background: rgba(102, 126, 234, 0.2);
+      color: #667eea;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      border-radius: 0 8px 0 8px;
+      letter-spacing: 0.5px;
+    }
+  </style>
+
+  <!-- lightbox kullanım için script -->
+<script>
+$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+                event.preventDefault();
+                $(this).ekkoLightbox({ wrapping: false });
+            });
+</script>
+  <!-- end -->
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-811W03962Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-811W03962Y');
+</script>
+
+  <title>{{ page.title }} - {% if page.url == '/' %} {{ site.tagline }} {% else %} {{ site.title }} {% endif %}</title>
+<!-- lightbox ve blog resimler css kodları -->
+<style>
+.modal-body {
+  position: relative;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 0rem;
+}
+  
+.img-blg {
+  height:auto;
+  max-width:50%;
+  width:50%;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+}
+</style>
+<!-- end -->
+  
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7494724962239659"
+     crossorigin="anonymous"></script>
+  
+  
+</head>
+
+<body>
+  <nav class="nav nav-sasha-white nav-fixed nav-t">
+    <div class="container">
+      <div class="nav-toggler nav-toggler-r">
+        <a href="#" class="nav-toggler-word">MENU</a>
+      </div>
+      <div class="nav-menu">
+        <ul class="nav-menu-l">
+          {% assign nav-pages = site.html_pages | sort: 'order' %} {% for p in nav-pages %} {% if p.order %}
+          <li>
+            <a href="{{ p.url | remove: '.html' }}" {% if p.url == page.url %}class="active" {% endif %}>
+              <i class="{{ p.font-awesome }}"></i>
+              {% if p.url == '/' %}
+              Home
+              {% else %}
+              {{ p.title }}
+              {% endif %}
+            </a>
+          </li>
+          {% endif %} {% endfor %}
+        </ul>
+        <span class="nav-form">
+          <a href="/contact" class="btn btn-primary pill">Contact</a>
+        </span>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="content">
+    {{ content }}
+  </div>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="back-to-top-btn">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+  
+  <footer style="background: linear-gradient(135deg, rgba(10,10,20,1), rgba(15,15,30,0.98)); 
+                 border-top: 1px solid rgba(102,126,234,0.2); 
+                 font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
+    <div class="container" style="padding: 60px 15px 40px;">
+      <div class="row">
+        <div class="col-lg-4" style="margin-bottom: 40px;">
+          <a href="/about" style="text-decoration: none;">
+            <h5 style="color: #fff;
+                       font-weight: 500;
+                       font-size: 1.1rem;
+                       letter-spacing: 1px;
+                       margin-bottom: 20px;
+                       text-transform: uppercase;
+                       position: relative;
+                       transition: color 0.3s ease;"
+                onmouseover="this.style.color='#667eea'"
+                onmouseout="this.style.color='#fff'">
+              <i class="fas fa-user" style="color: #667eea; margin-right: 10px; font-size: 1rem;"></i>
+              About me
+            </h5>
+          </a>
+          <p style="color: rgba(255,255,255,0.8); 
+                    font-size: 0.95rem; 
+                    line-height: 1.7; 
+                    font-weight: 300;
+                    margin: 0;">
+            Hi all! Thanks for visiting my site. This website contains information about me and some of the projects I have done.
+          </p>
+        </div>
+        
+        <div class="col-lg-4" style="margin-bottom: 40px;">
+          <h5 style="color: #fff; 
+                     font-weight: 500; 
+                     font-size: 1.1rem; 
+                     letter-spacing: 1px; 
+                     margin-bottom: 20px;
+                     text-transform: uppercase;
+                     position: relative;">
+            <i class="fas fa-file-alt" style="color: #667eea; margin-right: 10px; font-size: 1rem;"></i>
+            Resume
+          </h5>
+          <p style="color: rgba(255,255,255,0.8); 
+                    font-size: 0.95rem; 
+                    line-height: 1.7; 
+                    font-weight: 300;
+                    margin-bottom: 20px;">
+            You can access my <strong style="color: #fff;">Resume</strong> from the link below.
+          </p>
+          <div>
+            <a href="https://drive.google.com/file/d/1PD2sXV-Qm7C8mf1WJIvQ9Eph0aKfRMPm/view?usp=drive_link" 
+               target="_blank" 
+               style="display: inline-flex;
+                      align-items: center;
+                      background: linear-gradient(135deg, #667eea, #764ba2);
+                      color: white;
+                      text-decoration: none;
+                      padding: 12px 24px;
+                      border-radius: 8px;
+                      font-size: 0.9rem;
+                      font-weight: 500;
+                      letter-spacing: 0.5px;
+                      transition: all 0.3s ease;
+                      box-shadow: 0 4px 15px rgba(102,126,234,0.3);"
+               onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(102,126,234,0.4)'"
+               onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102,126,234,0.3)'">
+              <i class="fas fa-download" style="margin-right: 8px;"></i>
+              View as PDF
+            </a>
+          </div>
+        </div>
+        
+        <div class="col-lg-4" style="margin-bottom: 40px;">
+          <h5 style="color: #fff; 
+                     font-weight: 500; 
+                     font-size: 1.1rem; 
+                     letter-spacing: 1px; 
+                     margin-bottom: 20px;
+                     text-transform: uppercase;
+                     position: relative;">
+            <i class="fas fa-share-alt" style="color: #667eea; margin-right: 10px; font-size: 1rem;"></i>
+            Follow Me
+          </h5>
+          <div style="margin-top: 15px;">
+            {% include social.html %}
+          </div>
+        </div>
+      </div>
+      
+      <!-- Copyright and Privacy Section -->
+      <div style="padding: 15px 0 30px 0;">
+        <div class="container">
+          <hr style="border: none; 
+                     height: 1px; 
+                     background: linear-gradient(90deg, transparent, rgba(102,126,234,0.3), transparent); 
+                     margin-bottom: 20px;">
+          <div style="text-align: center;">
+            <p style="color: rgba(255,255,255,0.7); 
+                      font-size: 0.85rem; 
+                      font-weight: 300;
+                      line-height: 1.6;
+                      margin-bottom: 8px;">
+              &copy; 2019 &ndash; <script>document.write(new Date().getFullYear());</script> 
+              <span style="color: #667eea; font-weight: 400;">Seher Gürel Mousselli</span>
+            </p>
+            <p style="margin: 0;">
+              <a href="/privacy" 
+                 style="color: rgba(255,255,255,0.8); 
+                        text-decoration: none; 
+                        font-size: 0.85rem;
+                        font-weight: 300;
+                        transition: color 0.3s ease;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;"
+                 onmouseover="this.style.color='#667eea'"
+                 onmouseout="this.style.color='rgba(255,255,255,0.8)'">
+                <i class="fas fa-shield-alt" style="margin-right: 6px; font-size: 0.8rem;"></i>
+                Privacy Policy
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="{{ base }}/assets/js/carverous.min.js"></script>
+  
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+      
+      window.addEventListener('scroll', function () {
+        
+        var bodyScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        
+        // Handle nav transparency
+        var navT = document.querySelector('.nav');
+        if (window.innerWidth >= 767) {
+          if (bodyScrollTop > 50) {
+            navT.classList.remove('nav-t');
+          } else {
+            navT.classList.add('nav-t');
+          }
+        }
+
+        // Handle back to top button visibility
+        var backToTopBtn = document.getElementById('backToTop');
+        if (bodyScrollTop > 200) {
+          backToTopBtn.classList.add('show');
+        } else {
+          backToTopBtn.classList.remove('show');
+        }
+      });
+
+      // Back to Top Button Click Handler
+      document.getElementById('backToTop').addEventListener('click', function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script>       
+</body>
+</html>
