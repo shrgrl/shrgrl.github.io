@@ -26,7 +26,7 @@ body {
 
 /* Project Item Header with Dynamic Background */
 .hero-project {
-  background: linear-gradient(rgba(15,15,30,0.8), rgba(10,10,20,0.85)), url('{% if page.hero-bg %}{{ page.hero-bg }}{% else %}https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3{% endif %}') center/cover !important;
+  background: linear-gradient(rgba(15,15,30,0.8), rgba(10,10,20,0.85)), url('{% if page.hero-bg %}{{ page.hero-bg }}{% else %}/assets/images/art/hero-default.svg{% endif %}') center/cover !important;
   padding: 120px 0 80px 0 !important;
   position: relative !important;
 }
